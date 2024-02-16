@@ -1,0 +1,781 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --wp--present--font-size--normal: 16px;
+    --wp--present--font-size--huge: 42px;
+}
+
+html {
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+* {
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+}
+
+
+head {
+    display: none;
+}
+
+body {
+    font-family: Roboto Condensed, "Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-color: #E5DECF;
+    color: #222;
+    line-height: 1;
+    font-variant-ligatures: none;
+    margin: 0;
+}
+
+.bot-logo {
+    float: left;
+    padding-top: 8px;
+    width: 6.5625rem;
+    height: 8rem;
+    flex-shrink: 0;
+}
+
+img {
+    vertical-align: middle;
+}
+
+img {
+    border: 0;
+}
+
+header {
+    max-width: 1284px;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 1em 0 1em;
+    z-index: 15;
+}
+
+.header-top {
+    padding-top: 1rem;
+    width: 100%;
+    border-bottom: 2px solid #006C54;
+}
+
+#header-bar {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}
+
+a {
+    color: #006C54;
+    text-decoration: none;
+}
+
+a {
+    background-color: transparent;
+}
+
+.logo {
+    float: left;
+    width: 65%;
+    padding-left: 0.25rem;
+    font-family: "Roboto Condensed";
+    font-size: 3rem;
+    line-height: 1.25;
+    margin-top: 40px;
+}
+
+.logo-text a {
+    padding-left: 0.3rem;
+}
+
+.primary-color {
+    color: #006C54;
+    top: 39px;
+    left: 110px;
+}
+
+.nav {
+    width: 100%;
+    padding-top: 0;
+    text-align: left;
+    font-family: "Roboto Condensed";
+    font-size: 1rem;
+    display: block;
+}
+
+.nav {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    font-weight: 500;
+}
+
+#hamburger {
+    display: none;
+    position: relative;
+    padding-top: 5px;
+}
+
+.ham1, .ham2, .ham3 {
+    width: 25px;
+    height: 3px;
+    background-color: #006C54;
+    margin: 2px 0;
+    text-align: right;
+    position: relative;
+    float: right;
+    clear: both;
+    transition: .25s ease-in-out;
+}
+
+.nav ul, .nav li, .nav ol {
+    padding-left: 0;
+    margin: 1rem 0 1rem 0;
+    list-style: none;
+    position: relative;
+    z-index: 0;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.nav-menu {
+    display: block;
+}
+
+ul {
+    padding: 0;
+}
+
+.nav .item {
+    display: inline;
+    position: relative;
+    font-weight: 500;
+    z-index: 0;
+    margin: 0 1.875rem 0 0;
+}
+
+.nav li:last-child { /* grid is moved all the way to the right side  */
+    text-align: right;
+    right: 0;
+    z-index: 1;
+    position: absolute;
+    margin-right: 0;
+}
+
+.gridnav:hover, .users:hover {
+    cursor: pointer;
+}
+
+.gridnav {
+    padding-top: 3px;
+}
+
+.gridnav, .users {
+    float: left;
+    padding-left: 25px;
+    text-align: right;
+    width: 50%;
+}
+
+#player_search_container {
+    position: absolute;
+    right: 20px;
+    top: 60px
+}
+
+.header-formControl-fullWidth {
+    width: 100%;
+}
+
+.header-formControl-root {
+    border: 0;
+    margin: 0;
+    display: inline-flex;
+    padding: 0;
+    position: relative;
+    min-width: 0;
+    flex-direction: column;
+    vertical-align: top;
+    background-color: #fff;
+}
+
+.header-inputLabel-outlined {
+    z-index: 1;
+    transform: translate(14px, 20px) scale(1);
+    pointer-events: none;
+}
+
+.header-inputLabel-animated {
+    transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+}
+
+.header-inputLabel-formControl {
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+.header-inputLabel-root {
+    display: block;
+    transform-origin: top left;
+}
+
+header-formLabel-root {
+    color: rgba(0, 0, 0, 0.54);
+    padding: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.00938em;
+}
+
+.header-material-root {
+    font-family: "Roboto Condensed" !important;
+    color: #006C54;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 300;
+}
+
+label {
+    max-width: 100%;
+    margin-bottom: 5px;
+}
+
+.header-autoComplete-hasPopupIcon .header-autoComplete-inputRoot[class*="outlinedInput-root"], .header-autoComplete-hasClearIcon .header-autoComplete-inputRoot[class*="outlinedInput-root"] {
+    padding-right: 39px;
+}
+
+.header-autoComplete-inputRoot[class*="outlinedInput-root"] {
+    padding: 9px;
+}
+
+.j5 {
+    font-family: Roboto Condensed !important;
+    border-radius: 0px !important;
+}
+
+.header-autoComplete-inputRoot {
+    flex-wrap: wrap;
+}
+
+.header-outlinedInput-root {
+    position: relative;
+}
+
+.header-inputBase-fullWidth {
+    width: 100%;
+    border: 2px solid #006C54;
+
+}
+
+.header-inputBase-root {
+    color: rgba(0, 0, 0, 1);
+    cursor: text;
+    display: inline-flex;
+    font-size: 3rem;
+    box-sizing: border-box;
+    align-items: center;
+    font-weight: 400;
+    line-height: 1.1876em;
+    letter-spacing: 0.00938em;
+}
+
+#player_search_container input { /* Search Box Input/Inside */
+    line-height: 1.5em;
+    padding: 8px;
+    width: 350px;
+    font-family: "Roboto Condensed";
+    font-size: 14px;
+}
+
+.header-autoComplete-inputRoot .header-autoComplete-input {
+    min-width: 30px;
+}
+
+.header-autoComplete-inputFocused {
+    opacity: 1;
+    outline: none;
+}
+
+.header-autoComplete-input {
+    flex-grow: 1;
+    text-overflow: ellipse;
+}
+
+.header-inputBase-input {
+    font: inherit;
+    color: currentColor;
+    border: 0;
+    height: 1.1876em;
+    margin: 0;
+    display: block;
+    background: none;
+    box-sizing: content-box;
+    animation-name: mui-auto-fill-cancel;
+    letter-spacing: inherit;
+    animation-duration: 10ms;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+.header-autoComplete-inputRoot[class*="outlinedInput-root"] .header-autoComplete-endAdornment {
+    right: 9px;
+}
+
+.header-autoComplete-endAdornment {
+    top: calc(50% - 14px);
+    position: absolute;
+}
+
+.header-autoComplete-clearIndicator {
+    padding: 4px;
+    visibility: hidden;
+    margin-right: -2px;
+}
+
+.header-iconButton-root {
+    flex: 0 0 auto;
+    color: rgba(0, 108, 84, 1);
+    overflow: visible;
+    font-size: 1.5rem;
+    text-align: center;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    font-size: 3;
+    radius: 50%;
+}
+
+.header-buttonBase-root {
+    border: 0;
+    cursor: pointer;
+    margin: 0;
+    display: inline-flex;
+    outline: 0;
+    position: relative;
+    align-items: center;
+    user-select: none;
+    vertical-align: middle;
+    justify-content: center;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+input, button, select, textarea {
+    font-family: inherit;
+    line-height: inherit;
+
+}
+
+button, select {
+    text-transform: none;
+}
+
+button, input, optgroup, select, textarea {
+    font: inherit;
+}
+
+.header-iconButton-label {
+    width: 100%;
+    display: flex;
+    align-items: inherit;
+    justify-content: inherit;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+.header-svgIcon-fontSizeSmall {
+    font-size: 1.25rem;
+}
+
+.header-svgIcon-root {
+    fill: currentColor;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.header-touchRipple-root {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    overflow: hidden;
+    position: absolute;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+j7 {
+    border-color: #006C54 !important;
+    border-width: 2px;
+}
+
+.header-c1 {
+    top: -5px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0 8px;
+    overflow: hidden;
+    position: absolute;
+    border-style: solid;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+fieldset {
+    border: 0;
+    min-width: 0;
+}
+
+.header-c3 {
+    width: auto;
+    height: 11px;
+    display: block;
+    padding: 0;
+    font-size: 0.75em;
+    max-width: 0.01px;
+    text-align: left;
+    transition: max-width 50ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+    visibility: hidden;
+}
+
+legend {
+    margin-bottom: 20px;
+    line-height: inherit;
+    color: #006C54;
+    border: 0;
+    border-bottom: 2px solid #006C54;
+}
+
+.header-c3 > span {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#schedule {
+    max-width: 1284px;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 1em 0 1em;
+    z-index: 10;
+}
+
+#schedule #ticker .container{
+    display: flex;
+    overflow-y: hidden;
+    flex: 1;
+    flex-direction: row;
+    width: 95%;
+    scrollbar-width: none;
+    float: left;
+}
+
+.datepicker-wrapper {
+    display: inline-block;
+    padding: 0;
+    border: 0;
+}
+
+.datepicker-input {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+#schedule #ticker .flex-cal {
+    flex: 0 0 auto 0;
+    border: solid 2px #006C54;
+    border-right: solid 1px #006C54;
+    width: 80px;
+    text-align: center;
+    line-height: 0.5;
+    font-family: "Roboto Condensed";
+    font-size: 24px;
+    font-weight: 600;
+    color: #006C54;
+    height: 60px;
+    cursor: pointer;
+}
+
+input {
+    border-radius: 0;
+}
+
+element.style {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transform: translate3d(14px, 60px, 0px);
+    will-change: transform;
+}
+
+.datepicker-popup[data-placement^="bottom"] {
+    margin-top: 10px;
+}
+
+.datepicker-popup {
+    z-index: 1;
+}
+
+.datepicker {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.8rem;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #aeaeae;
+    border-radius: 0.3rem;
+    display: inline-block;
+    position: relative;
+}
+
+.datepicker-popup[data-placement^="bottom"] .datepicker-triangle, .datepicker-popup[data-placement^="bottom"] .datepicker-triangle::before {
+    border-top: none;
+    border-bottom-color: #f0f0f0;
+}
+
+.datepicker-popup[date-placement^="bottom"] .datepicker-triangle {
+    top: 0;
+    margin-top: -8px;
+}
+
+.datepicker-popup[data-placement^="bottom"] .datepicker-triangle, .datepicker-popup[data-placement^="bottom"] .datepicker-triangle::before{
+    box-sizing: content-box;
+    position: absolute;
+    border: 8px solid transparent;
+    height: 0;
+    width: 1px;
+}
+
+.datepicker-popup[data-placement^="bottom"] .datepicker-triangle {
+    margin-left: -8px;
+}
+
+.datepicker-triangle {
+    left: 50px;
+}
+
+.datepicker-popup[data-placement^="bottom"] .datepicker-triangle::before {
+    top: -1px;
+    border-bottom-color: #aeaeae;
+}
+
+.datepicker-popup[data-placement^="bottom"] .datepicker-triangle::before {
+    content: "";
+    z-index: -1;
+    border-width: 8px;
+    left: -8px;
+}
+
+.datepicker_nav_previous {
+    left: 10px;
+    border-right-color: #ccc;
+}
+
+.datepicker_nav {
+    background: none;
+    line-height: 1.7rem;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    padding: 0;
+    border: 0.45 solid transparent;
+    z-index: 1;
+    height: 10px;
+    width: 10px;
+    text-indent: -999em;
+    overflow: hidden;
+}
+
+.datepicker_nav_next {
+    right: 10px;
+    border-left-color: #ccc;
+}
+
+.datepicker-month-container {
+    float: left;
+}
+
+.datepicker-header {
+    text-align: center;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #aeaeae;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+    padding-top: 8px;
+    position: relative;
+}
+
+.datepicker_current-month {
+    margin-top: 0;
+    color: #000;
+    font-weight: bold;
+    font-size: 0.944rem;
+}
+
+.datepicker_day-name, .datepicker_week {
+    white-space: nowrap;
+}
+
+.datepicker_day-name, .datepicker_day, .datepicker_time-name {
+    color: #000;
+    display: inline-block;
+    width: 1.7rem;
+    line-height: 1.7rem;
+    text-align: center;
+    margin: 0.166rem;
+}
+
+.datepicker_month {
+    margin: 0.4rem;
+    text-align: center;
+}
+
+.datepicker_day, .datepicker_month-text, .datepicker_time-name {
+    cursor: pointer;
+}
+
+#schedule #ticker .game-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+    border: solid 2px #006C54;
+    border-right: solid 0.5px #006C54;
+    min-width: 154px;
+    z-index: 50;
+    line-height: 0.5;
+    flex-direction: row;
+}
+
+#schedule #ticker .schedule {
+    letter-spacing: 0.1rem;
+    font-family: "Roboto";
+}
+
+#schedule #ticker table {
+    padding: 0;
+    margin: 0;
+    border-spacing: 0;
+    font-size: 14px;
+}
+
+table {
+    width: 100%;
+    border: 1px solid #fff;
+    white-space: nowrap;
+    background-color: transparent;
+    border-collapse: collapse;
+}
+
+#schedule #ticker tr {
+    background-color: transparent;
+}
+
+#schedule #ticker .team-logo img{
+    height: 24px;
+    width: 24px;
+}
+
+#schedule #ticker .game-matchup {
+    line-height: 1.35;
+    font-family: "Roboto Condensed";
+    font-size: 12px;
+    text-align: center;
+}
+
+#schedule #ticker .team {
+    padding-left: 5px;
+    padding-bottom: 5px;
+    vertical-align: middle;
+    text-align: left;
+}
+
+#schedule #ticker .score {
+    padding-left: 5px;
+    padding-bottom: 5px;
+    vertical-align: middle;
+    text-align: left;
+}
+
+#schedule #ticker .field {
+    position: relative;
+    padding-left: 12px;
+    padding-top: 4px;
+    text-align: center;
+    vertical-align: top;
+}
+
+td, th {
+    padding: 0;
+}
+
+#schedule #ticker .svg {
+    position: relative;
+}
+
+#schedule #ticker .inning {
+    position: relative;
+    top: 0px;
+    left: -5px;
+    width: 60px;
+    font-size: 12px;
+    font-family: "Roboto Condensed";
+    text-align: center;
+}
+
+#schedule #ticker .final {
+    padding-top: 20px;
+    color: #D52A1D;
+    text-align: left;
+}
+
+#schedule #ticker .show-text, #schedule #ticker .game-schedule {
+    display: block;
+}
+
+#schedule #ticker tr {
+    overflow: hidden;
+    max-width: 100%;
+}
+
+#schedule #ticker .scroller-icon {
+    float: left;
+    width: 2.5%;
+    font-family: "Roboto Condensed";
+    font-size: 30px;
+    border: solid 2px #006C54;
+    text-align: center;
+    background-color: transparent;
+    line-height: 0.5;
+    height: 60px;
+    padding: 20px 5px 5px 5px;
+    cursor: pointer;
+}
+
+#schedule #ticker .scroller-icon:hover {
+    color: #006C54;
+}
+
+#schedule #ticker .hide-text, #schedule #ticker .hide-schedule {
+    display: none;
+}
+
+.datepicker-input {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}

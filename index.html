@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en_US">
+    <head>
+        <title>binBot</title>
+        <meta charset="UTF-8" />
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta http-equiv="X-UA=Compatible" content="IE-Edge" />
+        <meta http-equiv="Cache-Control" content="no-cache" />
+        <link rel="stylesheet" href="style.css" >
+        <script type="text/javascript" charset="utf-8" src="main.js"></script>
+    </head>
+    <body ID="homepage-new" class="lang-en_US">
+        <!-- header-->
+        <header id="header-nav">
+            <div class="header-top">
+                <div id="header-bar">
+                    <div>
+                        <a href="/" onclick="s_objectID=&quot;https://localhost:5173/_1&quot;;return this.s_oc?this.s_oc(e):true">
+                            <img class="bot-logo" src="/images/workshop-logo.png">
+                        </a>
+                    </div>
+                    <div class="logo-text">
+                        <div class="logo">
+                            <a href="/" onclick="s_objectID=&quot;http://localhost:5173/_2&quot;;return this.s_oc?this.s_oc(e):true">
+                                <span class="primary-color">binBot</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap">
+                <nav class="nav">
+                    <div id="hamburger" class="temp">
+                        <div class="ham1"></div>
+                        <div class="ham2"></div>
+                        <div class="ham3"></div>
+                    </div>
+                    <ul class="nav-menu">
+                        <li class="item">
+                            <a href="/gamefeed" onclick="s_objectID=&quot;https://localhost:5173/gamefeed_1&quot;;return this.s_oc?this.s_oc(e):true">Gamefeed</a>
+                        </li>
+                        <li class="item">
+                            <a href="/scoreboard" onclick="s_objectID=&quot;https://localhost:5173/scoreboard_1&quot;;return this.s_oc?this.s_oc(e):true">Scoreboard</a>
+                        </li>
+                        <li class="item">
+                            <a href="/statistics" onclick="s_objectID=&quot;https://localhost:5173/statistics_1&quot;;return this.s_oc?this.s_oc(e):true">Statistics</a>
+                        </li>
+                        <li class="item">
+                            <a href="/statistics" onclick="s_objectID=&quot;https://localhost:5173/leaderboard_1&quot;;return this.s_oc?this.s_oc(e):true">Leaderboards</a>
+                        </li>
+                        <li class="item">
+                            <a href="/graphs" onclick="s_objectID=&quot;https://localhost:5173/graphs_1&quot;;return this.s_oc?this.s_oc(e):true">Graphs</a>
+                        </li>
+                        <li class="item">
+                            <a href="/applications" onclick="s_objectID=&quot;https://localhost:5173/applications_1&quot;;return this.s_oc?this.s_oc(e):true">Applications</a>
+                        </li>
+                        <li class="item">
+                            <div class="gridnav">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="31" height="28" viewBox="0 0 31 28" fill="none">
+                                    <ellipse cx="4.5" cy="14" rx="4.5" ry="4" fill="#006C54"/>
+                                    <ellipse cx="4.5" cy="4" rx="4.5" ry="4" fill="#006C54"/>
+                                    <ellipse cx="26.5" cy="4" rx="4.5" ry="4" fill="#006C54"/>
+                                    <ellipse cx="4.5" cy="24" rx="4.5" ry="4" fill="#006C54"/>
+                                    <ellipse cx="16.5" cy="24" rx="4.5" ry="4" fill="#006C54"/>
+                                    <ellipse cx="15.5" cy="14" rx="4.5" ry="4" fill="#006C54"/>
+                                    <ellipse cx="26.5" cy="24" rx="4.5" ry="4" fill="#006C54"/>
+                                    <ellipse cx="15.5" cy="4" rx="4.5" ry="4" fill="#006C54"/>
+                                    <ellipse cx="26.5" cy="14" rx="4.5" ry="4" fill="#006C54"/>
+                                </svg>
+                            </div>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+            <div id="player_search_container">
+                <div class="header-autocomplete-root header-autocomplete-hasClearIcon" role="combobox" aria-expaned="false">
+                    <div class="header-formControl-root header-textField-root header-formControl-fullWidth">
+                        <label class="header-formLabel-root header-inputLabel-root header-material-root header-inputLabel-formControl header-inputLabel-animated header-inputLabel-outlined" data-shrink="false" for="player-auto-complete" id="player-auto-complete-label">Search</label>
+                    <div class="header-inputBase-root header-outlinedInput-root j5 header-autoComplete-inputRoot header-inputBase-fullWidth header-inputBase-formControl header-inputBase-adornedEnd header-outlinedInput-adornedEnd">
+                        <input aria-invalid="false" autocomplete="new-password" id="player-auto-complete" type="text" class="header-inputBase-input header-outlinedInput-input header-autoComplete-input header-autoComplete-inputFocused header-inputBase-inputAdornedEnd header-outlinedInput-inputAdornedEnd" aria-autocomplete="both" autocapitalize="none" spellcheck="false" value>
+                    <div class="header-autoComplete-endAdornment">
+                        <button class="header-buttonBase-root header-iconButton-root header-autoComplete-clearIndicator" tabindex="-1" type="button" aria-label="Clear" title="Clear">
+                            <span class="header-iconButton-label">
+                                <svg class="header-svgIcon-root header-svgIcon-fontSizeSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                                </svg>
+                            </span>
+                            <span class="header-touchRipple-root"></span>
+                        </button>
+                    </div>
+                    <fieldset aria-hidden="true" class="header-c1 header-outlinedInput-notchedOutline j7">
+                        <legend class="header-c3">
+                            <span>Search</span>
+                        </legend>
+                    </fieldset>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="schedule">
+            <div id="ticker">
+                <div>
+                    <div>
+                        <div class="container">
+                            <div>
+                                <div class="datepicker-wrapper">
+                                    <div class="datepicker-input">
+                                        <input type="text" class="flex-cal calandar" value="6/14" readonly>
+                                    </div>
+                                </div>
+                            <div class="datepicker_loop">
+                                <div class="datepicker_loop_start" tabindex="0"></div>
+                                <div class="datepicker-popup" style="position: absolute; top: 0px; left: 0px; transform: translate3d(14px, 60px, 0px); will-change: transform;" data-placement="bottom-start">
+                                <div>
+                                    <div class="datepicker">
+                                        <div class="datepicker-triangle">
+                                        </div>
+                                        <button type="button" class="datepicker_nav datepicker_nav_previous" aria-label="Previous Month">Previous Month</button>
+                                        <button type="button" class="datepicker_nav datepicker_nav_next" aria-label="Next Month">Next Month</button>
+                                        <div class="datepicker-month-container">
+                                            <div class="datepicker-header">
+                                                <div class="datepicker_current-month">June</div>
+                                                <div class="datepicker-header_dropdown datepicker-header_dropdown--scroll"></div>
+                                                <div class="datepicker_day-container">
+                                                    <div class="datepicker_day-name">Su</div>
+                                                    <div class="datepicker_day-name">Mo</div>
+                                                    <div class="datepicker_day-name">Tu</div>
+                                                    <div class="datepicker_day-name">We</div>
+                                                    <div class="datepicker_day-name">Th</div>
+                                                    <div class="datepicker_day-name">Fr</div>
+                                                    <div class="datepicker_day-name">Sa</div>
+                                                </div>
+                                            </div>
+                                            <div class="datepicker_month" aria-label="month 2023-06">
+                                                <div class="datepicker_week">
+                                                    <div class="datepicker_day datepicker_day--028 datepicker_day--weekend datepicker_day--outside-month" tabindex="-1" aria-label="Choose Sunday, May 28th, 2023" role="button" aria-disabled="false">28</div>
+                                                    <div class="datepicker_day datepicker_day--029 datepicker_day--outside-month" tabindex="-1" aria-label="Choose Monday, May 29th, 2023" role="button" aria-disabled="false">29</div>
+                                                    <div class="datepicker_day datepicker_day--030 datepicker_day--outside-month" tabindex="-1" aria-label="Choose Tuesday, May 30th, 2023" role="button" aria-disabled="false">30</div>
+                                                    <div class="datepicker_day datepicker_day--031 datepicker_day--outside-month" tabindex="-1" aria-label="Choose Wednesday, May 31st, 2023" role="button" aria-disabled="false">31</div>
+                                                    <div class="datepicker_day datepicker_day--001" tabindex="-1" aria-label="Choose Thursday, June 1st, 2023" role="button" aria-disabled="false">1</div>
+                                                    <div class="datepicker_day datepicker_day--002" tabindex="-1" aria-label="Choose Friday, June 2nd, 2023" role="button" aria-disabled="false">2</div>
+                                                    <div class="datepicker_day datepicker_day--003 datepicker_day--weekend" tabindex="-1" aria-label="Choose Saturday, June 3rd, 2023" role="button" aria-disabled="false">3</div>
+                                                </div>
+                                                <div class="datepicker_week">
+                                                     <div class="datepicker_day datepicker_day--004 datepicker_day--weekend" tabindex="-1" aria-label="Choose Sunday, June 4th, 2023" role="button" aria-disabled="false">4</div>
+                                                     <div class="datepicker_day datepicker_day--005" tabindex="-1" aria-label="Choose Monday, June 5th, 2023" role="button" aria-disabled="false">5</div>
+                                                     <div class="datepicker_day datepicker_day--006" tabindex="-1" aria-label="Choose Tuesday, June 6th, 2023" role="button" aria-disabled="false">6</div>
+                                                     <div class="datepicker_day datepicker_day--007" tabindex="-1" aria-label="Choose Wednesday, June 7th, 2023" role="button" aria-disabled="false">7</div>
+                                                     <div class="datepicker_day datepicker_day--008" tabindex="-1" aria-label="Choose Thursday, June 8th, 2023" role="button" aria-disabled="false">8</div>
+                                                     <div class="datepicker_day datepicker_day--009" tabindex="-1" aria-label="Choose Friday, June 9th, 2023" role="button" aria-disabled="false">9</div>
+                                                     <div class="datepicker_day datepicker_day--010 datepicker_day--weekend" tabindex="-1" aria-label="Choose Saturday, June 10th, 2023" role="button" aria-disabled="false">10</div>
+                                                </div>
+                                                <div class="datepicker_week">
+                                                     <div class="datepicker_day datepicker_day--011 datepicker_day--weekend" tabindex="-1" aria-label="Choose Sunday, June 11th, 2023" role="button" aria-disabled="false">11</div>
+                                                     <div class="datepicker_day datepicker_day--012" tabindex="-1" aria-label="Choose Monday, June 12th, 2023" role="button" aria-disabled="false">12</div>
+                                                     <div class="datepicker_day datepicker_day--013" tabindex="-1" aria-label="Choose Tuesday, June 13th, 2023" role="button" aria-disabled="false">13</div>
+                                                     <div class="datepicker_day datepicker_day--014" tabindex="-1" aria-label="Choose Wednesday, June 14th, 2023" role="button" aria-disabled="false">14</div>
+                                                     <div class="datepicker_day datepicker_day--015" tabindex="-1" aria-label="Choose Thursday, June 15th, 2023" role="button" aria-disabled="false">15</div>
+                                                     <div class="datepicker_day datepicker_day--016" tabindex="-1" aria-label="Choose Friday, June 16th, 2023" role="button" aria-disabled="false">16</div>
+                                                     <div class="datepicker_day datepicker_day--017 datepicker_day--weekend" tabindex="-1" aria-label="Choose Saturday, June 17th, 2023" role="button" aria-disabled="false">17</div>
+                                                </div>
+                                                <div class="datepicker_week">
+                                                     <div class="datepicker_day datepicker_day--018 datepicker_day--weekend" tabindex="-1" aria-label="Choose Sunday, June 18th, 2023" role="button" aria-disabled="false">18</div>
+                                                     <div class="datepicker_day datepicker_day--019" tabindex="-1" aria-label="Choose Monday, June 19th, 2023" role="button" aria-disabled="false">19</div>
+                                                     <div class="datepicker_day datepicker_day--020" tabindex="-1" aria-label="Choose Tuesday, June 20th, 2023" role="button" aria-disabled="false">20</div>
+                                                     <div class="datepicker_day datepicker_day--021" tabindex="-1" aria-label="Choose Wednesday, June 21st, 2023" role="button" aria-disabled="false">21</div>
+                                                     <div class="datepicker_day datepicker_day--022" tabindex="-1" aria-label="Choose Thursday, June 22nd, 2023" role="button" aria-disabled="false">22</div>
+                                                     <div class="datepicker_day datepicker_day--023" tabindex="-1" aria-label="Choose Friday, June 23rd, 2023" role="button" aria-disabled="false">23</div>
+                                                     <div class="datepicker_day datepicker_day--024 datepicker_day--weekend" tabindex="-1" aria-label="Choose Saturday, June 24th, 2023" role="button" aria-disabled="false">24</div>
+                                                </div>
+                                                <div class="datepicker_week">
+                                                     <div class="datepicker_day datepicker_day--025 datepicker_day--weekend" tabindex="-1" aria-label="Choose Sunday, June 25th, 2023" role="button" aria-disabled="false">25</div>
+                                                     <div class="datepicker_day datepicker_day--026" tabindex="-1" aria-label="Choose Monday, June 26th, 2023" role="button" aria-disabled="false">26</div>
+                                                     <div class="datepicker_day datepicker_day--027" tabindex="-1" aria-label="Choose Tuesday, June 27th, 2023" role="button" aria-disabled="false">27</div>
+                                                     <div class="datepicker_day datepicker_day--028" tabindex="-1" aria-label="Choose Wednesday, June 28th, 2023" role="button" aria-disabled="false">28</div>
+                                                     <div class="datepicker_day datepicker_day--029" tabindex="-1" aria-label="Choose Thursday, June 29th, 2023" role="button" aria-disabled="false">29</div>
+                                                     <div class="datepicker_day datepicker_day--030" tabindex="-1" aria-label="Choose Friday, June 30th, 2023" role="button" aria-disabled="false">30</div>
+                                                     <div class="datepicker_day datepicker_day--001 datepicker_day--weekend datepicker_day--outside-month" tabindex="-1" aria-label="Choose Saturday, July 1st, 2023" role="button" aria-disabled="false">1</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="datepicker_loop_end" tabindex="0"></div>
+                            </div>
+                            </div>
+                            <!--First Game Box-->
+                            <div class="game-box">
+                                <a href="/gamefeed?gamePk=717770">
+                                    <div class="game-matchup hide-text">
+                                        <svg width="154" height="54">
+                                            <g transform="translate(30,0)">
+                                                <image x="-27" y="3.13999999999997" href="images/144.svg" width="24px" height="24px"></image>
+                                                <image x="-27" y="31.15799999999998" href="images/116.svg" width="24px" height="24px"></image>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="schedule game-schedule" target="_blank">
+                                        <table>
+                                            <tbody>
+                                                <tr clas>
+                                                    <td class="team-logo">
+                                                        <img alt src="images/144.svg">
+                                                    </td>
+                                                    <td class="team">ATL</td>
+                                                    <td class="score">10</td>
+                                                    <td class="field" rowspan="2">
+                                                        <div class="svg">
+                                                            <div></div>
+                                                        </div>
+                                                        <div class="inning">
+                                                            <div class="final">Final</div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class>
+                                                    <td class="team-logo">
+                                                        <img alt src="images/116.svg">
+                                                    </td>
+                                                    <td class="team">DET</td>
+                                                    <td class="score">7</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </a>
+                            </div>
+                            <!--Second Game Box-->
+                            <div class="game-box">
+                                <a href="/gamefeed?gamePk=717784">
+                                    <div class="game-matchup hide-text">
+                                        <svg width="154" height="54">
+                                            <g transform="translate(30,0)">
+                                                <image x="-27" y="3.13999999999997" href="https://www.mlbstatic.com/team-logos/144.svg" width="24px" height="24px"></image>
+                                                <image x="-27" y="31.15799999999998" href="https://www.mlbstatic.com/team-logos/116.svg" width="24px" height="24px"></image>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="schedule game-schedule" target="_blank">
+                                        <table>
+                                            <tbody>
+                                                <tr clas>
+                                                    <td class="team-logo">
+                                                        <img alt src="https://mlbstatic.com/team-logos/144.svg">
+                                                    </td>
+                                                    <td class="team">ATL</td>
+                                                    <td class="score">6</td>
+                                                    <td class="field" rowspan="2">
+                                                        <div class="svg">
+                                                            <div></div>
+                                                        </div>
+                                                        <div class="inning">
+                                                            <div class="final">Final</div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class>
+                                                    <td class="team-logo">
+                                                        <img alt src="https://mlbstatic.com/team-logos/116.svg">
+                                                    </td>
+                                                    <td class="team">DET</td>
+                                                    <td class="score">5</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </a>
+                            </div>
+                       <!--Third Game Box-->
+                        <div class="game-box">
+                                <a href="/gamefeed?gamePk=717770">
+                                    <div class="game-matchup hide-text">
+                                        <svg width="154" height="54">
+                                            <g transform="translate(30,0)">
+                                                <image x="-27" y="3.13999999999997" href="https://www.mlbstatic.com/team-logos/144.svg" width="24px" height="24px"></image>
+                                                <image x="-27" y="31.15799999999998" href="https://www.mlbstatic.com/team-logos/116.svg" width="24px" height="24px"></image>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="schedule game-schedule" target="_blank">
+                                        <table>
+                                            <tbody>
+                                                <tr clas>
+                                                    <td class="team-logo">
+                                                        <img alt src="https://mlbstatic.com/team-logos/144.svg">
+                                                    </td>
+                                                    <td class="team">ATL</td>
+                                                    <td class="score">10</td>
+                                                    <td class="field" rowspan="2">
+                                                        <div class="svg">
+                                                            <div></div>
+                                                        </div>
+                                                        <div class="inning">
+                                                            <div class="final">Final</div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class>
+                                                    <td class="team-logo">
+                                                        <img alt src="https://mlbstatic.com/team-logos/116.svg">
+                                                    </td>
+                                                    <td class="team">DET</td>
+                                                    <td class="score">7</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </a>
+                            </div>
+                        <!--Fourth Game Box below this comment-->
+                        <div class="game-box">
+                            <a href="/gamefeed?gamePk=717770">
+                                <div class="game-matchup hide-text">
+                                    <svg width="154" height="54">
+                                        <g transform="translate(30,0)">
+                                            <image x="-27" y="3.13999999999997" href="https://www.mlbstatic.com/team-logos/144.svg" width="24px" height="24px"></image>
+                                            <image x="-27" y="31.15799999999998" href="https://www.mlbstatic.com/team-logos/116.svg" width="24px" height="24px"></image>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="schedule game-schedule" target="_blank">
+                                    <table>
+                                        <tbody>
+                                            <tr clas>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/144.svg">
+                                                </td>
+                                                <td class="team">ATL</td>
+                                                <td class="score">10</td>
+                                                <td class="field" rowspan="2">
+                                                    <div class="svg">
+                                                        <div></div>
+                                                    </div>
+                                                    <div class="inning">
+                                                        <div class="final">Final</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/116.svg">
+                                                </td>
+                                                <td class="team">DET</td>
+                                                <td class="score">7</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                            <path fill="none" stroke="#bbb" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M122.55813953488372,0L121.11627906976744,2.160000000000002L119.67441860465117,0.9720000000000009L118.23255813953489,0.2160000000000002L116.79069767441861,0.05399999999999405L115.34883720930232,0.3239999999999943L113.90697674418604,0.8639999999999948L112.46511627906976,0.8100000000000007L111.0232558139535,0.7020000000000006L109.5813953488372,0.7560000000000007L108.13953488372093,0.7020000000000006L106.69767441860465,3.618000000000003L105.25581395348837,1.9980000000000018L103.81395348837209,0.8639999999999948L102.37209302325581,1.9980000000000018L100.93023255813954,1.133999999999995L99.48837209302326,1.7819999999999956L98.04651162790697,0.9720000000000009L96.6046511627907,0.9180000000000008L95.16279069767442,1.8360000000000016L93.72093023255815,1.5660000000000014L92.27906976744185,2.376000000000002L90.83720930232558,3.0239999999999965L89.3953488372093,3.509999999999997L87.95348837209303,4.8060000000000045L86.51162790697674,4.049999999999997L85.06976744186046,4.913999999999998L83.62790697674419,6.372L82.18604651162791,5.453999999999999L80.74418604651163,4.049999999999997L79.30232558139535,4.643999999999998L77.86046511627907,5.291999999999999L76.4186046511628,9.503999999999996L74.9767441860465,11.339999999999998L73.53488372093024,13.716000000000001L72.09302325581396,16.578000000000003L70.65116279069768,13.392L69.20930232558139,12.959999999999999L67.76744186046511,12.312L66.32558139534883,11.393999999999998L64.88372093023256,11.609999999999998L63.44186046511628,9.450000000000003L62,8.208000000000002L60.55813953488372,9.881999999999996L59.116279069767444,8.316L57.67441860465116,9.666000000000002L56.23255813953488,9.396000000000003L54.7906976744186,8.910000000000002L53.348837209302324,8.316L51.906976744186046,9.990000000000002L50.46511627906977,11.178000000000004L49.02325581395348,13.23L47.58139534883721,10.961999999999998L46.13953488372093,9.450000000000003L44.69767441860465,13.283999999999999L43.25581395348837,22.734L41.81395348837209,27.810000000000002L40.372093023255815,37.26L38.93023255813954,39.69L37.48837209302325,41.256L36.04651162790698,39.852L34.604651162790695,40.284L33.16279069767442,40.878L31.72093023255814,41.688L30.27906976744186,41.148L28.83720930232558,40.23L27.3953488372093,46.763999999999996L25.953488372093023,47.79L24.51162790697674,46.872L23.069767441860463,47.682L21.627906976744185,48.276L20.186046511627907,47.412L18.744186046511626,44.172L17.302325581395348,35.748000000000005L15.86046511627907,37.314L14.41860465116279,35.63999999999999L12.976744186046512,34.29L11.534883720930232,35.046L10.093023255813954,34.128L8.651162790697674,32.832L7.209302325581395,33.318L5.767441860465116,34.02L4.325581395348837,28.404L2.883720930232558,29.538000000000004L1.441860465116279,28.998L0,28.188000000000002"></path>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="game-box">
+                            <a href="/gamefeed?gamePk=717770">
+                                <div class="game-matchup hide-text">
+                                    <svg width="154" height="54">
+                                        <g transform="translate(30,0)">
+                                            <image x="-27" y="3.13999999999997" href="https://www.mlbstatic.com/team-logos/144.svg" width="24px" height="24px"></image>
+                                            <image x="-27" y="31.15799999999998" href="https://www.mlbstatic.com/team-logos/116.svg" width="24px" height="24px"></image>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="schedule game-schedule" target="_blank">
+                                    <table>
+                                        <tbody>
+                                            <tr clas>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/144.svg">
+                                                </td>
+                                                <td class="team">ATL</td>
+                                                <td class="score">10</td>
+                                                <td class="field" rowspan="2">
+                                                    <div class="svg">
+                                                        <div></div>
+                                                    </div>
+                                                    <div class="inning">
+                                                        <div class="final">Final</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/116.svg">
+                                                </td>
+                                                <td class="team">DET</td>
+                                                <td class="score">7</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="game-box">
+                            <a href="/gamefeed?gamePk=717770">
+                                <div class="game-matchup hide-text">
+                                    <svg width="154" height="54">
+                                        <g transform="translate(30,0)">
+                                            <image x="-27" y="3.13999999999997" href="https://www.mlbstatic.com/team-logos/144.svg" width="24px" height="24px"></image>
+                                            <image x="-27" y="31.15799999999998" href="https://www.mlbstatic.com/team-logos/116.svg" width="24px" height="24px"></image>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="schedule game-schedule" target="_blank">
+                                    <table>
+                                        <tbody>
+                                            <tr clas>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/144.svg">
+                                                </td>
+                                                <td class="team">ATL</td>
+                                                <td class="score">10</td>
+                                                <td class="field" rowspan="2">
+                                                    <div class="svg">
+                                                        <div></div>
+                                                    </div>
+                                                    <div class="inning">
+                                                        <div class="final">Final</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/116.svg">
+                                                </td>
+                                                <td class="team">DET</td>
+                                                <td class="score">7</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="game-box">
+                            <a href="/gamefeed?gamePk=717770">
+                                <div class="game-matchup hide-text">
+                                    <svg width="154" height="54">
+                                        <g transform="translate(30,0)">
+                                            <image x="-27" y="3.13999999999997" href="https://www.mlbstatic.com/team-logos/144.svg" width="24px" height="24px"></image>
+                                            <image x="-27" y="31.15799999999998" href="https://www.mlbstatic.com/team-logos/116.svg" width="24px" height="24px"></image>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="schedule game-schedule" target="_blank">
+                                    <table>
+                                        <tbody>
+                                            <tr clas>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/144.svg">
+                                                </td>
+                                                <td class="team">ATL</td>
+                                                <td class="score">10</td>
+                                                <td class="field" rowspan="2">
+                                                    <div class="svg">
+                                                        <div></div>
+                                                    </div>
+                                                    <div class="inning">
+                                                        <div class="final">Final</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/116.svg">
+                                                </td>
+                                                <td class="team">DET</td>
+                                                <td class="score">7</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="game-box">
+                            <a href="/gamefeed?gamePk=717770">
+                                <div class="game-matchup hide-text">
+                                    <svg width="154" height="54">
+                                        <g transform="translate(30,0)">
+                                            <image x="-27" y="3.13999999999997" href="https://www.mlbstatic.com/team-logos/144.svg" width="24px" height="24px"></image>
+                                            <image x="-27" y="31.15799999999998" href="https://www.mlbstatic.com/team-logos/116.svg" width="24px" height="24px"></image>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="schedule game-schedule" target="_blank">
+                                    <table>
+                                        <tbody>
+                                            <tr clas>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/144.svg">
+                                                </td>
+                                                <td class="team">ATL</td>
+                                                <td class="score">10</td>
+                                                <td class="field" rowspan="2">
+                                                    <div class="svg">
+                                                        <div></div>
+                                                    </div>
+                                                    <div class="inning">
+                                                        <div class="final">Final</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/116.svg">
+                                                </td>
+                                                <td class="team">DET</td>
+                                                <td class="score">7</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="game-box">
+                            <a href="/gamefeed?gamePk=717770">
+                                <div class="game-matchup hide-text">
+                                    <svg width="154" height="54">
+                                        <g transform="translate(30,0)"><path fill="none" stroke="#bbb" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M122.55813953488372,0L121.11627906976744,2.160000000000002L119.67441860465117,0.9720000000000009L118.23255813953489,0.2160000000000002L116.79069767441861,0.05399999999999405L115.34883720930232,0.3239999999999943L113.90697674418604,0.8639999999999948L112.46511627906976,0.8100000000000007L111.0232558139535,0.7020000000000006L109.5813953488372,0.7560000000000007L108.13953488372093,0.7020000000000006L106.69767441860465,3.618000000000003L105.25581395348837,1.9980000000000018L103.81395348837209,0.8639999999999948L102.37209302325581,1.9980000000000018L100.93023255813954,1.133999999999995L99.48837209302326,1.7819999999999956L98.04651162790697,0.9720000000000009L96.6046511627907,0.9180000000000008L95.16279069767442,1.8360000000000016L93.72093023255815,1.5660000000000014L92.27906976744185,2.376000000000002L90.83720930232558,3.0239999999999965L89.3953488372093,3.509999999999997L87.95348837209303,4.8060000000000045L86.51162790697674,4.049999999999997L85.06976744186046,4.913999999999998L83.62790697674419,6.372L82.18604651162791,5.453999999999999L80.74418604651163,4.049999999999997L79.30232558139535,4.643999999999998L77.86046511627907,5.291999999999999L76.4186046511628,9.503999999999996L74.9767441860465,11.339999999999998L73.53488372093024,13.716000000000001L72.09302325581396,16.578000000000003L70.65116279069768,13.392L69.20930232558139,12.959999999999999L67.76744186046511,12.312L66.32558139534883,11.393999999999998L64.88372093023256,11.609999999999998L63.44186046511628,9.450000000000003L62,8.208000000000002L60.55813953488372,9.881999999999996L59.116279069767444,8.316L57.67441860465116,9.666000000000002L56.23255813953488,9.396000000000003L54.7906976744186,8.910000000000002L53.348837209302324,8.316L51.906976744186046,9.990000000000002L50.46511627906977,11.178000000000004L49.02325581395348,13.23L47.58139534883721,10.961999999999998L46.13953488372093,9.450000000000003L44.69767441860465,13.283999999999999L43.25581395348837,22.734L41.81395348837209,27.810000000000002L40.372093023255815,37.26L38.93023255813954,39.69L37.48837209302325,41.256L36.04651162790698,39.852L34.604651162790695,40.284L33.16279069767442,40.878L31.72093023255814,41.688L30.27906976744186,41.148L28.83720930232558,40.23L27.3953488372093,46.763999999999996L25.953488372093023,47.79L24.51162790697674,46.872L23.069767441860463,47.682L21.627906976744185,48.276L20.186046511627907,47.412L18.744186046511626,44.172L17.302325581395348,35.748000000000005L15.86046511627907,37.314L14.41860465116279,35.63999999999999L12.976744186046512,34.29L11.534883720930232,35.046L10.093023255813954,34.128L8.651162790697674,32.832L7.209302325581395,33.318L5.767441860465116,34.02L4.325581395348837,28.404L2.883720930232558,29.538000000000004L1.441860465116279,28.998L0,28.188000000000002"></path>
+                                            <image x="-27" y="3.13999999999997" href="https://www.mlbstatic.com/team-logos/144.svg" width="24px" height="24px"></image>
+                                            <image x="-27" y="31.15799999999998" href="https://www.mlbstatic.com/team-logos/116.svg" width="24px" height="24px"></image>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="schedule game-schedule" target="_blank">
+                                    <table>
+                                        <tbody>
+                                            <tr clas>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/144.svg">
+                                                </td>
+                                                <td class="team">ATL</td>
+                                                <td class="score">10</td>
+                                                <td class="field" rowspan="2">
+                                                    <div class="svg">
+                                                        <div></div>
+                                                    </div>
+                                                    <div class="inning">
+                                                        <div class="final">Final</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/116.svg">
+                                                </td>
+                                                <td class="team">DET</td>
+                                                <td class="score">7</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="game-box">
+                            <a href="/gamefeed?gamePk=717770">
+                                <div class="game-matchup hide-text">
+                                    <svg width="154" height="54">
+                                        <g transform="translate(30,0)">
+                                            <image x="-27" y="3.13999999999997" href="https://www.mlbstatic.com/team-logos/144.svg" width="24px" height="24px"></image>
+                                            <image x="-27" y="31.15799999999998" href="https://www.mlbstatic.com/team-logos/116.svg" width="24px" height="24px"></image>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="schedule game-schedule" target="_blank">
+                                    <table>
+                                        <tbody>
+                                            <tr clas>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/144.svg">
+                                                </td>
+                                                <td class="team">ATL</td>
+                                                <td class="score">10</td>
+                                                <td class="field" rowspan="2">
+                                                    <div class="svg">
+                                                        <div></div>
+                                                    </div>
+                                                    <div class="inning">
+                                                        <div class="final">Final</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/116.svg">
+                                                </td>
+                                                <td class="team">DET</td>
+                                                <td class="score">7</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="game-box">
+                            <a href="/gamefeed?gamePk=717770">
+                                <div class="game-matchup hide-text">
+                                    <svg width="154" height="54">
+                                        <g transform="translate(30,0)">
+                                            <image x="-27" y="3.13999999999997" href="https://www.mlbstatic.com/team-logos/144.svg" width="24px" height="24px"></image>
+                                            <image x="-27" y="31.15799999999998" href="https://www.mlbstatic.com/team-logos/116.svg" width="24px" height="24px"></image>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="schedule game-schedule" target="_blank">
+                                    <table>
+                                        <tbody>
+                                            <tr clas>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/144.svg">
+                                                </td>
+                                                <td class="team">ATL</td>
+                                                <td class="score">10</td>
+                                                <td class="field" rowspan="2">
+                                                    <div class="svg">
+                                                        <div></div>
+                                                    </div>
+                                                    <div class="inning">
+                                                        <div class="final">Final</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/116.svg">
+                                                </td>
+                                                <td class="team">DET</td>
+                                                <td class="score">7</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="game-box">
+                            <a href="/gamefeed?gamePk=717770">
+                                <div class="game-matchup hide-text">
+                                    <svg width="154" height="54">
+                                        <g transform="translate(30,0)">
+                                            <image x="-27" y="3.13999999999997" href="https://www.mlbstatic.com/team-logos/144.svg" width="24px" height="24px"></image>
+                                            <image x="-27" y="31.15799999999998" href="https://www.mlbstatic.com/team-logos/116.svg" width="24px" height="24px"></image>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="schedule game-schedule" target="_blank">
+                                    <table>
+                                        <tbody>
+                                            <tr clas>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/144.svg">
+                                                </td>
+                                                <td class="team">ATL</td>
+                                                <td class="score">10</td>
+                                                <td class="field" rowspan="2">
+                                                    <div class="svg">
+                                                        <div></div>
+                                                    </div>
+                                                    <div class="inning">
+                                                        <div class="final">Final</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/116.svg">
+                                                </td>
+                                                <td class="team">DET</td>
+                                                <td class="score">7</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="game-box">
+                            <a href="/gamefeed?gamePk=717770">
+                                <div class="game-matchup hide-text">
+                                    <svg width="154" height="54">
+                                        <g transform="translate(30,0)">
+                                            <image x="-27" y="3.13999999999997" href="https://www.mlbstatic.com/team-logos/144.svg" width="24px" height="24px"></image>
+                                            <image x="-27" y="31.15799999999998" href="https://www.mlbstatic.com/team-logos/116.svg" width="24px" height="24px"></image>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="schedule game-schedule" target="_blank">
+                                    <table>
+                                        <tbody>
+                                            <tr clas>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/144.svg">
+                                                </td>
+                                                <td class="team">ATL</td>
+                                                <td class="score">10</td>
+                                                <td class="field" rowspan="2">
+                                                    <div class="svg">
+                                                        <div></div>
+                                                    </div>
+                                                    <div class="inning">
+                                                        <div class="final">Final</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/116.svg">
+                                                </td>
+                                                <td class="team">DET</td>
+                                                <td class="score">7</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="game-box">
+                            <a href="/gamefeed?gamePk=717770">
+                                <div class="game-matchup hide-text">
+                                    <svg width="154" height="54">
+                                        <g transform="translate(30,0)">
+                                            <image x="-27" y="3.13999999999997" href="https://www.mlbstatic.com/team-logos/144.svg" width="24px" height="24px"></image>
+                                            <image x="-27" y="31.15799999999998" href="https://www.mlbstatic.com/team-logos/116.svg" width="24px" height="24px"></image>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="schedule game-schedule" target="_blank">
+                                    <table>
+                                        <tbody>
+                                            <tr clas>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/144.svg">
+                                                </td>
+                                                <td class="team">ATL</td>
+                                                <td class="score">10</td>
+                                                <td class="field" rowspan="2">
+                                                    <div class="svg">
+                                                        <div></div>
+                                                    </div>
+                                                    <div class="inning">
+                                                        <div class="final">Final</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/116.svg">
+                                                </td>
+                                                <td class="team">DET</td>
+                                                <td class="score">7</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="game-box">
+                            <a href="/gamefeed?gamePk=717770">
+                                <div class="game-matchup hide-text">
+                                    <svg width="154" height="54">
+                                        <g transform="translate(30,0)">
+                                            <image x="-27" y="3.13999999999997" hrref="images/144.svg" width="24px" height="24px"></image>
+                                            <image x="-27" y="31.15799999999998" href="images/116.svg" width="24px" height="24px"></image>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="schedule game-schedule" target="_blank">
+                                    <table>
+                                        <tbody>
+                                            <tr clas>
+                                                <td class="team-logo">
+                                                    <img alt src="images/144.svg">
+                                                </td>
+                                                <td class="team">ATL</td>
+                                                <td class="score">10</td>
+                                                <td class="field" rowspan="2">
+                                                    <div class="svg">
+                                                        <div></div>
+                                                    </div>
+                                                    <div class="inning">
+                                                        <div class="final">Final</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class>
+                                                <td class="team-logo">
+                                                    <img alt src="images/116.svg">
+                                                </td>
+                                                <td class="team">DET</td>
+                                                <td class="score">7</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="game-box">
+                            <a href="/gamefeed?gamePk=717770">
+                                <div class="game-matchup hide-text">
+                                    <svg width="154" height="54">
+                                        <g transform="translate(30,0)">
+                                            <image x="-27" y="3.13999999999997" href="https://www.mlbstatic.com/team-logos/144.svg" width="24px" height="24px"></image>
+                                            <image x="-27" y="31.15799999999998" href="https://www.mlbstatic.com/team-logos/116.svg" width="24px" height="24px"></image>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="schedule game-schedule" target="_blank">
+                                    <table>
+                                        <tbody>
+                                            <tr clas>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/144.svg">
+                                                </td>
+                                                <td class="team">ATL</td>
+                                                <td class="score">10</td>
+                                                <td class="field" rowspan="2">
+                                                    <div class="svg">
+                                                        <div></div>
+                                                    </div>
+                                                    <div class="inning">
+                                                        <div class="final">Final</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class>
+                                                <td class="team-logo">
+                                                    <img alt src="https://mlbstatic.com/team-logos/116.svg">
+                                                </td>
+                                                <td class="team">DET</td>
+                                                <td class="score">7</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </a>
+                        </div>
+                        </div>
+                        <div class="scroller-icon">&lt;</div>
+                        <div class="scroller-icon">&gt;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
