@@ -29,6 +29,12 @@ body {
     margin: 0;
 }
 
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+
 .bot-logo {
     float: left;
     padding-top: 8px;
@@ -163,6 +169,11 @@ ul {
     margin-right: 0;
 }
 
+li:hover,li:focus {
+    text-decoration: underline;
+    color: #006C54;
+}
+
 .gridnav:hover, .users:hover {
     cursor: pointer;
 }
@@ -279,7 +290,7 @@ label {
     align-items: center;
     font-weight: 400;
     line-height: 1.1876em;
-    letter-spacing: 0.00938em;
+    letter-spacing: 0.00999em;
 }
 
 #player_search_container input { /* Search Box Input/Inside */
@@ -338,12 +349,13 @@ label {
 .header-iconButton-root {
     flex: 0 0 auto;
     color: rgba(0, 108, 84, 1);
+    padding: 12px;
     overflow: visible;
     font-size: 1.5rem;
     text-align: center;
     transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     font-size: 3;
-    radius: 50%;
+    border-radius: 50%;
 }
 
 .header-buttonBase-root {
@@ -469,7 +481,7 @@ legend {
     display: block;
     margin: 0 auto;
     position: relative;
-    padding: 0 1em 0 1em;
+    padding: 2em 1em 0 1em;
     z-index: 10;
 }
 
@@ -479,7 +491,7 @@ legend {
     flex: 1;
     flex-direction: row;
     width: 95%;
-    scrollbar-width: none;
+    scrollbar-width: hidden;
     float: left;
 }
 
@@ -506,7 +518,7 @@ legend {
     font-size: 24px;
     font-weight: 600;
     color: #006C54;
-    height: 60px;
+    height: 86px;
     cursor: pointer;
 }
 
@@ -516,7 +528,7 @@ input {
 
 element.style {
     position: absolute;
-    top: 0px;
+    top: 50px;
     left: 0px;
     transform: translate3d(14px, 60px, 0px);
     will-change: transform;
@@ -528,7 +540,9 @@ element.style {
 
 .datepicker-popup {
     z-index: 1;
+    display: none;
 }
+
 
 .datepicker {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -551,7 +565,7 @@ element.style {
     margin-top: -8px;
 }
 
-.datepicker-popup[data-placement^="bottom"] .datepicker-triangle, .datepicker-popup[data-placement^="bottom"] .datepicker-triangle::before{
+.datepicker-popup[data-placement^="bottom"] .datepicker-triangle, .datepicker-popup[data-placement^="top"] .datepicker-triangle, .datepicker-popup[data-placement^="bottom"] .datepicker-triangle::before, .datepicker-popup[data-placement^="top"] .datepicker-triangle::before{
     box-sizing: content-box;
     position: absolute;
     border: 8px solid transparent;
@@ -559,8 +573,9 @@ element.style {
     width: 1px;
 }
 
-.datepicker-popup[data-placement^="bottom"] .datepicker-triangle {
+.datepicker-popup[data-placement^="bottom"] .datepicker-triangle, .datepicker-popup[data-placement^="top"] .datepicker-triangle {
     margin-left: -8px;
+    position: absolute;
 }
 
 .datepicker-triangle {
@@ -579,9 +594,14 @@ element.style {
     left: -8px;
 }
 
-.datepicker_nav_previous {
-    left: 10px;
+.datepicker_nav--previous {
+    left: 19px;
+    cursor: pointer;
     border-right-color: #ccc;
+}
+
+.datepicker_nav--previous:hover {
+    border-right-color: white;
 }
 
 .datepicker_nav {
@@ -600,9 +620,14 @@ element.style {
     overflow: hidden;
 }
 
-.datepicker_nav_next {
+.datepicker_nav--next {
     right: 10px;
     border-left-color: #ccc;
+    cursor: pointer;
+}
+
+.datepicker_nav--next:hover {
+    color: #006C54;
 }
 
 .datepicker-month-container {
@@ -617,6 +642,7 @@ element.style {
     border-top-right-radius: 0.3rem;
     padding-top: 8px;
     position: relative;
+    background-color: #006C54;
 }
 
 .datepicker_current-month {
@@ -637,6 +663,7 @@ element.style {
     line-height: 1.7rem;
     text-align: center;
     margin: 0.166rem;
+    font-weight: 700;
 }
 
 .datepicker_month {
@@ -657,13 +684,13 @@ element.style {
     border-right: solid 0.5px #006C54;
     min-width: 154px;
     z-index: 50;
-    line-height: 0.5;
+    line-height: 2.5;
     flex-direction: row;
 }
 
 #schedule #ticker .schedule {
     letter-spacing: 0.1rem;
-    font-family: "Roboto";
+    font-family: "Roboto Mono";
 }
 
 #schedule #ticker table {
@@ -686,8 +713,8 @@ table {
 }
 
 #schedule #ticker .team-logo img{
-    height: 24px;
-    width: 24px;
+    height: 30px;
+    width: 30px;
 }
 
 #schedule #ticker .game-matchup {
@@ -699,16 +726,17 @@ table {
 
 #schedule #ticker .team {
     padding-left: 5px;
-    padding-bottom: 5px;
     vertical-align: middle;
     text-align: left;
+    font-weight: 400;
+    top: 100px;
 }
 
 #schedule #ticker .score {
     padding-left: 5px;
-    padding-bottom: 5px;
     vertical-align: middle;
     text-align: left;
+    font-weight: 400;
 }
 
 #schedule #ticker .field {
@@ -741,6 +769,8 @@ td, th {
     padding-top: 20px;
     color: #D52A1D;
     text-align: left;
+    font-weight: 700;
+    padding-left: 10px;
 }
 
 #schedule #ticker .show-text, #schedule #ticker .game-schedule {
@@ -761,8 +791,8 @@ td, th {
     text-align: center;
     background-color: transparent;
     line-height: 0.5;
-    height: 60px;
-    padding: 20px 5px 5px 5px;
+    height: 86px;
+    padding: 33px 5px 5px 5px;
     cursor: pointer;
 }
 
@@ -778,4 +808,54 @@ td, th {
     position: relative;
     display: inline-block;
     width: 100%;
+}
+
+#searchBar::placeholder {
+    color: #006C54; /* Hex code for the desired color */
+    font-size: 15px;
+    font-weight: 300;
+    text-align: left;
+}
+
+.header-iconButton-root:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.header-autoComplete-root.Mui-focused .header-autoComplete-clearIndicatorDirty {
+    visibility: visible;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    -webkit-appearance: button;
+}
+
+.datepicker-popup[data-placement^="bottom"] .datepicker-triangle::before {
+    top: -1px;
+    border-bottom-color: #aeaeae;
+}
+
+.datepicker_day:hover {
+    background-color: #008668;
+    border-radius: 25%;
+}
+
+.datepicker_day--outside-month {
+    color: #808080;
+}
+
+.datepicker_nav--previous,
+.datepicker_nav--next {
+    content: "";
+    position: absolute;
+    border-style: solid;
+    border-width: 0.25em 0.25em 0 0;
+    border-color: #ccc;
+}
+
+.datepicker_nav--previous {
+    transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.datepicker_nav--next {
+    transform: translate(-50%, -50%) rotate(45deg);
 }
