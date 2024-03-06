@@ -6,8 +6,13 @@
         <meta name="viewpoint" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta http-equiv="X-UA=Compatible" content="IE-Edge" />
         <meta http-equiv="Cache-Control" content="no-cache" />
-        <link rel="stylesheet" href="style.css" >
-        <script type="text/javascript" charset="utf-8" src="main.js"></script>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <script src="main.js" defer></script>
+        <script src="src/utils/search.js" defer></script>
+        <script src="src/utils/cal-nav.js" defer></script>
+        <script src="src/utils/flex-cal.js" defer></script>
+        <script src="src/utils/scroll.js" defer></script>
     </head>
     <body ID="homepage-new" class="lang-en_US">
         <!-- header-->
@@ -76,11 +81,10 @@
             <div id="player_search_container">
                 <div class="header-autocomplete-root header-autocomplete-hasClearIcon" role="combobox" aria-expaned="false">
                     <div class="header-formControl-root header-textField-root header-formControl-fullWidth">
-                        <label class="header-formLabel-root header-inputLabel-root header-material-root header-inputLabel-formControl header-inputLabel-animated header-inputLabel-outlined" data-shrink="false" for="player-auto-complete" id="player-auto-complete-label">Search</label>
                     <div class="header-inputBase-root header-outlinedInput-root j5 header-autoComplete-inputRoot header-inputBase-fullWidth header-inputBase-formControl header-inputBase-adornedEnd header-outlinedInput-adornedEnd">
-                        <input aria-invalid="false" autocomplete="new-password" id="player-auto-complete" type="text" class="header-inputBase-input header-outlinedInput-input header-autoComplete-input header-autoComplete-inputFocused header-inputBase-inputAdornedEnd header-outlinedInput-inputAdornedEnd" aria-autocomplete="both" autocapitalize="none" spellcheck="false" value>
+                        <input aria-invalid="false" autocomplete="new-password" id="searchBar" type="text" class="header-inputBase-input header-outlinedInput-input header-autoComplete-input header-autoComplete-inputFocused header-inputBase-inputAdornedEnd header-outlinedInput-inputAdornedEnd" aria-autocomplete="both" autocapitalize="none" spellcheck="false" value>
                     <div class="header-autoComplete-endAdornment">
-                        <button class="header-buttonBase-root header-iconButton-root header-autoComplete-clearIndicator" tabindex="-1" type="button" aria-label="Clear" title="Clear">
+                        <button class="header-buttonBase-root header-iconButton-root header-autoComplete-clearIndicator header-autoComplete-clearIndicatorDirty" tabindex="-1" type="button" aria-label="Clear" title="Clear">
                             <span class="header-iconButton-label">
                                 <svg class="header-svgIcon-root header-svgIcon-fontSizeSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
                                     <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
@@ -105,23 +109,23 @@
                     <div>
                         <div class="container">
                             <div>
-                                <div class="datepicker-wrapper">
-                                    <div class="datepicker-input">
-                                        <input type="text" class="flex-cal calandar" value="6/14" readonly>
+                                <div class="datepicker-wrapper" >
+                                    <div class="datepicker-input" >
+                                        <button class="flex-cal calendar" onclick ="toggleCalendar()">Select Date</button>
                                     </div>
                                 </div>
                             <div class="datepicker_loop">
                                 <div class="datepicker_loop_start" tabindex="0"></div>
-                                <div class="datepicker-popup" style="position: absolute; top: 0px; left: 0px; transform: translate3d(14px, 60px, 0px); will-change: transform;" data-placement="bottom-start">
+                                <div class="datepicker-popup" id="datepickerPopup" style="position: absolute; top: 50px; left: 0px; transform: translate3d(14px, 60px, 0px); will-change: transform;" data-placement="bottom-start">
                                 <div>
-                                    <div class="datepicker">
+                                    <div class="datepicker" id="date-cal">
                                         <div class="datepicker-triangle">
                                         </div>
-                                        <button type="button" class="datepicker_nav datepicker_nav_previous" aria-label="Previous Month">Previous Month</button>
-                                        <button type="button" class="datepicker_nav datepicker_nav_next" aria-label="Next Month">Next Month</button>
+                                        <button type="button" class="datepicker_nav datepicker_nav--previous" aria-label="Previous Month">Previous Month</button>
+                                        <button type="button" class="datepicker_nav datepicker_nav--next" aria-label="Next Month">Next Month</button>
                                         <div class="datepicker-month-container">
                                             <div class="datepicker-header">
-                                                <div class="datepicker_current-month">June</div>
+                                                <div class="datepicker_current-month">March 2024</div>
                                                 <div class="datepicker-header_dropdown datepicker-header_dropdown--scroll"></div>
                                                 <div class="datepicker_day-container">
                                                     <div class="datepicker_day-name">Su</div>
@@ -133,51 +137,60 @@
                                                     <div class="datepicker_day-name">Sa</div>
                                                 </div>
                                             </div>
-                                            <div class="datepicker_month" aria-label="month 2023-06">
+                                            <div class="datepicker_month" aria-label="month 2024-03">
                                                 <div class="datepicker_week">
-                                                    <div class="datepicker_day datepicker_day--028 datepicker_day--weekend datepicker_day--outside-month" tabindex="-1" aria-label="Choose Sunday, May 28th, 2023" role="button" aria-disabled="false">28</div>
-                                                    <div class="datepicker_day datepicker_day--029 datepicker_day--outside-month" tabindex="-1" aria-label="Choose Monday, May 29th, 2023" role="button" aria-disabled="false">29</div>
-                                                    <div class="datepicker_day datepicker_day--030 datepicker_day--outside-month" tabindex="-1" aria-label="Choose Tuesday, May 30th, 2023" role="button" aria-disabled="false">30</div>
-                                                    <div class="datepicker_day datepicker_day--031 datepicker_day--outside-month" tabindex="-1" aria-label="Choose Wednesday, May 31st, 2023" role="button" aria-disabled="false">31</div>
-                                                    <div class="datepicker_day datepicker_day--001" tabindex="-1" aria-label="Choose Thursday, June 1st, 2023" role="button" aria-disabled="false">1</div>
-                                                    <div class="datepicker_day datepicker_day--002" tabindex="-1" aria-label="Choose Friday, June 2nd, 2023" role="button" aria-disabled="false">2</div>
-                                                    <div class="datepicker_day datepicker_day--003 datepicker_day--weekend" tabindex="-1" aria-label="Choose Saturday, June 3rd, 2023" role="button" aria-disabled="false">3</div>
+                                                    <div class="datepicker_day datepicker_day--025 datepicker_day--weekend datepicker_day--outside-month" tabindex="-1" aria-label="Choose Sunday, February 25th, 2024" role="button" aria-disabled="false">25</div>
+                                                    <div class="datepicker_day datepicker_day--026 datepicker_day--outside-month" tabindex="-1" aria-label="Choose Monday, Februrary 26th, 2024" role="button" aria-disabled="false">26</div>
+                                                    <div class="datepicker_day datepicker_day--027 datepicker_day--outside-month" tabindex="-1" aria-label="Choose Tuesday, February 27th, 2024" role="button" aria-disabled="false">27</div>
+                                                    <div class="datepicker_day datepicker_day--028 datepicker_day--outside-month" tabindex="-1" aria-label="Choose Wednesday, February 28th, 2024" role="button" aria-disabled="false">28</div>
+                                                    <div class="datepicker_day datepicker_day--029 datepicker_day--outside-month" tabindex="-1" aria-label="Choose Thursday, February 29th 2024" role="button" aria-disabled="false">29</div>
+                                                    <div class="datepicker_day datepicker_day--001" tabindex="-1" aria-label="Choose Friday, March 1st, 2024" role="button" aria-disabled="false">1</div>
+                                                    <div class="datepicker_day datepicker_day--002 datepicker_day--weekend" tabindex="-1" aria-label="Choose Saturday, March 2nd, 2024" role="button" aria-disabled="false">2</div>
                                                 </div>
                                                 <div class="datepicker_week">
-                                                     <div class="datepicker_day datepicker_day--004 datepicker_day--weekend" tabindex="-1" aria-label="Choose Sunday, June 4th, 2023" role="button" aria-disabled="false">4</div>
-                                                     <div class="datepicker_day datepicker_day--005" tabindex="-1" aria-label="Choose Monday, June 5th, 2023" role="button" aria-disabled="false">5</div>
-                                                     <div class="datepicker_day datepicker_day--006" tabindex="-1" aria-label="Choose Tuesday, June 6th, 2023" role="button" aria-disabled="false">6</div>
-                                                     <div class="datepicker_day datepicker_day--007" tabindex="-1" aria-label="Choose Wednesday, June 7th, 2023" role="button" aria-disabled="false">7</div>
-                                                     <div class="datepicker_day datepicker_day--008" tabindex="-1" aria-label="Choose Thursday, June 8th, 2023" role="button" aria-disabled="false">8</div>
-                                                     <div class="datepicker_day datepicker_day--009" tabindex="-1" aria-label="Choose Friday, June 9th, 2023" role="button" aria-disabled="false">9</div>
-                                                     <div class="datepicker_day datepicker_day--010 datepicker_day--weekend" tabindex="-1" aria-label="Choose Saturday, June 10th, 2023" role="button" aria-disabled="false">10</div>
+                                                     <div class="datepicker_day datepicker_day--003 datepicker_day--weekend" tabindex="-1" aria-label="Choose Sunday, March 3rd, 2024" role="button" aria-disabled="false">3</div>
+                                                     <div class="datepicker_day datepicker_day--004" tabindex="-1" aria-label="Choose Monday, March 4th, 2024" role="button" aria-disabled="false">4</div>
+                                                     <div class="datepicker_day datepicker_day--005" tabindex="-1" aria-label="Choose Tuesday, March 5th, 2024" role="button" aria-disabled="false">5</div>
+                                                     <div class="datepicker_day datepicker_day--006" tabindex="-1" aria-label="Choose Wednesday, March 6th, 2024" role="button" aria-disabled="false">6</div>
+                                                     <div class="datepicker_day datepicker_day--007" tabindex="-1" aria-label="Choose Thursday, March 7th, 2024" role="button" aria-disabled="false">7</div>
+                                                     <div class="datepicker_day datepicker_day--008" tabindex="-1" aria-label="Choose Friday, March 8th 2024" role="button" aria-disabled="false">8</div>
+                                                     <div class="datepicker_day datepicker_day--009 datepicker_day--weekend" tabindex="-1" aria-label="Choose Saturday, March 9th, 2024" role="button" aria-disabled="false">9</div>
                                                 </div>
                                                 <div class="datepicker_week">
-                                                     <div class="datepicker_day datepicker_day--011 datepicker_day--weekend" tabindex="-1" aria-label="Choose Sunday, June 11th, 2023" role="button" aria-disabled="false">11</div>
-                                                     <div class="datepicker_day datepicker_day--012" tabindex="-1" aria-label="Choose Monday, June 12th, 2023" role="button" aria-disabled="false">12</div>
-                                                     <div class="datepicker_day datepicker_day--013" tabindex="-1" aria-label="Choose Tuesday, June 13th, 2023" role="button" aria-disabled="false">13</div>
-                                                     <div class="datepicker_day datepicker_day--014" tabindex="-1" aria-label="Choose Wednesday, June 14th, 2023" role="button" aria-disabled="false">14</div>
-                                                     <div class="datepicker_day datepicker_day--015" tabindex="-1" aria-label="Choose Thursday, June 15th, 2023" role="button" aria-disabled="false">15</div>
-                                                     <div class="datepicker_day datepicker_day--016" tabindex="-1" aria-label="Choose Friday, June 16th, 2023" role="button" aria-disabled="false">16</div>
-                                                     <div class="datepicker_day datepicker_day--017 datepicker_day--weekend" tabindex="-1" aria-label="Choose Saturday, June 17th, 2023" role="button" aria-disabled="false">17</div>
+                                                     <div class="datepicker_day datepicker_day--010 datepicker_day--weekend" tabindex="-1" aria-label="Choose Sunday, March 10th, 2024" role="button" aria-disabled="false">10</div>
+                                                     <div class="datepicker_day datepicker_day--011" tabindex="-1" aria-label="Choose Monday, March 11th, 2024" role="button" aria-disabled="false">11</div>
+                                                     <div class="datepicker_day datepicker_day--012" tabindex="-1" aria-label="Choose Tuesday, March 12th, 2024" role="button" aria-disabled="false">12</div>
+                                                     <div class="datepicker_day datepicker_day--013" tabindex="-1" aria-label="Choose Wednesday, March 13th, 2024" role="button" aria-disabled="false">13</div>
+                                                     <div class="datepicker_day datepicker_day--014" tabindex="-1" aria-label="Choose Thursday, March 14th, 2024" role="button" aria-disabled="false">14</div>
+                                                     <div class="datepicker_day datepicker_day--015" tabindex="-1" aria-label="Choose Friday, March 15th, 2024" role="button" aria-disabled="false">15</div>
+                                                     <div class="datepicker_day datepicker_day--016 datepicker_day--weekend" tabindex="-1" aria-label="Choose Saturday, March 16th, 2024" role="button" aria-disabled="false">16</div>
                                                 </div>
                                                 <div class="datepicker_week">
-                                                     <div class="datepicker_day datepicker_day--018 datepicker_day--weekend" tabindex="-1" aria-label="Choose Sunday, June 18th, 2023" role="button" aria-disabled="false">18</div>
-                                                     <div class="datepicker_day datepicker_day--019" tabindex="-1" aria-label="Choose Monday, June 19th, 2023" role="button" aria-disabled="false">19</div>
-                                                     <div class="datepicker_day datepicker_day--020" tabindex="-1" aria-label="Choose Tuesday, June 20th, 2023" role="button" aria-disabled="false">20</div>
-                                                     <div class="datepicker_day datepicker_day--021" tabindex="-1" aria-label="Choose Wednesday, June 21st, 2023" role="button" aria-disabled="false">21</div>
-                                                     <div class="datepicker_day datepicker_day--022" tabindex="-1" aria-label="Choose Thursday, June 22nd, 2023" role="button" aria-disabled="false">22</div>
-                                                     <div class="datepicker_day datepicker_day--023" tabindex="-1" aria-label="Choose Friday, June 23rd, 2023" role="button" aria-disabled="false">23</div>
-                                                     <div class="datepicker_day datepicker_day--024 datepicker_day--weekend" tabindex="-1" aria-label="Choose Saturday, June 24th, 2023" role="button" aria-disabled="false">24</div>
+                                                     <div class="datepicker_day datepicker_day--017 datepicker_day--weekend" tabindex="-1" aria-label="Choose Sunday, March 17th, 2024" role="button" aria-disabled="false">17</div>
+                                                     <div class="datepicker_day datepicker_day--018" tabindex="-1" aria-label="Choose Monday, March 18th, 2024" role="button" aria-disabled="false">18</div>
+                                                     <div class="datepicker_day datepicker_day--029" tabindex="-1" aria-label="Choose Tuesday, March 19th, 2024" role="button" aria-disabled="false">19</div>
+                                                     <div class="datepicker_day datepicker_day--020" tabindex="-1" aria-label="Choose Wednesday, March 20th, 2024" role="button" aria-disabled="false">20</div>
+                                                     <div class="datepicker_day datepicker_day--021" tabindex="-1" aria-label="Choose Thursday, March 21st, 2024" role="button" aria-disabled="false">21</div>
+                                                     <div class="datepicker_day datepicker_day--022" tabindex="-1" aria-label="Choose Friday, March 22nd, 2024" role="button" aria-disabled="false">22</div>
+                                                     <div class="datepicker_day datepicker_day--023 datepicker_day--weekend" tabindex="-1" aria-label="Choose Saturday, March 23rd, 2024" role="button" aria-disabled="false">23</div>
                                                 </div>
                                                 <div class="datepicker_week">
-                                                     <div class="datepicker_day datepicker_day--025 datepicker_day--weekend" tabindex="-1" aria-label="Choose Sunday, June 25th, 2023" role="button" aria-disabled="false">25</div>
-                                                     <div class="datepicker_day datepicker_day--026" tabindex="-1" aria-label="Choose Monday, June 26th, 2023" role="button" aria-disabled="false">26</div>
-                                                     <div class="datepicker_day datepicker_day--027" tabindex="-1" aria-label="Choose Tuesday, June 27th, 2023" role="button" aria-disabled="false">27</div>
-                                                     <div class="datepicker_day datepicker_day--028" tabindex="-1" aria-label="Choose Wednesday, June 28th, 2023" role="button" aria-disabled="false">28</div>
-                                                     <div class="datepicker_day datepicker_day--029" tabindex="-1" aria-label="Choose Thursday, June 29th, 2023" role="button" aria-disabled="false">29</div>
-                                                     <div class="datepicker_day datepicker_day--030" tabindex="-1" aria-label="Choose Friday, June 30th, 2023" role="button" aria-disabled="false">30</div>
-                                                     <div class="datepicker_day datepicker_day--001 datepicker_day--weekend datepicker_day--outside-month" tabindex="-1" aria-label="Choose Saturday, July 1st, 2023" role="button" aria-disabled="false">1</div>
+                                                     <div class="datepicker_day datepicker_day--024 datepicker_day--weekend" tabindex="-1" aria-label="Choose Sunday, March 24th, 2024" role="button" aria-disabled="false">24</div>
+                                                     <div class="datepicker_day datepicker_day--025" tabindex="-1" aria-label="Choose Monday, March 25th, 2024" role="button" aria-disabled="false">25</div>
+                                                     <div class="datepicker_day datepicker_day--026" tabindex="-1" aria-label="Choose Tuesday, March 26th, 2024" role="button" aria-disabled="false">26</div>
+                                                     <div class="datepicker_day datepicker_day--027" tabindex="-1" aria-label="Choose Wednesday, March 27, 2024" role="button" aria-disabled="false">27</div>
+                                                     <div class="datepicker_day datepicker_day--028" tabindex="-1" aria-label="Choose Thursday, March 28th, 2024" role="button" aria-disabled="false">28</div>
+                                                     <div class="datepicker_day datepicker_day--029" tabindex="-1" aria-label="Choose Friday, March 29th, 2024" role="button" aria-disabled="false">29</div>
+                                                     <div class="datepicker_day datepicker_day--030 datepicker_day--weekend" tabindex="-1" aria-label="Choose Saturday, March 30th, 2024" role="button" aria-disabled="false">30</div>
+                                                <div class="datepicker_week">
+                                                     <div class="datepicker_day datepicker_day--031 datepicker_day--weekend" tabindex="-1" aria-label="Choose Sunday, March 31st, 2024" role="button" aria-disabled="false">31</div>
+                                                     <div class="datepicker_day datepicker_day--001 datepicker_day--outside-month" tabindex="-1" aria-label="Choose Monday, April 1st, 2024" role="button" aria-disabled="false">1</div>
+                                                     <div class="datepicker_day datepicker_day--002 datepicker_day--outside-month" tabindex="-1" aria-label="Choose Tuesday, April 2nd, 2024" role="button" aria-disabled="false">2</div>
+                                                     <div class="datepicker_day datepicker_day--003 datepicker_day--outside-month" tabindex="-1" aria-label="Choose Wednesday, April 3rd, 2024" role="button" aria-disabled="false">3</div>
+                                                     <div class="datepicker_day datepicker_day--004 datepicker_day--outside-month" tabindex="-1" aria-label="Choose Thursday, April 4th, 2024" role="button" aria-disabled="false">4</div>
+                                                     <div class="datepicker_day datepicker_day--005 datepicker_day--outside-month" tabindex="-1" aria-label="Choose Friday, April 5th, 2024" role="button" aria-disabled="false">5</div>
+                                                     <div class="datepicker_day datepicker_day--006 datepicker_day--weekend datepicker_day--outside-month" tabindex="-1" aria-label="Choose Saturday, April 6th, 2024" role="button" aria-disabled="false">6</div>
+                                                </div>
                                                 </div>
                                             </div>
                                         </div>
