@@ -1,4 +1,64 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/**
+ * ----------------------------------------
+ * animation slide-in-top
+ * ----------------------------------------
+
+ display none = img / team / score/ field/ inning / final
+
+ */
+@-webkit-keyframes slide-in-top {
+  0% {
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-top {
+  0% {
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes slide-out-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(20px);
+
+    opacity: 0;
+  }
+}
+@keyframes slide-out-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(20px);
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
 
 :root {
     --wp--present--font-size--normal: 16px;
@@ -15,14 +75,13 @@ html {
     text-rendering: optimizeLegibility;
 }
 
-
 head {
     display: none;
 }
 
 body {
     font-family: Roboto Condensed, "Helvetica Neue",Helvetica,Arial,sans-serif;
-    background-color: #E5DECF;
+    background-color: #e5decf;
     color: #222;
     line-height: 1;
     font-variant-ligatures: none;
@@ -40,23 +99,22 @@ button, input, optgroup, select, textarea {
     padding-top: 8px;
     width: 6.5625rem;
     height: 8rem;
-    flex-shrink: 0;
 }
 
 img {
     vertical-align: middle;
-}
+  }
 
-img {
+  img {
     border: 0;
-}
+  }
 
 header {
     max-width: 1284px;
     display: block;
     margin: 0 auto;
     position: relative;
-    padding: 0 1em 0 1em;
+    padding: 0 1em;
     z-index: 15;
 }
 
@@ -85,10 +143,11 @@ a {
     float: left;
     width: 65%;
     padding-left: 0.25rem;
-    font-family: "Roboto Condensed";
+    font-family: "poppins";
     font-size: 3rem;
     line-height: 1.25;
-    margin-top: 40px;
+    margin-top: 60px;
+    font-weight: 600;
 }
 
 .logo-text a {
@@ -97,7 +156,7 @@ a {
 
 .primary-color {
     color: #006C54;
-    top: 39px;
+    padding-bottom: 9px;
     left: 110px;
 }
 
@@ -105,7 +164,7 @@ a {
     width: 100%;
     padding-top: 0;
     text-align: left;
-    font-family: "Roboto Condensed";
+    font-family: "poppins";
     font-size: 1rem;
     display: block;
 }
@@ -142,7 +201,7 @@ a {
     position: relative;
     z-index: 0;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 1.3rem;
 }
 
 .nav-menu {
@@ -232,7 +291,7 @@ li:hover,li:focus {
     transform-origin: top left;
 }
 
-header-formLabel-root {
+.header-formLabel-root {
     color: rgba(0, 0, 0, 0.54);
     padding: 0;
     font-size: 1rem;
@@ -294,11 +353,11 @@ label {
 }
 
 #player_search_container input { /* Search Box Input/Inside */
-    line-height: 1.5em;
-    padding: 8px;
+    line-height: 1.3em;
+    padding: 10px;
     width: 350px;
-    font-family: "Roboto Condensed";
-    font-size: 14px;
+    font-family: "Poppins";
+    font-size: 18px;
 }
 
 .header-autoComplete-inputRoot .header-autoComplete-input {
@@ -409,6 +468,7 @@ svg:not(:root) {
     width: 1em;
     height: 1em;
     display: inline-block;
+    padding: 0 8px;
     transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     flex-shrink: 0;
     user-select: none;
@@ -437,7 +497,6 @@ j7 {
     right: 0;
     bottom: 0;
     margin: 0;
-    padding: 0 8px;
     overflow: hidden;
     position: absolute;
     border-style: solid;
@@ -485,14 +544,13 @@ legend {
     z-index: 10;
 }
 
+
 #schedule #ticker .container{
     display: flex;
+    overflow-x: auto;
     overflow-y: hidden;
-    flex: 1;
-    flex-direction: row;
-    width: 95%;
+    white-space: nowrap;
     scrollbar-width: hidden;
-    float: left;
 }
 
 .datepicker-wrapper {
@@ -501,25 +559,25 @@ legend {
     border: 0;
 }
 
-.datepicker-input {
+.date-input {
     position: relative;
     display: inline-block;
     width: 100%;
+    cursor: pointer;
 }
 
-#schedule #ticker .flex-cal {
-    flex: 0 0 auto 0;
-    border: solid 2px #006C54;
-    border-right: solid 1px #006C54;
-    width: 80px;
+.container{
+    flex: 0 0 auto;
+    width: 250px;
     text-align: center;
-    line-height: 0.5;
+    line-height: 0.9;
     font-family: "Roboto Condensed";
     font-size: 24px;
     font-weight: 600;
-    color: #006C54;
-    height: 86px;
+    height: 80px;
     cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 input {
@@ -534,170 +592,58 @@ element.style {
     will-change: transform;
 }
 
-.datepicker-popup[data-placement^="bottom"] {
-    margin-top: 10px;
+
+#schedule #ticker .game-box {
+    display: inline-flex;
+    width: 400px;
+    height: 170px;
+    margin: 3px;
+    margin-bottom: 5px;
+    border: solid 1px #000;
+    text-align: center;
+    line-height: 2.5;
+    position: relative;
+    left: 30px;
+    border-radius: 1%;
+    background-color: #eee;
 }
 
-.datepicker-popup {
-    z-index: 1;
+.initial-content {
     display: none;
 }
 
-
-.datepicker {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 0.8rem;
-    background-color: #fff;
-    color: #000;
-    border: 1px solid #aeaeae;
-    border-radius: 0.3rem;
-    display: inline-block;
-    position: relative;
+.new-content {
+    width: 100%;
+    height: 100%;
 }
 
-.datepicker-popup[data-placement^="bottom"] .datepicker-triangle, .datepicker-popup[data-placement^="bottom"] .datepicker-triangle::before {
-    border-top: none;
-    border-bottom-color: #f0f0f0;
-}
-
-.datepicker-popup[date-placement^="bottom"] .datepicker-triangle {
-    top: 0;
-    margin-top: -8px;
-}
-
-.datepicker-popup[data-placement^="bottom"] .datepicker-triangle, .datepicker-popup[data-placement^="top"] .datepicker-triangle, .datepicker-popup[data-placement^="bottom"] .datepicker-triangle::before, .datepicker-popup[data-placement^="top"] .datepicker-triangle::before{
-    box-sizing: content-box;
-    position: absolute;
-    border: 8px solid transparent;
-    height: 0;
-    width: 1px;
-}
-
-.datepicker-popup[data-placement^="bottom"] .datepicker-triangle, .datepicker-popup[data-placement^="top"] .datepicker-triangle {
-    margin-left: -8px;
-    position: absolute;
-}
-
-.datepicker-triangle {
-    left: 50px;
-}
-
-.datepicker-popup[data-placement^="bottom"] .datepicker-triangle::before {
-    top: -1px;
-    border-bottom-color: #aeaeae;
-}
-
-.datepicker-popup[data-placement^="bottom"] .datepicker-triangle::before {
-    content: "";
-    z-index: -1;
-    border-width: 8px;
-    left: -8px;
-}
-
-.datepicker_nav--previous {
-    left: 19px;
+#schedule #ticker .game-box:hover {
     cursor: pointer;
-    border-right-color: #ccc;
+    background-color: #e5cbba;
 }
 
-.datepicker_nav--previous:hover {
-    border-right-color: white;
-}
-
-.datepicker_nav {
-    background: none;
-    line-height: 1.7rem;
-    text-align: center;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    padding: 0;
-    border: 0.45 solid transparent;
-    z-index: 1;
-    height: 10px;
-    width: 10px;
-    text-indent: -999em;
-    overflow: hidden;
-}
-
-.datepicker_nav--next {
-    right: 10px;
-    border-left-color: #ccc;
-    cursor: pointer;
-}
-
-.datepicker_nav--next:hover {
-    color: #006C54;
-}
-
-.datepicker-month-container {
-    float: left;
-}
-
-.datepicker-header {
-    text-align: center;
-    background-color: #f0f0f0;
-    border-bottom: 1px solid #aeaeae;
-    border-top-left-radius: 0.3rem;
-    border-top-right-radius: 0.3rem;
-    padding-top: 8px;
-    position: relative;
-    background-color: #006C54;
-}
-
-.datepicker_current-month {
-    margin-top: 0;
-    color: #000;
-    font-weight: bold;
-    font-size: 0.944rem;
-}
-
-.datepicker_day-name, .datepicker_week {
-    white-space: nowrap;
-}
-
-.datepicker_day-name, .datepicker_day, .datepicker_time-name {
-    color: #000;
-    display: inline-block;
-    width: 1.7rem;
-    line-height: 1.7rem;
-    text-align: center;
-    margin: 0.166rem;
-    font-weight: 700;
-}
-
-.datepicker_month {
-    margin: 0.4rem;
-    text-align: center;
-}
-
-.datepicker_day, .datepicker_month-text, .datepicker_time-name {
-    cursor: pointer;
-}
-
-#schedule #ticker .game-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 0 0 auto;
-    border: solid 2px #006C54;
-    border-right: solid 0.5px #006C54;
-    min-width: 154px;
-    z-index: 50;
-    line-height: 2.5;
-    flex-direction: row;
+.game-box:active, .game-box:hover, .game-box:focus,
+.game-box:focus-within {
+    transform: scale(1.03);
+    box-shadow: rgba(0, 0, 0, 1) 0px 0px 14px 3px;
+    transition: transform .2s;
 }
 
 #schedule #ticker .schedule {
-    letter-spacing: 0.1rem;
+    letter-spacing: 0rem;
     font-family: "Roboto Mono";
+    width: 100%;
+    height: 100%;
 }
 
 #schedule #ticker table {
-    padding: 0;
-    margin: 0;
-    border-spacing: 0;
-    font-size: 14px;
+    padding: 0px;
+    margin: 0px;
+    border-spacing: 5px;
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
 }
 
 table {
@@ -712,9 +658,15 @@ table {
     background-color: transparent;
 }
 
-#schedule #ticker .team-logo img{
-    height: 30px;
-    width: 30px;
+#schedule #ticker .team-logo{
+    height: 50px;
+    width: 50px;
+}
+
+#schedule #ticker img {
+    height: 50px;
+    width: 50px;
+
 }
 
 #schedule #ticker .game-matchup {
@@ -725,52 +677,91 @@ table {
 }
 
 #schedule #ticker .team {
-    padding-left: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    margin-right: 10px;
     vertical-align: middle;
     text-align: left;
-    font-weight: 400;
-    top: 100px;
+    font-weight: 600;
+    font-size: 22px;
+    color: #000;
+    font-family: "poppins";
 }
 
 #schedule #ticker .score {
-    padding-left: 5px;
+    padding-right: 55px;
     vertical-align: middle;
     text-align: left;
     font-weight: 400;
+    font-size: 22px;
+    color: #000;
+    font-family: "poppins";
 }
 
 #schedule #ticker .field {
     position: relative;
     padding-left: 12px;
-    padding-top: 4px;
+    padding-top: 20px;
     text-align: center;
     vertical-align: top;
 }
 
 td, th {
-    padding: 0;
+    margin: 0;
+}
+
+.status {
+    font-weight: 500;
+    font-size: 19px;
+    color: red;
+    font-family: "poppins";
+    padding-right: 10px;
+}
+
+.inning {
+    font-weight: 500;
+    font-size: 19px;
+    color: red;
+    position: absolute;
+    font-family: "poppins";
+    top: 0px;
+    right: 10px;
+}
+
+.time-ampm {
+    font-weight: 400;
+    font-size: 17px;
+    color: red;
+    font-family: "poppins";
+    padding-right: 10px;
+}
+
+.bases-outs-svg {
+    position: absolute;
+    margin-left: 100px;
+    margin-bottom: 100px;
+    top: 50px;
+}
+
+.record {
+    font-weight: 200;
+    color: #393552;
+    padding-right: 60px;
+    font-family: "poppins";
 }
 
 #schedule #ticker .svg {
     position: relative;
 }
 
-#schedule #ticker .inning {
-    position: relative;
-    top: 0px;
-    left: -5px;
-    width: 60px;
-    font-size: 12px;
-    font-family: "Roboto Condensed";
-    text-align: center;
-}
-
 #schedule #ticker .final {
     padding-top: 20px;
-    color: #D52A1D;
+    color: #b4637a;
     text-align: left;
-    font-weight: 700;
+    font-weight: 500;
     padding-left: 10px;
+    font-size: 15px;
 }
 
 #schedule #ticker .show-text, #schedule #ticker .game-schedule {
@@ -778,8 +769,7 @@ td, th {
 }
 
 #schedule #ticker tr {
-    overflow: hidden;
-    max-width: 100%;
+  overflow: hidden;
 }
 
 #schedule #ticker .scroller-icon {
@@ -804,15 +794,10 @@ td, th {
     display: none;
 }
 
-.datepicker-input {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-}
 
 #searchBar::placeholder {
     color: #006C54; /* Hex code for the desired color */
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 300;
     text-align: left;
 }
@@ -829,33 +814,152 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
     -webkit-appearance: button;
 }
 
-.datepicker-popup[data-placement^="bottom"] .datepicker-triangle::before {
-    top: -1px;
-    border-bottom-color: #aeaeae;
+/* The actual date located on the top middle of the page  */
+.date-input {
+    width: 200px;
+    height: 71px;
+    font-size: 24px;
+    border: 2px solid #000;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10%;
+    font-family: "poppins";
 }
 
-.datepicker_day:hover {
-    background-color: #008668;
-    border-radius: 25%;
+.date-input:hover {
+    color: #0000008c;
 }
 
-.datepicker_day--outside-month {
-    color: #808080;
+/* datepicker styles */
+
+.datepicker-container {
+    position: relative;
+    color: #2a273f;
+    font-weight: 500;
 }
 
-.datepicker_nav--previous,
-.datepicker_nav--next {
-    content: "";
+/* The actual calendar popup */
+.datepicker {
     position: absolute;
-    border-style: solid;
-    border-width: 0.25em 0.25em 0 0;
-    border-color: #ccc;
+    top: 40%;
+    left: 38%;
+    background: #006C54;
+    z-index: 1000;
+    padding: 10px;
+    border-radius: 5px;
+    line-height: 1.5;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 10px 5px 5px black;
+    -webkit-animation: slide-in-top 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: slide-in-top 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
-.datepicker_nav--previous {
-    transform: translate(-50%, -50%) rotate(-135deg);
+.datepicker button {
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    background: #006C54;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: 0.3s;
 }
 
-.datepicker_nav--next {
-    transform: translate(-50%, -50%) rotate(45deg);
+.days,
+.dates {
+    display: grid;
+    grid-template-columns: repeat(7, 32px);
+    gap: 5px;
+    margin-block: 10px;
+}
+
+.days span {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.dates button {
+    color: black;
+    aspect-ratio: 1;
+}
+
+.dates button:hover {
+    background: #9ccfd8;
+    border-radius: 50%;
+}
+
+.dates button.today {
+    color: #eb6f92;
+    border-radius: 50%;
+}
+
+.dates button.selected {
+    background: #9ccfd8;
+    color: black;
+    border-radius: 50%;
+}
+
+.cancel:focus {
+  	-webkit-animation: slide-out-top 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	animation: slide-out-top 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+.datepicker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.datepicker-header select,
+.datepicker-header input {
+    font-size: 14px;
+    border: 1px solid #eee;
+    height: 20px;
+    width: 100px;
+    border-radius: 8%;
+    border-top: 1px;
+}
+
+.datepicker-header input {
+    max-width: 60px;
+    padding-top: 5px;
+}
+
+.datepicker-header button {
+    color: #e0def4;
+    font-weight: 600;
+}
+
+.datepicker-header button:hover {
+    color: #eb6f92;
+}
+
+.datepicker-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.datepicker-footer button {
+    background: #9ccfd8;
+    padding: 3px 10px;
+    font-weight: 600;
+}
+
+.datepicker-footer button:hover {
+    background-color: #eb6f92;
+}
+
+.dates button:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    user-select: none;
 }
