@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html land="en_US">
+    <head>
+        <title>binBot - Standings</title>
+        <meta charset="UTF-8" />
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0, meximum-scale=1.0, user-scalable=no" />
+        <meta http-equiv="X-UA=Compatible" content="IE-Edge" />
+        <meta http-equiv="Cache-Control" content="no-cache" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+        <script src="src/utils/regseason.js" defer></script>
+
+    </head>
+    <body ID="standing-index" class="lang-en_US">
+        <!-- header-->
+        <header id="header-nav">
+            <div class="header-top">
+                <div id="header-bar">
+                    <div>
+                        <a href="/"
+                            onclick="s_objectID=&quot;https://localhost:5/_1&quot;;return this.s_oc?this.s_oc(e):true">
+                            <img class="bot-logo" src="/images/workshop-logo.png">
+                        </a>
+                    </div>
+                    <div class="logo-text">
+                        <div class="logo">
+                            <a href="/"
+                                onclick="s_objectID=&quot;http://localhost:5173/_2&quot;;return this.s_oc?this.s_oc(e):true">
+                                <span class="primary-color">binBot</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap">
+                <nav class="nav">
+                    <div id="hamburger" class="temp">
+                        <div class="ham1"></div>
+                        <div class="ham2"></div>
+                        <div class="ham3"></div>
+                    </div>
+                    <ul class="nav-menu">
+                        <li class="item">
+                            <a href="/standings"
+                                onclick="s_objectID=&quot;https://localhost:5173/standings_1&quot;;return this.s_oc?this.s_oc(e):true">Standings</a>
+                        </li>
+                        <li class="item">
+                            <a href="/statistics"
+                                onclick="s_objectID=&quot;https://localhost:5173/statistics_1&quot;;return this.s_oc?this.s_oc(e):true">Statistics</a>
+                        </li>
+                        <li class="item">
+                            <a href="/statistics"
+                                onclick="s_objectID=&quot;https://localhost:5173/leaderboard_1&quot;;return this.s_oc?this.s_oc(e):true">Leaderboards</a>
+                        </li>
+                        <li class="item">
+                            <a href="/graphs"
+                                onclick="s_objectID=&quot;https://localhost:5173/graphs_1&quot;;return this.s_oc?this.s_oc(e):true">Graphs</a>
+                        </li>
+                        <li class="item">
+                            <a href="/applications"
+                                onclick="s_objectID=&quot;https://localhost:5173/applications_1&quot;;return this.s_oc?this.s_oc(e):true">Applications</a>
+                        </li>
+                        <li class="item">
+                            <a href="/teams"
+                                onclick="s_objectID=&quot;https://localhost:5173/teams_1&quot;;return this.s_oc?this.s_oc(e):true">Teams</a>
+                        </li>
+                        <li class="item">
+                            <div class="gridnav">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="31" height="28" viewBox="0 0 31 28"
+                                    fill="none">
+                                    <ellipse cx="4.5" cy="14" rx="4.5" ry="4" fill="#006C54" />
+                                    <ellipse cx="4.5" cy="4" rx="4.5" ry="4" fill="#006C54" />
+                                    <ellipse cx="26.5" cy="4" rx="4.5" ry="4" fill="#006C54" />
+                                    <ellipse cx="4.5" cy="24" rx="4.5" ry="4" fill="#006C54" />
+                                    <ellipse cx="16.5" cy="24" rx="4.5" ry="4" fill="#006C54" />
+                                    <ellipse cx="15.5" cy="14" rx="4.5" ry="4" fill="#006C54" />
+                                    <ellipse cx="26.5" cy="24" rx="4.5" ry="4" fill="#006C54" />
+                                    <ellipse cx="15.5" cy="4" rx="4.5" ry="4" fill="#006C54" />
+                                    <ellipse cx="26.5" cy="14" rx="4.5" ry="4" fill="#006C54" />
+                                </svg>
+                            </div>
+                        </li>
+    
+                    </ul>
+                </nav>
+            </div>
+            <div id="player_search_container">
+                <div class="header-autocomplete-root header-autocomplete-hasClearIcon" role="combobox" aria-expaned="false">
+                    <div class="header-formControl-root header-textField-root header-formControl-fullWidth">
+                           <div class="header-inputBase-root header-outlinedInput-root j5 header-autoComplete-inputRoot header-inputBase-fullWidth header-inputBase-formControl header-inputBase-adornedEnd header-outlinedInput-adornedEnd">
+                            <input aria-invalid="false" autocomplete="new-password" id="searchBar" type="text" placeholder="Search"
+                                class="header-inputBase-input header-outlinedInput-input header-autoComplete-input header-autoComplete-inputFocused header-inputBase-inputAdornedEnd header-outlinedInput-inputAdornedEnd"
+                                aria-autocomplete="both" autocapitalize="none" spellcheck="false" value>
+                            <div class="header-autoComplete-endAdornment">
+                                <button
+                                    class="header-buttonBase-root header-iconButton-root header-autoComplete-clearIndicator header-autoComplete-clearIndicatorDirty"
+                                    tabindex="-1" type="button" aria-label="Clear" title="Clear">
+                                    <span class="header-iconButton-label">
+                                        <svg class="header-svgIcon-root header-svgIcon-fontSizeSmall" focusable="false"
+                                            viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <span class="header-touchRipple-root"></span>
+                                </button>
+                            </div>
+                            <fieldset aria-hidden="true" class="header-c1 header-outlinedInput-notchedOutline j7">
+                                <legend class="header-c3">
+                                    <span>Search</span>
+                                </legend>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </header>
+        <!-- main content -->
+         <main class="team-bg">
+            <div id="standings-root" class="main-standings-pg">
+                <section class="standings-wrapper">
+                    <div class="standings-top-wrapper">
+                        <div>
+                            <h1 class="headline-standings">Standings</h1>
+                        </div>
+                    </div>
+                    <div class="standings-nav">
+                        <div id="standings-tabs" class="standings-tabs-wrapper">
+                            <div data-testid="tab-list" class="buttonGroupWrapper">
+                                <button shape="tab" id="regular-season-tab" aria-label="Regular Season selected" aria-pressed="true" class="buttonstyle-standings-reg" role="button" type="button" data-testid="tab-button--0" data-index="0" data-selected="true" data-value="regularSeason" data-slug="regular-season">
+                                    <span class="buttonStyle-reg" style="border-bottom-color: none;">Regular Season</span>
+                                </button>
+                                <a href="/wildcard.html">
+                                <button shape="tab" id="wild-card-tab" aria-label="Wild-Card" aria-pressed="false" class="buttonstyle-standings-wc" role="button" type="button" data-testid="tab-button--1" data-index="1" data-selected="false" data-value="wildcard" data-slug="wild-card">
+                                    <span class="buttonStyle-wc">Wild Card</span>
+                                </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                <!--Column Data-->
+                <div class="grid-container" id="standings">
+                    <div>
+                        <div class="tableContainer-root">
+                            
+                        </div>
+                    </div>
+                </div>
+                </section>
+            </div>
+         </main>
+    </body>
+</html>
