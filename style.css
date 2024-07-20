@@ -1,0 +1,1555 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/**
+ * ----------------------------------------
+ * animation slide-in-top
+ * ----------------------------------------
+
+ display none = img / team / score/ field/ inning / final
+
+ */
+@-webkit-keyframes slide-in-top {
+  0% {
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-top {
+  0% {
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes slide-out-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(20px);
+
+    opacity: 0;
+  }
+}
+@keyframes slide-out-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(20px);
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
+
+:root {
+    --wp--present--font-size--normal: 16px;
+    --wp--present--font-size--huge: 42px;
+}
+
+html {
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+* {
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+}
+
+head {
+    display: none;
+}
+
+body {
+    font-family: Roboto Condensed, "Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-color: #e5decf;
+    color: #222;
+    line-height: 1;
+    font-variant-ligatures: none;
+    margin: 0;
+}
+
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+
+.bot-logo {
+    float: left;
+    padding-top: 8px;
+    width: 6.5625rem;
+    height: 8rem;
+}
+
+img {
+    vertical-align: middle;
+  }
+
+  img {
+    border: 0;
+  }
+
+header {
+    max-width: 1284px;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 1em;
+    z-index: 15;
+}
+
+.header-top {
+    padding-top: 1rem;
+    width: 100%;
+    border-bottom: 2px solid #006C54;
+}
+
+#header-bar {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}
+
+a {
+    color: #006C54;
+    text-decoration: none;
+}
+
+a {
+    background-color: transparent;
+}
+
+.logo {
+    float: left;
+    width: 65%;
+    padding-left: 0.25rem;
+    font-family: "poppins";
+    font-size: 2.6rem;
+    line-height: 1.25;
+    margin-top: 70px;
+    font-weight: 600;
+}
+
+.logo-text a {
+    padding-left: 0.3rem;
+}
+
+.primary-color {
+    color: #006C54;
+    padding-bottom: 9px;
+    left: 110px;
+}
+
+.nav {
+    width: 100%;
+    padding-top: 0;
+    text-align: left;
+    font-family: "poppins";
+    font-size: 1rem;
+    display: block;
+}
+
+.nav {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    font-weight: 500;
+}
+
+#hamburger {
+    display: none;
+    position: relative;
+    padding-top: 5px;
+}
+
+.ham1, .ham2, .ham3 {
+    width: 25px;
+    height: 3px;
+    background-color: #006C54;
+    margin: 2px 0;
+    text-align: right;
+    position: relative;
+    float: right;
+    clear: both;
+    transition: .25s ease-in-out;
+}
+
+.nav ul, .nav li, .nav ol {
+    padding-left: 0;
+    margin: 1rem 0 1rem 0;
+    list-style: none;
+    position: relative;
+    z-index: 0;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.nav-menu {
+    display: block;
+}
+
+ul {
+    padding: 0;
+}
+
+.nav .item {
+    display: inline;
+    position: relative;
+    font-weight: 500;
+    z-index: 0;
+    margin: 0 1.995rem 0 0;
+}
+
+.nav li:last-child { /* grid is moved all the way to the right side  */
+    text-align: left;
+    right: 0;
+    z-index: 1;
+    position: absolute;
+    margin-right: 0;
+}
+
+li:hover,li:focus {
+    text-decoration: underline;
+    color: #006C54;
+}
+
+.gridnav:hover, .users:hover {
+    cursor: pointer;
+}
+
+.grid-nav-2 {
+    background-color: #ffffff;
+    cursor: default;
+    position: absolute;
+    display: none;
+    padding: 2rem;
+    width: 300%;
+    min-width: 160px;
+    margin-top: 0px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    border: solid 1px #d5d5d5;
+    z-index: 1000;
+}
+
+.grid-nav-2 .grid-nav-link {
+    display: none;
+    position: absolute;
+}
+
+.grid-nav-2:hover {
+    display: block;
+}
+
+.grid-nav-link {
+    text-align: center;
+}
+
+.gridnav {
+    padding-top: 3px;
+}
+
+.gridnav, .users {
+    float: left;
+    padding-left: 25px;
+    text-align: right;
+    width: 50%;
+}
+
+#player_search_container {
+    position: absolute;
+    right: 20px;
+    top: 60px
+}
+
+.header-formControl-fullWidth {
+    width: 100%;
+}
+
+.header-formControl-root {
+    border: 0;
+    margin: 0;
+    display: inline-flex;
+    padding: 0;
+    position: relative;
+    min-width: 0;
+    flex-direction: column;
+    vertical-align: top;
+    background-color: #fff;
+}
+
+.header-inputLabel-outlined {
+    z-index: 1;
+    transform: translate(14px, 20px) scale(1);
+    pointer-events: none;
+}
+
+.header-inputLabel-animated {
+    transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+}
+
+.header-inputLabel-formControl {
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+.header-inputLabel-root {
+    display: block;
+    transform-origin: top left;
+}
+
+.header-formLabel-root {
+    color: rgba(0, 0, 0, 0.54);
+    padding: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.00938em;
+}
+
+.header-material-root {
+    font-family: "Roboto Condensed" !important;
+    color: #006C54;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 300;
+}
+
+label {
+    max-width: 100%;
+    margin-bottom: 5px;
+}
+
+.header-autoComplete-hasPopupIcon .header-autoComplete-inputRoot[class*="outlinedInput-root"], .header-autoComplete-hasClearIcon .header-autoComplete-inputRoot[class*="outlinedInput-root"] {
+    padding-right: 39px;
+}
+
+.header-autoComplete-inputRoot[class*="outlinedInput-root"] {
+    padding: 9px;
+}
+
+.j5 {
+    font-family: Roboto Condensed !important;
+    border-radius: 0px !important;
+}
+
+.header-autoComplete-inputRoot {
+    flex-wrap: wrap;
+}
+
+.header-outlinedInput-root {
+    position: relative;
+}
+
+.header-inputBase-fullWidth {
+    width: 100%;
+    border: 2px solid #006C54;
+
+}
+
+.header-inputBase-root {
+    color: rgba(0, 0, 0, 1);
+    cursor: text;
+    display: inline-flex;
+    font-size: 3rem;
+    box-sizing: border-box;
+    align-items: center;
+    font-weight: 400;
+    line-height: 1.1876em;
+    letter-spacing: 0.00999em;
+}
+
+#player_search_container input { /* Search Box Input/Inside */
+    line-height: 1.3em;
+    padding: 10px;
+    width: 350px;
+    font-family: "Poppins";
+    font-size: 18px;
+}
+
+.header-autoComplete-inputRoot .header-autoComplete-input {
+    min-width: 30px;
+}
+
+.header-autoComplete-inputFocused {
+    opacity: 1;
+    outline: none;
+}
+
+.header-autoComplete-input {
+    flex-grow: 1;
+    text-overflow: ellipse;
+}
+
+.header-inputBase-input {
+    font: inherit;
+    color: currentColor;
+    border: 0;
+    height: 1.1876em;
+    margin: 0;
+    display: block;
+    background: none;
+    box-sizing: content-box;
+    animation-name: mui-auto-fill-cancel;
+    letter-spacing: inherit;
+    animation-duration: 10ms;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+.header-autoComplete-inputRoot[class*="outlinedInput-root"] .header-autoComplete-endAdornment {
+    right: 9px;
+}
+
+.header-autoComplete-endAdornment {
+    top: calc(50% - 14px);
+    position: absolute;
+}
+
+.header-autoComplete-clearIndicator {
+    padding: 4px;
+    visibility: hidden;
+    margin-right: -2px;
+}
+
+.header-iconButton-root {
+    flex: 0 0 auto;
+    color: rgba(0, 108, 84, 1);
+    padding: 12px;
+    overflow: visible;
+    font-size: 1.5rem;
+    text-align: center;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    font-size: 3;
+    border-radius: 50%;
+}
+
+.header-buttonBase-root {
+    border: 0;
+    cursor: pointer;
+    margin: 0;
+    display: inline-flex;
+    outline: 0;
+    position: relative;
+    align-items: center;
+    user-select: none;
+    vertical-align: middle;
+    justify-content: center;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+input, button, select, textarea {
+    font-family: inherit;
+    line-height: inherit;
+
+}
+
+button, select {
+    text-transform: none;
+}
+
+button, input, optgroup, select, textarea {
+    font: inherit;
+}
+
+.header-iconButton-label {
+    width: 100%;
+    display: flex;
+    align-items: inherit;
+    justify-content: inherit;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+.header-svgIcon-fontSizeSmall {
+    font-size: 1.25rem;
+}
+
+.header-svgIcon-root {
+    fill: currentColor;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    padding: 0 8px;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.header-touchRipple-root {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    overflow: hidden;
+    position: absolute;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+j7 {
+    border-color: #006C54 !important;
+    border-width: 2px;
+}
+
+.header-c1 {
+    top: -5px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    overflow: hidden;
+    position: absolute;
+    border-style: solid;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+fieldset {
+    border: 0;
+    min-width: 0;
+}
+
+.header-c3 {
+    width: auto;
+    height: 11px;
+    display: block;
+    padding: 0;
+    font-size: 0.75em;
+    max-width: 0.01px;
+    text-align: left;
+    transition: max-width 50ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+    visibility: hidden;
+}
+
+legend {
+    margin-bottom: 20px;
+    line-height: inherit;
+    color: #006C54;
+    border: 0;
+    border-bottom: 2px solid #006C54;
+}
+
+.header-c3 > span {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#schedule {
+    max-width: 1284px;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    padding: 2em 1em 0 1em;
+    z-index: 10;
+}
+
+
+#schedule #ticker .container{
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: hidden;
+}
+
+.datepicker-wrapper {
+    display: inline-block;
+    padding: 0;
+    border: 0;
+}
+
+.date-input {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+}
+
+.container{
+    flex: 0 0 auto;
+    width: 250px;
+    text-align: center;
+    line-height: 0.9;
+    font-family: "Roboto Condensed";
+    font-size: 24px;
+    font-weight: 600;
+    height: 80px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input {
+    border-radius: 0;
+}
+
+element.style {
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    transform: translate3d(14px, 60px, 0px);
+    will-change: transform;
+}
+
+
+#schedule #ticker .game-box {
+    display: inline-flex;
+    width: 400px;
+    height: 170px;
+    margin: 3px;
+    margin-bottom: 5px;
+    border: solid 1px #000;
+    text-align: center;
+    line-height: 2.5;
+    position: relative;
+    left: 30px;
+    border-radius: 1%;
+    background-color: #eee;
+}
+
+.initial-content {
+    display: none;
+}
+
+.new-content {
+    width: 100%;
+    height: 100%;
+}
+
+#schedule #ticker .game-box:hover {
+    cursor: pointer;
+    background-color: #e5cbba;
+}
+
+.game-box:active, .game-box:hover, .game-box:focus,
+.game-box:focus-within {
+    transform: scale(1.03);
+    box-shadow: rgba(0, 0, 0, 1) 0px 0px 14px 3px;
+    transition: transform .2s;
+}
+
+#schedule #ticker .schedule {
+    letter-spacing: 0rem;
+    font-family: "Roboto Mono";
+    width: 100%;
+    height: 100%;
+}
+
+#schedule #ticker table {
+    padding: 0px;
+    margin: 0px;
+    border-spacing: 5px;
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+}
+
+table {
+    width: 100%;
+    border: 1px solid #fff;
+    white-space: nowrap;
+    background-color: transparent;
+    border-collapse: collapse;
+}
+
+#schedule #ticker tr {
+    background-color: transparent;
+}
+
+#schedule #ticker .team-logo{
+    height: 50px;
+    width: 50px;
+}
+
+#schedule #ticker img {
+    height: 50px;
+    width: 50px;
+
+}
+
+#schedule #ticker .game-matchup {
+    line-height: 1.35;
+    font-family: "Roboto Condensed";
+    font-size: 12px;
+    text-align: center;
+}
+
+#schedule #ticker .team {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+    text-align: left;
+    font-weight: 600;
+    font-size: 22px;
+    color: #000;
+    font-family: "poppins";
+}
+
+#schedule #ticker .score {
+    padding-right: 55px;
+    vertical-align: middle;
+    text-align: left;
+    font-weight: 400;
+    font-size: 22px;
+    color: #000;
+    font-family: "poppins";
+}
+
+#schedule #ticker .field {
+    position: relative;
+    padding-left: 12px;
+    padding-top: 20px;
+    text-align: center;
+    vertical-align: top;
+}
+
+td, th {
+    margin: 0;
+}
+
+.status {
+    font-weight: 500;
+    font-size: 19px;
+    color: red;
+    font-family: "poppins";
+    padding-right: 10px;
+}
+
+.inning {
+    font-weight: 500;
+    font-size: 19px;
+    color: red;
+    position: absolute;
+    font-family: "poppins";
+    top: 0px;
+    right: 10px;
+}
+
+.time-ampm {
+    font-weight: 400;
+    font-size: 17px;
+    color: red;
+    font-family: "poppins";
+    padding-right: 10px;
+}
+
+.bases-outs-svg {
+    position: absolute;
+    margin-left: 100px;
+    margin-bottom: 100px;
+    top: 50px;
+}
+
+.record {
+    font-weight: 200;
+    color: #393552;
+    padding-right: 60px;
+    font-family: "poppins";
+}
+
+#schedule #ticker .svg {
+    position: relative;
+}
+
+#schedule #ticker .final {
+    padding-top: 20px;
+    color: #b4637a;
+    text-align: left;
+    font-weight: 500;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+#schedule #ticker .show-text, #schedule #ticker .game-schedule {
+    display: block;
+}
+
+#schedule #ticker tr {
+  overflow: hidden;
+}
+
+#schedule #ticker .scroller-icon {
+    float: left;
+    width: 2.5%;
+    font-family: "Roboto Condensed";
+    font-size: 30px;
+    border: solid 2px #006C54;
+    text-align: center;
+    background-color: transparent;
+    line-height: 0.5;
+    height: 86px;
+    padding: 33px 5px 5px 5px;
+    cursor: pointer;
+}
+
+#schedule #ticker .scroller-icon:hover {
+    color: #006C54;
+}
+
+#schedule #ticker .hide-text, #schedule #ticker .hide-schedule {
+    display: none;
+}
+
+
+#searchBar::placeholder {
+    color: #006C54; /* Hex code for the desired color */
+    font-size: 20px;
+    font-weight: 300;
+    text-align: left;
+}
+
+.header-iconButton-root:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.header-autoComplete-root.Mui-focused .header-autoComplete-clearIndicatorDirty {
+    visibility: visible;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    -webkit-appearance: button;
+}
+
+/* The actual date located on the top middle of the page  */
+.date-input {
+    width: 200px;
+    height: 71px;
+    font-size: 24px;
+    border: 2px solid #000;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10%;
+    font-family: "poppins";
+}
+
+.date-input:hover {
+    color: #0000008c;
+}
+
+/* datepicker styles */
+
+.datepicker-container {
+    position: relative;
+    color: #2a273f;
+    font-weight: 500;
+}
+
+/* The actual calendar popup */
+.datepicker {
+    position: absolute;
+    top: 12%;
+    left: 38%;
+    background: #006C54;
+    z-index: 1000;
+    padding: 10px;
+    border-radius: 5px;
+    line-height: 1.5;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 10px 5px 5px black;
+    -webkit-animation: slide-in-top 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: slide-in-top 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.datepicker button {
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    background: #006C54;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.days,
+.dates {
+    display: grid;
+    grid-template-columns: repeat(7, 32px);
+    gap: 5px;
+    margin-block: 10px;
+}
+
+.days span {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.dates button {
+    color: black;
+    aspect-ratio: 1;
+}
+
+.dates button:hover {
+    background: #9ccfd8;
+    border-radius: 50%;
+}
+
+.dates button.today {
+    color: #eb6f92;
+    border-radius: 50%;
+}
+
+.dates button.selected {
+    background: #9ccfd8;
+    color: black;
+    border-radius: 50%;
+}
+
+.cancel:focus {
+  	-webkit-animation: slide-out-top 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	animation: slide-out-top 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+.datepicker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.datepicker-header select,
+.datepicker-header input {
+    font-size: 14px;
+    border: 1px solid #eee;
+    height: 20px;
+    width: 100px;
+    border-radius: 8%;
+    border-top: 1px;
+}
+
+.datepicker-header input {
+    max-width: 60px;
+    padding-top: 5px;
+}
+
+.datepicker-header button {
+    color: #e0def4;
+    font-weight: 600;
+}
+
+.datepicker-header button:hover {
+    color: #eb6f92;
+}
+
+.datepicker-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.datepicker-footer button {
+    background: #9ccfd8;
+    padding: 3px 10px;
+    font-weight: 600;
+}
+
+.datepicker-footer button:hover {
+    background-color: #eb6f92;
+}
+
+.dates button:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Standings */
+
+.team-bg {
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+
+body #standings-root {
+    line-height: normal;
+    margin: 0 auto;
+    max-width: 1440px;
+    padding: 45px 90px 16px;
+}
+
+.standings-wrapper {
+    font-family: poppins;
+    max-width: 1920px;
+    margin: 0px auto;
+}
+
+.standings-top-wrapper {
+    display: flex;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding-bottom: 16px;
+}
+
+.standings-top-wrapper > div {
+    width: 50%;
+}
+
+.headline-standings {
+    font-family: "poppins";
+    font-size: 55px;
+    font-weight: 500;
+    color: #006C54;
+}
+
+.standings-nav {
+    position: relative;
+    display: inline-flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.standings-nav > div {
+    display: inline-flex;
+}
+
+.standings-tabs-wrapper {
+    white-space: nowrap;
+}
+
+.buttonGroupWrapper {
+    padding-bottom: 12px;
+    display: flex;
+    flex-direction: row;
+    overflow: visible;
+}
+
+.standings-tabs-wrapper .buttonstyle-standings-reg {
+    height: auto;
+    font-size: 17px;
+    padding: 0px;
+    margin-right: 32px;
+    cursor: pointer;
+}
+
+[type=reset], [type=submit], button. html [type=button] {
+    -webkit-appearance: button;
+}
+
+.buttonstyle-standings-reg {
+    height: 48px;
+    font-size: 20px;
+    border-radius: 0px;
+    font-weight: bold;
+    vertical-align: bottom;
+    background: transparent;
+    border-width: 0px 0px 3px;
+    border-top-style: initial;
+    border-right-style: initial;
+    border-left-style: initial;
+    border-top-color: initial;
+    border-right-color: initial;
+    border-left-color: initial;
+    border-image: initial;
+    margin-right: 5px;
+    margin-top: 6px;
+    padding: 6px 12px;
+    position: relative;
+    color: rgb(0, 0, 0);
+    border-bottom-style: solid;
+    border-bottom-color: transparent;
+}
+
+
+
+.buttonStyle-Reg {
+    font-family: "poppins";
+    display: inline-block;
+}
+
+.buttonstyle-standings-wc[data-selected="false"] {
+    font-weight: 600;
+}
+
+.buttonstyle-standings-wc {
+    font-family: "poppins";
+    height: auto;
+    font-size: 17px;
+    padding: 0px;
+    margin-right: 32px;
+    cursor: pointer;
+}
+
+.buttonstyle-standings-wc {
+    height: 48px;
+    border-radius: 0px;
+    vertical-align: bottom;
+    background: transparent;
+    border-width: 0px 0px 3px;
+    border-top-style: initial;
+    border-right-style: initial;
+    border-left-style: initial;
+    border-top-color: initial;
+    border-right-color: initial;
+    border-left-color: initial;
+    border-image: initial;
+    border-bottom-style: solid;
+    border-bottom-color: transparent;
+    color: rgb(102, 102, 102);
+    margin-top: 6px;
+    position: relative;
+
+}
+
+.buttonstyle-standings-wc:hover {
+    border-bottom-color: #b4637a;
+}
+
+.buttonstyle-standings-reg:hover {
+    border-bottom-color: #b4637a;
+}
+
+.buttonStyle-wc {
+    display: inline-block;
+}
+
+.StandingsNavStyle {
+    position: relative;
+    display: flex;
+    margin: 12px 0px;
+    z-index: 10;
+}
+
+.StandingsNavStyle_Dropdown {
+    display: flex;
+    flex-flow: wrap;
+}
+
+.dropdownStyle {
+    margin-bottom: 12px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.dropdownContainer {
+    position: relative;
+    box-sizing: border-box;
+}
+
+.dropdownControl {
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: transparent;
+    border-color: #dddddd;
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: none;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    min-height: 34px;
+    outline: none;
+    position: relative;
+    transition: all 100ms;
+    box-sizing: border-box;
+    color: #000000;
+    font-size: 16px;
+    font-family: "poppins", "proxima-nova", "open sans", "Arial", sans-serif;
+    font-weight: semibold;
+    width: 90px;
+}
+
+.dropdownControl:active, .dropdownControl:hover, .dropdownControl:focus, .dropdownControl:focus-within {
+    transform: scale(1.03);
+    box-shadow: rgba(0, 0, 0, 1) 0px 0px 14px 3px;
+    transition: transform .2s;
+}
+
+.dropdownYear {
+    -webkit-box-align: center;
+    align-items: center;
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    padding: 2px 8px;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.valueYear {
+    color: inherit;
+    margin-left: 2px;
+    margin-right: 2px;
+    max-width: calc(100% - 8px);
+    overflow: hidden;
+    position: absolute;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    top: 30%;
+}
+
+.dummyInput {
+    background: 0;
+    border: 0;
+    font-size: inherit;
+    outline: 0;
+    padding: 0;
+    width: 1px;
+    color: transparent;
+    left: -100%;
+    opacity: 0;
+    position: relative;
+    transform: scale(0);
+}
+
+.lzzjem {
+    -webkit-box-align: center;
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+    box-sizing: border-box;
+    transform: rotate(0deg);
+    height: 34px;
+}
+
+.year-button {
+    display: none;
+}
+
+.indicatorContainer {
+    color: #2a273f;
+    display: flex;
+    padding: 2px;
+    transition: color 150ms;
+    box-sizing: border-box;
+}
+
+.dropdownStyle svg {
+    stroke: none;
+}
+
+.iconstyle_arrow {
+    pointer-events: none;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    fill: #2a273f;
+}
+
+.lzzjem svg path {
+    fill: #888888;
+}
+
+.dropdownWrapper-caret {
+    margin-bottom: 12px;
+    margin-right: 10px;
+    padding-left: 12px;
+    padding-top: 5px;
+    font-weight: bold;
+}
+
+.divisionContainer {
+    position: absolute;
+    box-sizing: border-box;
+    left: 90px;
+    top: 4px;
+
+}
+
+.divisionControl {
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: transparent;
+    border-color: #dddddd;
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 0px;
+    box-shadow: none;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    min-height: 34px;
+    outline: none;
+    position: relative;
+    transition: all 100ms;
+    box-sizing: border-box;
+    color: #000;
+    font-size: 16px;
+    font-family: "poppins", "proxima-nova", "open Sans", "Arial", sans-serif;
+    width: 105px;
+}
+
+.divisionControl:active, .divisionControl:focus, .divisionControl:hover, .divisionControl:focus-within {
+    transform: scale(1.03);
+    box-shadow: rgba(0, 0, 0, 1) 0px 0px 14px 3px;
+    transition: transform .2s;
+}
+
+#select-3-input {
+    background-color: transparent;
+    border: none;
+}
+
+.div-words {
+    -webkit-box-align: center;
+    align-items: center;
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    padding: 2px 0px;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.div-value {
+    color: inherit;
+    margin-left: 2px;
+    margin-right: 2px;
+    max-width: calc(100% - 8px);
+    overflow: hidden;
+    position: absolute;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    top: 55%;
+    transform: translateY(-50%);
+    box-sizing: border-box;
+}
+
+dummyInput-2 {
+    background: 0;
+    border: 0;
+    font-size: inherit;
+    outline: 0;
+    padding: 0;
+    width: 1px;
+    color: transparent;
+    left: -100px;
+    opacity: 0;
+    position: relative;
+    transform: scale(0);
+}
+
+.css-1hyfxfx {
+    display: none;
+}
+
+.indicatorContainer {
+    color: #2a273f;
+    display: flex;
+    padding: 8px;
+    transition: color 150ms;
+    box-sizing: border-box;
+}
+
+.tableContainer {
+    width: 100%;
+    top: 50px;
+    right: 110px;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.team-list {
+    overflow: auto hidden;
+    box-sizing: border-box;
+    width: calc(100% - 265px);
+    display: inline-block;
+    margin-right: 0px;
+    margin-left: 265px;
+}
+
+.record-table {
+    font-family: "poppins", proxima-nova, "open Sans", Arial, sans-serif;
+    width: 100%;
+    padding-bottom: 5px;
+    border-collapse: collapse;
+    overflow-x: hidden;
+}
+
+colgroup {
+    display: table-column-group;
+    unicode-bidi: isolate;
+}
+
+.record-table tr th:first-child {
+    top: 5px;
+}
+
+.record-table thead {
+    border-bottom: 1px solid rgb(0, 0, 0);
+    margin-bottom: 20px;
+} 
+
+.record-table thead tr th {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.55px;
+    padding: 15px;
+    height: 32px;
+    color: #575279;
+}
+
+.record-table tr th {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.55px;
+    padding: 17px;
+    height: 32px;
+    color: #575279;
+}
+
+.record-table tbody th {
+    padding: 8px;
+}
+
+.record-table th {
+    z-index: 1;
+}
+
+.division-col {
+    font-size: 13px;
+    text-align: left;
+    width: 265px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    user-select: none;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    position: absolute;
+    left: -15px;
+}
+
+.win-col, .loss-col, .pct-col, .gb-col, .wcgb-col, .L10-games-col, .streak-col, .runs-col, .allowedRuns-col, .runDiff-col, .xwl-col, .home-rec-col, .away-rec-col, .fiveHun-col, .nextGame-col{
+    font-size: 13px;
+    text-align: center;
+    position: relative;
+    white-space: nowrap;
+    box-sizing: border-box;
+    user-select: none;
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.ref-wrapper {
+    display: inline-block;
+}
+
+/* standings-columns */
+
+.grid-container {
+    max-width: calc(150% - 265px);
+    overflow-x: auto;
+    width: 100%;
+    column-gap: 5px;
+}
+
+.tableContainer-root {
+    width: 100%;
+    display: table;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.tableHead-root {
+    display: table-header-group;
+}
+
+.tableRow-root {
+    color: inherit;
+    display: table-row;
+    outline: 0;
+}
+.tableCell-root {
+    color: rgba(108, 122, 137);
+    font-weight: 600;
+    font-family: "poppins", "Helvetica", "Arial", sand-serif;
+    line-height: 1rem;
+    display: table-cell;
+    padding: 16px;
+    font-size: 0.800rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+    vertical-align: inherit;
+}
+
+.logos-row {
+    padding-left: 10px;
+}
+
+/*styles from standings.js file */
+.column-data {
+    padding: 10px;
+}
+
+.header-info {
+    padding-right: 40px;
+    font-family: "poppins", "Arial ";
+    font-weight: 600;
+}
+
+.division-container {
+    margin-bottom: 70px;
+}
+
+.team-logo {
+    padding-left: 7px;
+}
+
+.team-logo a {
+    transition: transform 0.3s ease;
+}
+
+.team-logo:hover {
+    transform: scale(1.3);
+}
+
+/* Wildcard Page*/
+.wildcard-pg-button {
+    display: inline-block;
+    top: -10px;
+    color: #000;
+    font-weight: 700;
+    border-width: 0px 0px 3px;
+}
+
+.wildcard-reg-sec {
+    color: #666666;
+}
+
+.standings-nav-2 {
+    padding-top: 10px;
+}
