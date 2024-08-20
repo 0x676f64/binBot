@@ -153,16 +153,19 @@ body {
 
 #scoreboard {
   display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+  padding-right: 47rem;
 }
 
 #scoreboard .game {
-  position: fixed;
-  width:500px;
-  height: 510px;
-  margin: 1rem 20.5rem;
+  width: 31.35rem;
+  height: 31.875rem;
   padding: 1.5rem;
   border: solid 2px #006c54;
   z-index: 1000;
+  background-color: white;
+  margin: 0 auto;
 }
 
 #scoreboard table {
@@ -197,10 +200,6 @@ svg#field {
   top: -15px;
 }
 
-.game {
-  background-color: white;
-}
-
 .balls-strikes {
   font-family: "Roboto Condensed";
   color: #666666;
@@ -231,6 +230,77 @@ svg#field {
   position: relative;
   float: right;
   left: 1rem;
-  bottom: 7.1rem;
-  
+  bottom: 9rem;
 }
+
+.probable-pitchers {
+  height: 100px;
+  margin-top: 1rem;
+}
+
+.prob-pitchers {
+  position: relative;
+}
+
+.home-probs {
+  float: right;
+  margin-right: 1.5rem;
+}
+
+.away-probs {
+ float: left;
+ margin-left: 2rem;
+}
+
+.pre-game-teams-away {
+  font-size: 26px;
+  font-weight: bold;
+  color: #2F4858;
+  opacity: 0.69;
+  text-align: left;
+}
+.pre-game-teams-home {
+  font-size: 26px;
+  font-weight: bold;
+  color: #2F4858;
+  opacity: 0.69;
+  text-align: right;
+}
+
+.away-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #46666D;
+  width: 100%;
+}
+
+.home-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #46666D; 
+}
+
+.pre-game-wins {
+  float: left;
+  font-size: 19px;
+  color: #2F4858;
+}
+
+.pre-game-stats {
+  float: left;
+  color: #2F4858;
+  font-size: 19px;
+}
+
+.pre-game-loss {
+  font-size: 19px;
+  float: left;
+  color: #2F4858;
+}
+
+.pre-game-era {
+  font-size: 19px;
+  float: center;
+  margin-left: 40px;
+  color: #2F4858;
+} 
