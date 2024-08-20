@@ -65,37 +65,50 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (detailedState === 'Scheduled' || detailedState === 'Pre-Game' || detailedState === 'Warmup') {
                     // Get the game time and format it with AM/PM
                     const gameTime = formatTimeWithAmPm(data.gameData.datetime.dateTime);
-                    const awayprobablePitchersId = data.gameData.probablePitchers.away.id;
-                    const homeprobablePitchersId = data.gameData.probablePitchers.home.id;
+                    const awayPitcher = data.gameData.probablePitchers.away;
+                    const homePitcher = data.gameData.probablePitchers.home;
 
-                    const pitcherAwayKey = `ID${awayprobablePitchersId}`;
-                    const pitcherHomeKey = `ID${homeprobablePitchersId}`;
+                    // Ensure the probable pitchers exist before accessing their properties
+                    const awayprobablePitchersId = awayPitcher ? awayPitcher.id : null;
+                    const homeprobablePitchersId = homePitcher ? homePitcher.id : null;
+
+                    const pitcherAwayKey = awayprobablePitchersId ? `ID${awayprobablePitchersId}` : null;
+                    const pitcherHomeKey = homeprobablePitchersId ? `ID${homeprobablePitchersId}` : null;
 
                     gameStatus = gameTime;
                     preGameHTML = `
                         <div class="probable-pitchers">
                             <div class="prob-pitchers">
-                                        <div class="away-probs" mode="Scoreboard">
-                                            <div class="pre-game-teams-away">${data.gameData.teams.away.franchiseName}</div>
-                                            <img class="away-pitcher-icon" srcset="https://midfield.mlbstatic.com/v1/people/${awayprobablePitchersId}/spots/60?zoom=1.2 1x">
-                                            <div class="away-name">${data.gameData.probablePitchers.away.fullName || 'TBD'}</div>
-                                            <div class="pre-game-wins">${data.liveData.boxscore.teams.away.players[pitcherAwayKey]?.seasonStats?.pitching.wins}</div>
-                                            <div class="pre-game-stats">-</div>
-                                            <div class="pre-game-loss">${data.liveData.boxscore.teams.away.players[pitcherAwayKey]?.seasonStats?.pitching.losses}</div>
-                                            <div class="pre-game-era">${data.liveData.boxscore.teams.away.players[pitcherAwayKey]?.seasonStats?.pitching.era}</div>
-                                        </div>
-                                        <div class="home-probs" mode="Scoreboard">
-                                            <div class="pre-game-teams-home">${data.gameData.teams.home.franchiseName}</div>
-                                            <img class="home-pitcher-icon" srcset="https://midfield.mlbstatic.com/v1/people/${homeprobablePitchersId}/spots/60?zoom=1.2 1x">
-                                            <div class="home-name">${data.gameData.probablePitchers.home.fullName}</div>
-                                            <div class="pre-game-wins">${data.liveData.boxscore.teams.home.players[pitcherHomeKey]?.seasonStats?.pitching.wins}</div>
-                                            <div class="pre-game-stats">-</div>
-                                            <div class="pre-game-loss">${data.liveData.boxscore.teams.home.players[pitcherHomeKey]?.seasonStats?.pitching.losses}</div>
-                                            <div class="pre-game-era">${data.liveData.boxscore.teams.home.players[pitcherHomeKey]?.seasonStats?.pitching.era}</div>
-                                        </div>
+                                <div class="away-probs" mode="Scoreboard">
+                                    <div class="pre-game-teams-away">${data.gameData.teams.away.franchiseName}</div>
+                                    ${awayPitcher ? `
+                                        <img class="away-pitcher-icon" srcset="https://midfield.mlbstatic.com/v1/people/${awayprobablePitchersId}/spots/60?zoom=1.2 1x">
+                                        <div class="away-name">${awayPitcher.fullName}</div>
+                                        <div class="pre-game-wins">${data.liveData.boxscore.teams.away.players[pitcherAwayKey]?.seasonStats?.pitching.wins}</div>
+                                        <div class="pre-game-stats">-</div>
+                                        <div class="pre-game-loss">${data.liveData.boxscore.teams.away.players[pitcherAwayKey]?.seasonStats?.pitching.losses}</div>
+                                        <div class="pre-game-era">${data.liveData.boxscore.teams.away.players[pitcherAwayKey]?.seasonStats?.pitching.era}</div>
+                                    ` : `
+                                        <div class="away-name">TBD</div>
+                                    `}
+                                </div>
+                                <div class="home-probs" mode="Scoreboard">
+                                    <div class="pre-game-teams-home">${data.gameData.teams.home.franchiseName}</div>
+                                    ${homePitcher ? `
+                                        <img class="home-pitcher-icon" srcset="https://midfield.mlbstatic.com/v1/people/${homeprobablePitchersId}/spots/60?zoom=1.2 1x">
+                                        <div class="home-name">${homePitcher.fullName}</div>
+                                        <div class="pre-game-wins">${data.liveData.boxscore.teams.home.players[pitcherHomeKey]?.seasonStats?.pitching.wins}</div>
+                                        <div class="pre-game-stats">-</div>
+                                        <div class="pre-game-loss">${data.liveData.boxscore.teams.home.players[pitcherHomeKey]?.seasonStats?.pitching.losses}</div>
+                                        <div class="pre-game-era">${data.liveData.boxscore.teams.home.players[pitcherHomeKey]?.seasonStats?.pitching.era}</div>
+                                    ` : `
+                                        <div class="home-name">TBD</div>
+                                    `}
+                                </div>
                             </div>
                         </div>
                     `;
+
 
                 } else if (detailedState === 'Live' || detailedState === 'In Progress') {
                     // Get inning data
