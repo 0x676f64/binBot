@@ -33,16 +33,16 @@ document.addEventListener("DOMContentLoaded", () => {
         for (let i = 1; i <= 3; i++) {
             const outCircle = document.getElementById(`out-${i}`);
             if (outCircle) {
-                outCircle.style.fill = i <= outs ? '#D7827E' : 'white';
+                outCircle.style.fill = i <= outs ? '#006C54' : 'white';
             } else {
                 console.error(`Element out-${i} not found`);
             }
         }
 
         // Update bases
-        document.getElementById('first-base').style.fill = onBase.first ? '#D7827E' : 'white';
-        document.getElementById('second-base').style.fill = onBase.second ? '#D7827E' : 'white';
-        document.getElementById('third-base').style.fill = onBase.third ? '#D7827E' : 'white';
+        document.getElementById('first-base').style.fill = onBase.first ? '#006C54' : 'white';
+        document.getElementById('second-base').style.fill = onBase.second ? '#006C54' : 'white';
+        document.getElementById('third-base').style.fill = onBase.third ? '#006C54' : 'white';
     }
 
     // Fetch and display detailed game data
@@ -65,10 +65,35 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (detailedState === 'Scheduled' || detailedState === 'Pre-Game' || detailedState === 'Warmup') {
                     // Get the game time and format it with AM/PM
                     const gameTime = formatTimeWithAmPm(data.gameData.datetime.dateTime);
+                    const awayprobablePitchersId = data.gameData.probablePitchers.away.id;
+                    const homeprobablePitchersId = data.gameData.probablePitchers.home.id;
+
+                    const pitcherAwayKey = `ID${awayprobablePitchersId}`;
+                    const pitcherHomeKey = `ID${homeprobablePitchersId}`;
+
                     gameStatus = gameTime;
                     preGameHTML = `
-                        <div>
-                            <p>Proable Pitchers</p>
+                        <div class="probable-pitchers">
+                            <div class="prob-pitchers">
+                                        <div class="away-probs" mode="Scoreboard">
+                                            <div class="pre-game-teams-away">${data.gameData.teams.away.franchiseName}</div>
+                                            <img class="away-pitcher-icon" srcset="https://midfield.mlbstatic.com/v1/people/${awayprobablePitchersId}/spots/60?zoom=1.2 1x">
+                                            <div class="away-name">${data.gameData.probablePitchers.away.fullName || 'TBD'}</div>
+                                            <div class="pre-game-wins">${data.liveData.boxscore.teams.away.players[pitcherAwayKey]?.seasonStats?.pitching.wins}</div>
+                                            <div class="pre-game-stats">-</div>
+                                            <div class="pre-game-loss">${data.liveData.boxscore.teams.away.players[pitcherAwayKey]?.seasonStats?.pitching.losses}</div>
+                                            <div class="pre-game-era">${data.liveData.boxscore.teams.away.players[pitcherAwayKey]?.seasonStats?.pitching.era}</div>
+                                        </div>
+                                        <div class="home-probs" mode="Scoreboard">
+                                            <div class="pre-game-teams-home">${data.gameData.teams.home.franchiseName}</div>
+                                            <img class="home-pitcher-icon" srcset="https://midfield.mlbstatic.com/v1/people/${homeprobablePitchersId}/spots/60?zoom=1.2 1x">
+                                            <div class="home-name">${data.gameData.probablePitchers.home.fullName}</div>
+                                            <div class="pre-game-wins">${data.liveData.boxscore.teams.home.players[pitcherHomeKey]?.seasonStats?.pitching.wins}</div>
+                                            <div class="pre-game-stats">-</div>
+                                            <div class="pre-game-loss">${data.liveData.boxscore.teams.home.players[pitcherHomeKey]?.seasonStats?.pitching.losses}</div>
+                                            <div class="pre-game-era">${data.liveData.boxscore.teams.home.players[pitcherHomeKey]?.seasonStats?.pitching.era}</div>
+                                        </div>
+                            </div>
                         </div>
                     `;
 
@@ -82,15 +107,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     
                     // Include SVG only if game is In Progress
                     svgFieldHTML = `
-                            <svg id="field" width="100" height="110" viewBox="0 0 58 79" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path id="out-1" d="M19.5 61.5C19.5 64.7795 16.6254 67.5 13 67.5C9.37461 67.5 6.5 64.7795 6.5 61.5C6.5 58.2205 9.37461 55.5 13 55.5C16.6254 55.5 19.5 58.2205 19.5 61.5Z" fill="#D9D9D9" stroke="#D7827E" stroke-width="1"/>
-                                <path id="out-2" d="M36.5 61.5C36.5 64.7795 33.6254 67.5 30 67.5C26.3746 67.5 23.5 64.7795 23.5 61.5C23.5 58.2205 26.3746 55.5 30 55.5C33.6254 55.5 36.5 58.2205 36.5 61.5Z" fill="#D9D9D9" stroke="#D7827E" stroke-width="1"/>
-                                <path id="out-3" d="M53.5 61.5C53.5 64.7795 50.6254 67.5 47 67.5C43.3746 67.5 40.5 64.7795 40.5 61.5C40.5 58.2205 43.3746 55.5 47 55.5C50.6254 55.5 53.5 58.2205 53.5 61.5Z" fill="#D9D9D9" stroke="#D7827E" stroke-width="1"/>
-                                <rect id="third-base" x="17.6066" y="29.7071" width="14" height="14" rx="0.5" transform="rotate(45 17.6066 29.7071)" fill="#FFDDDD" stroke="#B9A2A2" stroke-width="1"/>
-                                <rect id="second-base" x="29.364" y="17.7071" width="14" height="14" rx="0.5" transform="rotate(45 29.364 17.7071)" fill="#FFDDDD" stroke="#B9A2A2" stroke-width="1"/>
-                                <rect id="first-base" x="41.6066" y="29.7071" width="14" height="14" rx="0.5" transform="rotate(45 41.6066 29.7071)" fill="#FFDDDD" stroke="#B9A2A2" stroke-width="1"/>
+                            <svg id="field" width="100" height="140" viewBox="0 0 58 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path id="out-1" d="M19.5 61.5C19.5 64.7795 16.6254 67.5 13 67.5C9.37461 67.5 6.5 64.7795 6.5 61.5C6.5 58.2205 9.37461 55.5 13 55.5C16.6254 55.5 19.5 58.2205 19.5 61.5Z" fill="#D9D9D9" stroke="#006C54" stroke-width="1" opacity="0.8"/>
+                                <path id="out-2" d="M36.5 61.5C36.5 64.7795 33.6254 67.5 30 67.5C26.3746 67.5 23.5 64.7795 23.5 61.5C23.5 58.2205 26.3746 55.5 30 55.5C33.6254 55.5 36.5 58.2205 36.5 61.5Z" fill="#D9D9D9" stroke="#006C54" stroke-width="1" opacity="0.8"/>
+                                <path id="out-3" d="M53.5 61.5C53.5 64.7795 50.6254 67.5 47 67.5C43.3746 67.5 40.5 64.7795 40.5 61.5C40.5 58.2205 43.3746 55.5 47 55.5C50.6254 55.5 53.5 58.2205 53.5 61.5Z" fill="#D9D9D9" stroke="#006C54" stroke-width="1" opacity="0.8"/>
+                                <rect id="third-base" x="17.6066" y="29.7071" width="14" height="14" rx="0.5" transform="rotate(45 17.6066 29.7071)" fill="#FFDDDD" stroke="#006C54" stroke-width="1" opacity="0.8"/>
+                                <rect id="second-base" x="29.364" y="17.7071" width="14" height="14" rx="0.5" transform="rotate(45 29.364 17.7071)" fill="#FFDDDD" stroke="#006C54" stroke-width="1" opacity="0.8"/>
+                                <rect id="first-base" x="41.6066" y="29.7071" width="14" height="14" rx="0.5" transform="rotate(45 41.6066 29.7071)" fill="#FFDDDD" stroke="#006C54" stroke-width="1" opacity="0.8"/>
                             </svg>
-                            <div class="balls-strikes" id="count">${data.liveData.plays.currentPlay.count.balls} - ${data.liveData.plays.currentPlay.count.strikes}</div>
+                            <div class="balls-strikes" id="count" style="color: #2f4858;">${data.liveData.plays.currentPlay.count.balls} - ${data.liveData.plays.currentPlay.count.strikes}</div>
                             <div class="strike-zone-wrapper">
                             <svg class="strike-zone" width="125" height="178" viewBox="0 0 125 178" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g id="strikeZone">
