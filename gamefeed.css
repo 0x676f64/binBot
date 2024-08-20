@@ -257,14 +257,12 @@ svg#field {
   font-weight: bold;
   color: #2F4858;
   opacity: 0.69;
-  text-align: left;
 }
 .pre-game-teams-home {
   font-size: 26px;
   font-weight: bold;
   color: #2F4858;
   opacity: 0.69;
-  text-align: right;
 }
 
 .away-name {
@@ -301,6 +299,6 @@ svg#field {
 .pre-game-era {
   font-size: 19px;
   float: center;
-  margin-left: 40px;
+  margin-left: 50px;
   color: #2F4858;
 } 
