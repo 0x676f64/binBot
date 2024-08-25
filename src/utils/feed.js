@@ -82,8 +82,10 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <div class="away-probs" mode="Scoreboard">
                                     <div class="pre-game-teams-away">${data.gameData.teams.away.franchiseName}</div>
                                     ${awayPitcher ? `
-                                        <img class="away-pitcher-icon" srcset="https://midfield.mlbstatic.com/v1/people/${awayprobablePitchersId}/spots/60?zoom=1.2 1x">
-                                        <div class="away-name">${awayPitcher.fullName}</div>
+                                        <img class="away-pitcher-icon" srcset="https://midfield.mlbstatic.com/v1/people/${awayprobablePitchersId}/spots/60?zoom=1.2 1.5x">
+                                        <div class="away-name">${awayPitcher.fullName}
+                                        <span>(${data.gameData.players[pitcherAwayKey]?.pitchHand.code})</span>
+                                        </div>
                                         <div class="pre-game-wins">${data.liveData.boxscore.teams.away.players[pitcherAwayKey]?.seasonStats?.pitching.wins}</div>
                                         <div class="pre-game-stats">-</div>
                                         <div class="pre-game-loss">${data.liveData.boxscore.teams.away.players[pitcherAwayKey]?.seasonStats?.pitching.losses}</div>
@@ -95,8 +97,10 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <div class="home-probs" mode="Scoreboard">
                                     <div class="pre-game-teams-home">${data.gameData.teams.home.franchiseName}</div>
                                     ${homePitcher ? `
-                                        <img class="home-pitcher-icon" srcset="https://midfield.mlbstatic.com/v1/people/${homeprobablePitchersId}/spots/60?zoom=1.2 1x">
-                                        <div class="home-name">${homePitcher.fullName}</div>
+                                        <img class="home-pitcher-icon" srcset="https://midfield.mlbstatic.com/v1/people/${homeprobablePitchersId}/spots/60?zoom=1.2 1.5x">
+                                        <div class="home-name">${homePitcher.fullName}
+                                        <span>(${data.gameData.players[pitcherHomeKey]?.pitchHand.code})</span>
+                                        </div>
                                         <div class="pre-game-wins">${data.liveData.boxscore.teams.home.players[pitcherHomeKey]?.seasonStats?.pitching.wins}</div>
                                         <div class="pre-game-stats">-</div>
                                         <div class="pre-game-loss">${data.liveData.boxscore.teams.home.players[pitcherHomeKey]?.seasonStats?.pitching.losses}</div>
@@ -120,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     
                     // Include SVG only if game is In Progress
                     svgFieldHTML = `
-                            <svg id="field" width="100" height="140" viewBox="0 0 58 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg id="field" width="100" height="100" viewBox="0 0 58 79" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path id="out-1" d="M19.5 61.5C19.5 64.7795 16.6254 67.5 13 67.5C9.37461 67.5 6.5 64.7795 6.5 61.5C6.5 58.2205 9.37461 55.5 13 55.5C16.6254 55.5 19.5 58.2205 19.5 61.5Z" fill="#D9D9D9" stroke="#006C54" stroke-width="1" opacity="0.8"/>
                                 <path id="out-2" d="M36.5 61.5C36.5 64.7795 33.6254 67.5 30 67.5C26.3746 67.5 23.5 64.7795 23.5 61.5C23.5 58.2205 26.3746 55.5 30 55.5C33.6254 55.5 36.5 58.2205 36.5 61.5Z" fill="#D9D9D9" stroke="#006C54" stroke-width="1" opacity="0.8"/>
                                 <path id="out-3" d="M53.5 61.5C53.5 64.7795 50.6254 67.5 47 67.5C43.3746 67.5 40.5 64.7795 40.5 61.5C40.5 58.2205 43.3746 55.5 47 55.5C50.6254 55.5 53.5 58.2205 53.5 61.5Z" fill="#D9D9D9" stroke="#006C54" stroke-width="1" opacity="0.8"/>
@@ -130,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             </svg>
                             <div class="balls-strikes" id="count" style="color: #2f4858;">${data.liveData.plays.currentPlay.count.balls} - ${data.liveData.plays.currentPlay.count.strikes}</div>
                             <div class="strike-zone-wrapper">
-                            <svg class="strike-zone" width="125" height="178" viewBox="0 0 125 178" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="strike-zone" width="100" height="150" viewBox="0 0 125 178" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g id="strikeZone">
                                 <rect id="strike-zone" x="0.5" y="0.5" width="124" height="177" stroke="black"/>
                                 </g>
@@ -140,13 +144,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 } else if (detailedState === 'Final' || detailedState === 'Game Over') {
                     // Show 'Final' when the game is finished and style it in red
+
+                    const winningPitcher = data.liveData.decisions.winner;
+                    const losingPitcher = data.liveData.decisions.loser;
+                    const savesPitcher = data.liveData.decisions.save;
+
+                    const winningPitcherId = winningPitcher ? winningPitcher.id : null;
+                    const losingPitcherId = losingPitcher ? losingPitcher.id : null; 
+                    const savesPitcherId = savesPitcher ? savesPitcher.id: null; 
+                    
+                    const winningPitcherKey = winningPitcherId ? `ID${data.liveData.decisions.winner.id}` : null;
+                    const losingPitcherKey = losingPitcherId ? `ID${data.liveData.decisions.loser.id}` : null;
+                    const savesPitcherKey = savesPitcherId ? `ID${data.liveData.decisions.save.id}` : null;
+
                     gameStatus = 'Final';
                     inningBoxStyle = 'color: red;';
                     svgFieldHTML = '';
 
                     finalStateHTML = `
-                        <div class="final-message">
-                        <p>The game is over </p>
+                        <div class="end-result">
+                            <div class="final-results">
+                                <div class="winning-pitcher" mode="Scoreboard">
+                                ${winningPitcherKey ? `
+                                    <img srcset="https://midfield.mlbstatic.com/v1/people/${winningPitcherId}/spots/60?zoom=1.2 1.5x">
+                                    <div class="winning-pitcher-name">${data.liveData.decisions.winner.fullName} 
+                                        <span>(${data.gameData.players[winningPitcherKey]?.pitchHand.code})</span>
+                                    </div>
+                                    <div class="final-game-wins">${data.liveData.boxscore.teams.home.players[winningPitcherKey]?.seasonStats?.pitching.wins ?? data.liveData.boxscore.teams.away.players[winningPitcherKey]?.seasonStats?.pitching.wins ?? 0}</div>
+                                    <div class="final-game-losses">${data.liveData.boxscore.teams.home.players[winningPitcherKey]?.seasonStats?.pitching.losses ?? data.liveData.boxscore.teams.away.players[winningPitcherKey]?.seasonStats?.pitching.losses ?? 0}</div>
+                                    <div class="final-game-era">${data.liveData.boxscore.teams.home.players[winningPitcherKey]?.seasonStats?.pitching.era ?? data.liveData.boxscore.teams.away.players[winningPitcherKey]?.seasonStats?.pitching.era ?? 0}</div>
+                                    </div>
+                                </div>` : ''}
+                                <div class="losing-pitche" mode="Scoreboard">
+                                ${losingPitcherKey ? `
+                                    <img srcset="https://midfield.mlbstatic.com/v1/people/${losingPitcherId}/spots/60?zoom=1.2 1.5x">
+                                    <div class="losing-pitcher-name">${data.liveData.decisions.loser.fullName} 
+                                        <span>(${data.gameData.players[losingPitcherKey]?.pitchHand.code})</span>
+                                    </div>
+                                    <div class="final-game-wins">${data.liveData.boxscore.teams.home.players[losingPitcherKey]?.seasonStats?.pitching.wins ?? data.liveData.boxscore.teams.away.players[losingPitcherKey]?.seasonStats?.pitching.wins ?? 0}</div>
+                                    <div class="final-game-losses">${data.liveData.boxscore.teams.home.players[losingPitcherKey]?.seasonStats?.pitching.losses ?? data.liveData.boxscore.teams.away.players[losingPitcherKey]?.seasonStats?.pitching.losses ?? 0}</div>
+                                    <div class="final-game-era">${data.liveData.boxscore.teams.home.players[losingPitcherKey]?.seasonStats?.pitching.era ?? data.liveData.boxscore.teams.away.players[losingPitcherKey]?.seasonStats?.pitching.era ?? 0}</div>
+                                    </div>
+                                </div>` : ''}
+                                <div class="saves" mode="Scoreboard">
+                                ${savesPitcherKey ? `
+                                    <img srcset="https://midfield.mlbstatic.com/v1/people/${savesPitcherId}/spots/60?zoom=1.2 1.5x">
+                                    <div class="saves-pitcher-name">${data.liveData.decisions.save.fullName} 
+                                        <span>(${data.gameData.players[savesPitcherKey]?.pitchHand.code})</span>
+                                    </div>
+                                    <div class="final-game-saves">${data.liveData.boxscore.teams.home.players[savesPitcherKey]?.seasonStats?.pitching.saves ?? data.liveData.boxscore.teams.away.players[savesPitcherKey]?.seasonStats?.pitching.saves ?? 0}</div>
+                                    </div>
+                                </div>` : ''}
+                            </div>
                         </div>
                     `;
                 }
