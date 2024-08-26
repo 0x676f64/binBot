@@ -400,9 +400,13 @@ svg#field {
 
 .saves-pitcher-name {
   margin-left: 3rem;
+  font-size: 15px;
+  color: #2F4858;
+  font-weight: 500;
 }
 
 .final-game-saves {
   margin-left: 6rem;
+  font-size: 14px;
+  color: #2F4858;
 }
-
