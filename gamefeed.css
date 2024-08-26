@@ -302,3 +302,91 @@ svg#field {
   margin-left: 50px;
   color: #2F4858;
 } 
+
+.end-result {
+  height: 100px;
+  margin-top: 1rem;
+}
+
+.final-results {
+  position: relative;
+}
+
+.winning-pitcher {
+  float: left;
+  margin-left: 4rem;
+}
+
+.losing-pitcher {
+  float: right;
+  margin-right: 5rem;
+}
+
+.winning-pitcher-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #2F4858;
+  width: 100%;
+}
+
+.losing-pitcher-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #2F4858;
+  width: 100%;
+}
+
+.win-final-game-wins {
+  float: left;
+  font-size: 14px;
+  color: #2F4858;
+}
+
+.win-final-game-stats {
+  float: left;
+  color: #2F4858;
+  font-size: 14px;
+}
+
+.win-final-game-losses {
+  font-size: 14px;
+  float: left;
+  color: #2F4858;
+}
+
+.win-final-game-era {
+  font-size: 14px;
+  float: center;
+  margin-left: 50px;
+  color: #2F4858;
+}
+
+.loss-final-game-wins {
+  float: left;
+  font-size: 14px;
+  color: #2F4858;
+}
+
+.loss-final-game-stats {
+  float: left;
+  color: #2F4858;
+  font-size: 14px;
+}
+
+.loss-final-game-losses {
+  font-size: 14px;
+  float: left;
+  color: #2F4858;
+}
+
+.loss-final-game-era {
+  font-size: 14px;
+  float: center;
+  margin-left: 50px;
+  color: #2F4858;
+}
+
+.saves-pitcher-name {
+  float: left;
+  margin-left: 4rem;
+}
