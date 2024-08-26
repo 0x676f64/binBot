@@ -322,6 +322,10 @@ svg#field {
   margin-right: 5rem;
 }
 
+.win-icon {
+  margin-left: 1.5rem;
+}
+
 .winning-pitcher-name {
   font-size: 15px;
   font-weight: 500;
@@ -361,6 +365,10 @@ svg#field {
   color: #2F4858;
 }
 
+.loss-icon {
+  margin-left: 1rem;
+}
+
 .loss-final-game-wins {
   float: left;
   font-size: 14px;
@@ -386,7 +394,15 @@ svg#field {
   color: #2F4858;
 }
 
-.saves-pitcher-name {
-  float: left;
-  margin-left: 4rem;
+.saves-icon {
+  margin-left: 5.3rem;
 }
+
+.saves-pitcher-name {
+  margin-left: 3rem;
+}
+
+.final-game-saves {
+  margin-left: 6rem;
+}
+
