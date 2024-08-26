@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <div class="final-results">
                                 <div class="winning-pitcher" mode="Scoreboard">
                                 ${winningPitcherKey ? `
-                                    <img srcset="https://midfield.mlbstatic.com/v1/people/${winningPitcherId}/spots/60?zoom=1.2 1.5x">
+                                    <img class="win-icon" srcset="https://midfield.mlbstatic.com/v1/people/${winningPitcherId}/spots/60?zoom=1.2 1.5x">
                                     <div class="winning-pitcher-name">${data.liveData.decisions.winner.fullName} 
                                         <span>(${data.gameData.players[winningPitcherKey]?.pitchHand.code})</span>
                                     </div>
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 </div>` : ''}
                                 <div class="losing-pitcher" mode="Scoreboard">
                                 ${losingPitcherKey ? `
-                                    <img srcset="https://midfield.mlbstatic.com/v1/people/${losingPitcherId}/spots/60?zoom=1.2 1.5x">
+                                    <img class="loss-icon" srcset="https://midfield.mlbstatic.com/v1/people/${losingPitcherId}/spots/60?zoom=1.2 1.5x">
                                     <div class="losing-pitcher-name">${data.liveData.decisions.loser.fullName} 
                                         <span>(${data.gameData.players[losingPitcherKey]?.pitchHand.code})</span>
                                     </div>
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 </div>` : ''}
                                 <div class="saves" mode="Scoreboard">
                                 ${savesPitcherKey ? `
-                                    <img srcset="https://midfield.mlbstatic.com/v1/people/${savesPitcherId}/spots/60?zoom=1.2 1.5x">
+                                    <img class="saves-icon" srcset="https://midfield.mlbstatic.com/v1/people/${savesPitcherId}/spots/60?zoom=1.2 1.5x">
                                     <div class="saves-pitcher-name">${data.liveData.decisions.save.fullName} 
                                         <span>(${data.gameData.players[savesPitcherKey]?.pitchHand.code})</span>
                                     </div>
