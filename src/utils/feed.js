@@ -167,6 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <div class="winning-pitcher" mode="Scoreboard">
                                 ${winningPitcherKey ? `
                                     <img class="win-icon" srcset="https://midfield.mlbstatic.com/v1/people/${winningPitcherId}/spots/60?zoom=1.2 1.5x">
+                                <div style="margin-left: 1.7rem; font-size: 1.3rem; font-weight: 500; color: #2F4858; opacity: 0.8;">Win: </div>
                                     <div class="winning-pitcher-name">${data.liveData.decisions.winner.fullName} 
                                         <span>(${data.gameData.players[winningPitcherKey]?.pitchHand.code})</span>
                                     </div>
@@ -179,6 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <div class="losing-pitcher" mode="Scoreboard">
                                 ${losingPitcherKey ? `
                                     <img class="loss-icon" srcset="https://midfield.mlbstatic.com/v1/people/${losingPitcherId}/spots/60?zoom=1.2 1.5x">
+                                    <div style="margin-left: 1.7rem; font-size: 1.3rem; font-weight: 500; color: #2F4858; opacity: 0.8;">Loss</div>
                                     <div class="losing-pitcher-name">${data.liveData.decisions.loser.fullName} 
                                         <span>(${data.gameData.players[losingPitcherKey]?.pitchHand.code})</span>
                                     </div>
@@ -191,7 +193,8 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <div class="saves" mode="Scoreboard">
                                 ${savesPitcherKey ? `
                                     <img class="saves-icon" srcset="https://midfield.mlbstatic.com/v1/people/${savesPitcherId}/spots/60?zoom=1.2 1.5x">
-                                    <div class="saves-pitcher-name">${data.liveData.decisions.save.fullName} 
+                                    <div style="margin-left: 5.3rem; font-size: 1.3rem; font-weight: 500; color: #2F4858; opacity: 0.8;">Save</div>
+                                    <div class="saves-pitcher-name">S: ${data.liveData.decisions.save.fullName} 
                                         <span>(${data.gameData.players[savesPitcherKey]?.pitchHand.code})</span>
                                     </div>
                                     <div class="final-game-saves">${data.liveData.boxscore.teams.home.players[savesPitcherKey]?.seasonStats?.pitching.saves ?? data.liveData.boxscore.teams.away.players[savesPitcherKey]?.seasonStats?.pitching.saves ?? 0}</div>
@@ -324,4 +327,4 @@ document.addEventListener("DOMContentLoaded", () => {
         fetchAndDisplayGameData(gamePk);
     }
     
-});
+})
