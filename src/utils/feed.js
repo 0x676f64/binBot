@@ -327,4 +327,4 @@ document.addEventListener("DOMContentLoaded", () => {
         fetchAndDisplayGameData(gamePk);
     }
     
-})
+});
