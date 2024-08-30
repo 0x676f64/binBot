@@ -121,7 +121,105 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     // Combine inningHalf and inningOrdinal
                     gameStatus = `${inningHalf} ${inningOrdinal}`;
+                    inningBoxStyle = 'color: red';
+
+                   // Define svgHeight and playerHeight
+                    const svgHeight = 500; // Example height in pixels, adjust as needed
+                    const playerHeight = 6.0; // Example player height in feet, adjust as needed
+
+                    // Function to fetch real-time pitch data
+                    function fetchRealTimePitchData() {
+                        fetch(`https://statsapi.mlb.com/api/v1.1/game/${gamePk}/feed/live`)
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log('Full Data:', data); // Log the entire data structure
+
+                                // Check if the expected data structure exists
+                                if (data.liveData && data.liveData.plays && data.liveData.plays.currentPlay) {
+                                    console.log('Current Play:', data.liveData.plays.currentPlay); // Log the current play data
+                                    handleRealTimePitchData(data.liveData.plays.currentPlay.playEvents);
+                                } else {
+                                    console.error('Unexpected data format or live play data not available:', data);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error fetching pitch data:', error);
+                            });
+                    }
+
+                    // Function to handle and process the pitch data
+                    function handleRealTimePitchData(playEvents) {
+                        if (playEvents && playEvents.length > 0) {
+                            playEvents.forEach(event => {
+                                if (event.details && event.details.call && event.pitchData) {
+                                    const { pX, pZ } = event.pitchData.coordinates;
+                                    const description = event.details.call.description;
+                                    console.log('Pitch Data:', { pX, pZ, description }); // Log the pitch data
+
+                                    // Plot the pitch on the strike zone
+                                    plotPitch(pX, pZ, description);
+                                }
+                            });
+                        } else {
+                            console.warn('No play events or pitch data available.');
+                        }
+                    }
+
+                    function plotPitch(pX, pZ, description) {
+                        // Calculate player height and SVG height based on pitch data
+                        const playerHeight = ((pX + 0.5) * 0.8) + 0.1; // Adjust as needed
+                        const svgHeight = (pZ - 1.5) / 3; // Adjust 'bottom' and 'height' accordingly
                     
+                        // SVG dimensions and strike zone parameters
+                        const svgWidth = 170; // Width of the strike zone (17 inches)
+                        const centerX = svgWidth / 2; // X center of the strike zone
+                        const strikeZoneTop = 50; // The top Y position for the strike zone
+                        const strikeZoneHeight = 300; // The height of the strike zone in SVG units
+                    
+                        // Convert pX and pZ to fit within the SVG viewBox
+                        const xPos = centerX + (pX * (svgWidth / 20)); // pX in inches from the center
+                        const yPos = strikeZoneTop + (strikeZoneHeight - ((pZ - 1.5) / (4.5 - 1.5)) * strikeZoneHeight);
+                    
+                        console.log(`Plotting pitch at X: ${xPos}, Y: ${yPos}, Description: ${description}`);
+                        console.log(`Player height: ${playerHeight}, SVG height: ${svgHeight}`);
+                    
+                        // Create a circle element for the pitch
+                        const pitchCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                        pitchCircle.setAttribute("cx", xPos);
+                        pitchCircle.setAttribute("cy", yPos);
+                        pitchCircle.setAttribute("r", 10); // Adjusted radius to fit the SVG
+                        pitchCircle.setAttribute("class", "pitch");
+                    
+                        // Assign color based on pitch description
+                        switch (description) {
+                            case 'Called Strike' || 'Foul':
+                                pitchCircle.setAttribute("fill", "red");
+                                break;
+                            case 'Ball':
+                                pitchCircle.setAttribute("fill", "green");
+                                break;
+                            case 'In play, out(s)' || 'In play, no out' || 'In play, run(s)':
+                                pitchCircle.setAttribute("fill", "blue");
+                                break;
+                            // Add more cases as needed
+                            default:
+                                pitchCircle.setAttribute(null);
+                        }
+                    
+                        // Find the SVG element and append the pitch circle
+                        const svg = document.querySelector(".strike-zone-box");
+                        if (svg) {
+                            svg.appendChild(pitchCircle);
+                            console.log(`Pitch circle added to SVG at ${xPos}, ${yPos}`);
+                        } else {
+                            console.error('SVG element not found.');
+                        }
+                    }
+                    
+                    // Call fetchRealTimePitchData to start fetching and plotting
+                    setInterval(fetchRealTimePitchData, 10000);
+                    
+
                     // Include SVG only if game is In Progress
                     svgFieldHTML = `
                             <svg id="field" width="100" height="100" viewBox="0 0 58 79" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -132,15 +230,23 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <rect id="second-base" x="29.364" y="17.7071" width="14" height="14" rx="0.5" transform="rotate(45 29.364 17.7071)" fill="#FFDDDD" stroke="#006C54" stroke-width="1" opacity="0.8"/>
                                 <rect id="first-base" x="41.6066" y="29.7071" width="14" height="14" rx="0.5" transform="rotate(45 41.6066 29.7071)" fill="#FFDDDD" stroke="#006C54" stroke-width="1" opacity="0.8"/>
                             </svg>
+
                             <div class="balls-strikes" id="count" style="color: #2f4858;">${data.liveData.plays.currentPlay.count.balls} - ${data.liveData.plays.currentPlay.count.strikes}</div>
-                            <div class="strike-zone-wrapper">
-                            <svg class="strike-zone" width="100" height="150" viewBox="0 0 125 178" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g id="strikeZone">
-                                <rect id="strike-zone" x="0.5" y="0.5" width="124" height="177" stroke="black"/>
-                                </g>
+
+                           <svg class="strike-zone-wrapper" width="300" height="300" viewBox=" 0 0 352 352" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g class="strike-zone-box">
+                            <rect class="strike-zone" width="300" height="330" fill="white"/>
+                            <g class="strike-zone">
+                            <rect class="strikes" x="100" y="88" width="123.19" height="176" stroke="black" stroke-width="2"/>
+                            </g>
+                            </g>
                             </svg>
-                            </div>
+
                             `;
+
+                } else if (detailedState === 'Suspended: Rain') {
+                    gameStatus = 'Suspended';
+                    inningBoxStyle = 'color: red';
 
                 } else if (detailedState === 'Final' || detailedState === 'Game Over') {
                     // Show 'Final' when the game is finished and style it in red
@@ -167,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <div class="winning-pitcher" mode="Scoreboard">
                                 ${winningPitcherKey ? `
                                     <img class="win-icon" srcset="https://midfield.mlbstatic.com/v1/people/${winningPitcherId}/spots/60?zoom=1.2 1.5x">
-                                <div style="margin-left: 1.7rem; font-size: 1.3rem; font-weight: 500; color: #2F4858; opacity: 0.8;">Win: </div>
+                                <div style="margin-left: 1.7rem; font-size: 1.3rem; font-weight: 400; color: #2F4858; opacity: 0.8;">Win: </div>
                                     <div class="winning-pitcher-name">${data.liveData.decisions.winner.fullName} 
                                         <span>(${data.gameData.players[winningPitcherKey]?.pitchHand.code})</span>
                                     </div>
@@ -180,12 +286,12 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <div class="losing-pitcher" mode="Scoreboard">
                                 ${losingPitcherKey ? `
                                     <img class="loss-icon" srcset="https://midfield.mlbstatic.com/v1/people/${losingPitcherId}/spots/60?zoom=1.2 1.5x">
-                                    <div style="margin-left: 1.7rem; font-size: 1.3rem; font-weight: 500; color: #2F4858; opacity: 0.8;">Loss</div>
+                                    <div style="margin-left: 1.7rem; font-size: 1.3rem; font-weight: 400; color: #2F4858; opacity: 0.8;">Loss</div>
                                     <div class="losing-pitcher-name">${data.liveData.decisions.loser.fullName} 
                                         <span>(${data.gameData.players[losingPitcherKey]?.pitchHand.code})</span>
                                     </div>
                                     <div class="loss-final-game-wins">${data.liveData.boxscore.teams.home.players[losingPitcherKey]?.seasonStats?.pitching.wins ?? data.liveData.boxscore.teams.away.players[losingPitcherKey]?.seasonStats?.pitching.wins ?? 0}</div>
-                                    <div class="loss-final-game-stats">-</div>
+                                    <div class="loss-final-game-stats">-</div>              
                                     <div class="loss-final-game-losses">${data.liveData.boxscore.teams.home.players[losingPitcherKey]?.seasonStats?.pitching.losses ?? data.liveData.boxscore.teams.away.players[losingPitcherKey]?.seasonStats?.pitching.losses ?? 0}</div>
                                     <div class="loss-final-game-era">${data.liveData.boxscore.teams.home.players[losingPitcherKey]?.seasonStats?.pitching.era ?? data.liveData.boxscore.teams.away.players[losingPitcherKey]?.seasonStats?.pitching.era ?? 0}</div>
                                     </div>
@@ -193,8 +299,8 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <div class="saves" mode="Scoreboard">
                                 ${savesPitcherKey ? `
                                     <img class="saves-icon" srcset="https://midfield.mlbstatic.com/v1/people/${savesPitcherId}/spots/60?zoom=1.2 1.5x">
-                                    <div style="margin-left: 5.3rem; font-size: 1.3rem; font-weight: 500; color: #2F4858; opacity: 0.8;">Save</div>
-                                    <div class="saves-pitcher-name">S: ${data.liveData.decisions.save.fullName} 
+                                    <div style="margin-left: 5.3rem; font-size: 1.3rem; font-weight: 400; color: #2F4858; opacity: 0.8;">Save</div>
+                                    <div class="saves-pitcher-name">${data.liveData.decisions.save.fullName} 
                                         <span>(${data.gameData.players[savesPitcherKey]?.pitchHand.code})</span>
                                     </div>
                                     <div class="final-game-saves">${data.liveData.boxscore.teams.home.players[savesPitcherKey]?.seasonStats?.pitching.saves ?? data.liveData.boxscore.teams.away.players[savesPitcherKey]?.seasonStats?.pitching.saves ?? 0}</div>
@@ -306,25 +412,25 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 `;
 
-                // Append the generated HTML to the existing element
-                const existingElement = document.getElementById('feedContainer');
-                existingElement.innerHTML = gameHTML;
-
-                // Update the SVG with the current game state only if it's In Progress
-                if (detailedState === 'In Progress') {
-                    updateSVG(data);
-                }
-
-            })
-            .catch(error => {
-                console.error('Error fetching game data:', error);
-            });
-    }
-
-    // Get the gamePk from the URL and fetch the game data
-    const gamePk = getGamePkFromURL();
-    if (gamePk) {
-        fetchAndDisplayGameData(gamePk);
-    }
-    
-});
+                 // Append the generated HTML to the existing element
+                 const existingElement = document.getElementById('feedContainer');
+                 existingElement.innerHTML = gameHTML;
+ 
+                 // Update the SVG with the current game state only if it's In Progress
+                 if (detailedState === 'In Progress') {
+                     updateSVG(data);
+                 }
+ 
+             })
+             .catch(error => {
+                 console.error('Error fetching game data:', error);
+             });
+     }
+ 
+     // Get the gamePk from the URL and fetch the game data
+     const gamePk = getGamePkFromURL();
+     if (gamePk) {
+         fetchAndDisplayGameData(gamePk);
+     }
+     
+ });
