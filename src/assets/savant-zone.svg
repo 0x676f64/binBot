@@ -1,10 +1,10 @@
 <svg id="svg-1" width="500" height="500" viewBox=" 0 0 500 500">
-<rect width="500" height="500" fill="none" stroke="#c2c2c2"/>
+<rect width="500" height="500" fill="none" stroke="#ffffff"/>
 <g transform="scale(0.65) translate(100,175)">
 <rect width="500" height="500" fill="none" stroke="none"> </rect>
 <g>
 <defs>
-<style>.e{fill:#b9a2a2;stroke:#d6d6d6;}.e,.f{stroke-miterlimit:10;}.f{fill:#b9a2a2;stroke:#bababa;}</style>
+<style>.e{fill:#9893a5;stroke:#d6d6d6;}.e,.f{stroke-miterlimit:10;}.f{fill:#9893a5;stroke:#bababa;}</style>
 </defs>
 <g id="a"/>
 <g id="b">
@@ -20,7 +20,7 @@
 </g>
 </g>
 <defs>
-<style>.e{fill:#b9a2a2;stroke:#d6d6d6;}.e,.f{stroke-miterlimit:10;}.f{fill:#b9a2a2;stroke:#bababa;}</style>
+<style>.e{fill:#b9a2a2;stroke:#d6d6d6;opacity:0.8;}.e,.f{stroke-miterlimit:10;}.f{fill:#b9a2a2;stroke:#bababa;opacity:0.8;}</style>
 </defs>
 <g id="a"/>
 <g id="b" transform="translate(340, 0)">
@@ -36,7 +36,7 @@
 </g>
 </g>
 <defs>
-<style>.e{fill:#ebbcba;stroke:#b9a2a2;stroke-miterlimit:10;}</style>
+<style>.e{fill:#9893a5;stroke:#b9a2a2;stroke-miterlimit:10;opacity:0.7;}</style>
 </defs>
 <g id="a"> </g>
 <g id="b" transform="translate(190, 400) scale(1.13, 0.954)">
