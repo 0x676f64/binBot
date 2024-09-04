@@ -155,12 +155,12 @@ body {
   display: flex;
   justify-content: center;
   padding-top: 1rem;
-  padding-right: 47rem;
+  padding-right: 45rem;
 }
 
 #scoreboard .game {
-  width: 31.35rem;
-  height: 31.875rem;
+  width: 33.35rem;
+  height: 35.875rem;
   padding: 1.5rem;
   border: solid 2px #006c54;
   z-index: 1000;
@@ -198,7 +198,6 @@ body {
 
 svg#field {
   top: -15px;
-  margin-left: 1rem;
 }
 
 .balls-strikes {
@@ -209,19 +208,19 @@ svg#field {
   font-weight: 500;
   line-height: 0.1rem;
   top: 2rem;
-  margin-left: 3rem;
+  margin-left: 30px;
 }
 
-#svg-1{
+.svg-1{
   position: relative;
   float: right;
-  bottom: 13rem;
-  left: 1.5rem;
+  bottom: 14.5rem;
+  left: 0.5rem;
   overflow: visible;
 }
 
 .away-pitcher-icon {
-  margin-left: 1.5rem;
+  margin-left: 2.7rem;
 }
 
 .home-pitcher-icon {
@@ -252,14 +251,14 @@ svg#field {
   font-weight: 500;
   color: #2F4858;
   opacity: 0.69;
-  margin-left: 0.8rem;
+  margin-left: 1rem;
 }
 .pre-game-teams-home {
   font-size: 20px;
   font-weight: 500;
   color: #2F4858;
   opacity: 0.69;
-  margin-left: 1rem;
+  margin-left: 1.5rem;
 }
 
 .away-name {
@@ -279,6 +278,7 @@ svg#field {
   float: left;
   font-size: 19px;
   color: #2F4858;
+  padding-left: 1.5rem;
 }
 
 .pre-game-stats {
@@ -298,6 +298,7 @@ svg#field {
   float: center;
   margin-left: 50px;
   color: #2F4858;
+  padding-left: 1rem;
 } 
 
 .end-result {
@@ -416,3 +417,4 @@ svg#field {
   color: #2F4858;
   font-weight: 500;
 }
+
