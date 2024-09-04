@@ -198,6 +198,7 @@ body {
 
 svg#field {
   top: -15px;
+  margin-left: 1rem;
 }
 
 .balls-strikes {
@@ -208,13 +209,13 @@ svg#field {
   font-weight: 500;
   line-height: 0.1rem;
   top: 2rem;
-  margin-left: 30px;
+  margin-left: 3rem;
 }
 
-.strike-zone-wrapper {
+#svg-1{
   position: relative;
   float: right;
-  bottom: 6rem;
+  bottom: 13rem;
   left: 1.5rem;
   overflow: visible;
 }
@@ -415,5 +416,3 @@ svg#field {
   color: #2F4858;
   font-weight: 500;
 }
-
-
