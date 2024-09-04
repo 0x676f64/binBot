@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     ${awayPitcher ? `
                                         <img class="away-pitcher-icon" srcset="https://midfield.mlbstatic.com/v1/people/${awayprobablePitchersId}/spots/60?zoom=1.2 1.5x">
                                         <div class="away-name">${awayPitcher.fullName}
-                                        <span>(${data.gameData.players[pitcherAwayKey]?.pitchHand.code})</span>
+                                        <span style="font-weight: 500;">(${data.gameData.players[pitcherAwayKey]?.pitchHand.code})</span>
                                         </div>
                                         <div class="pre-game-wins">${data.liveData.boxscore.teams.away.players[pitcherAwayKey]?.seasonStats?.pitching.wins}</div>
                                         <div class="pre-game-stats">-</div>
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     ${homePitcher ? `
                                         <img class="home-pitcher-icon" srcset="https://midfield.mlbstatic.com/v1/people/${homeprobablePitchersId}/spots/60?zoom=1.2 1.5x">
                                         <div class="home-name">${homePitcher.fullName}
-                                        <span>(${data.gameData.players[pitcherHomeKey]?.pitchHand.code})</span>
+                                        <span style="font-weight: 500;">(${data.gameData.players[pitcherHomeKey]?.pitchHand.code})</span>
                                         </div>
                                         <div class="pre-game-wins">${data.liveData.boxscore.teams.home.players[pitcherHomeKey]?.seasonStats?.pitching.wins}</div>
                                         <div class="pre-game-stats">-</div>
@@ -123,21 +123,21 @@ document.addEventListener("DOMContentLoaded", () => {
                     gameStatus = `${inningHalf} ${inningOrdinal}`;
                     inningBoxStyle = 'color: red';
 
-                   // Define svgHeight and playerHeight
-                    const svgHeight = 500; // Example height in pixels, adjust as needed
-                    const playerHeight = 6.0; // Example player height in feet, adjust as needed
-
-                    // Function to fetch real-time pitch data
+                  // Function to fetch real-time pitch data
                     function fetchRealTimePitchData() {
                         fetch(`https://statsapi.mlb.com/api/v1.1/game/${gamePk}/feed/live`)
                             .then(response => response.json())
                             .then(data => {
                                 console.log('Full Data:', data); // Log the entire data structure
 
-                                // Check if the expected data structure exists
-                                if (data.liveData && data.liveData.plays && data.liveData.plays.currentPlay) {
+                                if (data.gameData && data.liveData && data.liveData.plays && data.liveData.plays.currentPlay) {
+                                    const playerID = data.liveData.plays.currentPlay.matchup.batter.id;
+                                    const player = data.gameData.players[`ID${playerID}`];
+                                    const strikeZoneTop = player.strikeZoneTop;
+                                    const strikeZoneBottom = player.strikeZoneBottom;
+
                                     console.log('Current Play:', data.liveData.plays.currentPlay); // Log the current play data
-                                    handleRealTimePitchData(data.liveData.plays.currentPlay.playEvents);
+                                    handleRealTimePitchData(data.liveData.plays.currentPlay.playEvents, strikeZoneTop, strikeZoneBottom);
                                 } else {
                                     console.error('Unexpected data format or live play data not available:', data);
                                 }
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
 
                     // Function to handle and process the pitch data
-                    function handleRealTimePitchData(playEvents) {
+                    function handleRealTimePitchData(playEvents, strikeZoneTop, strikeZoneBottom) {
                         if (playEvents && playEvents.length > 0) {
                             playEvents.forEach(event => {
                                 if (event.details && event.details.call && event.pitchData) {
@@ -156,8 +156,8 @@ document.addEventListener("DOMContentLoaded", () => {
                                     const description = event.details.call.description;
                                     console.log('Pitch Data:', { pX, pZ, description }); // Log the pitch data
 
-                                    // Plot the pitch on the strike zone
-                                    plotPitch(pX, pZ, description);
+                                    // Plot the pitch on the strike zone with custom top and bottom values
+                                    plotPitch(pX, pZ, description, strikeZoneTop, strikeZoneBottom);
                                 }
                             });
                         } else {
@@ -165,47 +165,48 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     }
 
-                    function plotPitch(pX, pZ, description) {
-                        // Calculate player height and SVG height based on pitch data
-                        const playerHeight = ((pX + 0.5) * 0.8) + 0.1; // Adjust as needed
-                        const svgHeight = (pZ - 1.5) / 3; // Adjust 'bottom' and 'height' accordingly
-                    
-                        // SVG dimensions and strike zone parameters
+                    function plotPitch(pX, pZ, description, strikeZoneTop, strikeZoneBottom) {
                         const svgWidth = 170; // Width of the strike zone (17 inches)
                         const centerX = svgWidth / 2; // X center of the strike zone
-                        const strikeZoneTop = 50; // The top Y position for the strike zone
-                        const strikeZoneHeight = 300; // The height of the strike zone in SVG units
-                    
+                        const svgHeight = 500; // Height of the SVG
+
+                        // Calculate the dynamic strike zone height based on top and bottom values
+                        const strikeZoneHeight = strikeZoneTop - strikeZoneBottom;
+                        const strikeZoneTopY = (svgHeight / 2) - (strikeZoneHeight / 2);
+                        const strikeZoneBottomY = (svgHeight / 2) + (strikeZoneHeight / 2);
+
                         // Convert pX and pZ to fit within the SVG viewBox
                         const xPos = centerX + (pX * (svgWidth / 20)); // pX in inches from the center
-                        const yPos = strikeZoneTop + (strikeZoneHeight - ((pZ - 1.5) / (4.5 - 1.5)) * strikeZoneHeight);
-                    
+                        const yPos = strikeZoneBottomY - ((pZ - strikeZoneBottom) / strikeZoneHeight) * strikeZoneHeight;
+
                         console.log(`Plotting pitch at X: ${xPos}, Y: ${yPos}, Description: ${description}`);
-                        console.log(`Player height: ${playerHeight}, SVG height: ${svgHeight}`);
-                    
+                        console.log(`Strike Zone Top: ${strikeZoneTop}, Bottom: ${strikeZoneBottom}`);
+
                         // Create a circle element for the pitch
                         const pitchCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
                         pitchCircle.setAttribute("cx", xPos);
                         pitchCircle.setAttribute("cy", yPos);
                         pitchCircle.setAttribute("r", 10); // Adjusted radius to fit the SVG
                         pitchCircle.setAttribute("class", "pitch");
-                    
+
                         // Assign color based on pitch description
                         switch (description) {
-                            case 'Called Strike' || 'Foul':
+                            case 'Called Strike':
+                            case 'Foul':
                                 pitchCircle.setAttribute("fill", "red");
                                 break;
                             case 'Ball':
                                 pitchCircle.setAttribute("fill", "green");
                                 break;
-                            case 'In play, out(s)' || 'In play, no out' || 'In play, run(s)':
+                            case 'In play, out(s)':
+                            case 'In play, no out':
+                            case 'In play, run(s)':
                                 pitchCircle.setAttribute("fill", "blue");
                                 break;
-                            // Add more cases as needed
                             default:
                                 pitchCircle.setAttribute(null);
                         }
-                    
+
                         // Find the SVG element and append the pitch circle
                         const svg = document.querySelector(".strike-zone-box");
                         if (svg) {
@@ -215,13 +216,13 @@ document.addEventListener("DOMContentLoaded", () => {
                             console.error('SVG element not found.');
                         }
                     }
-                    
+
                     // Call fetchRealTimePitchData to start fetching and plotting
                     setInterval(fetchRealTimePitchData, 10000);
-                    
 
                     // Include SVG only if game is In Progress
                     svgFieldHTML = `
+                        <!-- scorebug for live games  --> 
                             <svg id="field" width="100" height="100" viewBox="0 0 58 79" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path id="out-1" d="M19.5 61.5C19.5 64.7795 16.6254 67.5 13 67.5C9.37461 67.5 6.5 64.7795 6.5 61.5C6.5 58.2205 9.37461 55.5 13 55.5C16.6254 55.5 19.5 58.2205 19.5 61.5Z" fill="#D9D9D9" stroke="#006C54" stroke-width="1" opacity="0.8"/>
                                 <path id="out-2" d="M36.5 61.5C36.5 64.7795 33.6254 67.5 30 67.5C26.3746 67.5 23.5 64.7795 23.5 61.5C23.5 58.2205 26.3746 55.5 30 55.5C33.6254 55.5 36.5 58.2205 36.5 61.5Z" fill="#D9D9D9" stroke="#006C54" stroke-width="1" opacity="0.8"/>
@@ -230,16 +231,15 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <rect id="second-base" x="29.364" y="17.7071" width="14" height="14" rx="0.5" transform="rotate(45 29.364 17.7071)" fill="#FFDDDD" stroke="#006C54" stroke-width="1" opacity="0.8"/>
                                 <rect id="first-base" x="41.6066" y="29.7071" width="14" height="14" rx="0.5" transform="rotate(45 41.6066 29.7071)" fill="#FFDDDD" stroke="#006C54" stroke-width="1" opacity="0.8"/>
                             </svg>
-
+                        <!-- Balls and Strikes for current At Bat -->
                             <div class="balls-strikes" id="count" style="color: #2f4858;">${data.liveData.plays.currentPlay.count.balls} - ${data.liveData.plays.currentPlay.count.strikes}</div>
-
-                           <svg id="svg-1" width="350" height="400" viewBox=" 0 0 400 400">
-                            <rect width="500" height="500" fill="none" stroke="#ffffff"/>
+                        <!-- Strike Zone box  -->
+                            <svg id="svg-1" width="370" height="400" viewBox=" 0 0 370 400">
                             <g transform="scale(0.65) translate(100,175)">
                             <rect width="500" height="500" fill="none" stroke="none"> </rect>
                             <g>
                             <defs>
-                            <style id="overall-color">.e{fill:#ebbcba;stroke:#d6d6d6;}.e,.f{stroke-miterlimit:10;}.f{fill:#ebbcba;stroke:#bababa;}</style>
+                            <style id="overall-color">.e{fill:#B9A2A2;stroke:#d6d6d6;}.e,.f{stroke-miterlimit:10;}.f{fill:#B9A2A2;stroke:#bababa;}</style>
                             </defs>
                             <g id="a"/>
                             <g id="b">
@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             </g>
                             </g>
                             <defs>
-                            <style id="bat-color">.e{fill:#d7827e;stroke:#d6d6d6;}.e,.f{stroke-miterlimit:10;}.f{fill:#d7827e;stroke:#bababa;}</style>
+                            <style id="bat-color">.e{fill:#B9A2A2;stroke:#d6d6d6;}.e,.f{stroke-miterlimit:10;}.f{fill:#B9A2A2;stroke:#bababa;}</style>
                             </defs>
                             <g id="a"/>
                             <g id="b" transform="translate(340, 0)">
@@ -271,7 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             </g>
                             </g>
                             <defs>
-                            <style id="overall-color">.e{fill:#ebbcba;stroke:#9893a5;stroke-miterlimit:10;}</style>
+                            <style id="overall-color">.e{fill:#e5cbba;stroke:#9893a5;stroke-miterlimit:10;}</style>
                             </defs>
                             <g id="a"> </g>
                             <g id="b" transform="translate(190, 400) scale(1.13, 0.954)">
@@ -286,7 +286,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             <g> </g>
                             </g>
                         </svg>
-
                             `;
 
                 } else if (detailedState === 'Suspended: Rain') {
