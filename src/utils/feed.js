@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         const pitchCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
                         pitchCircle.setAttribute("cx", xPos);
                         pitchCircle.setAttribute("cy", yPos);
-                        pitchCircle.setAttribute("r", 10); // Adjusted radius to fit the SVG
+                        pitchCircle.setAttribute("r", 5); // Adjusted radius to fit the SVG
                         pitchCircle.setAttribute("class", "pitch");
 
                         // Assign color based on pitch description
@@ -208,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
 
                         // Find the SVG element and append the pitch circle
-                        const svg = document.querySelector(".strike-zone-box");
+                        const svg = document.querySelector(".svg-1");
                         if (svg) {
                             svg.appendChild(pitchCircle);
                             console.log(`Pitch circle added to SVG at ${xPos}, ${yPos}`);
@@ -234,7 +234,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <!-- Balls and Strikes for current At Bat -->
                             <div class="balls-strikes" id="count" style="color: #2f4858;">${data.liveData.plays.currentPlay.count.balls} - ${data.liveData.plays.currentPlay.count.strikes}</div>
                         <!-- Strike Zone box  -->
-                            <svg id="svg-1" width="370" height="400" viewBox=" 0 0 370 400">
+                            <svg class="svg-1" width="450" height="500" viewBox=" 0 0 400 400">
                             <g transform="scale(0.65) translate(100,175)">
                             <rect width="500" height="500" fill="none" stroke="none"> </rect>
                             <g>
