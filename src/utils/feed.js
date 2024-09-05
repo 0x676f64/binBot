@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     ${awayPitcher ? `
                                         <img class="away-pitcher-icon" srcset="https://midfield.mlbstatic.com/v1/people/${awayprobablePitchersId}/spots/60?zoom=1.2 1.5x">
                                         <div class="away-name">${awayPitcher.fullName}
-                                        <span style="font-weight: 500;">(${data.gameData.players[pitcherAwayKey]?.pitchHand.code})</span>
+                                        <span>(${data.gameData.players[pitcherAwayKey]?.pitchHand.code})</span>
                                         </div>
                                         <div class="pre-game-wins">${data.liveData.boxscore.teams.away.players[pitcherAwayKey]?.seasonStats?.pitching.wins}</div>
                                         <div class="pre-game-stats">-</div>
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     ${homePitcher ? `
                                         <img class="home-pitcher-icon" srcset="https://midfield.mlbstatic.com/v1/people/${homeprobablePitchersId}/spots/60?zoom=1.2 1.5x">
                                         <div class="home-name">${homePitcher.fullName}
-                                        <span style="font-weight: 500;">(${data.gameData.players[pitcherHomeKey]?.pitchHand.code})</span>
+                                        <span>(${data.gameData.players[pitcherHomeKey]?.pitchHand.code})</span>
                                         </div>
                                         <div class="pre-game-wins">${data.liveData.boxscore.teams.home.players[pitcherHomeKey]?.seasonStats?.pitching.wins}</div>
                                         <div class="pre-game-stats">-</div>
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     gameStatus = `${inningHalf} ${inningOrdinal}`;
                     inningBoxStyle = 'color: red';
 
-                  // Function to fetch real-time pitch data
+                   // Function to fetch real-time pitch data
                     function fetchRealTimePitchData() {
                         fetch(`https://statsapi.mlb.com/api/v1.1/game/${gamePk}/feed/live`)
                             .then(response => response.json())
@@ -131,13 +131,33 @@ document.addEventListener("DOMContentLoaded", () => {
                                 console.log('Full Data:', data); // Log the entire data structure
 
                                 if (data.gameData && data.liveData && data.liveData.plays && data.liveData.plays.currentPlay) {
-                                    const playerID = data.liveData.plays.currentPlay.matchup.batter.id;
-                                    const player = data.gameData.players[`ID${playerID}`];
-                                    const strikeZoneTop = player.strikeZoneTop;
-                                    const strikeZoneBottom = player.strikeZoneBottom;
+                                    const batterId = data.liveData.plays.currentPlay.matchup.batter.id;
+                                    const playEvents = data.liveData.plays.currentPlay.playEvents;
 
-                                    console.log('Current Play:', data.liveData.plays.currentPlay); // Log the current play data
-                                    handleRealTimePitchData(data.liveData.plays.currentPlay.playEvents, strikeZoneTop, strikeZoneBottom);
+                                    // Clear previous pitches if a new batter is up
+                                    const lastBatterId = localStorage.getItem('lastBatterId');
+                                    if (batterId !== lastBatterId) {
+                                        clearPitches();
+                                        localStorage.setItem('lastBatterId', batterId);
+                                    }
+
+                                    // Fetch the common strike zone top and bottom from the playEvents (first pitch available)
+                                    let strikeZoneTop = null;
+                                    let strikeZoneBottom = null;
+
+                                    for (let event of playEvents) {
+                                        if (event.pitchData) {
+                                            strikeZoneTop = event.pitchData.strikeZoneTop;
+                                            strikeZoneBottom = event.pitchData.strikeZoneBottom;
+                                            break; // Exit loop after finding the first pitch
+                                        }
+                                    }
+
+                                    if (strikeZoneTop && strikeZoneBottom) {
+                                        handleRealTimePitchData(playEvents, strikeZoneTop, strikeZoneBottom);
+                                    } else {
+                                        console.error('Strike zone data unavailable.');
+                                    }
                                 } else {
                                     console.error('Unexpected data format or live play data not available:', data);
                                 }
@@ -154,9 +174,10 @@ document.addEventListener("DOMContentLoaded", () => {
                                 if (event.details && event.details.call && event.pitchData) {
                                     const { pX, pZ } = event.pitchData.coordinates;
                                     const description = event.details.call.description;
+
                                     console.log('Pitch Data:', { pX, pZ, description }); // Log the pitch data
 
-                                    // Plot the pitch on the strike zone with custom top and bottom values
+                                    // Plot the pitch on the strike zone with common top and bottom values
                                     plotPitch(pX, pZ, description, strikeZoneTop, strikeZoneBottom);
                                 }
                             });
@@ -165,10 +186,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     }
 
+                    // Function to plot a pitch on the SVG strike zone
                     function plotPitch(pX, pZ, description, strikeZoneTop, strikeZoneBottom) {
-                        const svgWidth = 170; // Width of the strike zone (17 inches)
+                        const svgWidth = 64; // Width of the strike zone (17 inches)
                         const centerX = svgWidth / 2; // X center of the strike zone
-                        const svgHeight = 500; // Height of the SVG
+                        const svgHeight = 104; // Height of the SVG
 
                         // Calculate the dynamic strike zone height based on top and bottom values
                         const strikeZoneHeight = strikeZoneTop - strikeZoneBottom;
@@ -217,12 +239,23 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     }
 
-                    // Call fetchRealTimePitchData to start fetching and plotting
-                    setInterval(fetchRealTimePitchData, 10000);
+                    // Function to clear all previous pitches
+                    function clearPitches() {
+                        const svg = document.querySelector(".strike-zone");
+                        if (svg) {
+                            const pitches = svg.querySelectorAll(".pitch");
+                            pitches.forEach(pitch => pitch.remove());
+                            console.log('Cleared all previous pitches.');
+                        } else {
+                            console.error('SVG element not found.');
+                        }
+                    }
+
+                    // Call fetchRealTimePitchData every 30 seconds
+                    setInterval(fetchRealTimePitchData, 30000);
 
                     // Include SVG only if game is In Progress
                     svgFieldHTML = `
-                        <!-- scorebug for live games  --> 
                             <svg id="field" width="100" height="100" viewBox="0 0 58 79" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path id="out-1" d="M19.5 61.5C19.5 64.7795 16.6254 67.5 13 67.5C9.37461 67.5 6.5 64.7795 6.5 61.5C6.5 58.2205 9.37461 55.5 13 55.5C16.6254 55.5 19.5 58.2205 19.5 61.5Z" fill="#D9D9D9" stroke="#006C54" stroke-width="1" opacity="0.8"/>
                                 <path id="out-2" d="M36.5 61.5C36.5 64.7795 33.6254 67.5 30 67.5C26.3746 67.5 23.5 64.7795 23.5 61.5C23.5 58.2205 26.3746 55.5 30 55.5C33.6254 55.5 36.5 58.2205 36.5 61.5Z" fill="#D9D9D9" stroke="#006C54" stroke-width="1" opacity="0.8"/>
@@ -231,15 +264,15 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <rect id="second-base" x="29.364" y="17.7071" width="14" height="14" rx="0.5" transform="rotate(45 29.364 17.7071)" fill="#FFDDDD" stroke="#006C54" stroke-width="1" opacity="0.8"/>
                                 <rect id="first-base" x="41.6066" y="29.7071" width="14" height="14" rx="0.5" transform="rotate(45 41.6066 29.7071)" fill="#FFDDDD" stroke="#006C54" stroke-width="1" opacity="0.8"/>
                             </svg>
-                        <!-- Balls and Strikes for current At Bat -->
+
                             <div class="balls-strikes" id="count" style="color: #2f4858;">${data.liveData.plays.currentPlay.count.balls} - ${data.liveData.plays.currentPlay.count.strikes}</div>
-                        <!-- Strike Zone box  -->
-                            <svg class="svg-1" width="450" height="500" viewBox=" 0 0 400 400">
+
+                        <svg class="svg-1" width="450" height="500" viewBox=" 0 0 400 400">
                             <g transform="scale(0.65) translate(100,175)">
                             <rect width="500" height="500" fill="none" stroke="none"> </rect>
                             <g>
                             <defs>
-                            <style id="overall-color">.e{fill:#B9A2A2;stroke:#d6d6d6;}.e,.f{stroke-miterlimit:10;}.f{fill:#B9A2A2;stroke:#bababa;}</style>
+                            <style id="overall-color">.e{fill:#006c54;stroke:#ffdddd;}.e,.f{stroke-miterlimit:10;}.f{fill:#006c54;stroke:#ffdddd;opacity:0.8;}</style>
                             </defs>
                             <g id="a"/>
                             <g id="b">
@@ -255,7 +288,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             </g>
                             </g>
                             <defs>
-                            <style id="bat-color">.e{fill:#B9A2A2;stroke:#d6d6d6;}.e,.f{stroke-miterlimit:10;}.f{fill:#B9A2A2;stroke:#bababa;}</style>
+                            <style id="bat-color">.e{fill:#006c54;stroke:#d6d6d6;}.e,.f{stroke-miterlimit:10;}.f{fill:#006c54;stroke:#bababa;opacity: 1;}</style>
                             </defs>
                             <g id="a"/>
                             <g id="b" transform="translate(340, 0)">
@@ -271,7 +304,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             </g>
                             </g>
                             <defs>
-                            <style id="overall-color">.e{fill:#e5cbba;stroke:#9893a5;stroke-miterlimit:10;}</style>
+                            <style id="overall-color">.e{fill:#006c54;stroke:#ffdddd;stroke-miterlimit:10;opacity:0.7;}</style>
                             </defs>
                             <g id="a"> </g>
                             <g id="b" transform="translate(190, 400) scale(1.13, 0.954)">
@@ -285,7 +318,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             </g>
                             <g> </g>
                             </g>
-                        </svg>
+                        </svg> 
                             `;
 
                 } else if (detailedState === 'Suspended: Rain') {
