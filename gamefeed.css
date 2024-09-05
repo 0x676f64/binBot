@@ -214,7 +214,7 @@ svg#field {
 .svg-1{
   position: relative;
   float: right;
-  bottom: 14.5rem;
+  bottom: 14rem;
   left: 0.5rem;
   overflow: visible;
 }
@@ -417,4 +417,3 @@ svg#field {
   color: #2F4858;
   font-weight: 500;
 }
-
