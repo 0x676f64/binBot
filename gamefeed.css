@@ -214,7 +214,7 @@ svg#field {
 .svg-1{
   position: relative;
   float: right;
-  bottom: 14rem;
+  bottom: 14.5rem;
   left: 0.5rem;
   overflow: visible;
 }
@@ -229,7 +229,7 @@ svg#field {
 
 .probable-pitchers {
   height: 100px;
-  margin-top: 1rem;
+  margin-top: 2.5rem;
 }
 
 .prob-pitchers {
@@ -417,3 +417,4 @@ svg#field {
   color: #2F4858;
   font-weight: 500;
 }
+
