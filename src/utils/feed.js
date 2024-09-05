@@ -188,9 +188,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     // Function to plot a pitch on the SVG strike zone
                     function plotPitch(pX, pZ, description, strikeZoneTop, strikeZoneBottom) {
-                        const svgWidth = 64; // Width of the strike zone (17 inches)
+                        const svgWidth = 88; // Width of the strike zone (17 inches)
                         const centerX = svgWidth / 2; // X center of the strike zone
-                        const svgHeight = 104; // Height of the SVG
+                        const svgHeight = 142; // Height of the SVG
 
                         // Calculate the dynamic strike zone height based on top and bottom values
                         const strikeZoneHeight = strikeZoneTop - strikeZoneBottom;
@@ -215,19 +215,25 @@ document.addEventListener("DOMContentLoaded", () => {
                         switch (description) {
                             case 'Called Strike':
                             case 'Foul':
-                                pitchCircle.setAttribute("fill", "red");
+                            case 'Swinging Strike': 
+                                pitchCircle.setAttribute("fill", "#D22D49");
                                 break;
                             case 'Ball':
-                                pitchCircle.setAttribute("fill", "green");
+                            case 'Ball in Dirt':
+                                pitchCircle.setAttribute("fill", "#EEE716");
                                 break;
                             case 'In play, out(s)':
                             case 'In play, no out':
                             case 'In play, run(s)':
-                                pitchCircle.setAttribute("fill", "blue");
+                                pitchCircle.setAttribute("fill", "#00D1ED");
                                 break;
                             default:
                                 pitchCircle.setAttribute(null);
                         }
+
+                        // Add stroke to all pitches 
+                        pitchCircle.setAttribute("stroke", "black");
+                        pitchCircle.setAttribute("stroke-width", "1"); 
 
                         // Find the SVG element and append the pitch circle
                         const svg = document.querySelector(".svg-1");
@@ -241,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     // Function to clear all previous pitches
                     function clearPitches() {
-                        const svg = document.querySelector(".strike-zone");
+                        const svg = document.querySelector(".svg-1");
                         if (svg) {
                             const pitches = svg.querySelectorAll(".pitch");
                             pitches.forEach(pitch => pitch.remove());
@@ -251,8 +257,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     }
 
-                    // Call fetchRealTimePitchData every 30 seconds
-                    setInterval(fetchRealTimePitchData, 30000);
+                    // Call fetchRealTimePitchData every 10 seconds
+                    setInterval(fetchRealTimePitchData, 10000);
 
                     // Include SVG only if game is In Progress
                     svgFieldHTML = `
