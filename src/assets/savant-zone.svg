@@ -1,9 +1,9 @@
-<svg id="svg-1" width="370" height="400" viewBox=" 0 0 370 400">
+ <svg class="svg-1" width="450" height="500" viewBox=" 0 0 400 400">
                             <g transform="scale(0.65) translate(100,175)">
                             <rect width="500" height="500" fill="none" stroke="none"> </rect>
                             <g>
                             <defs>
-                            <style id="overall-color">.e{fill:#B9A2A2;stroke:#d6d6d6;}.e,.f{stroke-miterlimit:10;}.f{fill:#B9A2A2;stroke:#bababa;}</style>
+                            <style id="overall-color">.e{fill:#006c54;stroke:#ffdddd;}.e,.f{stroke-miterlimit:10;}.f{fill:#006c54;stroke:#ffdddd;opacity:0.8;}</style>
                             </defs>
                             <g id="a"/>
                             <g id="b">
@@ -19,7 +19,7 @@
                             </g>
                             </g>
                             <defs>
-                            <style id="bat-color">.e{fill:#B9A2A2;stroke:#d6d6d6;}.e,.f{stroke-miterlimit:10;}.f{fill:#B9A2A2;stroke:#bababa;}</style>
+                            <style id="bat-color">.e{fill:#006c54;stroke:#d6d6d6;}.e,.f{stroke-miterlimit:10;}.f{fill:#006c54;stroke:#bababa;opacity: 1;}</style>
                             </defs>
                             <g id="a"/>
                             <g id="b" transform="translate(340, 0)">
@@ -35,7 +35,7 @@
                             </g>
                             </g>
                             <defs>
-                            <style id="overall-color">.e{fill:#e5cbba;stroke:#9893a5;stroke-miterlimit:10;}</style>
+                            <style id="overall-color">.e{fill:#006c54;stroke:#ffdddd;stroke-miterlimit:10;opacity:0.7;}</style>
                             </defs>
                             <g id="a"> </g>
                             <g id="b" transform="translate(190, 400) scale(1.13, 0.954)">
@@ -49,4 +49,4 @@
                             </g>
                             <g> </g>
                             </g>
-                        </svg>
+                        </svg> 
