@@ -80,15 +80,17 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="probable-pitchers">
                             <div class="prob-pitchers">
                                 <div class="away-probs" mode="Scoreboard">
-                                    <div class="pre-game-teams-away">${data.gameData.teams.away.franchiseName}</div>
+                                   <div class="pre-game-teams-away">${data.gameData.teams.away.franchiseName}</div>
                                     ${awayPitcher ? `
                                         <img class="away-pitcher-icon" srcset="https://midfield.mlbstatic.com/v1/people/${awayprobablePitchersId}/spots/60?zoom=1.2 1.5x">
                                         <div class="away-name">${awayPitcher.fullName}
-                                        <span>(${data.gameData.players[pitcherAwayKey]?.pitchHand.code})</span>
+                                            <span style="font-weight: 500;">(${data.gameData.players[pitcherAwayKey]?.pitchHand.code})</span>
                                         </div>
-                                        <div class="pre-game-wins">${data.liveData.boxscore.teams.away.players[pitcherAwayKey]?.seasonStats?.pitching.wins}</div>
-                                        <div class="pre-game-stats">-</div>
-                                        <div class="pre-game-loss">${data.liveData.boxscore.teams.away.players[pitcherAwayKey]?.seasonStats?.pitching.losses}</div>
+                                        <div class="pre-game-wins-loss">
+                                            <div class="pre-game-wins">${data.liveData.boxscore.teams.away.players[pitcherAwayKey]?.seasonStats?.pitching.wins}</div>
+                                            <div class="pre-game-stats">-</div>
+                                            <div class="pre-game-loss">${data.liveData.boxscore.teams.away.players[pitcherAwayKey]?.seasonStats?.pitching.losses}</div>
+                                        </div>
                                         <div class="pre-game-era">${data.liveData.boxscore.teams.away.players[pitcherAwayKey]?.seasonStats?.pitching.era}</div>
                                     ` : `
                                         <div class="away-name">TBD</div>
@@ -99,11 +101,13 @@ document.addEventListener("DOMContentLoaded", () => {
                                     ${homePitcher ? `
                                         <img class="home-pitcher-icon" srcset="https://midfield.mlbstatic.com/v1/people/${homeprobablePitchersId}/spots/60?zoom=1.2 1.5x">
                                         <div class="home-name">${homePitcher.fullName}
-                                        <span>(${data.gameData.players[pitcherHomeKey]?.pitchHand.code})</span>
+                                            <span style="font-weight: 500;">(${data.gameData.players[pitcherHomeKey]?.pitchHand.code})</span>
                                         </div>
-                                        <div class="pre-game-wins">${data.liveData.boxscore.teams.home.players[pitcherHomeKey]?.seasonStats?.pitching.wins}</div>
-                                        <div class="pre-game-stats">-</div>
-                                        <div class="pre-game-loss">${data.liveData.boxscore.teams.home.players[pitcherHomeKey]?.seasonStats?.pitching.losses}</div>
+                                        <div class="pre-game-wins-loss">
+                                            <div class="pre-game-wins">${data.liveData.boxscore.teams.home.players[pitcherHomeKey]?.seasonStats?.pitching.wins}</div>
+                                            <div class="pre-game-stats">-</div>
+                                            <div class="pre-game-loss">${data.liveData.boxscore.teams.home.players[pitcherHomeKey]?.seasonStats?.pitching.losses}</div>
+                                        </div>
                                         <div class="pre-game-era">${data.liveData.boxscore.teams.home.players[pitcherHomeKey]?.seasonStats?.pitching.era}</div>
                                     ` : `
                                         <div class="home-name">TBD</div>
@@ -123,142 +127,144 @@ document.addEventListener("DOMContentLoaded", () => {
                     gameStatus = `${inningHalf} ${inningOrdinal}`;
                     inningBoxStyle = 'color: red';
 
-                   // Function to fetch real-time pitch data
-                    function fetchRealTimePitchData() {
-                        fetch(`https://statsapi.mlb.com/api/v1.1/game/${gamePk}/feed/live`)
-                            .then(response => response.json())
-                            .then(data => {
-                                console.log('Full Data:', data); // Log the entire data structure
+                  // Function to fetch real-time pitch data
+function fetchRealTimePitchData() {
+    fetch(`https://statsapi.mlb.com/api/v1.1/game/${gamePk}/feed/live`)
+        .then(response => response.json())
+        .then(data => {
+            console.log('Full Data:', data); // Log the entire data structure
 
-                                if (data.gameData && data.liveData && data.liveData.plays && data.liveData.plays.currentPlay) {
-                                    const batterId = data.liveData.plays.currentPlay.matchup.batter.id;
-                                    const playEvents = data.liveData.plays.currentPlay.playEvents;
+            if (data.gameData && data.liveData && data.liveData.plays && data.liveData.plays.currentPlay) {
+                const batterId = data.liveData.plays.currentPlay.matchup.batter.id;
+                const playEvents = data.liveData.plays.currentPlay.playEvents;
 
-                                    // Clear previous pitches if a new batter is up
-                                    const lastBatterId = localStorage.getItem('lastBatterId');
-                                    if (batterId !== lastBatterId) {
-                                        clearPitches();
-                                        localStorage.setItem('lastBatterId', batterId);
-                                    }
+                // Clear previous pitches if a new batter is up
+                const lastBatterId = localStorage.getItem('lastBatterId');
+                if (batterId !== lastBatterId) {
+                    clearPitches();
+                    localStorage.setItem('lastBatterId', batterId);
+                }
 
-                                    // Fetch the common strike zone top and bottom from the playEvents (first pitch available)
-                                    let strikeZoneTop = null;
-                                    let strikeZoneBottom = null;
+                // Fetch the common strike zone top and bottom from the playEvents (first pitch available)
+                let strikeZoneTop = null;
+                let strikeZoneBottom = null;
 
-                                    for (let event of playEvents) {
-                                        if (event.pitchData) {
-                                            strikeZoneTop = event.pitchData.strikeZoneTop;
-                                            strikeZoneBottom = event.pitchData.strikeZoneBottom;
-                                            break; // Exit loop after finding the first pitch
-                                        }
-                                    }
-
-                                    if (strikeZoneTop && strikeZoneBottom) {
-                                        handleRealTimePitchData(playEvents, strikeZoneTop, strikeZoneBottom);
-                                    } else {
-                                        console.error('Strike zone data unavailable.');
-                                    }
-                                } else {
-                                    console.error('Unexpected data format or live play data not available:', data);
-                                }
-                            })
-                            .catch(error => {
-                                console.error('Error fetching pitch data:', error);
-                            });
+                for (let event of playEvents) {
+                    if (event.pitchData) {
+                        strikeZoneTop = event.pitchData.strikeZoneTop;
+                        strikeZoneBottom = event.pitchData.strikeZoneBottom;
+                        break; // Exit loop after finding the first pitch
                     }
+                }
 
-                    // Function to handle and process the pitch data
-                    function handleRealTimePitchData(playEvents, strikeZoneTop, strikeZoneBottom) {
-                        if (playEvents && playEvents.length > 0) {
-                            playEvents.forEach(event => {
-                                if (event.details && event.details.call && event.pitchData) {
-                                    const { pX, pZ } = event.pitchData.coordinates;
-                                    const description = event.details.call.description;
+                if (strikeZoneTop && strikeZoneBottom) {
+                    handleRealTimePitchData(playEvents, strikeZoneTop, strikeZoneBottom);
+                } else {
+                    console.error('Strike zone data unavailable.');
+                }
+            } else {
+                console.error('Unexpected data format or live play data not available:', data);
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching pitch data:', error);
+        });
+}
 
-                                    console.log('Pitch Data:', { pX, pZ, description }); // Log the pitch data
+            // Function to handle and process the pitch data
+            function handleRealTimePitchData(playEvents, strikeZoneTop, strikeZoneBottom) {
+                if (playEvents && playEvents.length > 0) {
+                    playEvents.forEach(event => {
+                        if (event.details && event.details.call && event.pitchData) {
+                            const { pX, pZ } = event.pitchData.coordinates;
+                            const description = event.details.call.description;
 
-                                    // Plot the pitch on the strike zone with common top and bottom values
-                                    plotPitch(pX, pZ, description, strikeZoneTop, strikeZoneBottom);
-                                }
-                            });
-                        } else {
-                            console.warn('No play events or pitch data available.');
+                            console.log('Pitch Data:', { pX, pZ, description }); // Log the pitch data
+
+                            // Plot the pitch on the strike zone with common top and bottom values
+                            plotPitch(pX, pZ, description, strikeZoneTop, strikeZoneBottom);
                         }
-                    }
+                    });
+                } else {
+                    console.warn('No play events or pitch data available.');
+                }
+            }
 
-                    // Function to plot a pitch on the SVG strike zone
-                    function plotPitch(pX, pZ, description, strikeZoneTop, strikeZoneBottom) {
-                        const svgWidth = 88; // Width of the strike zone (17 inches)
-                        const centerX = svgWidth / 2; // X center of the strike zone
-                        const svgHeight = 142; // Height of the SVG
+           // Function to plot a pitch on the SVG strike zone using real pixel values
+            function plotPitch(pX, pZ, description, strikeZoneTop, strikeZoneBottom) {
+                const svgWidth = 454; // Actual width of the strike zone SVG in px
+                const svgHeight = 550; // Actual height of the strike zone SVG in px
+                const centerX = svgWidth / 2; // Center of the strike zone horizontally (X-axis)
+                const centerY = svgHeight / 2; // Center of the strike zone vertically (Y-axis)
 
-                        // Calculate the dynamic strike zone height based on top and bottom values
-                        const strikeZoneHeight = strikeZoneTop - strikeZoneBottom;
-                        const strikeZoneTopY = (svgHeight / 2) - (strikeZoneHeight / 2);
-                        const strikeZoneBottomY = (svgHeight / 2) + (strikeZoneHeight / 2);
+                // Calculate the dynamic height of the strike zone
+                const strikeZoneHeight = strikeZoneTop - strikeZoneBottom;
 
-                        // Convert pX and pZ to fit within the SVG viewBox
-                        const xPos = centerX + (pX * (svgWidth / 20)); // pX in inches from the center
-                        const yPos = strikeZoneBottomY - ((pZ - strikeZoneBottom) / strikeZoneHeight) * strikeZoneHeight;
+                // Scale the pX and pZ coordinates to the SVG dimensions
+                // Convert pX from -8.5 to +8.5 inches to actual pixel coordinates
+                const xPos = centerX + (pX * (svgWidth / 17)); // Map pX to the full strike zone width (17 inches = 454px)
 
-                        console.log(`Plotting pitch at X: ${xPos}, Y: ${yPos}, Description: ${description}`);
-                        console.log(`Strike Zone Top: ${strikeZoneTop}, Bottom: ${strikeZoneBottom}`);
+                // Map pZ (vertical) from the strike zone height to the actual pixel coordinates
+                const yPos = svgHeight - ((pZ - strikeZoneBottom) / strikeZoneHeight) * svgHeight;
 
-                        // Create a circle element for the pitch
-                        const pitchCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-                        pitchCircle.setAttribute("cx", xPos);
-                        pitchCircle.setAttribute("cy", yPos);
-                        pitchCircle.setAttribute("r", 5); // Adjusted radius to fit the SVG
-                        pitchCircle.setAttribute("class", "pitch");
+                console.log(`Plotting pitch at X: ${xPos}, Y: ${yPos}, Description: ${description}`);
+                console.log(`Strike Zone Top: ${strikeZoneTop}, Bottom: ${strikeZoneBottom}`);
 
-                        // Assign color based on pitch description
-                        switch (description) {
-                            case 'Called Strike':
-                            case 'Foul':
-                            case 'Swinging Strike': 
-                                pitchCircle.setAttribute("fill", "#D22D49");
-                                break;
-                            case 'Ball':
-                            case 'Ball in Dirt':
-                                pitchCircle.setAttribute("fill", "#EEE716");
-                                break;
-                            case 'In play, out(s)':
-                            case 'In play, no out':
-                            case 'In play, run(s)':
-                                pitchCircle.setAttribute("fill", "#00D1ED");
-                                break;
-                            default:
-                                pitchCircle.setAttribute(null);
-                        }
+                // Create a circle element for the pitch
+                const pitchCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                pitchCircle.setAttribute("cx", xPos);  // Adjusted X position based on the center of the SVG
+                pitchCircle.setAttribute("cy", yPos);  // Adjusted Y position
+                pitchCircle.setAttribute("r", 5);      // Adjusted radius to fit the SVG
+                pitchCircle.setAttribute("class", "pitch");
 
-                        // Add stroke to all pitches 
-                        pitchCircle.setAttribute("stroke", "black");
-                        pitchCircle.setAttribute("stroke-width", "1"); 
+                // Assign color based on pitch description
+                switch (description) {
+                    case 'Called Strike':
+                    case 'Foul':
+                    case 'Swinging Strike':
+                        pitchCircle.setAttribute("fill", "#D22D49");
+                        break;
+                    case 'Ball':
+                    case 'Ball in Dirt':
+                        pitchCircle.setAttribute("fill", "#EEE716");
+                        break;
+                    case 'In play, out(s)':
+                    case 'In play, no out':
+                    case 'In play, run(s)':
+                        pitchCircle.setAttribute("fill", "#00D1ED");
+                        break;
+                    default:
+                        pitchCircle.setAttribute(null);
+                }
 
-                        // Find the SVG element and append the pitch circle
-                        const svg = document.querySelector(".svg-1");
-                        if (svg) {
-                            svg.appendChild(pitchCircle);
-                            console.log(`Pitch circle added to SVG at ${xPos}, ${yPos}`);
-                        } else {
-                            console.error('SVG element not found.');
-                        }
-                    }
+                // Add stroke to all pitches
+                pitchCircle.setAttribute("stroke", "black");
+                pitchCircle.setAttribute("stroke-width", "1");
 
-                    // Function to clear all previous pitches
-                    function clearPitches() {
-                        const svg = document.querySelector(".svg-1");
-                        if (svg) {
-                            const pitches = svg.querySelectorAll(".pitch");
-                            pitches.forEach(pitch => pitch.remove());
-                            console.log('Cleared all previous pitches.');
-                        } else {
-                            console.error('SVG element not found.');
-                        }
-                    }
+                // Find the SVG element and append the pitch circle
+                const svg = document.querySelector(".strike-zone");
+                if (svg) {
+                    svg.appendChild(pitchCircle);
+                    console.log(`Pitch circle added to SVG at ${xPos}, ${yPos}`);
+                } else {
+                    console.error('SVG element not found.');
+                }
+            }
 
-                    // Call fetchRealTimePitchData every 10 seconds
-                    setInterval(fetchRealTimePitchData, 10000);
+            // Function to clear all previous pitches
+            function clearPitches() {
+                const svg = document.getElementById("strikeZone");
+                if (svg) {
+                    const pitches = svg.querySelectorAll(".pitch");
+                    pitches.forEach(pitch => pitch.remove());
+                    console.log('Cleared all previous pitches.');
+                } else {
+                    console.error('SVG element not found.');
+                }
+            }
+
+            // Call fetchRealTimePitchData every 10 seconds
+           // setInterval(fetchRealTimePitchData, 10000);
 
                     // Include SVG only if game is In Progress
                     svgFieldHTML = `
@@ -352,34 +358,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     finalStateHTML = `
                         <div class="end-result">
-                            <div class="final-results">
-                                <div class="winning-pitcher" mode="Scoreboard">
+                        <div class="final-results">
+                            <!-- Winning Pitcher -->
+                            <div class="winning-pitcher" mode="Scoreboard">
                                 ${winningPitcherKey ? `
                                     <img class="win-icon" srcset="https://midfield.mlbstatic.com/v1/people/${winningPitcherId}/spots/60?zoom=1.2 1.5x">
-                                <div style="margin-left: 1.7rem; font-size: 1.3rem; font-weight: 400; color: #2F4858; opacity: 0.8;">Win: </div>
-                                    <div class="winning-pitcher-name">${data.liveData.decisions.winner.fullName} 
+                                    <div style="margin-left: 6.5rem; font-size: 1.3rem; font-weight: 400; color: #2F4858; opacity: 0.8;">Win</div>
+                                    <div style="margin-left: 5.6rem;" class="winning-pitcher-name">${data.liveData.decisions.winner.fullName} 
                                         <span>(${data.gameData.players[winningPitcherKey]?.pitchHand.code})</span>
                                     </div>
-                                    <div class="win-final-game-wins">${data.liveData.boxscore.teams.home.players[winningPitcherKey]?.seasonStats?.pitching.wins ?? data.liveData.boxscore.teams.away.players[winningPitcherKey]?.seasonStats?.pitching.wins ?? 0}</div>
-                                    <div class="win-final-game-stats">-</div>
-                                    <div class="win-final-game-losses">${data.liveData.boxscore.teams.home.players[winningPitcherKey]?.seasonStats?.pitching.losses ?? data.liveData.boxscore.teams.away.players[winningPitcherKey]?.seasonStats?.pitching.losses ?? 0}</div>
-                                    <div class="win-final-game-era">${data.liveData.boxscore.teams.home.players[winningPitcherKey]?.seasonStats?.pitching.era ?? data.liveData.boxscore.teams.away.players[winningPitcherKey]?.seasonStats?.pitching.era ?? 0}</div>
+                                    <div class="final-game-wins-loss">
+                                        <div class="win-final-game-wins">${data.liveData.boxscore.teams.home.players[winningPitcherKey]?.seasonStats?.pitching.wins ?? data.liveData.boxscore.teams.away.players[winningPitcherKey]?.seasonStats?.pitching.wins ?? 0}</div>
+                                        <div class="win-final-game-stats">-</div>
+                                        <div class="win-final-game-losses">${data.liveData.boxscore.teams.home.players[winningPitcherKey]?.seasonStats?.pitching.losses ?? data.liveData.boxscore.teams.away.players[winningPitcherKey]?.seasonStats?.pitching.losses ?? 0}</div>
                                     </div>
-                                </div>` : ''}
-                                <div class="losing-pitcher" mode="Scoreboard">
+                                    <div style="margin-left: 5.7rem;" class="win-final-game-era">ERA: ${data.liveData.boxscore.teams.home.players[winningPitcherKey]?.seasonStats?.pitching.era ?? data.liveData.boxscore.teams.away.players[winningPitcherKey]?.seasonStats?.pitching.era ?? 0}</div>
+                                ` : ''}
+                            </div>
+
+                            <!-- Losing Pitcher -->
+                            <div class="losing-pitcher" mode="Scoreboard">
                                 ${losingPitcherKey ? `
                                     <img class="loss-icon" srcset="https://midfield.mlbstatic.com/v1/people/${losingPitcherId}/spots/60?zoom=1.2 1.5x">
                                     <div style="margin-left: 1.7rem; font-size: 1.3rem; font-weight: 400; color: #2F4858; opacity: 0.8;">Loss</div>
                                     <div class="losing-pitcher-name">${data.liveData.decisions.loser.fullName} 
                                         <span>(${data.gameData.players[losingPitcherKey]?.pitchHand.code})</span>
                                     </div>
-                                    <div class="loss-final-game-wins">${data.liveData.boxscore.teams.home.players[losingPitcherKey]?.seasonStats?.pitching.wins ?? data.liveData.boxscore.teams.away.players[losingPitcherKey]?.seasonStats?.pitching.wins ?? 0}</div>
-                                    <div class="loss-final-game-stats">-</div>              
-                                    <div class="loss-final-game-losses">${data.liveData.boxscore.teams.home.players[losingPitcherKey]?.seasonStats?.pitching.losses ?? data.liveData.boxscore.teams.away.players[losingPitcherKey]?.seasonStats?.pitching.losses ?? 0}</div>
-                                    <div class="loss-final-game-era">${data.liveData.boxscore.teams.home.players[losingPitcherKey]?.seasonStats?.pitching.era ?? data.liveData.boxscore.teams.away.players[losingPitcherKey]?.seasonStats?.pitching.era ?? 0}</div>
+                                    <div class="final-game-wins-loss">
+                                        <div class="loss-final-game-wins">${data.liveData.boxscore.teams.home.players[losingPitcherKey]?.seasonStats?.pitching.wins ?? data.liveData.boxscore.teams.away.players[losingPitcherKey]?.seasonStats?.pitching.wins ?? 0}</div>
+                                        <div class="loss-final-game-stats">-</div>
+                                        <div class="loss-final-game-losses">${data.liveData.boxscore.teams.home.players[losingPitcherKey]?.seasonStats?.pitching.losses ?? data.liveData.boxscore.teams.away.players[losingPitcherKey]?.seasonStats?.pitching.losses ?? 0}</div>
                                     </div>
-                                </div>` : ''}
-                                <div class="saves" mode="Scoreboard">
+                                    <div class="loss-final-game-era">ERA: ${data.liveData.boxscore.teams.home.players[losingPitcherKey]?.seasonStats?.pitching.era ?? data.liveData.boxscore.teams.away.players[losingPitcherKey]?.seasonStats?.pitching.era ?? 0}</div>
+                                ` : ''}
+                            </div>
+
+                            <!-- Save Pitcher (below winning pitcher) -->
+                            <div class="saves" mode="Scoreboard">
                                 ${savesPitcherKey ? `
                                     <img class="saves-icon" srcset="https://midfield.mlbstatic.com/v1/people/${savesPitcherId}/spots/60?zoom=1.2 1.5x">
                                     <div style="margin-left: 5.3rem; font-size: 1.3rem; font-weight: 400; color: #2F4858; opacity: 0.8;">Save</div>
@@ -387,10 +402,10 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span>(${data.gameData.players[savesPitcherKey]?.pitchHand.code})</span>
                                     </div>
                                     <div class="final-game-saves">${data.liveData.boxscore.teams.home.players[savesPitcherKey]?.seasonStats?.pitching.saves ?? data.liveData.boxscore.teams.away.players[savesPitcherKey]?.seasonStats?.pitching.saves ?? 0}</div>
-                                    </div>
-                                </div>` : ''}
+                                ` : ''}
                             </div>
                         </div>
+                    </div>
                     `;
                 }
 
