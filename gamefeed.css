@@ -219,91 +219,65 @@ svg#field {
   overflow: visible;
 }
 
-.away-pitcher-icon {
-  margin-left: 2.7rem;
-}
-
-.home-pitcher-icon {
-  margin-left: 2.3rem;
-}
-
 .probable-pitchers {
-  height: 100px;
-  margin-top: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.8rem;
 }
 
 .prob-pitchers {
-  position: relative;
-}
-
-.home-probs {
-  float: right;
-  margin-right: 3rem;
-}
-
-.away-probs {
- float: left;
- margin-left: 3rem;
-}
-
-.pre-game-teams-away {
-  font-size: 20px;
-  font-weight: 500;
-  color: #2F4858;
-  opacity: 0.69;
-  margin-left: 1rem;
-}
-.pre-game-teams-home {
-  font-size: 20px;
-  font-weight: 500;
-  color: #2F4858;
-  opacity: 0.69;
-  margin-left: 1.5rem;
-}
-
-.away-name {
-  font-size: 17px;
-  font-weight: 400;
-  color: #46666D;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
 }
 
-.home-name {
-  font-size: 17px;
+.away-probs, .home-probs {
+  text-align: center;
+  width: 45%; /* Adjust width for balance */
+}
+
+.pre-game-teams-away, .pre-game-teams-home {
+  font-size: 20px;
+  font-weight: 500;
+  color: #2F4858;
+  opacity: 0.69;
+}
+
+.away-name, .home-name {
+  font-size: 16px;
   font-weight: 400;
-  color: #46666D; 
+  color: #46666D;
 }
 
-.pre-game-wins {
-  float: left;
-  font-size: 19px;
+.pre-game-wins-loss {
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 400;
   color: #2F4858;
-  padding-left: 1.5rem;
 }
 
-.pre-game-stats {
-  float: left;
-  color: #2F4858;
-  font-size: 19px;
-}
-
-.pre-game-loss {
-  font-size: 19px;
-  float: left;
-  color: #2F4858;
+.pre-game-wins, .pre-game-loss, .pre-game-stats {
+  padding: 0 0.3rem;
+  font-weight: 500;
 }
 
 .pre-game-era {
-  font-size: 19px;
-  float: center;
-  margin-left: 50px;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 0.5rem;
   color: #2F4858;
-  padding-left: 1rem;
-} 
+}
+
+.away-pitcher-icon, .home-pitcher-icon {
+  margin: 0.3rem auto;
+  display: block;
+  width: 50px; /* Adjust as needed */
+}
 
 .end-result {
-  height: 100px;
-  margin-top: 1rem;
+  height: 100px; /* Increased height to accommodate save pitcher */
+  margin-top: 0.2rem;
 }
 
 .final-results {
@@ -312,109 +286,51 @@ svg#field {
 
 .winning-pitcher {
   float: left;
-  margin-left: 4rem;
+  width: 50%; /* Adjust as needed */
 }
 
 .losing-pitcher {
   float: right;
-  margin-right: 5rem;
+  width: 30%; /* Adjust as needed */
 }
 
-.win-icon {
-  margin-left: 1.5rem;
-}
-
-.winning-pitcher-name {
-  font-size: 15px;
-  font-weight: 500;
-  color: #2F4858;
-  width: 100%;
-}
-
-.losing-pitcher-name {
-  font-size: 15px;
-  font-weight: 500;
-  color: #2F4858;
-  width: 100%;
-}
-
-.win-final-game-wins {
+.saves {
+  clear: both;
+  width: 50%; /* Aligns under winning pitcher */
   float: left;
-  font-size: 14px;
-  color: #2F4858;
-  font-weight: 500;
 }
 
-.win-final-game-stats {
-  float: left;
-  color: #2F4858;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.win-final-game-losses {
-  font-size: 14px;
-  float: left;
-  color: #2F4858;
-  font-weight: 500;
-}
-
-.win-final-game-era {
-  font-size: 14px;
-  float: center;
-  margin-left: 50px;
-  color: #2F4858;
-  font-weight: 500;
-}
-
-.loss-icon {
-  margin-left: 1.6rem;
-}
-
-.loss-final-game-wins {
-  float: left;
-  font-size: 14px;
-  color: #2F4858;
-  font-weight: 500;
-}
-
-.loss-final-game-stats {
-  float: left;
-  color: #2F4858;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.loss-final-game-losses {
-  font-size: 14px;
-  float: left;
-  color: #2F4858;
-  font-weight: 500;
-}
-
-.loss-final-game-era {
-  font-size: 14px;
-  float: center;
-  margin-left: 50px;
-  color: #2F4858;
-  font-weight: 500;
-}
-
-.saves-icon {
-  margin-left: 5.3rem;
-}
-
+.winning-pitcher-name,
+.losing-pitcher-name,
 .saves-pitcher-name {
-  margin-left: 4rem;
   font-size: 15px;
-  color: #2F4858;
   font-weight: 500;
+  color: #2F4858;
 }
 
-.final-game-saves {
-  margin-left: 6.3rem;
+.final-game-wins-loss {
+  display: flex;
+  justify-content: center;
   font-size: 14px;
   color: #2F4858;
   font-weight: 500;
 }
 
+.win-final-game-wins, .win-final-game-losses,
+.loss-final-game-wins, .loss-final-game-losses,
+.final-game-saves {
+  padding: 0 0.3rem;
+}
+
+.win-final-game-era, .loss-final-game-era {
+  font-size: 14px;
+  margin-top: 0.5rem;
+  color: #2F4858;
+  font-weight: 500;
+}
+
+.win-icon, .loss-icon, .saves-icon {
+  display: block;
+  width: 50px; /* Adjust as needed */
+  margin: 1rem auto;
+}
