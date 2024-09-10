@@ -153,11 +153,11 @@ body {
 
 #scoreboard {
   display: flex;
-  width: 25rem; /* Define a fixed width */
+  width: auto; /* Define a fixed width */
   height: auto; /* Let height adjust based on content */
   padding-top: 1rem;
   flex-shrink: 0; /* Prevent resizing */
-  margin-left: 20.5rem;
+  margin-left: 20rem;
 }
 
 #scoreboard .game {
@@ -167,7 +167,6 @@ body {
   border: solid 2px #006c54;
   z-index: 1000;
   background-color: white;
-  margin: 0 auto;
 }
 
 #scoreboard table {
@@ -338,16 +337,21 @@ svg#field {
 }
 
 .misc-table {
-  width: 49.5rem; /* Fixed width for the misc table */
-  height: 55rem; /* Fixed height */
+  width: auto; /* Fixed width for the misc table */
+  height: auto; /* Fixed height */
+  min-width: 44rem;
+  max-width: 48rem;
+  min-height: 50rem;
+  max-height: 70rem;
   padding: 1.5rem;
   border: solid 2px #006c54;
   z-index: 1000;
   background-color: white;
   flex-shrink: 0; /* Prevent resizing */
+  margin-right: 20rem;
 }
 
 #scoreboard, .misc-table {
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 0rem;
 } 
