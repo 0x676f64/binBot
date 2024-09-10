@@ -442,7 +442,7 @@ function fetchRealTimePitchData() {
                         </div>
                         <div class="score-bug-feed">
                             ${awayTeamScore !== undefined ? awayTeamScore : '0'} - ${homeTeamScore !== undefined ? homeTeamScore : '0'}
-                            <span style="font-size: 1.2rem; display:flex;padding-top:1rem;">${data.gameData.venue.name} &#8226 ${data.gameData.venue.location.city}, ${data.gameData.venue.location.stateAbbrev}</span>
+                                <span style="font-size: 1.2rem; display:flex;padding-top:1rem;">${data.gameData.venue.name} &#8226 ${data.gameData.venue.location.city}, ${data.gameData.venue.location.stateAbbrev}</span>
                         </div>
                         <div style="display: flex; align-items: center;">
                             <div class="game-column home-team" style="display: flex; flex-direction: column; margin-right: 10px;">
@@ -508,8 +508,16 @@ function fetchRealTimePitchData() {
                             ${svgFieldHTML}
                             ${finalStateHTML}
                         </div>
+                        <div class="misc-table">
+                        <table class="misc-right-side">
+                            <thead>
+                            
+                            </thead>
+                        </table>
+                        </div>
                     </div>
                 `;
+                    
 
                  // Append the generated HTML to the existing element
                  const existingElement = document.getElementById('feedContainer');
