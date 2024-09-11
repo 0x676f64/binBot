@@ -165,7 +165,7 @@ body {
   padding: 1.5rem;
   border: solid 2px #006c54;
   background-color: white;
-  margin-left: 430px;
+  margin-left: 330px;
 }
 
 #scoreboard table {
@@ -340,11 +340,11 @@ svg#field {
   box-sizing: border-box;
   width: auto;
   height: auto;
-  min-width: 750px;
+  min-width: 740px;
   min-height: 900px;
   max-height: 70rem;
   border: solid 2px #006c54;
   background-color: inherit;
-  left: 940px;
+  left: 840px;
   z-index: 1000;
 }
