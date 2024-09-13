@@ -115,6 +115,14 @@ document.addEventListener("DOMContentLoaded", () => {
                                 </div>
                             </div>
                         </div>
+                        <div class="pregame-misc-table">
+                            <table class="misc-right-side">
+                                <thead>
+                            
+                                </thead>
+                            </table>
+                            </div>
+                        </div>
                     `;
 
 
@@ -331,6 +339,14 @@ function fetchRealTimePitchData() {
                             <g> </g>
                             </g>
                         </svg> 
+                        <div class="live-misc-table">
+                            <table class="misc-right-side">
+                                <thead>
+                            
+                                </thead>
+                            </table>
+                            </div>
+                        </div>
                             `;
 
                 } else if (detailedState === 'Suspended: Rain') {
@@ -363,8 +379,8 @@ function fetchRealTimePitchData() {
                             <div class="winning-pitcher" mode="Scoreboard">
                                 ${winningPitcherKey ? `
                                     <img class="win-icon" srcset="https://midfield.mlbstatic.com/v1/people/${winningPitcherId}/spots/60?zoom=1.2 1.5x">
-                                    <div style="margin-left: 6.5rem; font-size: 1.3rem; font-weight: 400; color: #2F4858; opacity: 0.8;">Win</div>
-                                    <div style="margin-left: 5.6rem;" class="winning-pitcher-name">${data.liveData.decisions.winner.fullName} 
+                                    <div style="margin-left: 6rem; font-size: 1.3rem; font-weight: 400; color: #2F4858; opacity: 0.8;">Win</div>
+                                    <div style="margin-left: 4rem;" class="winning-pitcher-name">${data.liveData.decisions.winner.fullName} 
                                         <span>(${data.gameData.players[winningPitcherKey]?.pitchHand.code})</span>
                                     </div>
                                     <div class="final-game-wins-loss">
@@ -372,7 +388,7 @@ function fetchRealTimePitchData() {
                                         <div class="win-final-game-stats">-</div>
                                         <div class="win-final-game-losses">${data.liveData.boxscore.teams.home.players[winningPitcherKey]?.seasonStats?.pitching.losses ?? data.liveData.boxscore.teams.away.players[winningPitcherKey]?.seasonStats?.pitching.losses ?? 0}</div>
                                     </div>
-                                    <div style="margin-left: 5.7rem;" class="win-final-game-era">ERA: ${data.liveData.boxscore.teams.home.players[winningPitcherKey]?.seasonStats?.pitching.era ?? data.liveData.boxscore.teams.away.players[winningPitcherKey]?.seasonStats?.pitching.era ?? 0}</div>
+                                    <div style="margin-left: 5.5rem;" class="win-final-game-era">ERA: ${data.liveData.boxscore.teams.home.players[winningPitcherKey]?.seasonStats?.pitching.era ?? data.liveData.boxscore.teams.away.players[winningPitcherKey]?.seasonStats?.pitching.era ?? 0}</div>
                                 ` : ''}
                             </div>
 
@@ -380,7 +396,7 @@ function fetchRealTimePitchData() {
                             <div class="losing-pitcher" mode="Scoreboard">
                                 ${losingPitcherKey ? `
                                     <img class="loss-icon" srcset="https://midfield.mlbstatic.com/v1/people/${losingPitcherId}/spots/60?zoom=1.2 1.5x">
-                                    <div style="margin-left: 1.7rem; font-size: 1.3rem; font-weight: 400; color: #2F4858; opacity: 0.8;">Loss</div>
+                                    <div style="margin-left: 4rem; font-size: 1.3rem; font-weight: 400; color: #2F4858; opacity: 0.8;">Loss</div>
                                     <div class="losing-pitcher-name">${data.liveData.decisions.loser.fullName} 
                                         <span>(${data.gameData.players[losingPitcherKey]?.pitchHand.code})</span>
                                     </div>
@@ -397,7 +413,7 @@ function fetchRealTimePitchData() {
                             <div class="saves" mode="Scoreboard">
                                 ${savesPitcherKey ? `
                                     <img class="saves-icon" srcset="https://midfield.mlbstatic.com/v1/people/${savesPitcherId}/spots/60?zoom=1.2 1.5x">
-                                    <div style="margin-left: 5.3rem; font-size: 1.3rem; font-weight: 400; color: #2F4858; opacity: 0.8;">Save</div>
+                                    <div style="margin-left: 5.5rem; font-size: 1.3rem; font-weight: 400; color: #2F4858; opacity: 0.8;">Save</div>
                                     <div class="saves-pitcher-name">${data.liveData.decisions.save.fullName} 
                                         <span>(${data.gameData.players[savesPitcherKey]?.pitchHand.code})</span>
                                     </div>
@@ -406,6 +422,14 @@ function fetchRealTimePitchData() {
                             </div>
                         </div>
                     </div>
+                    <div class="final-misc-table">
+                            <table class="misc-right-side">
+                                <thead>
+                            
+                                </thead>
+                            </table>
+                            </div>
+                        </div>
                     `;
                 }
 
@@ -507,15 +531,7 @@ function fetchRealTimePitchData() {
                             ${preGameHTML}
                             ${svgFieldHTML}
                             ${finalStateHTML}
-                        </div>
-                        <div class="misc-table">
-                        <table class="misc-right-side">
-                            <thead>
-                            
-                            </thead>
-                        </table>
-                        </div>
-                    </div>
+                        </div>               
                 `;
                     
 
