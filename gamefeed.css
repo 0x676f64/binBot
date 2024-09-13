@@ -88,6 +88,10 @@ body {
     margin: 0 auto;
 }
 
+td, th {
+  padding: 0;
+}
+
 .game-column {
     display: flex;
     flex-direction: column;
@@ -377,8 +381,7 @@ svg#field {
   height: auto;
   min-height: 900px;
   max-height: 70rem;
-  border: solid 2px #006c54;
-  background-color: inherit;
+  background-color: #e5decf;
   margin-left: 31rem;
   bottom: 21rem;
 }
@@ -389,8 +392,7 @@ svg#field {
   height: auto;
   min-height: 900px;
   max-height: 70rem;
-  border: solid 2px #006c54;
-  background-color: inherit;
+  background-color: #e5decf;
   margin-left: 31rem;
   bottom: 21rem;
 }
@@ -401,8 +403,101 @@ svg#field {
   height: auto;
   min-height: 900px;
   max-height: 70rem;
-  border: solid 2px #006c54;
-  background-color: inherit;
+  background-color: #e5decf;
   margin-left: 31rem;
   bottom: 21rem;
+}
+
+table th {
+  font-family: "Roboto Condensed";
+  font-size: 0.85rem;
+}
+
+.th-title-header{
+  text-align: center;
+  border-bottom: solid 1px #006c54;
+}
+
+.tr-component-row {
+  border-bottom: solid 3px #006c54;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.ev-sort {
+  text-align: left;
+}
+
+.ev-sort {
+  cursor: pointer;
+  line-height: 1.2;
+  padding: 8px 3px 8px 3px;
+  text-align: center;
+  vertical-align: bottom;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.table-static-column {
+  position: relative;
+  background-color: inherit;
+}
+
+.border-left {
+  border-left: solid 1px #006c54;
+}
+
+.tooltip-hover {
+  position: relative;
+}
+
+.border-right {
+  border-right: solid 1px #006c54;
+  border-top: solid 1px #006c54;
+  left: 15px;
+}
+
+#metricsContainer_th-9 {
+  left: 5px;
+}
+
+#metricsContainer_th-8 {
+  right: 3px;
+}
+
+#metricsContainer_th-7 {
+  right: 10px;
+}
+
+#metricsContainer_th-6 {
+  left: 5px;
+  padding-right: 20px;
+}
+
+#metricsContainer_th-5 {
+  right: 5px;
+}
+
+#metricsContainer_th-4 {
+  padding-right: 20px;
+  padding-left: 30px;
+}
+
+#metricsContainer_th-3 {
+  padding-left: 10px;
+}
+
+#metricsContainer_th-2 {
+  padding-left: 100px;
+}
+
+#metricsContainer_th-1 {
+  left: 20px;
+  padding-right: 10px;
 }
