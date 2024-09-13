@@ -85,7 +85,7 @@ body {
     color: #222;
     line-height: 1;
     font-variant-ligatures: none;
-    margin: 0;
+    margin: 0 auto;
 }
 
 .game-column {
@@ -153,20 +153,21 @@ body {
 
 #scoreboard {
   display: flex;
-  width: auto; /* Define a fixed width */
-  height: auto; /* Let height adjust based on content */
-  padding-top: 1rem;
-  flex-shrink: 0; /* Prevent resizing */
-  margin-left: 20rem;
+  justify-content: center;
+  align-items: flex-start; /* Align items at the top */
+  margin-top: 20px;
+  padding-left: 14.5rem;
+  width: auto;
+  height: auto;
 }
 
-#scoreboard .game {
-  width: 33.35rem;
-  height: 35.875rem;
+.game {
+  width: 500px; /* Fixed width for game display */
+  height: 600px; /* Fixed height to prevent shifting */
   padding: 1.5rem;
   border: solid 2px #006c54;
-  z-index: 1000;
   background-color: white;
+  margin-right: 62rem; /* Adds space between the two elements */
 }
 
 #scoreboard table {
@@ -271,7 +272,7 @@ svg#field {
 }
 
 .away-pitcher-icon, .home-pitcher-icon {
-  margin: 0.3rem auto;
+  margin: 0.5rem auto;
   display: block;
   width: 50px; /* Adjust as needed */
 }
@@ -285,6 +286,22 @@ svg#field {
   position: relative;
 }
 
+.losing-pitcher-name {
+  margin-right: 1.5rem;
+}
+
+.loss-final-game-wins {
+  margin-left: 1rem;
+}
+
+.loss-final-game-losses {
+  margin-right: 4.5rem;
+}
+
+.loss-final-game-era {
+  margin-left: 3.5rem;
+}
+
 .winning-pitcher {
   float: left;
   width: 50%; /* Adjust as needed */
@@ -292,7 +309,12 @@ svg#field {
 
 .losing-pitcher {
   float: right;
-  width: 30%; /* Adjust as needed */
+  width: 50%; /* Adjust as needed */
+}
+
+.losing-pitcher-name {
+  margin-left: 2rem;
+  width: 100%;
 }
 
 .saves {
@@ -336,22 +358,51 @@ svg#field {
   margin: 1rem auto;
 }
 
-.misc-table {
-  width: auto; /* Fixed width for the misc table */
-  height: auto; /* Fixed height */
-  min-width: 44rem;
-  max-width: 48rem;
-  min-height: 50rem;
-  max-height: 70rem;
-  padding: 1.5rem;
-  border: solid 2px #006c54;
-  z-index: 1000;
-  background-color: white;
-  flex-shrink: 0; /* Prevent resizing */
-  margin-right: 20rem;
+.loss-icon {
+  margin-right: 7rem;
 }
 
-#scoreboard, .misc-table {
-  justify-content: space-between;
-  gap: 0rem;
-} 
+.saves-pitcher-name {
+  margin-left: 3.7rem;
+}
+
+.final-game-saves {
+  margin-left: 6rem;
+  margin-top: 0.8rem;
+}
+
+.live-misc-table {
+  position: relative;
+  width: 740px;
+  height: auto;
+  min-height: 900px;
+  max-height: 70rem;
+  border: solid 2px #006c54;
+  background-color: inherit;
+  margin-left: 31rem;
+  bottom: 21rem;
+}
+
+.final-misc-table {
+  position: relative;
+  width: 740px;
+  height: auto;
+  min-height: 900px;
+  max-height: 70rem;
+  border: solid 2px #006c54;
+  background-color: inherit;
+  margin-left: 31rem;
+  bottom: 21rem;
+}
+
+.pregame-misc-table {
+  position: relative;
+  width: 740px;
+  height: auto;
+  min-height: 900px;
+  max-height: 70rem;
+  border: solid 2px #006c54;
+  background-color: inherit;
+  margin-left: 31rem;
+  bottom: 21rem;
+}
