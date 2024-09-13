@@ -118,13 +118,27 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="pregame-misc-table">
                             <table class="misc-right-side">
                                 <thead>
-                            
+                                <tr>
+                                        <th colspan="4" class="th-name-header"></th>
+                                        <th colspan="5" class="th-title-header">Statcast</th>
+                                </tr>
+                                <tr class="tr-component-row">
+                                        <th id="metricsContainer_th-0" class="ev-sort align-left"></th>
+                                        <th id="metricsContainer_th-1" class="ev-sort align-left table-static-column">Batter</th>
+                                        <th id="metricsContainer_th-2" class="ev-sort align-right">PA</th>
+                                        <th id="metricsContainer_th-3" class="ev-sort align-right">Inn.</th>
+                                        <th id="metricsContainer_th-4" class="ev-sort align-right">Result</th>
+                                        <th id="metricsContainer_th-5" class="ev-sort tooltip-hover border-left align-right" title="Exit Velocity (MPH)">Exit Velo</th>
+                                        <th id="metricsContainer_th-6" class="ev-sort tooltip-hover align-right" title="Launch Angle (Degrees)">LA</th>
+                                        <th id="metricsContainer_th-7" class="ev-sort tooltip-hover align-right" title="Hit Distance (Feet)">Hit Dist.</th>
+                                        <th id="metricsContainer_th-8" class="ev-sort tooltip-hover align-right" >Bat <br> Speed</th>
+                                        <th id="metricsContainer_th-9" class="ev-sort tooltip-hover border-right" >Pitch <br> Velocity</th>
+                                </tr>
                                 </thead>
                             </table>
                             </div>
                         </div>
                     `;
-
 
                 } else if (detailedState === 'Live' || detailedState === 'In Progress') {
                     // Get inning data
@@ -339,10 +353,25 @@ function fetchRealTimePitchData() {
                             <g> </g>
                             </g>
                         </svg> 
-                        <div class="live-misc-table">
+                       <div class="live-misc-table">
                             <table class="misc-right-side">
                                 <thead>
-                            
+                                <tr>
+                                        <th colspan="5" class="th-name-header"></th>
+                                        <th colspan="7" class="th-title-header">Advanced Metrics</th>
+                                </tr>
+                                <tr class="tr-component-row">
+                                        <th id="metricsContainer_th-0" class="ev-sort"></th>
+                                        <th id="metricsContainer_th-1" class="ev-sort">Batter</th>
+                                        <th id="metricsContainer_th-2" class="ev-sort">PA</th>
+                                        <th id="metricsContainer_th-3" class="ev-sort">Inn.</th>
+                                        <th id="metricsContainer_th-4" class="ev-sort">Result</th>
+                                        <th id="metricsContainer_th-5" class="ev-sort tooltip-hover" title="Exit Velocity (MPH)">Exit Velo</th>
+                                        <th id="metricsContainer_th-6" class="ev-sort tooltip-hover" title="Launch Angle (Degrees)">LA</th>
+                                        <th id="metricsContainer_th-7" class="ev-sort tooltip-hover" title="Hit Distance (Feet)">Hit Dist.</th>
+                                        <th id="metricsContainer_th-8" class="ev-sort tooltip-hover" >Bat Speed</th>
+                                        <th id="metricsContainer_th-9" class="ev-sort tooltip-hover" >Pitch Velocity</th>
+                                </tr>
                                 </thead>
                             </table>
                             </div>
