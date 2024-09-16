@@ -1,13 +1,71 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const teamMap = {
-        108: 'laa', 109: 'az', 110: 'bal', 111: 'bos', 112: 'chc',
-        113: 'cin', 114: 'cle', 115: 'col', 116: 'det', 117: 'hou',
-        118: 'kc', 119: 'lad', 120: 'was', 121: 'nym', 133: 'oak',
-        134: 'pit', 135: 'sd', 136: 'sea', 137: 'sf', 138: 'stl',
-        139: 'tb', 140: 'tex', 141: 'tor', 142: 'minn', 143: 'phi',
-        144: 'atl', 145: 'chw', 146: 'mia', 147: 'nyy', 158: 'mil',
+        108: 'laa', // Los Angeles Angels
+        109: 'az', // Arizona Diamondbacks
+        110: 'bal', // Baltimore Orioles
+        111: 'bos', // Boston Red Sox
+        112: 'chc', // Chicago Cubs
+        113: 'cin', // Cincinnati Reds
+        114: 'cle', // Cleveland Guardians
+        115: 'col', // Colorado Rockies
+        116: 'det', // Detroit Tigers
+        117: 'hou', // Houston Astros
+        118: 'kc', // Kansas City Royals
+        119: 'lad', // Los Angeles Dodgers
+        120: 'was', // Washington Nationals
+        121: 'nym', // New York Mets
+        133: 'oak', // Oakland Athletics 
+        134: 'pit', // Pittburgh Pirates
+        135: 'sd', // San Diego Padres
+        136: 'sea', // Seattle Mariners
+        137: 'sf', // San Francisco Giants
+        138: 'stl', // St Louis Cardinals
+        139: 'tb', // Tampa Bay Rays
+        140: 'tex', // Texas Rangers 
+        141: 'tor', // Toronto Blue Jays
+        142: 'minn', // Minesota Twins
+        143: 'phi', // Philadelphia Phillies 
+        144: 'atl', // Atlanta Braves 
+        145: 'chw', // Chicago White Sox
+        146: 'mia', // Miami Marlins
+        147: 'nyy', // New York Yankees 
+        158: 'mil', // Milwaukee Brewers 
+
     };
+
+    const colorCode = {
+        108: '#BA0021',  // LAA
+        109: '#A71930',  // AZ
+        110: '#DF4601',  // BAL
+        111: '#C62033',  // BOS
+        112: '#0E3386',  // CHC
+        113: '#C6011F',  // CIN
+        114: '#0C2340',  // CLE
+        115: '#33006F',  // COL
+        116: '#0C2340',  // DET
+        117: '#EB6E1F',  // HOU
+        118: '#004687',  // KC
+        119: '#005A9C',  // LAD
+        120: '#AB0003',  // WAS
+        121: '#FF5910',  // NYM
+        133: '#003831',  // OAK
+        134: '#FDB827',  // PIT
+        135: '#2F241D',  // SD
+        136: '#005C5C',  // SEA
+        137: '#FD5A1E',  // SF
+        138: '#C41E3A',  // STL
+        139: '#8FBCE6',  // TB
+        140: '#003278',  // TEX
+        141: '#134A8E',  // TOR
+        142: '#002B5C',  // MINN
+        143: '#E81828',  // PHI
+        144: '#CE1141',  // ATL
+        145: '#000000',  // CHW
+        146: '#00A3E0',  // MIA
+        147: '#132448',  // NYY
+        158: '#FFC52F',  // MIL
+    }
 
     // Function to get URL parameter
     function getGamePkFromURL() {
@@ -75,6 +133,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     const pitcherAwayKey = awayprobablePitchersId ? `ID${awayprobablePitchersId}` : null;
                     const pitcherHomeKey = homeprobablePitchersId ? `ID${homeprobablePitchersId}` : null;
 
+                    // Get Team Id
+                    const awayTeamId = Number(data.gameData.teams.away.id); // Fetch away team ID
+                    const homeTeamId = Number(data.gameData.teams.home.id); // Fetch home team ID
+
+                    const awayTeamColor = colorCode[awayTeamId] || '#cccccc';
+                    const homeTeamColor = colorCode[homeTeamId] || '#cccccc'; 
+
                     gameStatus = gameTime;
                     preGameHTML = `
                         <div class="probable-pitchers">
@@ -116,29 +181,14 @@ document.addEventListener("DOMContentLoaded", () => {
                             </div>
                         </div>
                         <div class="pregame-misc-table">
-                            <table class="misc-right-side">
-                                <thead>
-                                <tr>
-                                        <th colspan="4" class="th-name-header"></th>
-                                        <th colspan="5" class="th-title-header">Statcast</th>
-                                </tr>
-                                <tr class="tr-component-row">
-                                        <th id="metricsContainer_th-0" class="ev-sort align-left"></th>
-                                        <th id="metricsContainer_th-1" class="ev-sort align-left table-static-column">Batter</th>
-                                        <th id="metricsContainer_th-2" class="ev-sort align-right">PA</th>
-                                        <th id="metricsContainer_th-3" class="ev-sort align-right">Inn.</th>
-                                        <th id="metricsContainer_th-4" class="ev-sort align-right">Result</th>
-                                        <th id="metricsContainer_th-5" class="ev-sort tooltip-hover border-left align-right" title="Exit Velocity (MPH)">Exit Velo</th>
-                                        <th id="metricsContainer_th-6" class="ev-sort tooltip-hover align-right" title="Launch Angle (Degrees)">LA</th>
-                                        <th id="metricsContainer_th-7" class="ev-sort tooltip-hover align-right" title="Hit Distance (Feet)">Hit Dist.</th>
-                                        <th id="metricsContainer_th-8" class="ev-sort tooltip-hover align-right" >Bat <br> Speed</th>
-                                        <th id="metricsContainer_th-9" class="ev-sort tooltip-hover border-right" >Pitch <br> Velocity</th>
-                                </tr>
-                                </thead>
-                            </table>
-                            </div>
+                            <div class="team-color away-team-color" style="background-color: ${awayTeamColor};"></div>
+                            <div class="team-color home-team-color" style="background-color: ${homeTeamColor};"></div>
+                            <div class="lineup-title">Starting Lineups</div>
                         </div>
                     `;
+
+                    document.getElementById('feedContainer').innerHTML = preGameHTML;
+
 
                 } else if (detailedState === 'Live' || detailedState === 'In Progress') {
                     // Get inning data
@@ -453,10 +503,6 @@ function fetchRealTimePitchData() {
                     </div>
                     <div class="final-misc-table">
                             <table class="misc-right-side">
-                                <thead>
-                            
-                                </thead>
-                            </table>
                             </div>
                         </div>
                     `;
