@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         139: 'tb', // Tampa Bay Rays
         140: 'tex', // Texas Rangers 
         141: 'tor', // Toronto Blue Jays
-        142: 'minn', // Minesota Twins
+        142: 'min', // Minesota Twins
         143: 'phi', // Philadelphia Phillies 
         144: 'atl', // Atlanta Braves 
         145: 'chw', // Chicago White Sox
@@ -140,6 +140,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     const awayTeamColor = colorCode[awayTeamId] || '#cccccc';
                     const homeTeamColor = colorCode[homeTeamId] || '#cccccc'; 
 
+                    const teamLogosPath = 'images/svg-spots/'; // Define your logos folder path 
+
+                    // Get team logo file names dynamically
+                    const awayTeamLogo = `${teamLogosPath}${teamMap[awayTeamId]}.svg`;
+                    const homeTeamLogo = `${teamLogosPath}${teamMap[homeTeamId]}.svg`;
+
                     gameStatus = gameTime;
                     preGameHTML = `
                         <div class="probable-pitchers">
@@ -181,8 +187,16 @@ document.addEventListener("DOMContentLoaded", () => {
                             </div>
                         </div>
                         <div class="pregame-misc-table">
-                            <div class="team-color away-team-color" style="background-color: ${awayTeamColor};"></div>
-                            <div class="team-color home-team-color" style="background-color: ${homeTeamColor};"></div>
+                            <div class="team-color away-team-color" style="background-color: ${awayTeamColor};">
+                                <div class="pre-game-teams-away">
+                                        <img src="${awayTeamLogo}" class="svg-spots" >
+                                </div>
+                            </div>
+                            <div class="team-color home-team-color" style="background-color: ${homeTeamColor};">
+                                <div class="pre-game-teams-home">
+                                        <img src="${homeTeamLogo}" class="svg-spots" >
+                                </div>
+                            </div>
                             <div class="lineup-title">Starting Lineups</div>
                         </div>
                     `;
