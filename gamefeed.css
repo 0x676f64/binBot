@@ -394,18 +394,37 @@ svg#field {
   max-height: 70rem;
   background-color: #e5decf;
   margin-left: 31rem;
-  bottom: 21rem;
+  bottom: 17rem;
 }
 
 .pregame-misc-table {
+  display: flex;
   position: relative;
+  flex-direction: row;
   width: 740px;
   height: auto;
   min-height: 900px;
   max-height: 70rem;
-  background-color: #e5decf;
   margin-left: 31rem;
-  bottom: 21rem;
+  bottom: 20.7rem;
+}
+
+.team-color {
+  width: 50%;
+}
+
+.lineup-title {
+  position: absolute;
+    top: 5%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Correct for the center offset */
+    font-family: "Roboto Condensed";
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 0.75px;
+    color: white;
+    background-color: inherit; /* Optional: background to make the text stand out */
+    padding: 10px;
 }
 
 table th {
