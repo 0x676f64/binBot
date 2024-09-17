@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
         110: '#DF4601',  // BAL
         111: '#C62033',  // BOS
         112: '#0E3386',  // CHC
-        113: '#C6011F',  // CIN
+        113: '#c6011f',  // CIN
         114: '#0C2340',  // CLE
         115: '#33006F',  // COL
         116: '#0C2340',  // DET
@@ -53,18 +53,18 @@ document.addEventListener("DOMContentLoaded", () => {
         134: '#FDB827',  // PIT
         135: '#2F241D',  // SD
         136: '#005C5C',  // SEA
-        137: '#FD5A1E',  // SF
-        138: '#C41E3A',  // STL
-        139: '#8FBCE6',  // TB
+        137: '#8b6f4e',  // SF
+        138: '#c41e3a',  // STL
+        139: '#092c5c',  // TB
         140: '#003278',  // TEX
         141: '#134A8E',  // TOR
         142: '#002B5C',  // MINN
         143: '#E81828',  // PHI
-        144: '#CE1141',  // ATL
+        144: '#13274f',  // ATL
         145: '#000000',  // CHW
         146: '#00A3E0',  // MIA
         147: '#132448',  // NYY
-        158: '#FFC52F',  // MIL
+        158: '#12284b',  // MIL
     }
 
     // Function to get URL parameter
@@ -146,12 +146,25 @@ document.addEventListener("DOMContentLoaded", () => {
                     const awayTeamLogo = `${teamLogosPath}${teamMap[awayTeamId]}.svg`;
                     const homeTeamLogo = `${teamLogosPath}${teamMap[homeTeamId]}.svg`;
 
+                    // Render Batting Order from Pre-Games
+                    const awayBattingOrder = data.liveData.boxscore.teams.away.battingOrder; // Array of player IDs for the away team
+                    const homeBattingOrder = data.liveData.boxscore.teams.home.battingOrder; // Array of player IDs for the home team
+
+                    const playerId = awayBattingOrder[0]; // Get the first player ID from the away batting order
+                    const playerNameOne = playerId ? data.gameData.players[`ID${playerId}`]?.boxscoreName : null;
+
+                    // Example async/await fetch function and render
+                    async function fetchDataAndRender() {
+                        const data = await fetchData(); // Assuming fetchData is defined elsewhere
+                        renderBattingOrders(data);
+                    }
+
                     gameStatus = gameTime;
                     preGameHTML = `
                         <div class="probable-pitchers">
                             <div class="prob-pitchers">
                                 <div class="away-probs" mode="Scoreboard">
-                                   <div class="pre-game-teams-away">${data.gameData.teams.away.franchiseName}</div>
+                                <div class="pre-game-teams-away">${data.gameData.teams.away.franchiseName}</div>
                                     ${awayPitcher ? `
                                         <img class="away-pitcher-icon" srcset="https://midfield.mlbstatic.com/v1/people/${awayprobablePitchersId}/spots/60?zoom=1.2 1.5x">
                                         <div class="away-name">${awayPitcher.fullName}
@@ -189,20 +202,41 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="pregame-misc-table">
                             <div class="team-color away-team-color" style="background-color: ${awayTeamColor};">
                                 <div class="pre-game-teams-away">
-                                        <img src="${awayTeamLogo}" class="svg-spots" >
+                                    <img src="${awayTeamLogo}" class="svg-spots away-svg">
+                                    <div id="away-batting-order"></div> 
                                 </div>
                             </div>
                             <div class="team-color home-team-color" style="background-color: ${homeTeamColor};">
                                 <div class="pre-game-teams-home">
-                                        <img src="${homeTeamLogo}" class="svg-spots" >
+                                    <img src="${homeTeamLogo}" class="svg-spots home-svg">
+                                    <div id="home-batting-order"></div>
                                 </div>
                             </div>
-                            <div class="lineup-title">Starting Lineups</div>
+                            <div class="lineup-title">Starting Lineups
+                                <div class="oval">2024 BATTING AVERAGE</div>
+                                <div class="oval2">LAST 10 GAMES</div>
+                                <!-- New div for numbers 1-9 down the middle -->
+                                <div class="middle-numbers">
+                                    <div class="number">1
+                                    <span id="batOrder">${playerNameOne}</span>
+                                    <span></span>
+                                    </div>
+                                    <div class="number">2</div>
+                                    <div class="number">3</div>
+                                    <div class="number">4</div>
+                                    <div class="number">5</div>
+                                    <div class="number">6</div>
+                                    <div class="number">7</div>
+                                    <div class="number">8</div>
+                                    <div class="number">9</div>
+                                </div>
+                            </div>
                         </div>
                     `;
 
+                    // Insert HTML and call fetch/render
                     document.getElementById('feedContainer').innerHTML = preGameHTML;
-
+                    fetchDataAndRender();
 
                 } else if (detailedState === 'Live' || detailedState === 'In Progress') {
                     // Get inning data
