@@ -378,12 +378,11 @@ svg#field {
 .live-misc-table {
   position: relative;
   width: 740px;
-  height: auto;
   min-height: 900px;
   max-height: 70rem;
   background-color: #e5decf;
   margin-left: 31rem;
-  bottom: 21rem;
+  bottom: 18rem;
 }
 
 .final-misc-table {
