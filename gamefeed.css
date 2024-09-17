@@ -378,11 +378,12 @@ svg#field {
 .live-misc-table {
   position: relative;
   width: 740px;
+  height: auto;
   min-height: 900px;
   max-height: 70rem;
   background-color: #e5decf;
   margin-left: 31rem;
-  bottom: 18rem;
+  bottom: 21rem;
 }
 
 .final-misc-table {
@@ -414,16 +415,83 @@ svg#field {
 
 .lineup-title {
   position: absolute;
-    top: 5%; /* Center vertically */
+    top: 8%; /* Center vertically */
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Correct for the center offset */
     font-family: "Roboto Condensed";
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 32px;
+    font-weight: 400;
     letter-spacing: 0.75px;
     color: white;
     background-color: inherit; /* Optional: background to make the text stand out */
     padding: 10px;
+    margin-top: 24rem;
+}
+
+.away-team-logo, .home-team-logo {
+  mix-blend-mode: normal;
+}
+
+.svg-spots {
+  width: 160px;
+  height: 160px;
+}
+
+.home-svg {
+  margin-top: 10px;
+  margin-left: 12rem;
+}
+
+.away-svg {
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.oval {
+  width: 200px; /* Adjust width */
+  height: 25px; /* Adjust height */
+  margin-top: 30px;
+  background-color: #fff; /* Oval color */
+  border-radius: 5%; /* Creates the oval shape */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black; /* Text color */
+  font-size: 1rem; /* Text size */
+  font-weight: 500;
+}
+
+.oval2 {
+  width: 200px; /* Adjust width */
+  height: 25px; /* Adjust height */
+  margin-top: 5px;
+  margin-bottom: 3rem;
+  background-color: #fff; /* Oval color */
+  border-radius: 5%; /* Creates the oval shape */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black; /* Text color */
+  font-size: 1rem; /* Text size */
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.middle-numbers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+}
+
+.number {
+  font-size: 2rem; /* Adjust size of numbers */
+  font-weight: 600;
+  margin: 20px 0; /* Adjust space between numbers */
+  color: #fff; /* Change color as needed */
 }
 
 table th {
