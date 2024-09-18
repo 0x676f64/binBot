@@ -150,8 +150,27 @@ document.addEventListener("DOMContentLoaded", () => {
                     const awayBattingOrder = data.liveData.boxscore.teams.away.battingOrder; // Array of player IDs for the away team
                     const homeBattingOrder = data.liveData.boxscore.teams.home.battingOrder; // Array of player IDs for the home team
 
-                    const playerId = awayBattingOrder[0]; // Get the first player ID from the away batting order
-                    const playerNameOne = playerId ? data.gameData.players[`ID${playerId}`]?.boxscoreName : null;
+                    // Manually input all 9 batters so they are dynamically rendered - Away Batters
+                    const playerOne = awayBattingOrder[0] ? data.gameData.players[`ID${awayBattingOrder[0]}`]?.boxscoreName : null;
+                    const playerTwo = awayBattingOrder[1] ? data.gameData.players[`ID${awayBattingOrder[1]}`]?.boxscoreName : null;
+                    const playerThree = awayBattingOrder[2] ? data.gameData.players[`ID${awayBattingOrder[2]}`]?.boxscoreName : null;
+                    const playerFour = awayBattingOrder[3] ? data.gameData.players[`ID${awayBattingOrder[3]}`]?.boxscoreName : null;
+                    const playerFive = awayBattingOrder[4] ? data.gameData.players[`ID${awayBattingOrder[4]}`]?.boxscoreName : null;
+                    const playerSix = awayBattingOrder[5] ? data.gameData.players[`ID${awayBattingOrder[5]}`]?.boxscoreName : null;
+                    const playerSeven = awayBattingOrder[6] ? data.gameData.players[`ID${awayBattingOrder[6]}`]?.boxscoreName : null;
+                    const playerEight = awayBattingOrder[7] ? data.gameData.players[`ID${awayBattingOrder[7]}`]?.boxscoreName : null;
+                    const playerNine = awayBattingOrder[8] ? data.gameData.players[`ID${awayBattingOrder[8]}`]?.boxscoreName : null;
+
+                    // Now do the same for the Home Team Batting Order
+                    const homeOne = homeBattingOrder[0] ? data.gameData.players[`ID${homeBattingOrder[0]}`]?.boxscoreName : null;
+                    const homeTwo = homeBattingOrder[1] ? data.gameData.players[`ID${homeBattingOrder[1]}`]?.boxscoreName : null;
+                    const homeThree = homeBattingOrder[2] ? data.gameData.players[`ID${homeBattingOrder[2]}`]?.boxscoreName : null;
+                    const homeFour = homeBattingOrder[3] ? data.gameData.players[`ID${homeBattingOrder[3]}`]?.boxscoreName : null;
+                    const homeFive = homeBattingOrder[4] ? data.gameData.players[`ID${homeBattingOrder[4]}`]?.boxscoreName : null;
+                    const homeSix = homeBattingOrder[5] ? data.gameData.players[`ID${homeBattingOrder[5]}`]?.boxscoreName : null;
+                    const homeSeven = homeBattingOrder[6] ? data.gameData.players[`ID${homeBattingOrder[6]}`]?.boxscoreName : null;
+                    const homeEight = homeBattingOrder[7] ? data.gameData.players[`ID${homeBattingOrder[7]}`]?.boxscoreName : null;
+                    const homeNine = homeBattingOrder[8] ? data.gameData.players[`ID${homeBattingOrder[8]}`]?.boxscoreName : null;
 
                     // Example async/await fetch function and render
                     async function fetchDataAndRender() {
