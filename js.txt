@@ -50,3 +50,65 @@
                             </div>
                         </div>
                     `;
+
+
+NEWER ONE BELOW
+
+ <div class="pregame-misc-table">
+                            <div class="team-color away-team-color" style="background-color: ${awayTeamColor};">
+                                <div class="pre-game-teams-away">
+                                    <img src="${awayTeamLogo}" class="svg-spots away-svg">
+                                    <div id="away-batting-order"></div> 
+                                </div>
+                            </div>
+                            <div class="team-color home-team-color" style="background-color: ${homeTeamColor};">
+                                <div class="pre-game-teams-home">
+                                    <img src="${homeTeamLogo}" class="svg-spots home-svg">
+                                    <div id="home-batting-order"></div>
+                                </div>
+                            </div>
+                            <div class="lineup-title">Starting Lineups
+                                <div class="oval">2024 BATTING AVERAGE</div>
+                                <div class="oval2">LAST 10 GAMES</div>
+                                <!-- New div for numbers 1-9 down the middle -->
+                                <div class="middle-numbers">
+                             </div>   
+                                    <span id="awayOrder">${playerOne}</span>
+                                    <span id="numbers">1</span>
+                                    <span id="homeOrder">${homeOne}</span>
+
+                                    <span id="awayOrder">${playerTwo}</span>
+                                    <span id="numbers">2</span>
+                                    <span id="homeOrder">${homeTwo}</span>
+                                    
+                                    <span id="awayOrder">${playerThree}</span>
+                                    <span id="numbers">3</span>
+                                    <span id="homeOrder">${homeThree}</span>
+
+                                    <span id="awayOrder">${playerFour}</span>
+                                    <span id="numbers">4</span>
+                                    <span id="homeOrder">${homeFour}</span>
+
+                                    <span id="awayOrder">${playerFive}</span>
+                                    <span id="numbers">5</span>
+                                    <span id="homeOrder">${homeFive}</span>
+
+                                    <span id="awayOrder">${playerSix}</span>
+                                    <span id="numbers">6</span>
+                                    <span id="homeOrder">${homeSix}</span>
+
+                                    <span id="awayOrder">${playerSeven}</span>
+                                    <span id="numbers">7</span>
+                                    <span id="homeOrder">${homeSeven}</span>
+
+                                    <span id="awayOrder">${playerEight}</span>
+                                    <span id="numbers">8</span>
+                                    <span id="homeOrder">${homeEight}</span>
+
+                                    <span id="awayOrder">${playerNine}</span>
+                                    <span id="numbers">9</span>
+                                    <span id="homeOrder">${homeNine}</span>
+
+                                </div>
+                        </div>
+                    `;
