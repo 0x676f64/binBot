@@ -231,25 +231,65 @@ document.addEventListener("DOMContentLoaded", () => {
                                     <div id="home-batting-order"></div>
                                 </div>
                             </div>
-                            <div class="lineup-title">Starting Lineups
-                                <div class="oval">2024 BATTING AVERAGE</div>
-                                <div class="oval2">LAST 10 GAMES</div>
-                                <!-- New div for numbers 1-9 down the middle -->
-                                <div class="middle-numbers">
-                                    <div class="number">1
-                                    <span id="batOrder">${playerNameOne}</span>
-                                    <span></span>
-                                    </div>
-                                    <div class="number">2</div>
-                                    <div class="number">3</div>
-                                    <div class="number">4</div>
-                                    <div class="number">5</div>
-                                    <div class="number">6</div>
-                                    <div class="number">7</div>
-                                    <div class="number">8</div>
-                                    <div class="number">9</div>
-                                </div>
+                            <div class="lineup-title">
+                            Starting Lineups
+                            <div class="small-title">
+                            <div class="oval">2024 BATTING AVERAGE</div>
                             </div>
+                            <div class="small-title-2">
+                            <div class="oval2">LAST 10 GAMES</div>
+                            </div>
+
+                            <!-- Table for lineup card -->
+                            <table class="lineup-table">
+                                <tbody>
+                                    <tr>
+                                        <td id="awayOrder">${playerOne}</td>
+                                        <td id="numbers">1</td>
+                                        <td id="homeOrder">${homeOne}</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="awayOrder">${playerTwo}</td>
+                                        <td id="numbers">2</td>
+                                        <td id="homeOrder">${homeTwo}</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="awayOrder">${playerThree}</td>
+                                        <td id="numbers">3</td>
+                                        <td id="homeOrder">${homeThree}</td>
+                                    </tr>
+                                    <tr>
+                                    <td id="awayOrder">${playerFour}</td>
+                                        <td id="numbers">4</td>
+                                        <td id="homeOrder">${homeFour}</td>
+                                    </tr>
+                                    <tr>
+                                    <td id="awayOrder">${playerFive}</td>
+                                        <td id="numbers">5</td>
+                                        <td id="homeOrder">${homeFive}</td>
+                                    </tr>
+                                    <tr>
+                                    <td id="awayOrder">${playerSix}</td>
+                                        <td id="numbers">6</td>
+                                        <td id="homeOrder">${homeSix}</td>
+                                    </tr>
+                                    <tr>
+                                    <td id="awayOrder">${playerSeven}</td>
+                                        <td id="numbers">7</td>
+                                        <td id="homeOrder">${homeSeven}</td>
+                                    </tr>
+                                    <tr>
+                                    <td id="awayOrder">${playerEight}</td>
+                                        <td id="numbers">8</td>
+                                        <td id="homeOrder">${homeEight}</td>
+                                    </tr>
+                                    <tr>
+                                    <td id="awayOrder">${playerNine}</td>
+                                        <td id="numbers">9</td>
+                                        <td id="homeOrder">${homeNine}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     `;
 
@@ -514,6 +554,52 @@ function fetchRealTimePitchData() {
                     const losingPitcherKey = losingPitcherId ? `ID${data.liveData.decisions.loser.id}` : null;
                     const savesPitcherKey = savesPitcherId ? `ID${data.liveData.decisions.save.id}` : null;
 
+                     // Get Team Id
+                     const awayTeamId = Number(data.gameData.teams.away.id); // Fetch away team ID
+                     const homeTeamId = Number(data.gameData.teams.home.id); // Fetch home team ID
+ 
+                     const awayTeamColor = colorCode[awayTeamId] || '#cccccc';
+                     const homeTeamColor = colorCode[homeTeamId] || '#cccccc'; 
+ 
+                     const teamLogosPath = 'images/svg-spots/'; // Define your logos folder path 
+ 
+                     // Get team logo file names dynamically
+                     const awayTeamLogo = `${teamLogosPath}${teamMap[awayTeamId]}.svg`;
+                     const homeTeamLogo = `${teamLogosPath}${teamMap[homeTeamId]}.svg`;
+ 
+                     // Render Batting Order from Pre-Games
+                     const awayBattingOrder = data.liveData.boxscore.teams.away.battingOrder; // Array of player IDs for the away team
+                     const homeBattingOrder = data.liveData.boxscore.teams.home.battingOrder; // Array of player IDs for the home team
+ 
+                     // Manually input all 9 batters so they are dynamically rendered - Away Batters
+                     const playerOne = awayBattingOrder[0] ? data.gameData.players[`ID${awayBattingOrder[0]}`]?.boxscoreName : null;
+                     const playerTwo = awayBattingOrder[1] ? data.gameData.players[`ID${awayBattingOrder[1]}`]?.boxscoreName : null;
+                     const playerThree = awayBattingOrder[2] ? data.gameData.players[`ID${awayBattingOrder[2]}`]?.boxscoreName : null;
+                     const playerFour = awayBattingOrder[3] ? data.gameData.players[`ID${awayBattingOrder[3]}`]?.boxscoreName : null;
+                     const playerFive = awayBattingOrder[4] ? data.gameData.players[`ID${awayBattingOrder[4]}`]?.boxscoreName : null;
+                     const playerSix = awayBattingOrder[5] ? data.gameData.players[`ID${awayBattingOrder[5]}`]?.boxscoreName : null;
+                     const playerSeven = awayBattingOrder[6] ? data.gameData.players[`ID${awayBattingOrder[6]}`]?.boxscoreName : null;
+                     const playerEight = awayBattingOrder[7] ? data.gameData.players[`ID${awayBattingOrder[7]}`]?.boxscoreName : null;
+                     const playerNine = awayBattingOrder[8] ? data.gameData.players[`ID${awayBattingOrder[8]}`]?.boxscoreName : null;
+ 
+                     // Now do the same for the Home Team Batting Order
+                     const homeOne = homeBattingOrder[0] ? data.gameData.players[`ID${homeBattingOrder[0]}`]?.boxscoreName : null;
+                     const homeTwo = homeBattingOrder[1] ? data.gameData.players[`ID${homeBattingOrder[1]}`]?.boxscoreName : null;
+                     const homeThree = homeBattingOrder[2] ? data.gameData.players[`ID${homeBattingOrder[2]}`]?.boxscoreName : null;
+                     const homeFour = homeBattingOrder[3] ? data.gameData.players[`ID${homeBattingOrder[3]}`]?.boxscoreName : null;
+                     const homeFive = homeBattingOrder[4] ? data.gameData.players[`ID${homeBattingOrder[4]}`]?.boxscoreName : null;
+                     const homeSix = homeBattingOrder[5] ? data.gameData.players[`ID${homeBattingOrder[5]}`]?.boxscoreName : null;
+                     const homeSeven = homeBattingOrder[6] ? data.gameData.players[`ID${homeBattingOrder[6]}`]?.boxscoreName : null;
+                     const homeEight = homeBattingOrder[7] ? data.gameData.players[`ID${homeBattingOrder[7]}`]?.boxscoreName : null;
+                     const homeNine = homeBattingOrder[8] ? data.gameData.players[`ID${homeBattingOrder[8]}`]?.boxscoreName : null;
+ 
+                     // Example async/await fetch function and render
+                     async function fetchDataAndRender() {
+                         const data = await fetchData(); // Assuming fetchData is defined elsewhere
+                         renderBattingOrders(data);
+                     }
+ 
+
                     gameStatus = 'Final';
                     inningBoxStyle = 'color: red;';
                     svgFieldHTML = '';
@@ -568,11 +654,84 @@ function fetchRealTimePitchData() {
                             </div>
                         </div>
                     </div>
-                    <div class="final-misc-table">
-                            <table class="misc-right-side">
+                   <div class="pregame-misc-table">
+                            <div class="team-color away-team-color" style="background-color: ${awayTeamColor};">
+                                <div class="pre-game-teams-away">
+                                    <img src="${awayTeamLogo}" class="svg-spots away-svg">
+                                    <div id="away-batting-order"></div> 
+                                </div>
                             </div>
+                            <div class="team-color home-team-color" style="background-color: ${homeTeamColor};">
+                                <div class="pre-game-teams-home">
+                                    <img src="${homeTeamLogo}" class="svg-spots home-svg">
+                                    <div id="home-batting-order"></div>
+                                </div>
+                            </div>
+                            <div class="lineup-title">
+                            Starting Lineups
+                            <div class="small-title">
+                            <div class="oval">2024 BATTING AVERAGE</div>
+                            </div>
+                            <div class="small-title-2">
+                            <div class="oval2">LAST 10 GAMES</div>
+                            </div>
+
+                            <!-- Table for lineup card -->
+                            <table class="lineup-table">
+                                <tbody>
+                                    <tr>
+                                        <td id="awayOrder">${playerOne}</td>
+                                        <td id="numbers">1</td>
+                                        <td id="homeOrder">${homeOne}</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="awayOrder">${playerTwo}</td>
+                                        <td id="numbers">2</td>
+                                        <td id="homeOrder">${homeTwo}</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="awayOrder">${playerThree}</td>
+                                        <td id="numbers">3</td>
+                                        <td id="homeOrder">${homeThree}</td>
+                                    </tr>
+                                    <tr>
+                                    <td id="awayOrder">${playerFour}</td>
+                                        <td id="numbers">4</td>
+                                        <td id="homeOrder">${homeFour}</td>
+                                    </tr>
+                                    <tr>
+                                    <td id="awayOrder">${playerFive}</td>
+                                        <td id="numbers">5</td>
+                                        <td id="homeOrder">${homeFive}</td>
+                                    </tr>
+                                    <tr>
+                                    <td id="awayOrder">${playerSix}</td>
+                                        <td id="numbers">6</td>
+                                        <td id="homeOrder">${homeSix}</td>
+                                    </tr>
+                                    <tr>
+                                    <td id="awayOrder">${playerSeven}</td>
+                                        <td id="numbers">7</td>
+                                        <td id="homeOrder">${homeSeven}</td>
+                                    </tr>
+                                    <tr>
+                                    <td id="awayOrder">${playerEight}</td>
+                                        <td id="numbers">8</td>
+                                        <td id="homeOrder">${homeEight}</td>
+                                    </tr>
+                                    <tr>
+                                    <td id="awayOrder">${playerNine}</td>
+                                        <td id="numbers">9</td>
+                                        <td id="homeOrder">${homeNine}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     `;
+
+                    // Insert HTML and call fetch/render
+                    document.getElementById('feedContainer').innerHTML = preGameHTML;
+                    fetchDataAndRender();
                 }
 
                 // Get team data
