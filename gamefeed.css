@@ -322,9 +322,10 @@ svg#field {
 }
 
 .saves {
+  position: relative;
   clear: both;
   width: 50%; /* Aligns under winning pitcher */
-  float: left;
+  top: 20px;
 }
 
 .winning-pitcher-name,
@@ -383,7 +384,7 @@ svg#field {
   max-height: 70rem;
   background-color: #e5decf;
   margin-left: 31rem;
-  bottom: 21rem;
+  bottom: 17rem;
 }
 
 .final-misc-table {
@@ -397,16 +398,19 @@ svg#field {
   bottom: 17rem;
 }
 
+.misc-right-side {
+  position: relative;
+  bottom: 31rem;
+}
+
 .pregame-misc-table {
   display: flex;
   position: relative;
   flex-direction: row;
   width: 740px;
-  height: auto;
-  min-height: 900px;
-  max-height: 70rem;
+  height: 1500px;
   margin-left: 31rem;
-  bottom: 20.7rem;
+  bottom: 20.5rem;
 }
 
 .team-color {
@@ -415,7 +419,7 @@ svg#field {
 
 .lineup-title {
   position: absolute;
-    top: 8%; /* Center vertically */
+    top: 18%; /* Center vertically */
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Correct for the center offset */
     font-family: "Roboto Condensed";
@@ -425,7 +429,8 @@ svg#field {
     color: white;
     background-color: inherit; /* Optional: background to make the text stand out */
     padding: 10px;
-    margin-top: 24rem;
+    margin-top: 23rem;
+    text-align: center;
 }
 
 .away-team-logo, .home-team-logo {
@@ -456,10 +461,14 @@ svg#field {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
   color: black; /* Text color */
   font-size: 1rem; /* Text size */
   font-weight: 500;
+  text-align: center;
+}
+
+.small-title {
+  margin-left: 10.5rem;
 }
 
 .oval2 {
@@ -479,6 +488,10 @@ svg#field {
   opacity: 0.7;
 }
 
+.small-title-2 {
+  margin-left: 10.5rem;
+}
+
 .middle-numbers {
   display: flex;
   flex-direction: column;
@@ -487,11 +500,33 @@ svg#field {
   padding: 10px 20px;
 }
 
-.number {
-  font-size: 2rem; /* Adjust size of numbers */
+#numbers {
+  display: flex;
+  position: relative;
+  left: 47%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.5rem;
   font-weight: 600;
-  margin: 20px 0; /* Adjust space between numbers */
-  color: #fff; /* Change color as needed */
+  color: #fff;
+  bottom: 30px;
+}
+
+#awayOrder {
+  display: flex;
+  position: relative;
+  font-size: 1.5rem;
+  margin-right: 25rem;
+  left: 35px;
+}
+
+#homeOrder {
+  display: flex;
+  position: relative;
+  font-size: 1.5rem;
+  margin-left: 25rem;
+  bottom: 80px;
+  right: 5px;
 }
 
 table th {
