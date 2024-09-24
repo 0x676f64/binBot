@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 let finalStateHTML = '';
 
                 // Check the game status and set gameStatus accordingly
-                if (detailedState === 'Scheduled' || detailedState === 'Pre-Game' || detailedState === 'Warmup') {
+                if (detailedState === 'Scheduled' || detailedState === 'Pre-Game' || detailedState === 'Warmup' || detailedState === 'Delayed Start: Rain') {
                     // Get the game time and format it with AM/PM
                     const gameTime = formatTimeWithAmPm(data.gameData.datetime.dateTime);
                     const awayPitcher = data.gameData.probablePitchers.away;
@@ -151,26 +151,26 @@ document.addEventListener("DOMContentLoaded", () => {
                     const homeBattingOrder = data.liveData.boxscore.teams.home.battingOrder; // Array of player IDs for the home team
 
                     // Manually input all 9 batters so they are dynamically rendered - Away Batters
-                    const playerOne = awayBattingOrder[0] ? data.gameData.players[`ID${awayBattingOrder[0]}`]?.boxscoreName : null;
-                    const playerTwo = awayBattingOrder[1] ? data.gameData.players[`ID${awayBattingOrder[1]}`]?.boxscoreName : null;
-                    const playerThree = awayBattingOrder[2] ? data.gameData.players[`ID${awayBattingOrder[2]}`]?.boxscoreName : null;
-                    const playerFour = awayBattingOrder[3] ? data.gameData.players[`ID${awayBattingOrder[3]}`]?.boxscoreName : null;
-                    const playerFive = awayBattingOrder[4] ? data.gameData.players[`ID${awayBattingOrder[4]}`]?.boxscoreName : null;
-                    const playerSix = awayBattingOrder[5] ? data.gameData.players[`ID${awayBattingOrder[5]}`]?.boxscoreName : null;
-                    const playerSeven = awayBattingOrder[6] ? data.gameData.players[`ID${awayBattingOrder[6]}`]?.boxscoreName : null;
-                    const playerEight = awayBattingOrder[7] ? data.gameData.players[`ID${awayBattingOrder[7]}`]?.boxscoreName : null;
-                    const playerNine = awayBattingOrder[8] ? data.gameData.players[`ID${awayBattingOrder[8]}`]?.boxscoreName : null;
+                    const playerOne = awayBattingOrder[0] ? data.gameData.players[`ID${awayBattingOrder[0]}`]?.boxscoreName || '' : '';
+                    const playerTwo = awayBattingOrder[1] ? data.gameData.players[`ID${awayBattingOrder[1]}`]?.boxscoreName || '' : '';
+                    const playerThree = awayBattingOrder[2] ? data.gameData.players[`ID${awayBattingOrder[2]}`]?.boxscoreName || '' : '';
+                    const playerFour = awayBattingOrder[3] ? data.gameData.players[`ID${awayBattingOrder[3]}`]?.boxscoreName || '' : '';
+                    const playerFive = awayBattingOrder[4] ? data.gameData.players[`ID${awayBattingOrder[4]}`]?.boxscoreName || '' : '';
+                    const playerSix = awayBattingOrder[5] ? data.gameData.players[`ID${awayBattingOrder[5]}`]?.boxscoreName || '' : '';
+                    const playerSeven = awayBattingOrder[6] ? data.gameData.players[`ID${awayBattingOrder[6]}`]?.boxscoreName || '' : '';
+                    const playerEight = awayBattingOrder[7] ? data.gameData.players[`ID${awayBattingOrder[7]}`]?.boxscoreName || '' : '';
+                    const playerNine = awayBattingOrder[8] ? data.gameData.players[`ID${awayBattingOrder[8]}`]?.boxscoreName || '' : '';
 
                     // Now do the same for the Home Team Batting Order
-                    const homeOne = homeBattingOrder[0] ? data.gameData.players[`ID${homeBattingOrder[0]}`]?.boxscoreName : null;
-                    const homeTwo = homeBattingOrder[1] ? data.gameData.players[`ID${homeBattingOrder[1]}`]?.boxscoreName : null;
-                    const homeThree = homeBattingOrder[2] ? data.gameData.players[`ID${homeBattingOrder[2]}`]?.boxscoreName : null;
-                    const homeFour = homeBattingOrder[3] ? data.gameData.players[`ID${homeBattingOrder[3]}`]?.boxscoreName : null;
-                    const homeFive = homeBattingOrder[4] ? data.gameData.players[`ID${homeBattingOrder[4]}`]?.boxscoreName : null;
-                    const homeSix = homeBattingOrder[5] ? data.gameData.players[`ID${homeBattingOrder[5]}`]?.boxscoreName : null;
-                    const homeSeven = homeBattingOrder[6] ? data.gameData.players[`ID${homeBattingOrder[6]}`]?.boxscoreName : null;
-                    const homeEight = homeBattingOrder[7] ? data.gameData.players[`ID${homeBattingOrder[7]}`]?.boxscoreName : null;
-                    const homeNine = homeBattingOrder[8] ? data.gameData.players[`ID${homeBattingOrder[8]}`]?.boxscoreName : null;
+                    const homeOne = homeBattingOrder[0] ? data.gameData.players[`ID${homeBattingOrder[0]}`]?.boxscoreName || '' : '';
+                    const homeTwo = homeBattingOrder[1] ? data.gameData.players[`ID${homeBattingOrder[1]}`]?.boxscoreName || '' : '';
+                    const homeThree = homeBattingOrder[2] ? data.gameData.players[`ID${homeBattingOrder[2]}`]?.boxscoreName || '' : '';
+                    const homeFour = homeBattingOrder[3] ? data.gameData.players[`ID${homeBattingOrder[3]}`]?.boxscoreName || '' : '';
+                    const homeFive = homeBattingOrder[4] ? data.gameData.players[`ID${homeBattingOrder[4]}`]?.boxscoreName || '' : '';
+                    const homeSix = homeBattingOrder[5] ? data.gameData.players[`ID${homeBattingOrder[5]}`]?.boxscoreName || '' : '';
+                    const homeSeven = homeBattingOrder[6] ? data.gameData.players[`ID${homeBattingOrder[6]}`]?.boxscoreName || '' : '';
+                    const homeEight = homeBattingOrder[7] ? data.gameData.players[`ID${homeBattingOrder[7]}`]?.boxscoreName || '' : '';
+                    const homeNine = homeBattingOrder[8] ? data.gameData.players[`ID${homeBattingOrder[8]}`]?.boxscoreName || '' : '';
 
                     // Example async/await fetch function and render
                     async function fetchDataAndRender() {
@@ -231,6 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     <div id="home-batting-order"></div>
                                 </div>
                             </div>
+
                             <div class="lineup-title">
                             Starting Lineups
                             <div class="small-title">
@@ -306,141 +307,141 @@ document.addEventListener("DOMContentLoaded", () => {
                     gameStatus = `${inningHalf} ${inningOrdinal}`;
                     inningBoxStyle = 'color: red';
 
-                  // Function to fetch real-time pitch data
-function fetchRealTimePitchData() {
-    fetch(`https://statsapi.mlb.com/api/v1.1/game/${gamePk}/feed/live`)
-        .then(response => response.json())
-        .then(data => {
-            console.log('Full Data:', data); // Log the entire data structure
+                    // Function to fetch real-time pitch data
+                    function fetchRealTimePitchData() {
+                        fetch(`https://statsapi.mlb.com/api/v1.1/game/${gamePk}/feed/live`)
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log('Full Data:', data); // Log the entire data structure
 
-            if (data.gameData && data.liveData && data.liveData.plays && data.liveData.plays.currentPlay) {
-                const batterId = data.liveData.plays.currentPlay.matchup.batter.id;
-                const playEvents = data.liveData.plays.currentPlay.playEvents;
+                                if (data.gameData && data.liveData && data.liveData.plays && data.liveData.plays.currentPlay) {
+                                    const batterId = data.liveData.plays.currentPlay.matchup.batter.id;
+                                    const playEvents = data.liveData.plays.currentPlay.playEvents;
 
-                // Clear previous pitches if a new batter is up
-                const lastBatterId = localStorage.getItem('lastBatterId');
-                if (batterId !== lastBatterId) {
-                    clearPitches();
-                    localStorage.setItem('lastBatterId', batterId);
-                }
+                                    // Clear previous pitches if a new batter is up
+                                    const lastBatterId = localStorage.getItem('lastBatterId');
+                                    if (batterId !== lastBatterId) {
+                                        clearPitches();
+                                        localStorage.setItem('lastBatterId', batterId);
+                                    }
 
-                // Fetch the common strike zone top and bottom from the playEvents (first pitch available)
-                let strikeZoneTop = null;
-                let strikeZoneBottom = null;
+                                    // Fetch the common strike zone top and bottom from the playEvents (first pitch available)
+                                    let strikeZoneTop = null;
+                                    let strikeZoneBottom = null;
 
-                for (let event of playEvents) {
-                    if (event.pitchData) {
-                        strikeZoneTop = event.pitchData.strikeZoneTop;
-                        strikeZoneBottom = event.pitchData.strikeZoneBottom;
-                        break; // Exit loop after finding the first pitch
+                                    for (let event of playEvents) {
+                                        if (event.pitchData) {
+                                            strikeZoneTop = event.pitchData.strikeZoneTop;
+                                            strikeZoneBottom = event.pitchData.strikeZoneBottom;
+                                            break; // Exit loop after finding the first pitch
+                                        }
+                                    }
+
+                                    if (strikeZoneTop && strikeZoneBottom) {
+                                        handleRealTimePitchData(playEvents, strikeZoneTop, strikeZoneBottom);
+                                    } else {
+                                        console.error('Strike zone data unavailable.');
+                                    }
+                                } else {
+                                    console.error('Unexpected data format or live play data not available:', data);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error fetching pitch data:', error);
+                            });
                     }
-                }
 
-                if (strikeZoneTop && strikeZoneBottom) {
-                    handleRealTimePitchData(playEvents, strikeZoneTop, strikeZoneBottom);
-                } else {
-                    console.error('Strike zone data unavailable.');
-                }
-            } else {
-                console.error('Unexpected data format or live play data not available:', data);
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching pitch data:', error);
-        });
-}
+                                // Function to handle and process the pitch data
+                                function handleRealTimePitchData(playEvents, strikeZoneTop, strikeZoneBottom) {
+                                    if (playEvents && playEvents.length > 0) {
+                                        playEvents.forEach(event => {
+                                            if (event.details && event.details.call && event.pitchData) {
+                                                const { pX, pZ } = event.pitchData.coordinates;
+                                                const description = event.details.call.description;
 
-            // Function to handle and process the pitch data
-            function handleRealTimePitchData(playEvents, strikeZoneTop, strikeZoneBottom) {
-                if (playEvents && playEvents.length > 0) {
-                    playEvents.forEach(event => {
-                        if (event.details && event.details.call && event.pitchData) {
-                            const { pX, pZ } = event.pitchData.coordinates;
-                            const description = event.details.call.description;
+                                                console.log('Pitch Data:', { pX, pZ, description }); // Log the pitch data
 
-                            console.log('Pitch Data:', { pX, pZ, description }); // Log the pitch data
+                                                // Plot the pitch on the strike zone with common top and bottom values
+                                                plotPitch(pX, pZ, description, strikeZoneTop, strikeZoneBottom);
+                                            }
+                                        });
+                                    } else {
+                                        console.warn('No play events or pitch data available.');
+                                    }
+                                }
 
-                            // Plot the pitch on the strike zone with common top and bottom values
-                            plotPitch(pX, pZ, description, strikeZoneTop, strikeZoneBottom);
-                        }
-                    });
-                } else {
-                    console.warn('No play events or pitch data available.');
-                }
-            }
+                            // Function to plot a pitch on the SVG strike zone using real pixel values
+                                function plotPitch(pX, pZ, description, strikeZoneTop, strikeZoneBottom) {
+                                    const svgWidth = 454; // Actual width of the strike zone SVG in px
+                                    const svgHeight = 550; // Actual height of the strike zone SVG in px
+                                    const centerX = svgWidth / 2; // Center of the strike zone horizontally (X-axis)
+                                    const centerY = svgHeight / 2; // Center of the strike zone vertically (Y-axis)
 
-           // Function to plot a pitch on the SVG strike zone using real pixel values
-            function plotPitch(pX, pZ, description, strikeZoneTop, strikeZoneBottom) {
-                const svgWidth = 454; // Actual width of the strike zone SVG in px
-                const svgHeight = 550; // Actual height of the strike zone SVG in px
-                const centerX = svgWidth / 2; // Center of the strike zone horizontally (X-axis)
-                const centerY = svgHeight / 2; // Center of the strike zone vertically (Y-axis)
+                                    // Calculate the dynamic height of the strike zone
+                                    const strikeZoneHeight = strikeZoneTop - strikeZoneBottom;
 
-                // Calculate the dynamic height of the strike zone
-                const strikeZoneHeight = strikeZoneTop - strikeZoneBottom;
+                                    // Scale the pX and pZ coordinates to the SVG dimensions
+                                    // Convert pX from -8.5 to +8.5 inches to actual pixel coordinates
+                                    const xPos = centerX + (pX * (svgWidth / 17)); // Map pX to the full strike zone width (17 inches = 454px)
 
-                // Scale the pX and pZ coordinates to the SVG dimensions
-                // Convert pX from -8.5 to +8.5 inches to actual pixel coordinates
-                const xPos = centerX + (pX * (svgWidth / 17)); // Map pX to the full strike zone width (17 inches = 454px)
+                                    // Map pZ (vertical) from the strike zone height to the actual pixel coordinates
+                                    const yPos = svgHeight - ((pZ - strikeZoneBottom) / strikeZoneHeight) * svgHeight;
 
-                // Map pZ (vertical) from the strike zone height to the actual pixel coordinates
-                const yPos = svgHeight - ((pZ - strikeZoneBottom) / strikeZoneHeight) * svgHeight;
+                                    console.log(`Plotting pitch at X: ${xPos}, Y: ${yPos}, Description: ${description}`);
+                                    console.log(`Strike Zone Top: ${strikeZoneTop}, Bottom: ${strikeZoneBottom}`);
 
-                console.log(`Plotting pitch at X: ${xPos}, Y: ${yPos}, Description: ${description}`);
-                console.log(`Strike Zone Top: ${strikeZoneTop}, Bottom: ${strikeZoneBottom}`);
+                                    // Create a circle element for the pitch
+                                    const pitchCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                                    pitchCircle.setAttribute("cx", xPos);  // Adjusted X position based on the center of the SVG
+                                    pitchCircle.setAttribute("cy", yPos);  // Adjusted Y position
+                                    pitchCircle.setAttribute("r", 5);      // Adjusted radius to fit the SVG
+                                    pitchCircle.setAttribute("class", "pitch");
 
-                // Create a circle element for the pitch
-                const pitchCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-                pitchCircle.setAttribute("cx", xPos);  // Adjusted X position based on the center of the SVG
-                pitchCircle.setAttribute("cy", yPos);  // Adjusted Y position
-                pitchCircle.setAttribute("r", 5);      // Adjusted radius to fit the SVG
-                pitchCircle.setAttribute("class", "pitch");
+                                    // Assign color based on pitch description
+                                    switch (description) {
+                                        case 'Called Strike':
+                                        case 'Foul':
+                                        case 'Swinging Strike':
+                                            pitchCircle.setAttribute("fill", "#D22D49");
+                                            break;
+                                        case 'Ball':
+                                        case 'Ball in Dirt':
+                                            pitchCircle.setAttribute("fill", "#EEE716");
+                                            break;
+                                        case 'In play, out(s)':
+                                        case 'In play, no out':
+                                        case 'In play, run(s)':
+                                            pitchCircle.setAttribute("fill", "#00D1ED");
+                                            break;
+                                        default:
+                                            pitchCircle.setAttribute(null);
+                                    }
 
-                // Assign color based on pitch description
-                switch (description) {
-                    case 'Called Strike':
-                    case 'Foul':
-                    case 'Swinging Strike':
-                        pitchCircle.setAttribute("fill", "#D22D49");
-                        break;
-                    case 'Ball':
-                    case 'Ball in Dirt':
-                        pitchCircle.setAttribute("fill", "#EEE716");
-                        break;
-                    case 'In play, out(s)':
-                    case 'In play, no out':
-                    case 'In play, run(s)':
-                        pitchCircle.setAttribute("fill", "#00D1ED");
-                        break;
-                    default:
-                        pitchCircle.setAttribute(null);
-                }
+                                    // Add stroke to all pitches
+                                    pitchCircle.setAttribute("stroke", "black");
+                                    pitchCircle.setAttribute("stroke-width", "1");
 
-                // Add stroke to all pitches
-                pitchCircle.setAttribute("stroke", "black");
-                pitchCircle.setAttribute("stroke-width", "1");
+                                    // Find the SVG element and append the pitch circle
+                                    const svg = document.querySelector(".strike-zone");
+                                    if (svg) {
+                                        svg.appendChild(pitchCircle);
+                                        console.log(`Pitch circle added to SVG at ${xPos}, ${yPos}`);
+                                    } else {
+                                        console.error('SVG element not found.');
+                                    }
+                                }
 
-                // Find the SVG element and append the pitch circle
-                const svg = document.querySelector(".strike-zone");
-                if (svg) {
-                    svg.appendChild(pitchCircle);
-                    console.log(`Pitch circle added to SVG at ${xPos}, ${yPos}`);
-                } else {
-                    console.error('SVG element not found.');
-                }
-            }
-
-            // Function to clear all previous pitches
-            function clearPitches() {
-                const svg = document.getElementById("strikeZone");
-                if (svg) {
-                    const pitches = svg.querySelectorAll(".pitch");
-                    pitches.forEach(pitch => pitch.remove());
-                    console.log('Cleared all previous pitches.');
-                } else {
-                    console.error('SVG element not found.');
-                }
-            }
+                                // Function to clear all previous pitches
+                                function clearPitches() {
+                                    const svg = document.getElementById("strikeZone");
+                                    if (svg) {
+                                        const pitches = svg.querySelectorAll(".pitch");
+                                        pitches.forEach(pitch => pitch.remove());
+                                        console.log('Cleared all previous pitches.');
+                                    } else {
+                                        console.error('SVG element not found.');
+                                    }
+                                }
 
             // Call fetchRealTimePitchData every 10 seconds
            // setInterval(fetchRealTimePitchData, 10000);
@@ -571,28 +572,28 @@ function fetchRealTimePitchData() {
                      const awayBattingOrder = data.liveData.boxscore.teams.away.battingOrder; // Array of player IDs for the away team
                      const homeBattingOrder = data.liveData.boxscore.teams.home.battingOrder; // Array of player IDs for the home team
  
-                     // Manually input all 9 batters so they are dynamically rendered - Away Batters
-                     const playerOne = awayBattingOrder[0] ? data.gameData.players[`ID${awayBattingOrder[0]}`]?.boxscoreName : null;
-                     const playerTwo = awayBattingOrder[1] ? data.gameData.players[`ID${awayBattingOrder[1]}`]?.boxscoreName : null;
-                     const playerThree = awayBattingOrder[2] ? data.gameData.players[`ID${awayBattingOrder[2]}`]?.boxscoreName : null;
-                     const playerFour = awayBattingOrder[3] ? data.gameData.players[`ID${awayBattingOrder[3]}`]?.boxscoreName : null;
-                     const playerFive = awayBattingOrder[4] ? data.gameData.players[`ID${awayBattingOrder[4]}`]?.boxscoreName : null;
-                     const playerSix = awayBattingOrder[5] ? data.gameData.players[`ID${awayBattingOrder[5]}`]?.boxscoreName : null;
-                     const playerSeven = awayBattingOrder[6] ? data.gameData.players[`ID${awayBattingOrder[6]}`]?.boxscoreName : null;
-                     const playerEight = awayBattingOrder[7] ? data.gameData.players[`ID${awayBattingOrder[7]}`]?.boxscoreName : null;
-                     const playerNine = awayBattingOrder[8] ? data.gameData.players[`ID${awayBattingOrder[8]}`]?.boxscoreName : null;
- 
-                     // Now do the same for the Home Team Batting Order
-                     const homeOne = homeBattingOrder[0] ? data.gameData.players[`ID${homeBattingOrder[0]}`]?.boxscoreName : null;
-                     const homeTwo = homeBattingOrder[1] ? data.gameData.players[`ID${homeBattingOrder[1]}`]?.boxscoreName : null;
-                     const homeThree = homeBattingOrder[2] ? data.gameData.players[`ID${homeBattingOrder[2]}`]?.boxscoreName : null;
-                     const homeFour = homeBattingOrder[3] ? data.gameData.players[`ID${homeBattingOrder[3]}`]?.boxscoreName : null;
-                     const homeFive = homeBattingOrder[4] ? data.gameData.players[`ID${homeBattingOrder[4]}`]?.boxscoreName : null;
-                     const homeSix = homeBattingOrder[5] ? data.gameData.players[`ID${homeBattingOrder[5]}`]?.boxscoreName : null;
-                     const homeSeven = homeBattingOrder[6] ? data.gameData.players[`ID${homeBattingOrder[6]}`]?.boxscoreName : null;
-                     const homeEight = homeBattingOrder[7] ? data.gameData.players[`ID${homeBattingOrder[7]}`]?.boxscoreName : null;
-                     const homeNine = homeBattingOrder[8] ? data.gameData.players[`ID${homeBattingOrder[8]}`]?.boxscoreName : null;
- 
+                    // Manually input all 9 batters so they are dynamically rendered - Away Batters
+                    const playerOne = awayBattingOrder[0] ? data.gameData.players[`ID${awayBattingOrder[0]}`]?.boxscoreName || '' : '';
+                    const playerTwo = awayBattingOrder[1] ? data.gameData.players[`ID${awayBattingOrder[1]}`]?.boxscoreName || '' : '';
+                    const playerThree = awayBattingOrder[2] ? data.gameData.players[`ID${awayBattingOrder[2]}`]?.boxscoreName || '' : '';
+                    const playerFour = awayBattingOrder[3] ? data.gameData.players[`ID${awayBattingOrder[3]}`]?.boxscoreName || '' : '';
+                    const playerFive = awayBattingOrder[4] ? data.gameData.players[`ID${awayBattingOrder[4]}`]?.boxscoreName || '' : '';
+                    const playerSix = awayBattingOrder[5] ? data.gameData.players[`ID${awayBattingOrder[5]}`]?.boxscoreName || '' : '';
+                    const playerSeven = awayBattingOrder[6] ? data.gameData.players[`ID${awayBattingOrder[6]}`]?.boxscoreName || '' : '';
+                    const playerEight = awayBattingOrder[7] ? data.gameData.players[`ID${awayBattingOrder[7]}`]?.boxscoreName || '' : '';
+                    const playerNine = awayBattingOrder[8] ? data.gameData.players[`ID${awayBattingOrder[8]}`]?.boxscoreName || '' : '';
+
+                    // Now do the same for the Home Team Batting Order
+                    const homeOne = homeBattingOrder[0] ? data.gameData.players[`ID${homeBattingOrder[0]}`]?.boxscoreName || '' : '';
+                    const homeTwo = homeBattingOrder[1] ? data.gameData.players[`ID${homeBattingOrder[1]}`]?.boxscoreName || '' : '';
+                    const homeThree = homeBattingOrder[2] ? data.gameData.players[`ID${homeBattingOrder[2]}`]?.boxscoreName || '' : '';
+                    const homeFour = homeBattingOrder[3] ? data.gameData.players[`ID${homeBattingOrder[3]}`]?.boxscoreName || '' : '';
+                    const homeFive = homeBattingOrder[4] ? data.gameData.players[`ID${homeBattingOrder[4]}`]?.boxscoreName || '' : '';
+                    const homeSix = homeBattingOrder[5] ? data.gameData.players[`ID${homeBattingOrder[5]}`]?.boxscoreName || '' : '';
+                    const homeSeven = homeBattingOrder[6] ? data.gameData.players[`ID${homeBattingOrder[6]}`]?.boxscoreName || '' : '';
+                    const homeEight = homeBattingOrder[7] ? data.gameData.players[`ID${homeBattingOrder[7]}`]?.boxscoreName || '' : '';
+                    const homeNine = homeBattingOrder[8] ? data.gameData.players[`ID${homeBattingOrder[8]}`]?.boxscoreName || '' : '';
+
                      // Example async/await fetch function and render
                      async function fetchDataAndRender() {
                          const data = await fetchData(); // Assuming fetchData is defined elsewhere
