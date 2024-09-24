@@ -408,9 +408,9 @@ svg#field {
   position: relative;
   flex-direction: row;
   width: 740px;
-  height: 1500px;
+  height: 1275px;
   margin-left: 31rem;
-  bottom: 20.5rem;
+  bottom: 21rem;
 }
 
 .team-color {
@@ -418,19 +418,20 @@ svg#field {
 }
 
 .lineup-title {
-  position: absolute;
+    position: absolute;
     top: 18%; /* Center vertically */
     left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Correct for the center offset */
-    font-family: "Roboto Condensed";
-    font-size: 32px;
-    font-weight: 400;
+    transform: translateX(-50%); /* Correct for the center offset */
+    font-family: "Poppins";
+    font-size: 50px;
+    font-weight: 100;
     letter-spacing: 0.75px;
     color: white;
     background-color: inherit; /* Optional: background to make the text stand out */
     padding: 10px;
-    margin-top: 23rem;
+    margin-top: -15rem;
     text-align: center;
+    letter-spacing: normal;
 }
 
 .away-team-logo, .home-team-logo {
@@ -449,7 +450,7 @@ svg#field {
 
 .away-svg {
   margin-top: 10px;
-  margin-left: 5px;
+  margin-left: 12px;
 }
 
 .oval {
@@ -467,14 +468,10 @@ svg#field {
   text-align: center;
 }
 
-.small-title {
-  margin-left: 10.5rem;
-}
-
-.oval2 {
+  .oval2 {
   width: 200px; /* Adjust width */
   height: 25px; /* Adjust height */
-  margin-top: 5px;
+  margin-top: -1.5rem;
   margin-bottom: 3rem;
   background-color: #fff; /* Oval color */
   border-radius: 5%; /* Creates the oval shape */
@@ -485,11 +482,7 @@ svg#field {
   color: black; /* Text color */
   font-size: 1rem; /* Text size */
   font-weight: 500;
-  opacity: 0.7;
-}
-
-.small-title-2 {
-  margin-left: 10.5rem;
+  opacity: 0.5;
 }
 
 .middle-numbers {
@@ -500,33 +493,68 @@ svg#field {
   padding: 10px 20px;
 }
 
+.small-title, .small-title-2 {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem; /* Optional, adjust as needed */
+  width: 100%; /* Take full width */
+}
+
+.oval, .oval2 {
+  width: 200px;
+  height: 25px;
+  padding: 6px;
+  background-color: #fff;
+  border-radius: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-align: center;
+}
+
 #numbers {
   display: flex;
   position: relative;
-  left: 47%;
+  width: 10%;
+  left: 2.5%;
+  font-family: "Poppins";
   margin-left: auto;
   margin-right: auto;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: #fff;
-  bottom: 30px;
+  bottom: 50px;
 }
 
 #awayOrder {
   display: flex;
   position: relative;
   font-size: 1.5rem;
+  font-weight: 600;
+  font-family: "Poppins";
   margin-right: 25rem;
-  left: 35px;
+  left: 70px;
+  bottom: 15px;
+  letter-spacing: -1px;
 }
 
 #homeOrder {
   display: flex;
   position: relative;
   font-size: 1.5rem;
+  font-weight: 600;
+  font-family: "Poppins";
   margin-left: 25rem;
-  bottom: 80px;
-  right: 5px;
+  bottom: 93px;
+  right: 40px;
+  letter-spacing: -1px;
 }
 
 table th {
