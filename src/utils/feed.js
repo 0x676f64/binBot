@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const teamMap = {
@@ -178,6 +179,51 @@ document.addEventListener("DOMContentLoaded", () => {
                         renderBattingOrders(data);
                     }
 
+                    // Bat Side for the Away Team
+                    const awayHandOne = playerOne ? data.gameData.players[`ID${awayBattingOrder[0]}`]?.batSide?.code : '';
+                    const awayHandTwo = playerTwo ? data.gameData.players[`ID${awayBattingOrder[1]}`]?.batSide?.code : '';
+                    const awayHandThree = playerThree ? data.gameData.players[`ID${awayBattingOrder[2]}`]?.batSide?.code : '';
+                    const awayHandFour = playerFour ? data.gameData.players[`ID${awayBattingOrder[3]}`]?.batSide?.code : '';
+                    const awayHandFive = playerFive ? data.gameData.players[`ID${awayBattingOrder[4]}`]?.batSide?.code : '';
+                    const awayHandSix = playerSix ? data.gameData.players[`ID${awayBattingOrder[5]}`]?.batSide?.code : '';
+                    const awayHandSeven = playerSeven ? data.gameData.players[`ID${awayBattingOrder[6]}`]?.batSide?.code : '';
+                    const awayHandEight = playerEight ? data.gameData.players[`ID${awayBattingOrder[7]}`]?.batSide?.code : '';
+                    const awayHandNine = playerNine ? data.gameData.players[`ID${awayBattingOrder[8]}`]?.batSide?.code : '';
+
+                    // Bat Side for the Home Team 
+                    const homeHandOne = homeOne ? data.gameData.players[`ID${homeBattingOrder[0]}`]?.batSide?.code : '';
+                    const homeHandTwo = homeTwo ? data.gameData.players[`ID${homeBattingOrder[1]}`]?.batSide?.code : '';
+                    const homeHandThree = homeThree ? data.gameData.players[`ID${homeBattingOrder[2]}`]?.batSide?.code : '';
+                    const homeHandFour = homeFour ? data.gameData.players[`ID${homeBattingOrder[3]}`]?.batSide?.code : '';
+                    const homeHandFive = homeFive ? data.gameData.players[`ID${homeBattingOrder[4]}`]?.batSide?.code : '';
+                    const homeHandSix = homeSix ? data.gameData.players[`ID${homeBattingOrder[5]}`]?.batSide?.code : '';
+                    const homeHandSeven = homeSeven ? data.gameData.players[`ID${homeBattingOrder[6]}`]?.batSide?.code : '';
+                    const homeHandEight = homeEight ? data.gameData.players[`ID${homeBattingOrder[7]}`]?.batSide?.code : '';
+                    const homeHandNine = homeNine ? data.gameData.players[`ID${homeBattingOrder[8]}`]?.batSide?.code : '';
+
+                    // Position abbreviation for Away Lineup 
+                    const awayFieldOne = playerOne ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[0]}`]?.position.abbreviation : '';
+                    const awayFieldTwo = playerTwo ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[1]}`]?.position.abbreviation : '';
+                    const awayFieldThree = playerThree ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[2]}`]?.position.abbreviation : '';
+                    const awayFieldFour = playerFour ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[3]}`]?.position.abbreviation : '';
+                    const awayFieldFive = playerFive ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[4]}`]?.position.abbreviation : '';
+                    const awayFieldSix = playerSix ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[5]}`]?.position.abbreviation : '';
+                    const awayFieldSeven = playerSeven ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[6]}`]?.position.abbreviation : '';
+                    const awayFieldEight = playerEight ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[7]}`]?.position.abbreviation : '';
+                    const awayFieldNine = playerNine ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[8]}`]?.position.abbreviation : '';
+
+                    // Position abbreviation for Home Lineup 
+                    const homeFieldOne = homeOne ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[0]}`]?.position.abbreviation : '';
+                    const homeFieldTwo = homeTwo ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[1]}`]?.position.abbreviation : '';
+                    const homeFieldThree = homeThree ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[2]}`]?.position.abbreviation : '';
+                    const homeFieldFour = homeFour ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[3]}`]?.position.abbreviation : '';
+                    const homeFieldFive = homeFive ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[4]}`]?.position.abbreviation : '';
+                    const homeFieldSix = homeSix ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[5]}`]?.position.abbreviation : '';
+                    const homeFieldSeven = homeSeven ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[6]}`]?.position.abbreviation : '';
+                    const homeFieldEight = homeEight ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[7]}`]?.position.abbreviation : '';
+                    const homeFieldNine = homeNine ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[8]}`]?.position.abbreviation : '';
+
+
                     gameStatus = gameTime;
                     preGameHTML = `
                         <div class="probable-pitchers">
@@ -245,49 +291,49 @@ document.addEventListener("DOMContentLoaded", () => {
                             <table class="lineup-table">
                                 <tbody>
                                     <tr>
-                                        <td id="awayOrder">${playerOne}</td>
+                                        <td class="batSide" id="awayOrder">${awayFieldOne} ${playerOne} ${awayHandOne}</td>
                                         <td id="numbers">1</td>
-                                        <td id="homeOrder">${homeOne}</td>
+                                        <td id="homeOrder">${homeHandOne} ${homeOne} ${homeFieldOne}</td>
                                     </tr>
                                     <tr>
-                                        <td id="awayOrder">${playerTwo}</td>
+                                        <td id="awayOrder">${awayFieldTwo} ${playerTwo} ${awayHandTwo}</td>
                                         <td id="numbers">2</td>
-                                        <td id="homeOrder">${homeTwo}</td>
+                                        <td id="homeOrder">${homeHandTwo} ${homeTwo} ${homeFieldTwo}</td>
                                     </tr>
                                     <tr>
-                                        <td id="awayOrder">${playerThree}</td>
+                                        <td id="awayOrder">${awayFieldThree} ${playerThree} ${awayHandThree}</td>
                                         <td id="numbers">3</td>
-                                        <td id="homeOrder">${homeThree}</td>
+                                        <td id="homeOrder">${homeHandThree} ${homeThree} ${homeFieldThree}</td>
                                     </tr>
                                     <tr>
-                                    <td id="awayOrder">${playerFour}</td>
+                                    <td id="awayOrder">${awayFieldFour} ${playerFour} ${awayHandFour}</td>
                                         <td id="numbers">4</td>
-                                        <td id="homeOrder">${homeFour}</td>
+                                        <td id="homeOrder">${homeHandFour} ${homeFour} ${homeFieldFour}</td>
                                     </tr>
                                     <tr>
-                                    <td id="awayOrder">${playerFive}</td>
+                                    <td id="awayOrder">${awayFieldFive} ${playerFive} ${awayHandFive}</td>
                                         <td id="numbers">5</td>
-                                        <td id="homeOrder">${homeFive}</td>
+                                        <td id="homeOrder">${homeHandFive} ${homeFive} ${homeFieldFive}</td>
                                     </tr>
                                     <tr>
-                                    <td id="awayOrder">${playerSix}</td>
+                                    <td id="awayOrder">${awayFieldSix} ${playerSix} ${awayHandSix}</td>
                                         <td id="numbers">6</td>
-                                        <td id="homeOrder">${homeSix}</td>
+                                        <td id="homeOrder">${homeHandSix} ${homeSix} ${homeFieldSix}</td>
                                     </tr>
                                     <tr>
-                                    <td id="awayOrder">${playerSeven}</td>
+                                    <td id="awayOrder">${awayFieldSeven} ${playerSeven} ${awayHandSeven}</td>
                                         <td id="numbers">7</td>
-                                        <td id="homeOrder">${homeSeven}</td>
+                                        <td id="homeOrder">${homeHandSeven} ${homeSeven} ${homeFieldSeven}</td>
                                     </tr>
                                     <tr>
-                                    <td id="awayOrder">${playerEight}</td>
+                                    <td id="awayOrder">${awayFieldEight} ${playerEight} ${awayHandEight}</td>
                                         <td id="numbers">8</td>
-                                        <td id="homeOrder">${homeEight}</td>
+                                        <td id="homeOrder">${homeHandEight} ${homeEight} ${homeFieldEight}</td>
                                     </tr>
                                     <tr>
-                                    <td id="awayOrder">${playerNine}</td>
+                                    <td id="awayOrder">${awayFieldNine} ${playerNine} ${awayHandNine}</td>
                                         <td id="numbers">9</td>
-                                        <td id="homeOrder">${homeNine}</td>
+                                        <td id="homeOrder">${homeHandNine} ${homeNine} ${homeFieldNine}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -599,6 +645,50 @@ document.addEventListener("DOMContentLoaded", () => {
                          const data = await fetchData(); // Assuming fetchData is defined elsewhere
                          renderBattingOrders(data);
                      }
+
+                     // Bat Side for the Away Team
+                    const awayHandOne = playerOne ? data.gameData.players[`ID${awayBattingOrder[0]}`]?.batSide?.code : '';
+                    const awayHandTwo = playerTwo ? data.gameData.players[`ID${awayBattingOrder[1]}`]?.batSide?.code : '';
+                    const awayHandThree = playerThree ? data.gameData.players[`ID${awayBattingOrder[2]}`]?.batSide?.code : '';
+                    const awayHandFour = playerFour ? data.gameData.players[`ID${awayBattingOrder[3]}`]?.batSide?.code : '';
+                    const awayHandFive = playerFive ? data.gameData.players[`ID${awayBattingOrder[4]}`]?.batSide?.code : '';
+                    const awayHandSix = playerSix ? data.gameData.players[`ID${awayBattingOrder[5]}`]?.batSide?.code : '';
+                    const awayHandSeven = playerSeven ? data.gameData.players[`ID${awayBattingOrder[6]}`]?.batSide?.code : '';
+                    const awayHandEight = playerEight ? data.gameData.players[`ID${awayBattingOrder[7]}`]?.batSide?.code : '';
+                    const awayHandNine = playerNine ? data.gameData.players[`ID${awayBattingOrder[8]}`]?.batSide?.code : '';
+
+                    // Bat Side for the Home Team 
+                    const homeHandOne = homeOne ? data.gameData.players[`ID${homeBattingOrder[0]}`]?.batSide?.code : '';
+                    const homeHandTwo = homeTwo ? data.gameData.players[`ID${homeBattingOrder[1]}`]?.batSide?.code : '';
+                    const homeHandThree = homeThree ? data.gameData.players[`ID${homeBattingOrder[2]}`]?.batSide?.code : '';
+                    const homeHandFour = homeFour ? data.gameData.players[`ID${homeBattingOrder[3]}`]?.batSide?.code : '';
+                    const homeHandFive = homeFive ? data.gameData.players[`ID${homeBattingOrder[4]}`]?.batSide?.code : '';
+                    const homeHandSix = homeSix ? data.gameData.players[`ID${homeBattingOrder[5]}`]?.batSide?.code : '';
+                    const homeHandSeven = homeSeven ? data.gameData.players[`ID${homeBattingOrder[6]}`]?.batSide?.code : '';
+                    const homeHandEight = homeEight ? data.gameData.players[`ID${homeBattingOrder[7]}`]?.batSide?.code : '';
+                    const homeHandNine = homeNine ? data.gameData.players[`ID${homeBattingOrder[8]}`]?.batSide?.code : '';
+
+                    // Position abbreviation for Away Lineup 
+                    const awayFieldOne = playerOne ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[0]}`]?.position.abbreviation : '';
+                    const awayFieldTwo = playerTwo ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[1]}`]?.position.abbreviation : '';
+                    const awayFieldThree = playerThree ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[2]}`]?.position.abbreviation : '';
+                    const awayFieldFour = playerFour ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[3]}`]?.position.abbreviation : '';
+                    const awayFieldFive = playerFive ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[4]}`]?.position.abbreviation : '';
+                    const awayFieldSix = playerSix ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[5]}`]?.position.abbreviation : '';
+                    const awayFieldSeven = playerSeven ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[6]}`]?.position.abbreviation : '';
+                    const awayFieldEight = playerEight ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[7]}`]?.position.abbreviation : '';
+                    const awayFieldNine = playerNine ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[8]}`]?.position.abbreviation : '';
+
+                    // Position abbreviation for Home Lineup 
+                    const homeFieldOne = homeOne ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[0]}`]?.position.abbreviation : '';
+                    const homeFieldTwo = homeTwo ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[1]}`]?.position.abbreviation : '';
+                    const homeFieldThree = homeThree ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[2]}`]?.position.abbreviation : '';
+                    const homeFieldFour = homeFour ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[3]}`]?.position.abbreviation : '';
+                    const homeFieldFive = homeFive ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[4]}`]?.position.abbreviation : '';
+                    const homeFieldSix = homeSix ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[5]}`]?.position.abbreviation : '';
+                    const homeFieldSeven = homeSeven ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[6]}`]?.position.abbreviation : '';
+                    const homeFieldEight = homeEight ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[7]}`]?.position.abbreviation : '';
+                    const homeFieldNine = homeNine ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[8]}`]?.position.abbreviation : '';
  
 
                     gameStatus = 'Final';
@@ -680,50 +770,50 @@ document.addEventListener("DOMContentLoaded", () => {
                             <!-- Table for lineup card -->
                             <table class="lineup-table">
                                 <tbody>
-                                    <tr>
-                                        <td id="awayOrder">${playerOne}</td>
+                                     <tr>
+                                        <td class="fieldPos batSide" id="awayOrder">${awayFieldOne} ${playerOne} ${awayHandOne}</td>
                                         <td id="numbers">1</td>
-                                        <td id="homeOrder">${homeOne}</td>
+                                        <td id="homeOrder">${homeHandOne} ${homeOne} ${homeFieldOne}</td>
                                     </tr>
                                     <tr>
-                                        <td id="awayOrder">${playerTwo}</td>
+                                        <td id="awayOrder">${awayFieldTwo} ${playerTwo} ${awayHandTwo}</td>
                                         <td id="numbers">2</td>
-                                        <td id="homeOrder">${homeTwo}</td>
+                                        <td id="homeOrder">${homeHandTwo} ${homeTwo} ${homeFieldTwo}</td>
                                     </tr>
                                     <tr>
-                                        <td id="awayOrder">${playerThree}</td>
+                                        <td id="awayOrder">${awayFieldThree} ${playerThree} ${awayHandThree}</td>
                                         <td id="numbers">3</td>
-                                        <td id="homeOrder">${homeThree}</td>
+                                        <td id="homeOrder">${homeHandThree} ${homeThree} ${homeFieldThree}</td>
                                     </tr>
                                     <tr>
-                                    <td id="awayOrder">${playerFour}</td>
+                                    <td id="awayOrder">${awayFieldFour} ${playerFour} ${awayHandFour}</td>
                                         <td id="numbers">4</td>
-                                        <td id="homeOrder">${homeFour}</td>
+                                        <td id="homeOrder">${homeHandFour} ${homeFour} ${homeFieldFour}</td>
                                     </tr>
                                     <tr>
-                                    <td id="awayOrder">${playerFive}</td>
+                                    <td id="awayOrder">${awayFieldFive} ${playerFive} ${awayHandFive}</td>
                                         <td id="numbers">5</td>
-                                        <td id="homeOrder">${homeFive}</td>
+                                        <td id="homeOrder">${homeHandFive} ${homeFive} ${homeFieldFive}</td>
                                     </tr>
                                     <tr>
-                                    <td id="awayOrder">${playerSix}</td>
+                                    <td id="awayOrder">${awayFieldSix} ${playerSix} ${awayHandSix}</td>
                                         <td id="numbers">6</td>
-                                        <td id="homeOrder">${homeSix}</td>
+                                        <td id="homeOrder">${homeHandSix} ${homeSix} ${homeFieldSix}</td>
                                     </tr>
                                     <tr>
-                                    <td id="awayOrder">${playerSeven}</td>
+                                    <td id="awayOrder">${awayFieldSeven} ${playerSeven} ${awayHandSeven}</td>
                                         <td id="numbers">7</td>
-                                        <td id="homeOrder">${homeSeven}</td>
+                                        <td id="homeOrder">${homeHandSeven} ${homeSeven} ${homeFieldSeven}</td>
                                     </tr>
                                     <tr>
-                                    <td id="awayOrder">${playerEight}</td>
+                                    <td id="awayOrder">${awayFieldEight} ${playerEight} ${awayHandEight}</td>
                                         <td id="numbers">8</td>
-                                        <td id="homeOrder">${homeEight}</td>
+                                        <td id="homeOrder">${homeHandEight} ${homeEight} ${homeFieldEight}</td>
                                     </tr>
                                     <tr>
-                                    <td id="awayOrder">${playerNine}</td>
+                                    <td id="awayOrder">${awayFieldNine} ${playerNine} ${awayHandNine}</td>
                                         <td id="numbers">9</td>
-                                        <td id="homeOrder">${homeNine}</td>
+                                        <td id="homeOrder">${homeHandNine} ${homeNine} ${homeFieldNine}</td>
                                     </tr>
                                 </tbody>
                             </table>
