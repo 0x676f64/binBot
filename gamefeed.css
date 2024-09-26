@@ -519,47 +519,69 @@ svg#field {
   text-align: center;
 }
 
-#numbers {
+.lineup {
   display: flex;
-  position: relative;
+  justify-content: space-between; /* Ensures items are on opposite sides */
+  align-items: center; /* Vertically centers the content */
+}
+
+#numbers {
+  text-align: center; /* Centers the inning numbers */
   width: 10%;
-  left: 2.5%;
   font-family: "Poppins";
-  margin-left: auto;
-  margin-right: auto;
   font-size: 1.3rem;
   font-weight: 600;
   color: #fff;
-  bottom: 50px;
+  margin-top: 3em;
 }
 
 #awayOrder {
   display: flex;
-  position: relative;
+  justify-content: flex-start; /* Align away team to the left */
+  align-items: center;
   font-size: 1.5rem;
   font-weight: 600;
   font-family: "Poppins";
-  margin-right: 25rem;
-  left: 70px;
-  bottom: 15px;
-  letter-spacing: -1px;
+  width: 40%; /* Adjust width as needed */
+  margin-top: 2em;
 }
 
-#awayOrder .batSide {
-  font-size: 40px;
+#awayField {
+  margin-right: 10px;
+  font-size: 15px;
+  font-weight: 200;
+}
+
+#awaySide {
+  margin-left: 10px;
+  margin-right: 9rem;
+  font-size: 15px;
+  font-weight: 200;
 }
 
 #homeOrder {
   display: flex;
-  position: relative;
+  justify-content: flex-end; /* Align home team to the right */
+  align-items: center;
   font-size: 1.5rem;
   font-weight: 600;
   font-family: "Poppins";
-  margin-left: 25rem;
-  bottom: 93px;
-  right: 40px;
-  letter-spacing: -1px;
+  width: 40%; /* Adjust width as needed */
+  margin-top: 2em;
 }
+
+#homeField {
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: 200;
+}
+
+#homeSide {
+  margin-right: 10px;
+  font-size: 15px;
+  font-weight: 200;
+}
+
 
 table th {
   font-family: "Roboto Condensed";
