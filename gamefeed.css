@@ -59,7 +59,6 @@
   }
 }
 
-
 :root {
     --wp--present--font-size--normal: 16px;
     --wp--present--font-size--huge: 42px;
@@ -408,7 +407,7 @@ svg#field {
   position: relative;
   flex-direction: row;
   width: 740px;
-  height: 1275px;
+  height: 1300px;
   margin-left: 31rem;
   bottom: 21rem;
 }
@@ -482,7 +481,7 @@ svg#field {
   color: black; /* Text color */
   font-size: 1rem; /* Text size */
   font-weight: 500;
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .middle-numbers {
@@ -532,7 +531,7 @@ svg#field {
   font-size: 1.3rem;
   font-weight: 600;
   color: #fff;
-  margin-top: 3em;
+  margin-top: 2em;
 }
 
 #awayOrder {
@@ -557,6 +556,26 @@ svg#field {
   margin-right: 9rem;
   font-size: 15px;
   font-weight: 200;
+  border-radius: 1.5em;
+}
+
+.away-progress-bar {
+  position: absolute;
+  width: 100px;  /* This ensures it takes up full width of its parent */
+  background-color: #fff;  /* Light gray for the container background */
+  height: 8px;  /* Set height for the container */
+  border-radius: 1.5em;
+  margin-top: 45px;  /* Add some spacing from the elements above */
+}
+
+.last10 {
+  position: absolute;
+  width: 150px;  /* This ensures it takes up full width of its parent */
+  background-color: #fff;  /* Light gray for the container background */
+  height: 8px;  /* Set height for the container */
+  border-radius: 1.5em;
+  margin-top: 70px;  /* Add some spacing from the elements above */
+  opacity: 0.6;
 }
 
 #homeOrder {
@@ -567,7 +586,7 @@ svg#field {
   font-weight: 600;
   font-family: "Poppins";
   width: 40%; /* Adjust width as needed */
-  margin-top: 2em;
+  margin-top: 1.5em;
 }
 
 #homeField {
@@ -580,6 +599,19 @@ svg#field {
   margin-right: 10px;
   font-size: 15px;
   font-weight: 200;
+}
+
+.home-progress-bar {
+  position: absolute;
+  width: 100px;  /* This ensures it takes up full width of its parent */
+  background-color: #fff;  /* Light gray for the container background */
+  height: 8px;  /* Set height for the container */
+  border-radius: 1.5em;
+  margin-top: 45px;  /* Add some spacing from the elements above */
+}
+
+.lineup-table {
+  justify-content: space-between;
 }
 
 
