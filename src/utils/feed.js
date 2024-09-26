@@ -223,7 +223,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     const homeFieldEight = homeEight ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[7]}`]?.position.abbreviation : '';
                     const homeFieldNine = homeNine ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[8]}`]?.position.abbreviation : '';
 
-
                     gameStatus = gameTime;
                     preGameHTML = `
                         <div class="probable-pitchers">
@@ -291,7 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <table class="lineup-table">
                                 <tbody>
                                     <tr>
-                                        <td class="batSide" id="awayOrder">${awayFieldOne} ${playerOne} ${awayHandOne}</td>
+                                        <td id="awayOrder">${awayFieldOne} ${playerOne} ${awayHandOne}</td>
                                         <td id="numbers">1</td>
                                         <td id="homeOrder">${homeHandOne} ${homeOne} ${homeFieldOne}</td>
                                     </tr>
@@ -510,7 +509,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <rect width="500" height="500" fill="none" stroke="none"> </rect>
                             <g>
                             <defs>
-                            <style id="overall-color">.e{fill:#006c54;stroke:#ffdddd;}.e,.f{stroke-miterlimit:10;}.f{fill:#006c54;stroke:#ffdddd;opacity:0.8;}</style>
+                            <style id="overall-color">.e{fill:#006c54;stroke:#ffdddd;}.e,.f{stroke-miterlimit:10;}.f{fill:#006c54;stroke:#ffdddd;opacity:0.8;}</styl>
                             </defs>
                             <g id="a"/>
                             <g id="b">
@@ -770,50 +769,122 @@ document.addEventListener("DOMContentLoaded", () => {
                             <!-- Table for lineup card -->
                             <table class="lineup-table">
                                 <tbody>
-                                     <tr>
-                                        <td class="fieldPos batSide" id="awayOrder">${awayFieldOne} ${playerOne} ${awayHandOne}</td>
-                                        <td id="numbers">1</td>
-                                        <td id="homeOrder">${homeHandOne} ${homeOne} ${homeFieldOne}</td>
+                                     <tr class="lineup">
+                                     <td id="awayOrder">
+                                        <span id="awayField">${awayFieldOne}</span>
+                                        <span id="playerName">${playerOne}</span>
+                                        <span id="awaySide">${awayHandOne}</span>
+                                    </td>
+                                    <td id="numbers">1</td>
+                                    <td id="homeOrder">
+                                        <span id="homeSide">${homeHandOne}</span>
+                                        <span id="playerName">${homeOne}</span>
+                                        <span id="homeField">${homeFieldOne}</span>
+                                    </td>
                                     </tr>
-                                    <tr>
-                                        <td id="awayOrder">${awayFieldTwo} ${playerTwo} ${awayHandTwo}</td>
-                                        <td id="numbers">2</td>
-                                        <td id="homeOrder">${homeHandTwo} ${homeTwo} ${homeFieldTwo}</td>
+                                    <tr class="lineup">
+                                    <td id="awayOrder">
+                                        <span id="awayField">${awayFieldTwo}</span>
+                                        <span id="playerName">${playerTwo}</span>
+                                        <span id="awaySide">${awayHandTwo}</span>
+                                    </td>
+                                    <td id="numbers">2</td>
+                                    <td id="homeOrder">
+                                        <span id="homeSide">${homeHandTwo}</span>
+                                        <span id="playerName">${homeTwo}</span>
+                                        <span id="homeField">${homeFieldTwo}</span>
+                                    </td>
                                     </tr>
-                                    <tr>
-                                        <td id="awayOrder">${awayFieldThree} ${playerThree} ${awayHandThree}</td>
-                                        <td id="numbers">3</td>
-                                        <td id="homeOrder">${homeHandThree} ${homeThree} ${homeFieldThree}</td>
+                                    <tr class="lineup">
+                                    <td id="awayOrder">
+                                        <span id="awayField">${awayFieldThree}</span>
+                                        <span id="playerName">${playerThree}</span>
+                                        <span id="awaySide">${awayHandThree}</span>
+                                    </td>
+                                    <td id="numbers">3</td>
+                                    <td id="homeOrder">
+                                        <span id="homeSide">${homeHandThree}</span>
+                                        <span id="playerName">${homeThree}</span>
+                                        <span id="homeField">${homeFieldThree}</span>
+                                    </td>
                                     </tr>
-                                    <tr>
-                                    <td id="awayOrder">${awayFieldFour} ${playerFour} ${awayHandFour}</td>
-                                        <td id="numbers">4</td>
-                                        <td id="homeOrder">${homeHandFour} ${homeFour} ${homeFieldFour}</td>
+                                    <tr class="lineup">
+                                    <td id="awayOrder">
+                                        <span id="awayField">${awayFieldFour}</span>
+                                        <span id="playerName">${playerFour}</span>
+                                        <span id="awaySide">${awayHandFour}</span>
+                                    </td>
+                                    <td id="numbers">4</td>
+                                    <td id="homeOrder">
+                                        <span id="homeSide">${homeHandFour}</span>
+                                        <span id="playerName">${homeFour}</span>
+                                        <span id="homeField">${homeFieldFour}</span>
+                                    </td>
                                     </tr>
-                                    <tr>
-                                    <td id="awayOrder">${awayFieldFive} ${playerFive} ${awayHandFive}</td>
-                                        <td id="numbers">5</td>
-                                        <td id="homeOrder">${homeHandFive} ${homeFive} ${homeFieldFive}</td>
+                                    <tr class="lineup">
+                                    <td id="awayOrder">
+                                        <span id="awayField">${awayFieldFive}</span>
+                                        <span id="playerName">${playerFive}</span>
+                                        <span id="awaySide">${awayHandFive}</span>
+                                    </td>
+                                    <td id="numbers">5</td>
+                                    <td id="homeOrder">
+                                        <span id="homeSide">${homeHandFive}</span>
+                                        <span id="playerName">${homeFive}</span>
+                                        <span id="homeField">${homeFieldFive}</span>
+                                    </td>
                                     </tr>
-                                    <tr>
-                                    <td id="awayOrder">${awayFieldSix} ${playerSix} ${awayHandSix}</td>
-                                        <td id="numbers">6</td>
-                                        <td id="homeOrder">${homeHandSix} ${homeSix} ${homeFieldSix}</td>
+                                    <tr class="lineup">
+                                    <td id="awayOrder">
+                                        <span id="awayField">${awayFieldSix}</span>
+                                        <span id="playerName">${playerSix}</span>
+                                        <span id="awaySide">${awayHandSix}</span>
+                                    </td>
+                                    <td id="numbers">6</td>
+                                    <td id="homeOrder">
+                                        <span id="homeSide">${homeHandSix}</span>
+                                        <span id="playerName">${homeSix}</span>
+                                        <span id="homeField">${homeFieldSix}</span>
+                                    </td>
                                     </tr>
-                                    <tr>
-                                    <td id="awayOrder">${awayFieldSeven} ${playerSeven} ${awayHandSeven}</td>
-                                        <td id="numbers">7</td>
-                                        <td id="homeOrder">${homeHandSeven} ${homeSeven} ${homeFieldSeven}</td>
+                                    <tr class="lineup">
+                                    <td id="awayOrder">
+                                        <span id="awayField">${awayFieldSeven}</span>
+                                        <span id="playerName">${playerSeven}</span>
+                                        <span id="awaySide">${awayHandSeven}</span>
+                                    </td>
+                                    <td id="numbers">7</td>
+                                    <td id="homeOrder">
+                                        <span id="homeSide">${homeHandSeven}</span>
+                                        <span id="playerName">${homeSeven}</span>
+                                        <span id="homeField">${homeFieldSeven}</span>
+                                    </td>
                                     </tr>
-                                    <tr>
-                                    <td id="awayOrder">${awayFieldEight} ${playerEight} ${awayHandEight}</td>
-                                        <td id="numbers">8</td>
-                                        <td id="homeOrder">${homeHandEight} ${homeEight} ${homeFieldEight}</td>
+                                    <tr class="lineup">
+                                    <td id="awayOrder">
+                                        <span id="awayField">${awayFieldEight}</span>
+                                        <span id="playerName">${playerEight}</span>
+                                        <span id="awaySide">${awayHandEight}</span>
+                                    </td>
+                                    <td id="numbers">8</td>
+                                    <td id="homeOrder">
+                                        <span id="homeSide">${homeHandEight}</span>
+                                        <span id="playerName">${homeEight}</span>
+                                        <span id="homeField">${homeFieldEight}</span>
+                                    </td>
                                     </tr>
-                                    <tr>
-                                    <td id="awayOrder">${awayFieldNine} ${playerNine} ${awayHandNine}</td>
-                                        <td id="numbers">9</td>
-                                        <td id="homeOrder">${homeHandNine} ${homeNine} ${homeFieldNine}</td>
+                                    <tr class="lineup">
+                                    <td id="awayOrder">
+                                        <span id="awayField">${awayFieldNine}</span>
+                                        <span id="playerName">${playerNine}</span>
+                                        <span id="awaySide">${awayHandNine}</span>
+                                    </td>
+                                    <td id="numbers">9</td>
+                                    <td id="homeOrder">
+                                        <span id="homeSide">${homeHandNine}</span>
+                                        <span id="playerName">${homeNine}</span>
+                                        <span id="homeField">${homeFieldNine}</span>
+                                    </td>
                                     </tr>
                                 </tbody>
                             </table>
