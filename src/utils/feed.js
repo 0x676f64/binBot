@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const teamMap = {
@@ -223,6 +222,26 @@ document.addEventListener("DOMContentLoaded", () => {
                     const homeFieldEight = homeEight ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[7]}`]?.position.abbreviation : '';
                     const homeFieldNine = homeNine ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[8]}`]?.position.abbreviation : '';
 
+                    const awayAvgOne = playerOne ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[0]}`]?.seasonStats.batting.avg : '';
+                    const awayAvgTwo = playerTwo ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[1]}`]?.seasonStats.batting.avg : '';
+                    const awayAvgThree = playerThree ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[2]}`]?.seasonStats.batting.avg : '';
+                    const awayAvgFour = playerFour ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[3]}`]?.seasonStats.batting.avg : '';
+                    const awayAvgFive = playerFive ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[4]}`]?.seasonStats.batting.avg : '';
+                    const awayAvgSix = playerSix ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[5]}`]?.seasonStats.batting.avg : '';
+                    const awayAvgSeven = playerSeven ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[6]}`]?.seasonStats.batting.avg : '';
+                    const awayAvgEight = playerEight ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[7]}`]?.seasonStats.batting.avg : '';
+                    const awayAvgNine = playerNine ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[8]}`]?.seasonStats.batting.avg : '';
+                    
+                    const homeAvgOne = homeOne ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[0]}`]?.seasonStats.batting.avg : '';
+                    const homeAvgTwo = homeTwo ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[1]}`]?.seasonStats.batting.avg : '';
+                    const homeAvgThree = homeThree ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[2]}`]?.seasonStats.batting.avg : '';
+                    const homeAvgFour = homeFour ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[3]}`]?.seasonStats.batting.avg : '';
+                    const homeAvgFive = homeFive ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[4]}`]?.seasonStats.batting.avg : '';
+                    const homeAvgSix = homeSix ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[5]}`]?.seasonStats.batting.avg : '';
+                    const homeAvgSeven = homeSeven ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[6]}`]?.seasonStats.batting.avg : '';
+                    const homeAvgEight = homeEight ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[7]}`]?.seasonStats.batting.avg : '';
+                    const homeAvgNine = homeNine ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[8]}`]?.seasonStats.batting.avg : '';
+
                     gameStatus = gameTime;
                     preGameHTML = `
                         <div class="probable-pitchers">
@@ -266,13 +285,17 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="pregame-misc-table">
                             <div class="team-color away-team-color" style="background-color: ${awayTeamColor};">
                                 <div class="pre-game-teams-away">
+                                    <a href="away-fielding">
                                     <img src="${awayTeamLogo}" class="svg-spots away-svg">
+                                    </a>
                                     <div id="away-batting-order"></div> 
                                 </div>
                             </div>
                             <div class="team-color home-team-color" style="background-color: ${homeTeamColor};">
                                 <div class="pre-game-teams-home">
+                                    <a href="home-fielding">
                                     <img src="${homeTeamLogo}" class="svg-spots home-svg">
+                                    </a>
                                     <div id="home-batting-order"></div>
                                 </div>
                             </div>
@@ -294,7 +317,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="awayField">${awayFieldOne}</span>
                                         <span id="playerName">${playerOne}</span>
                                         <span id="awaySide">${awayHandOne}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="away-progress-bar">
+                                            <span id="awaySeasonAvg">${awayAvgOne}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     <td id="numbers">1</td>
@@ -302,7 +327,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="homeSide">${homeHandOne}</span>
                                         <span id="playerName">${homeOne}</span>
                                         <span id="homeField">${homeFieldOne}</span>
-                                        <span class="home-progress-bar"></span>
+                                        <div class="home-progress-bar">
+                                            <span id="homeSeasonAvg">${homeAvgOne}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     </tr>
@@ -311,7 +338,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="awayField">${awayFieldTwo}</span>
                                         <span id="playerName">${playerTwo}</span>
                                         <span id="awaySide">${awayHandTwo}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="away-progress-bar">
+                                            <span id="awaySeasonAvg">${awayAvgTwo}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     <td id="numbers">2</td>
@@ -319,7 +348,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="homeSide">${homeHandTwo}</span>
                                         <span id="playerName">${homeTwo}</span>
                                         <span id="homeField">${homeFieldTwo}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="home-progress-bar">
+                                            <span id="homeSeasonAvg">${homeAvgTwo}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     </tr>
@@ -328,7 +359,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="awayField">${awayFieldThree}</span>
                                         <span id="playerName">${playerThree}</span>
                                         <span id="awaySide">${awayHandThree}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="away-progress-bar">
+                                            <span id="awaySeasonAvg">${awayAvgThree}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     <td id="numbers">3</td>
@@ -336,7 +369,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="homeSide">${homeHandThree}</span>
                                         <span id="playerName">${homeThree}</span>
                                         <span id="homeField">${homeFieldThree}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="home-progress-bar">
+                                            <span id="homeSeasonAvg">${homeAvgThree}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     </tr>
@@ -345,7 +380,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="awayField">${awayFieldFour}</span>
                                         <span id="playerName">${playerFour}</span>
                                         <span id="awaySide">${awayHandFour}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="away-progress-bar">
+                                            <span id="awaySeasonAvg">${awayAvgFour}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     <td id="numbers">4</td>
@@ -353,7 +390,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="homeSide">${homeHandFour}</span>
                                         <span id="playerName">${homeFour}</span>
                                         <span id="homeField">${homeFieldFour}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="home-progress-bar">
+                                            <span id="homeSeasonAvg">${homeAvgFour}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     </tr>
@@ -362,7 +401,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="awayField">${awayFieldFive}</span>
                                         <span id="playerName">${playerFive}</span>
                                         <span id="awaySide">${awayHandFive}</span>
-                                        <span class="away-progress-bar"></span>
+                                       <div class="away-progress-bar">
+                                            <span id="awaySeasonAvg">${awayAvgFive}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     <td id="numbers">5</td>
@@ -370,7 +411,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="homeSide">${homeHandFive}</span>
                                         <span id="playerName">${homeFive}</span>
                                         <span id="homeField">${homeFieldFive}</span>
-                                        <span class="away-progress-bar"></span>
+                                       <div class="home-progress-bar">
+                                            <span id="homeSeasonAvg">${homeAvgFive}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     </tr>
@@ -379,7 +422,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="awayField">${awayFieldSix}</span>
                                         <span id="playerName">${playerSix}</span>
                                         <span id="awaySide">${awayHandSix}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="away-progress-bar">
+                                            <span id="awaySeasonAvg">${awayAvgSix}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     <td id="numbers">6</td>
@@ -387,7 +432,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="homeSide">${homeHandSix}</span>
                                         <span id="playerName">${homeSix}</span>
                                         <span id="homeField">${homeFieldSix}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="home-progress-bar">
+                                            <span id="homeSeasonAvg">${homeAvgSix}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     </tr>
@@ -396,7 +443,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="awayField">${awayFieldSeven}</span>
                                         <span id="playerName">${playerSeven}</span>
                                         <span id="awaySide">${awayHandSeven}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="away-progress-bar">
+                                            <span id="awaySeasonAvg">${awayAvgSeven}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     <td id="numbers">7</td>
@@ -404,7 +453,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="homeSide">${homeHandSeven}</span>
                                         <span id="playerName">${homeSeven}</span>
                                         <span id="homeField">${homeFieldSeven}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="home-progress-bar">
+                                            <span id="homeSeasonAvg">${homeAvgSeven}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     </tr>
@@ -413,7 +464,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="awayField">${awayFieldEight}</span>
                                         <span id="playerName">${playerEight}</span>
                                         <span id="awaySide">${awayHandEight}</span>
-                                        <span class="away-progress-bar"></span>
+                                       <div class="away-progress-bar">
+                                            <span id="awaySeasonAvg">${awayAvgEight}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     <td id="numbers">8</td>
@@ -421,7 +474,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="homeSide">${homeHandEight}</span>
                                         <span id="playerName">${homeEight}</span>
                                         <span id="homeField">${homeFieldEight}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="home-progress-bar">
+                                            <span id="homeSeasonAvg">${homeAvgEight}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     </tr>
@@ -430,7 +485,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="awayField">${awayFieldNine}</span>
                                         <span id="playerName">${playerNine}</span>
                                         <span id="awaySide">${awayHandNine}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="away-progress-bar">
+                                            <span id="awaySeasonAvg">${awayAvgNine}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     <td id="numbers">9</td>
@@ -438,7 +495,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="homeSide">${homeHandNine}</span>
                                         <span id="playerName">${homeNine}</span>
                                         <span id="homeField">${homeFieldNine}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="home-progress-bar">
+                                            <span id="homeSeasonAvg">${homeAvgNine}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     </tr>
@@ -797,6 +856,25 @@ document.addEventListener("DOMContentLoaded", () => {
                     const homeFieldEight = homeEight ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[7]}`]?.position.abbreviation : '';
                     const homeFieldNine = homeNine ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[8]}`]?.position.abbreviation : '';
  
+                    const awayAvgOne = playerOne ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[0]}`]?.seasonStats.batting.avg : '';
+                    const awayAvgTwo = playerTwo ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[1]}`]?.seasonStats.batting.avg : '';
+                    const awayAvgThree = playerThree ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[2]}`]?.seasonStats.batting.avg : '';
+                    const awayAvgFour = playerFour ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[3]}`]?.seasonStats.batting.avg : '';
+                    const awayAvgFive = playerFive ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[4]}`]?.seasonStats.batting.avg : '';
+                    const awayAvgSix = playerSix ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[5]}`]?.seasonStats.batting.avg : '';
+                    const awayAvgSeven = playerSeven ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[6]}`]?.seasonStats.batting.avg : '';
+                    const awayAvgEight = playerEight ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[7]}`]?.seasonStats.batting.avg : '';
+                    const awayAvgNine = playerNine ? data.liveData.boxscore.teams.away.players[`ID${awayBattingOrder[8]}`]?.seasonStats.batting.avg : '';
+                    
+                    const homeAvgOne = homeOne ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[0]}`]?.seasonStats.batting.avg : '';
+                    const homeAvgTwo = homeTwo ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[1]}`]?.seasonStats.batting.avg : '';
+                    const homeAvgThree = homeThree ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[2]}`]?.seasonStats.batting.avg : '';
+                    const homeAvgFour = homeFour ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[3]}`]?.seasonStats.batting.avg : '';
+                    const homeAvgFive = homeFive ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[4]}`]?.seasonStats.batting.avg : '';
+                    const homeAvgSix = homeSix ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[5]}`]?.seasonStats.batting.avg : '';
+                    const homeAvgSeven = homeSeven ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[6]}`]?.seasonStats.batting.avg : '';
+                    const homeAvgEight = homeEight ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[7]}`]?.seasonStats.batting.avg : '';
+                    const homeAvgNine = homeNine ? data.liveData.boxscore.teams.home.players[`ID${homeBattingOrder[8]}`]?.seasonStats.batting.avg : '';
 
                     gameStatus = 'Final';
                     inningBoxStyle = 'color: red;';
@@ -874,7 +952,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <div class="oval2">LAST 10 GAMES</div>
                             </div>
 
-                            <!-- Table for lineup card -->
+                             <!-- Table for lineup card -->
                             <table class="lineup-table">
                                 <tbody>
                                      <tr class="lineup">
@@ -882,7 +960,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="awayField">${awayFieldOne}</span>
                                         <span id="playerName">${playerOne}</span>
                                         <span id="awaySide">${awayHandOne}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="away-progress-bar">
+                                            <span id="awaySeasonAvg">${awayAvgOne}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     <td id="numbers">1</td>
@@ -890,7 +970,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="homeSide">${homeHandOne}</span>
                                         <span id="playerName">${homeOne}</span>
                                         <span id="homeField">${homeFieldOne}</span>
-                                        <span class="home-progress-bar"></span>
+                                        <div class="home-progress-bar">
+                                            <span id="homeSeasonAvg">${homeAvgOne}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     </tr>
@@ -899,7 +981,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="awayField">${awayFieldTwo}</span>
                                         <span id="playerName">${playerTwo}</span>
                                         <span id="awaySide">${awayHandTwo}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="away-progress-bar">
+                                            <span id="awaySeasonAvg">${awayAvgTwo}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     <td id="numbers">2</td>
@@ -907,7 +991,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="homeSide">${homeHandTwo}</span>
                                         <span id="playerName">${homeTwo}</span>
                                         <span id="homeField">${homeFieldTwo}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="home-progress-bar">
+                                            <span id="homeSeasonAvg">${homeAvgTwo}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     </tr>
@@ -916,7 +1002,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="awayField">${awayFieldThree}</span>
                                         <span id="playerName">${playerThree}</span>
                                         <span id="awaySide">${awayHandThree}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="away-progress-bar">
+                                            <span id="awaySeasonAvg">${awayAvgThree}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     <td id="numbers">3</td>
@@ -924,7 +1012,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="homeSide">${homeHandThree}</span>
                                         <span id="playerName">${homeThree}</span>
                                         <span id="homeField">${homeFieldThree}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="home-progress-bar">
+                                            <span id="homeSeasonAvg">${homeAvgThree}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     </tr>
@@ -933,7 +1023,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="awayField">${awayFieldFour}</span>
                                         <span id="playerName">${playerFour}</span>
                                         <span id="awaySide">${awayHandFour}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="away-progress-bar">
+                                            <span id="awaySeasonAvg">${awayAvgFour}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     <td id="numbers">4</td>
@@ -941,7 +1033,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="homeSide">${homeHandFour}</span>
                                         <span id="playerName">${homeFour}</span>
                                         <span id="homeField">${homeFieldFour}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="home-progress-bar">
+                                            <span id="homeSeasonAvg">${homeAvgFour}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     </tr>
@@ -950,7 +1044,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="awayField">${awayFieldFive}</span>
                                         <span id="playerName">${playerFive}</span>
                                         <span id="awaySide">${awayHandFive}</span>
-                                        <span class="away-progress-bar"></span>
+                                       <div class="away-progress-bar">
+                                            <span id="awaySeasonAvg">${awayAvgFive}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     <td id="numbers">5</td>
@@ -958,7 +1054,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="homeSide">${homeHandFive}</span>
                                         <span id="playerName">${homeFive}</span>
                                         <span id="homeField">${homeFieldFive}</span>
-                                        <span class="away-progress-bar"></span>
+                                       <div class="home-progress-bar">
+                                            <span id="homeSeasonAvg">${homeAvgFive}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     </tr>
@@ -967,7 +1065,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="awayField">${awayFieldSix}</span>
                                         <span id="playerName">${playerSix}</span>
                                         <span id="awaySide">${awayHandSix}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="away-progress-bar">
+                                            <span id="awaySeasonAvg">${awayAvgSix}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     <td id="numbers">6</td>
@@ -975,7 +1075,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="homeSide">${homeHandSix}</span>
                                         <span id="playerName">${homeSix}</span>
                                         <span id="homeField">${homeFieldSix}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="home-progress-bar">
+                                            <span id="homeSeasonAvg">${homeAvgSix}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     </tr>
@@ -984,7 +1086,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="awayField">${awayFieldSeven}</span>
                                         <span id="playerName">${playerSeven}</span>
                                         <span id="awaySide">${awayHandSeven}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="away-progress-bar">
+                                            <span id="awaySeasonAvg">${awayAvgSeven}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     <td id="numbers">7</td>
@@ -992,7 +1096,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="homeSide">${homeHandSeven}</span>
                                         <span id="playerName">${homeSeven}</span>
                                         <span id="homeField">${homeFieldSeven}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="home-progress-bar">
+                                            <span id="homeSeasonAvg">${homeAvgSeven}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     </tr>
@@ -1001,7 +1107,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="awayField">${awayFieldEight}</span>
                                         <span id="playerName">${playerEight}</span>
                                         <span id="awaySide">${awayHandEight}</span>
-                                        <span class="away-progress-bar"></span>
+                                       <div class="away-progress-bar">
+                                            <span id="awaySeasonAvg">${awayAvgEight}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     <td id="numbers">8</td>
@@ -1009,7 +1117,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="homeSide">${homeHandEight}</span>
                                         <span id="playerName">${homeEight}</span>
                                         <span id="homeField">${homeFieldEight}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="home-progress-bar">
+                                            <span id="homeSeasonAvg">${homeAvgEight}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     </tr>
@@ -1018,7 +1128,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="awayField">${awayFieldNine}</span>
                                         <span id="playerName">${playerNine}</span>
                                         <span id="awaySide">${awayHandNine}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="away-progress-bar">
+                                            <span id="awaySeasonAvg">${awayAvgNine}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     <td id="numbers">9</td>
@@ -1026,7 +1138,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <span id="homeSide">${homeHandNine}</span>
                                         <span id="playerName">${homeNine}</span>
                                         <span id="homeField">${homeFieldNine}</span>
-                                        <span class="away-progress-bar"></span>
+                                        <div class="home-progress-bar">
+                                            <span id="homeSeasonAvg">${homeAvgNine}</span>
+                                        </div>
                                         <span class="last10"></span>
                                     </td>
                                     </tr>
