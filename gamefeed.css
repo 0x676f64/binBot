@@ -412,6 +412,16 @@ svg#field {
   bottom: 20rem;
 }
 
+.positioning-misc-table {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  width: 740px;
+  height: 1300px;
+  margin-left: 31rem;
+  bottom: 21rem;
+}
+
 .team-color {
   width: 50%;
 }
@@ -751,15 +761,110 @@ table th {
 }
 
 .away-def-bg{
+  display: flexbox;
   width: 100%;
-  height: 45%;
+  height: 46.4%;
 }
 
 .home-def-bg{
+  display: flexbox;
   width: 100%;
-  height: 45%;
+  height: 46.4%;
 }
 
 #Layer_1 {
-  margin-right: 3rem;
+  display: flexbox;
+  margin-right: 5rem;
+}
+
+.stadium-location {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid inherit;
+  width: 20em;
+  height: 3em;
+  border-radius: 0.5em;
+  margin-right: auto;
+  margin-left: auto;
+  bottom: 41rem;
+  font-style: "Poppins";
+  color: #fff;
+  text-align: center;
+  font-size: 35px;
+  font-weight: 500;
+  letter-spacing: -2px;
+}
+
+.city-state {
+  font-weight: 300;
+}
+
+pos-field {
+  display: flex;
+}
+
+.def-position {
+  width: 9%;
+}
+
+#catcher {
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  bottom: 12rem;
+  right: 5px;
+}
+
+#first {
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  bottom: 20rem;
+  left: 11rem;
+}
+
+#second {
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  bottom: 32rem;
+  left: 5rem;
+}
+
+#short {
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  bottom: 42rem;
+  right: 5rem;
+}
+
+#third {
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  bottom: 30rem;
+  right: 11rem;
+}
+
+#right {
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  bottom: 63rem;
+  left: 12rem;
+}
+
+#center {
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  bottom: 62rem;
+}
+
+#left {
+  position: relative;
+  bottom: 53rem;
+  left: 9rem;
 }
