@@ -933,7 +933,7 @@ document.addEventListener("DOMContentLoaded", () => {
                    <div class="pregame-misc-table">
                             <div class="team-color away-team-color" style="background-color: ${awayTeamColor};">
                                 <div class="pre-game-teams-away">
-                                    <a href="/gamefeed?gamePk=${gamePk}/away-fielding">
+                                    <a href="/away-fielding?gamePk=${gamePk}">
                                     <img src="${awayTeamLogo}" class="svg-spots away-svg">
                                     </a>
                                     <div id="away-batting-order"></div> 
@@ -941,7 +941,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             </div>
                             <div class="team-color home-team-color" style="background-color: ${homeTeamColor};">
                                 <div class="pre-game-teams-home">
-                                    <a href="/gamefeed?gamePk=${gamePk}home-fielding">
+                                    <a href="/home-fielding?gamePk=${gamePk}">
                                     <img src="${homeTeamLogo}" class="svg-spots home-svg">
                                     </a>
                                     <div id="home-batting-order"></div>
