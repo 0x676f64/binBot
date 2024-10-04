@@ -372,39 +372,56 @@ document.addEventListener("DOMContentLoaded", () => {
                             <!-- Catcher -->
                             <div id="catcher" class="def-position catcher">
                                 <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.catcher.id}/headshot/silo/current" style="width: 5em; height: 5em;">
+                                <span class="fielding-name">${defense.catcher.fullName}</span>
+                                <span class="display-pos">C</span>
                             </div>
                             <! -- First Base -->
                             <div id="first" class="def-position first">
                                 <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.first.id}/headshot/silo/current" style="width: 5em; height: 5em;">
+                                <span class="fielding-name">${defense.first.fullName}</span>
+                                <span class="display-pos">1B</span>
                             </div>
                             <! -- Second Base -->
                             <div id="second" class="def-position second">
                                 <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.second.id}/headshot/silo/current" style="width: 5em; height: 5em;">
+                                <span class="fielding-name">${defense.second.fullName}</span>
+                                <span class="display-pos">2B</span>
                             </div>
                             <! -- Third Base -->
                             <div id="third" class="def-position third">
                                 <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.third.id}/headshot/silo/current" style="width: 5em; height: 5em;">
+                                <span class="fielding-name">${defense.third.fullName}</span>
+                                <span class="display-pos">3B</span>
                             </div>
                             <! -- Short Stop -->
                             <div id="short" class="def-position short">
                                 <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.shortstop.id}/headshot/silo/current" style="width: 5em; height: 5em;">
+                                <span class="fielding-name">${defense.shortstop.fullName}</span>
+                                <span class="display-pos">SS</span>
                             </div>
                             <! -- Left Field -->
                             <div id="left" class="def-position left">
                                 <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.left.id}/headshot/silo/current" style="width: 5em; height: 5em;">
+                                <span class="fielding-name">${defense.left.fullName}</span>
+                                <span class="display-pos">LF</span>
                             </div>
                             <! -- Center Field -->
                             <div id="center" class="def-position center">
                                 <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.center.id}/headshot/silo/current" style="width: 5em; height: 5em;">
+                                <span class="fielding-name">${defense.center.fullName}</span>
+                                <span class="display-pos">CF</span>
                             </div>
                             <! -- Right Field -->
                             <div id="right" class="def-position right">
                                 <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.right.id}/headshot/silo/current" style="width: 5em; height: 5em;">
+                                <span class="fielding-name">${defense.right.fullName}</span>
+                                <span class="display-pos">RF</span>
                             </div>
                         </div>
                         <div class="stadium-location">${data.gameData.venue.name}
                         <span class="city-state">${data.gameData.venue.location.city}, ${data.gameData.venue.location.stateAbbrev}</span>
-                        </div>                        </div>
+                        </div>
+                        </div>
                     `;
 
                     // Insert HTML and call fetch/render
@@ -706,37 +723,53 @@ document.addEventListener("DOMContentLoaded", () => {
                             <!-- Catcher -->
                             <div id="catcher" class="def-position catcher">
                                 <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.catcher.id}/headshot/silo/current" style="width: 5em; height: 5em;">
+                                <span class="fielding-name">${defense.catcher.fullName}</span>
+                                <span class="display-pos">C</span>
                             </div>
                             <! -- First Base -->
                             <div id="first" class="def-position first">
                                 <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.first.id}/headshot/silo/current" style="width: 5em; height: 5em;">
+                                <span class="fielding-name">${defense.first.fullName}</span>
+                                <span class="display-pos">1B</span>
                             </div>
                             <! -- Second Base -->
                             <div id="second" class="def-position second">
                                 <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.second.id}/headshot/silo/current" style="width: 5em; height: 5em;">
+                                <span class="fielding-name">${defense.second.fullName}</span>
+                                <span class="display-pos">2B</span>
                             </div>
                             <! -- Third Base -->
                             <div id="third" class="def-position third">
                                 <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.third.id}/headshot/silo/current" style="width: 5em; height: 5em;">
+                                <span class="fielding-name">${defense.third.fullName}</span>
+                                <span class="display-pos">3B</span>
                             </div>
                             <! -- Short Stop -->
                             <div id="short" class="def-position short">
                                 <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.shortstop.id}/headshot/silo/current" style="width: 5em; height: 5em;">
+                                <span class="fielding-name">${defense.shortstop.fullName}</span>
+                                <span class="display-pos">SS</span>
                             </div>
                             <! -- Left Field -->
                             <div id="left" class="def-position left">
                                 <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.left.id}/headshot/silo/current" style="width: 5em; height: 5em;">
+                                <span class="fielding-name">${defense.left.fullName}</span>
+                                <span class="display-pos">LF</span>
                             </div>
                             <! -- Center Field -->
                             <div id="center" class="def-position center">
                                 <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.center.id}/headshot/silo/current" style="width: 5em; height: 5em;">
+                                <span class="fielding-name">${defense.center.fullName}</span>
+                                <span class="display-pos">CF</span>
                             </div>
                             <! -- Right Field -->
                             <div id="right" class="def-position right">
                                 <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.right.id}/headshot/silo/current" style="width: 5em; height: 5em;">
+                                <span class="fielding-name">${defense.right.fullName}</span>
+                                <span class="display-pos">RF</span>
                             </div>
                         </div>
-                        <div class="stadium-location">${data.gameData.venue.name} >
+                        <div class="stadium-location">${data.gameData.venue.name}
                         <span class="city-state">${data.gameData.venue.location.city}, ${data.gameData.venue.location.stateAbbrev}</span>
                         </div>
                         </div>
