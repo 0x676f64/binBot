@@ -101,6 +101,7 @@ td, th {
     margin-right: auto;
     margin-left: auto;
     margin-top: 60px;
+    border: 4px solid #006c54 !important;
 }
 
 .away-team-logo-feed {
@@ -168,7 +169,7 @@ td, th {
   width: 500px; /* Fixed width for game display */
   height: 600px; /* Fixed height to prevent shifting */
   padding: 1.5rem;
-  border: solid 2px #006c54;
+  border: solid 4px #006c54;
   background-color: white;
   margin-right: 62rem; /* Adds space between the two elements */
 }
@@ -409,7 +410,7 @@ svg#field {
   width: 740px;
   height: 1300px;
   margin-left: 31rem;
-  bottom: 20rem;
+  bottom: 20.5rem;
 }
 
 .positioning-misc-table {
@@ -419,7 +420,7 @@ svg#field {
   width: 740px;
   height: 1300px;
   margin-left: 31rem;
-  bottom: 21rem;
+  bottom: 20.4rem;
 }
 
 .team-color {
@@ -763,13 +764,19 @@ table th {
 .away-def-bg{
   display: flexbox;
   width: 100%;
-  height: 46.4%;
+  height: 46.2%;
+  background-color: #2F4858 !important;
+  border: 4px solid #006c54;
+  border-radius: 10px;
 }
 
 .home-def-bg{
   display: flexbox;
   width: 100%;
-  height: 46.4%;
+  height: 46.2%;
+  background-color: #2F4858 !important;
+  border: 4px solid #006c54;
+  border-radius: 10px;
 }
 
 #Layer_1 {
@@ -787,17 +794,23 @@ table th {
   border-radius: 0.5em;
   margin-right: auto;
   margin-left: auto;
-  bottom: 41rem;
+  bottom: 72rem;
   font-style: "Poppins";
   color: #fff;
   text-align: center;
-  font-size: 35px;
-  font-weight: 500;
-  letter-spacing: -2px;
+  font-size: 42px;
+  font-weight: 600;
+  letter-spacing: -3px;
+  right: 40px;
+  align-items: center;
 }
 
 .city-state {
+  position: relative;
   font-weight: 300;
+  font-size: 34px;
+  right: 10px;
+  align-items: center;
 }
 
 pos-field {
@@ -813,14 +826,14 @@ pos-field {
   margin-right: auto;
   margin-left: auto;
   bottom: 12rem;
-  right: 5px;
+  right: 1px;
 }
 
 #first {
   position: relative;
   margin-right: auto;
   margin-left: auto;
-  bottom: 20rem;
+  bottom: 24rem;
   left: 11rem;
 }
 
@@ -828,7 +841,7 @@ pos-field {
   position: relative;
   margin-right: auto;
   margin-left: auto;
-  bottom: 32rem;
+  bottom: 41rem;
   left: 5rem;
 }
 
@@ -836,7 +849,7 @@ pos-field {
   position: relative;
   margin-right: auto;
   margin-left: auto;
-  bottom: 42rem;
+  bottom: 58.5rem;
   right: 5rem;
 }
 
@@ -844,7 +857,7 @@ pos-field {
   position: relative;
   margin-right: auto;
   margin-left: auto;
-  bottom: 30rem;
+  bottom: 41rem;
   right: 11rem;
 }
 
@@ -852,7 +865,7 @@ pos-field {
   position: relative;
   margin-right: auto;
   margin-left: auto;
-  bottom: 63rem;
+  bottom: 90rem;
   left: 12rem;
 }
 
@@ -860,11 +873,33 @@ pos-field {
   position: relative;
   margin-right: auto;
   margin-left: auto;
-  bottom: 62rem;
+  bottom: 85rem;
 }
 
 #left {
   position: relative;
-  bottom: 53rem;
+  bottom: 71.5rem;
   left: 9rem;
+}
+
+.fielding-name {
+  display: flex;
+  font-family: "Poppins";
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: -1px;
+}
+
+.display-pos {
+  display: flex;
+  font-family: "Poppins";
+  font-size: 16px;
+  color: #fff;
+  font-weight: 500;
+  justify-content: center;
+  border: 1px solid #082533;
+  border-radius: 20px;
+  background: #082533;
 }
