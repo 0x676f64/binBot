@@ -368,59 +368,66 @@ document.addEventListener("DOMContentLoaded", () => {
                                 C424.376,519.317,427.694,519.385,428.739,519.476z"/>
                         </g>
                         </svg>
-                        <div class="pos-field">
+                         <div class="pos-field">
                             <!-- Catcher -->
                             <div id="catcher" class="def-position catcher">
-                                <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.catcher.id}/headshot/silo/current" style="width: 5em; height: 5em;">
-                                <span class="fielding-name">${defense.catcher.fullName}</span>
-                                <span class="display-pos">C</span>
+                                ${defense.catcher?.id ? `<img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.catcher.id}/headshot/silo/current" style="width: 5em; height: 5em;">` : ''}
+                                <span class="fielding-name">${defense.catcher?.fullName || ''}</span>
+                                ${defense.catcher?.id ? `<span class="display-pos">C</span>` : ''}
                             </div>
-                            <! -- First Base -->
+
+                            <!-- First Base -->
                             <div id="first" class="def-position first">
-                                <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.first.id}/headshot/silo/current" style="width: 5em; height: 5em;">
-                                <span class="fielding-name">${defense.first.fullName}</span>
-                                <span class="display-pos">1B</span>
+                                ${defense.first?.id ? `<img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.first.id}/headshot/silo/current" style="width: 5em; height: 5em;">` : ''}
+                                <span class="fielding-name">${defense.first?.fullName || ''}</span>
+                                ${defense.first?.id ? `<span class="display-pos">1B</span>` : ''}
                             </div>
-                            <! -- Second Base -->
+
+                            <!-- Second Base -->
                             <div id="second" class="def-position second">
-                                <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.second.id}/headshot/silo/current" style="width: 5em; height: 5em;">
-                                <span class="fielding-name">${defense.second.fullName}</span>
-                                <span class="display-pos">2B</span>
+                                ${defense.second?.id ? `<img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.second.id}/headshot/silo/current" style="width: 5em; height: 5em;">` : ''}
+                                <span class="fielding-name">${defense.second?.fullName || ''}</span>
+                                ${defense.second?.id ? `<span class="display-pos">2B</span>` : ''}
                             </div>
-                            <! -- Third Base -->
+
+                            <!-- Third Base -->
                             <div id="third" class="def-position third">
-                                <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.third.id}/headshot/silo/current" style="width: 5em; height: 5em;">
-                                <span class="fielding-name">${defense.third.fullName}</span>
-                                <span class="display-pos">3B</span>
+                                ${defense.third?.id ? `<img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.third.id}/headshot/silo/current" style="width: 5em; height: 5em;">` : ''}
+                                <span class="fielding-name">${defense.third?.fullName || ''}</span>
+                                ${defense.third?.id ? `<span class="display-pos">3B</span>` : ''}
                             </div>
-                            <! -- Short Stop -->
+
+                            <!-- Shortstop -->
                             <div id="short" class="def-position short">
-                                <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.shortstop.id}/headshot/silo/current" style="width: 5em; height: 5em;">
-                                <span class="fielding-name">${defense.shortstop.fullName}</span>
-                                <span class="display-pos">SS</span>
+                                ${defense.shortstop?.id ? `<img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.shortstop.id}/headshot/silo/current" style="width: 5em; height: 5em;">` : ''}
+                                <span class="fielding-name">${defense.shortstop?.fullName || ''}</span>
+                                ${defense.shortstop?.id ? `<span class="display-pos">SS</span>` : ''}
                             </div>
-                            <! -- Left Field -->
+
+                            <!-- Left Field -->
                             <div id="left" class="def-position left">
-                                <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.left.id}/headshot/silo/current" style="width: 5em; height: 5em;">
-                                <span class="fielding-name">${defense.left.fullName}</span>
-                                <span class="display-pos">LF</span>
+                                ${defense.left?.id ? `<img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.left.id}/headshot/silo/current" style="width: 5em; height: 5em;">` : ''}
+                                <span class="fielding-name">${defense.left?.fullName || ''}</span>
+                                ${defense.left?.id ? `<span class="display-pos">LF</span>` : ''}
                             </div>
-                            <! -- Center Field -->
+
+                            <!-- Center Field -->
                             <div id="center" class="def-position center">
-                                <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.center.id}/headshot/silo/current" style="width: 5em; height: 5em;">
-                                <span class="fielding-name">${defense.center.fullName}</span>
-                                <span class="display-pos">CF</span>
+                                ${defense.center?.id ? `<img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.center.id}/headshot/silo/current" style="width: 5em; height: 5em;">` : ''}
+                                <span class="fielding-name">${defense.center?.fullName || ''}</span>
+                                ${defense.center?.id ? `<span class="display-pos">CF</span>` : ''}
                             </div>
-                            <! -- Right Field -->
+
+                            <!-- Right Field -->
                             <div id="right" class="def-position right">
-                                <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.right.id}/headshot/silo/current" style="width: 5em; height: 5em;">
-                                <span class="fielding-name">${defense.right.fullName}</span>
-                                <span class="display-pos">RF</span>
+                                ${defense.right?.id ? `<img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.right.id}/headshot/silo/current" style="width: 5em; height: 5em;">` : ''}
+                                <span class="fielding-name">${defense.right?.fullName || ''}</span>
+                                ${defense.right?.id ? `<span class="display-pos">RF</span>` : ''}
                             </div>
                         </div>
+
                         <div class="stadium-location">${data.gameData.venue.name}
-                        <span class="city-state">${data.gameData.venue.location.city}, ${data.gameData.venue.location.stateAbbrev}</span>
-                        </div>
+                            <span class="city-state">${data.gameData.venue.location.city}, ${data.gameData.venue.location.stateAbbrev}</span>
                         </div>
                     `;
 
