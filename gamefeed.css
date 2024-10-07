@@ -101,7 +101,7 @@ td, th {
     margin-right: auto;
     margin-left: auto;
     margin-top: 60px;
-    border: 4px solid #006c54 !important;
+    border: 2px solid #006c54 !important;
 }
 
 .away-team-logo-feed {
@@ -169,7 +169,7 @@ td, th {
   width: 500px; /* Fixed width for game display */
   height: 600px; /* Fixed height to prevent shifting */
   padding: 1.5rem;
-  border: solid 4px #006c54;
+  border: solid 2px #006c54;
   background-color: white;
   margin-right: 62rem; /* Adds space between the two elements */
 }
@@ -413,14 +413,24 @@ svg#field {
   bottom: 20.5rem;
 }
 
-.positioning-misc-table {
+.pregame-positioning-misc-table {
   display: flex;
   position: relative;
   flex-direction: row;
   width: 740px;
   height: 1300px;
   margin-left: 31rem;
-  bottom: 20.4rem;
+  bottom: 21em;
+}
+
+.final-positioning-misc-table {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  width: 740px;
+  height: 1300px;
+  margin-left: 31rem;
+  bottom: 20.5em;
 }
 
 .team-color {
@@ -765,8 +775,8 @@ table th {
   display: flexbox;
   width: 100%;
   height: 46.2%;
-  background-color: #2F4858 !important;
-  border: 4px solid #006c54;
+  background-color: #002e29 !important;
+  border: 2px solid #006c54;
   border-radius: 10px;
 }
 
@@ -774,8 +784,8 @@ table th {
   display: flexbox;
   width: 100%;
   height: 46.2%;
-  background-color: #2F4858 !important;
-  border: 4px solid #006c54;
+  border: 2px solid #006c54;
+  background-color: #002e29 !important;
   border-radius: 10px;
 }
 
@@ -827,6 +837,7 @@ pos-field {
   margin-left: auto;
   bottom: 12rem;
   right: 1px;
+  align-items: center;
 }
 
 #first {
@@ -902,4 +913,78 @@ pos-field {
   border: 1px solid #082533;
   border-radius: 20px;
   background: #082533;
+}
+
+.analytics-table {
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+  top: 15px;
+}
+
+.stats-table {
+  display: flex;
+  position: relative;
+  right: 83rem;
+}
+
+.th-title-header {
+  font-size: 20px;
+}
+
+.sort {
+  font-size: 16px;
+  padding: 24px;
+  cursor: pointer;
+  border-bottom: 3px solid #006c54;
+}
+
+.title-header{
+  display: flex;
+  font-size: 18px;
+  text-align: center;
+}
+
+
+/* Add padding to the first header */
+#th-1 {
+  padding-right: 135px; /* Adjust this value as needed for more space */
+  text-align: left; /* Optional: Align text to the left */
+}
+
+#th-2 {
+  padding-right: 10px;
+}
+
+#th-3 {
+  padding-right: 1px;
+}
+
+#th-4 {
+  padding-right: 100px;
+}
+
+#th-12 {
+  border-top: 1px solid #006c54;
+  border-right: 1px solid #006c54;
+}
+
+#th-8 {
+  padding-right: 80px;
+  border-top: 1px solid #006c54;
+  border-left: 1px solid #006c54;
+}
+
+#th-9, #th-10, #th-11 {
+  border-top: 1px solid #006c54;
+}
+
+#th-11 {
+  padding-left: 10px;
+}
+
+#th-10 {
+  padding-left: 30px;
 }
