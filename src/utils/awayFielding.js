@@ -125,54 +125,54 @@ document.addEventListener("DOMContentLoaded", () => {
                    // Assuming you have access to both gameData and liveData from the API
                    const awayBattingOrder = data.liveData.boxscore.teams.away.battingOrder; // Get the away team's batting order
 
-                   // Defensive positions from linescore
-                   const defense = data.liveData.linescore.defense; // catcher, first base, second base, etc.
+                    // Defensive positions from linescore
+                    const defense = data.liveData.linescore.defense; // catcher, first base, second base, etc.
 
-                   // Function to link batting order with defensive positions
-                   awayBattingOrder.forEach((playerId, index) => {
-                       const playerKey = `ID${playerId}`; // Example: playerId = 543807, playerKey = ID543807
-                       const player = data.gameData.players[playerKey]; // Get player info using player ID
+                    // Function to link batting order with defensive positions
+                    awayBattingOrder.forEach((playerId, index) => {
+                        const playerKey = `ID${playerId}`; // Example: playerId = 543807, playerKey = ID543807
+                        const player = data.gameData.players[playerKey]; // Get player info using player ID
 
-                       if (player) {
-                           const playerName = player.boxscoreName || player.fullName || '';
-                           const playerPosition = checkPlayerPosition(playerId, defense); // Get player's position if they match
+                        if (player) {
+                            const playerName = player.boxscoreName || player.fullName || '';
+                            const playerPosition = checkPlayerPosition(playerId, defense); // Get player's position if they match
 
-                           console.log(`Player ${index + 1}: ${playerName} (ID: ${playerId}) is playing ${playerPosition}`);
-                       }
-                   });
+                            console.log(`Player ${index + 1}: ${playerName} (ID: ${playerId}) is playing ${playerPosition}`);
+                        }
+                    });
 
-                   // Helper function to check if player's ID matches any defensive position
-                   function checkPlayerPosition(playerId, defense) {
-                       if (defense.catcher && defense.catcher.id === playerId) {
-                           return 'Catcher';
-                       }
-                       if (defense.first && defense.first.id === playerId) {
-                           return 'First Base';
-                       }
-                       if (defense.second && defense.second.id === playerId) {
-                           return 'Second Base';
-                       }
-                       if (defense.third && defense.third.id === playerId) {
-                           return 'Third Base';
-                       }
-                       if (defense.shortstop && defense.shortstop.id === playerId) {
-                           return 'Shortstop';
-                       }
-                       if (defense.left && defense.left.id === playerId) {
-                           return 'Left Field';
-                       }
-                       if (defense.center && defense.center.id === playerId) {
-                           return 'Center Field';
-                       }
-                       if (defense.right && defense.right.id === playerId) {
-                           return 'Right Field';
-                       }
-                       if (defense.pitcher && defense.pitcher.id === playerId) {
-                           return 'Pitcher';
-                       }
+                    // Helper function to check if player's ID matches any defensive position
+                    function checkPlayerPosition(playerId, defense) {
+                        if (defense && defense.catcher && defense.catcher.id === playerId) {
+                            return 'Catcher';
+                        }
+                        if (defense && defense.first && defense.first.id === playerId) {
+                            return 'First Base';
+                        }
+                        if (defense && defense.second && defense.second.id === playerId) {
+                            return 'Second Base';
+                        }
+                        if (defense && defense.third && defense.third.id === playerId) {
+                            return 'Third Base';
+                        }
+                        if (defense && defense.shortstop && defense.shortstop.id === playerId) {
+                            return 'Shortstop';
+                        }
+                        if (defense && defense.left && defense.left.id === playerId) {
+                            return 'Left Field';
+                        }
+                        if (defense && defense.center && defense.center.id === playerId) {
+                            return 'Center Field';
+                        }
+                        if (defense && defense.right && defense.right.id === playerId) {
+                            return 'Right Field';
+                        }
+                        if (defense && defense.pitcher && defense.pitcher.id === playerId) {
+                            return 'Pitcher';
+                        }
 
-                       return 'Unknown position'; // If no match found
-                   }
+                        return 'Unknown position'; // If no match found
+                    }
 
 
                 // Example async/await fetch function and render
@@ -180,7 +180,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     const data = await fetchData(); // Assuming fetchData is defined elsewhere
                     renderBattingOrders(data);
                 }
-
                    
                     gameStatus = gameTime;
                     preGameHTML = `
@@ -222,9 +221,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                 </div>
                             </div>
                         </div>
-                        <div class="positioning-misc-table">
+                         <div class="pregame-positioning-misc-table">
                             <div class="away-def-bg" style="background-color: ${awayTeamColor};">
-                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                              <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                             viewBox="0 0 745.89 600.276" style="enable-background:new 0 0 745.89 600.276;" xml:space="preserve">
                         <g>
                             <path d="M420.603,37.419c-8.455,0.091-21.501,0.523-26.364,0.864c-39.251,2.75-74.57,11.273-109.207,26.342
@@ -371,57 +370,66 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="pos-field">
                             <!-- Catcher -->
                             <div id="catcher" class="def-position catcher">
-                                <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.catcher.id}/headshot/silo/current" style="width: 5em; height: 5em;">
-                                <span class="fielding-name">${defense.catcher.fullName}</span>
-                                <span class="display-pos">C</span>
+                                ${defense.catcher?.id ? `<img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.catcher.id}/headshot/silo/current" style="width: 5em; height: 5em;">` : ''}
+                                <span class="fielding-name">${defense.catcher?.fullName || ''}</span>
+                                ${defense.catcher?.id ? `<span class="display-pos">C</span>` : ''}
                             </div>
-                            <! -- First Base -->
+
+                            <!-- First Base -->
                             <div id="first" class="def-position first">
-                                <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.first.id}/headshot/silo/current" style="width: 5em; height: 5em;">
-                                <span class="fielding-name">${defense.first.fullName}</span>
-                                <span class="display-pos">1B</span>
+                                ${defense.first?.id ? `<img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.first.id}/headshot/silo/current" style="width: 5em; height: 5em;">` : ''}
+                                <span class="fielding-name">${defense.first?.fullName || ''}</span>
+                                ${defense.first?.id ? `<span class="display-pos">1B</span>` : ''}
                             </div>
-                            <! -- Second Base -->
+
+                            <!-- Second Base -->
                             <div id="second" class="def-position second">
-                                <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.second.id}/headshot/silo/current" style="width: 5em; height: 5em;">
-                                <span class="fielding-name">${defense.second.fullName}</span>
-                                <span class="display-pos">2B</span>
+                                ${defense.second?.id ? `<img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.second.id}/headshot/silo/current" style="width: 5em; height: 5em;">` : ''}
+                                <span class="fielding-name">${defense.second?.fullName || ''}</span>
+                                ${defense.second?.id ? `<span class="display-pos">2B</span>` : ''}
                             </div>
-                            <! -- Third Base -->
+
+                            <!-- Third Base -->
                             <div id="third" class="def-position third">
-                                <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.third.id}/headshot/silo/current" style="width: 5em; height: 5em;">
-                                <span class="fielding-name">${defense.third.fullName}</span>
-                                <span class="display-pos">3B</span>
+                                ${defense.third?.id ? `<img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.third.id}/headshot/silo/current" style="width: 5em; height: 5em;">` : ''}
+                                <span class="fielding-name">${defense.third?.fullName || ''}</span>
+                                ${defense.third?.id ? `<span class="display-pos">3B</span>` : ''}
                             </div>
-                            <! -- Short Stop -->
+
+                            <!-- Shortstop -->
                             <div id="short" class="def-position short">
-                                <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.shortstop.id}/headshot/silo/current" style="width: 5em; height: 5em;">
-                                <span class="fielding-name">${defense.shortstop.fullName}</span>
-                                <span class="display-pos">SS</span>
+                                ${defense.shortstop?.id ? `<img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.shortstop.id}/headshot/silo/current" style="width: 5em; height: 5em;">` : ''}
+                                <span class="fielding-name">${defense.shortstop?.fullName || ''}</span>
+                                ${defense.shortstop?.id ? `<span class="display-pos">SS</span>` : ''}
                             </div>
-                            <! -- Left Field -->
+
+                            <!-- Left Field -->
                             <div id="left" class="def-position left">
-                                <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.left.id}/headshot/silo/current" style="width: 5em; height: 5em;">
-                                <span class="fielding-name">${defense.left.fullName}</span>
-                                <span class="display-pos">LF</span>
+                                ${defense.left?.id ? `<img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.left.id}/headshot/silo/current" style="width: 5em; height: 5em;">` : ''}
+                                <span class="fielding-name">${defense.left?.fullName || ''}</span>
+                                ${defense.left?.id ? `<span class="display-pos">LF</span>` : ''}
                             </div>
-                            <! -- Center Field -->
+
+                            <!-- Center Field -->
                             <div id="center" class="def-position center">
-                                <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.center.id}/headshot/silo/current" style="width: 5em; height: 5em;">
-                                <span class="fielding-name">${defense.center.fullName}</span>
-                                <span class="display-pos">CF</span>
+                                ${defense.center?.id ? `<img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.center.id}/headshot/silo/current" style="width: 5em; height: 5em;">` : ''}
+                                <span class="fielding-name">${defense.center?.fullName || ''}</span>
+                                ${defense.center?.id ? `<span class="display-pos">CF</span>` : ''}
                             </div>
-                            <! -- Right Field -->
+
+                            <!-- Right Field -->
                             <div id="right" class="def-position right">
-                                <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.right.id}/headshot/silo/current" style="width: 5em; height: 5em;">
-                                <span class="fielding-name">${defense.right.fullName}</span>
-                                <span class="display-pos">RF</span>
+                                ${defense.right?.id ? `<img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_120,q_100/v1/people/${defense.right.id}/headshot/silo/current" style="width: 5em; height: 5em;">` : ''}
+                                <span class="fielding-name">${defense.right?.fullName || ''}</span>
+                                ${defense.right?.id ? `<span class="display-pos">RF</span>` : ''}
                             </div>
                         </div>
+
                         <div class="stadium-location">${data.gameData.venue.name}
-                        <span class="city-state">${data.gameData.venue.location.city}, ${data.gameData.venue.location.stateAbbrev}</span>
+                            <span class="city-state">${data.gameData.venue.location.city}, ${data.gameData.venue.location.stateAbbrev}</span>
                         </div>
-                        </div>
+
+
                     `;
 
                     // Insert HTML and call fetch/render
@@ -523,6 +531,40 @@ document.addEventListener("DOMContentLoaded", () => {
                     inningBoxStyle = 'color: red;';
                     svgFieldHTML = '';
 
+                    // Pitch Type Database (Mini DB)
+                    const pitchTypes = [
+                        { name: '4-Seam Fastball', code: 'FF', color: 'red' },
+                        { name: 'Sinker', code: 'SI', color: 'orange' },
+                        { name: 'Splitter', code: 'FS', color: 'turquoise' },
+                        { name: 'Cutter', code: 'FC', color: 'brown' },
+                        { name: 'Curveball', code: 'CU', color: 'lightblue' },
+                        { name: 'Knuckle Curveball', code: 'KC', color: 'purple' },
+                        { name: 'Slider', code: 'SL', color: 'yellow' },
+                        { name: 'Sweeper', code: 'ST', color: 'pink' },
+                        { name: 'Changeup', code: 'CH', color: 'green' },
+                        { name: 'Forkball', code: 'FO', color: 'gold' },
+                        { name: 'Screwball', code: 'SC', color: 'limegreen' },
+                        { name: 'Gyroball', code: 'GY', color: 'blue' },
+                        { name: 'Slurve', code: 'SV', color: 'livid' },
+                        { name: 'Slow Curve', code: 'CS', color: 'lightpurple' },
+                        { name: 'Eephus', code: 'EP', color: 'magenta' },
+                        { name: 'Knuckleball', code: 'KN', color: 'royalblue' },
+                        { name: 'Unknown', code: 'UN', color: 'gray' }
+                    ];
+
+                    const baseball = data.liveData.plays.currentPlay; 
+                    const batterUp = baseball.matchup.batter.fullName; 
+                    const platApp = baseball.about.atBatIndex + 1; 
+                    const currentInn = baseball.about.inning; 
+                    const batterResult = baseball.result.event; 
+                    const exitVelo = baseball.playEvents?.hitData?.launchSpeed; 
+                    const launchAngle = baseball.playEvents?.hitData?.launchAngle;
+                    const hitDist = baseball.playEvents?.hitData?.totalDistance;
+                    const pitcherUp = baseball.matchup.pitcher.fullName;
+                    const pitchType = baseball.playEvents?.details?.type.code; 
+                    const pitchVelo = baseball.playEvents?.pitchData?.startSpeed; 
+                    const spinRate = baseball.playEvents?.pitchData?.breaks.spinRates; 
+
                     finalStateHTML = `
                         <div class="end-result">
                         <div class="final-results">
@@ -573,7 +615,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             </div>
                         </div>
                     </div>
-                   <div class="positioning-misc-table">
+                   <div class="final-positioning-misc-table">
                             <div class="away-def-bg" style="background-color: ${awayTeamColor};">
                               <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                             viewBox="0 0 745.89 600.276" style="enable-background:new 0 0 745.89 600.276;" xml:space="preserve">
@@ -772,6 +814,31 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="stadium-location">${data.gameData.venue.name}
                         <span class="city-state">${data.gameData.venue.location.city}, ${data.gameData.venue.location.stateAbbrev}</span>
                         </div>
+                        </div>
+                         <div class="analytics-table">
+                            <table class="stats-table">
+                                <thead>
+                                <tr>               
+                                <th colspan="5" class="th-name-header"></th>
+                                <th colspan="7" class="title-header">Advanced Metrics</th>
+                                </tr>
+                                <tr class="component-row">
+                                        <th id="th-0" class="sort"></th>
+                                        <th id="th-1" class="sort">Batter</th>
+                                        <th id="th-2" class="sort">PA</th>
+                                        <th id="th-3" class="sort">Inn.</th>
+                                        <th id="th-4" class="sort">Result</th>
+                                        <th id="th-5" class="sort tooltip-hover" title="Exit Velocity (MPH)">Exit Velo</th>
+                                        <th id="th-6" class="sort tooltip-hover" title="Launch Angle (Degrees)">LA</th>
+                                        <th id="th-7" class="sort tooltip-hover" title="Hit Distance (Feet)">Hit Dist.</th>
+                                        <th id="th-8" class="sort tooltip-hover">Pitcher</th>
+                                        <th id="th-9" class="sort tooltip-hover">Pitch Type</th>
+                                        <th id="th-10" class="sort tooltip-hover" >Pitch Velocity</th>
+                                        <th id="th-11" class="sort tooltip-hover" >Spin Rate</th>
+                                </tr>
+                                </thead>
+                            </table>
+                            </div>
                         </div>
                     `;
 
