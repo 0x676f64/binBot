@@ -91,6 +91,13 @@ td, th {
   padding: 0;
 }
 
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  unicode-bidi: isolate;
+  border-color: inherit;
+}
+
 .game-column {
     display: flex;
     flex-direction: column;
@@ -927,7 +934,7 @@ pos-field {
 .stats-table {
   display: flex;
   position: relative;
-  right: 83rem;
+  right: 78rem;
 }
 
 .th-title-header {
@@ -935,7 +942,7 @@ pos-field {
 }
 
 .sort {
-  font-size: 16px;
+  font-size: 14px;
   padding: 24px;
   cursor: pointer;
   border-bottom: 3px solid #006c54;
@@ -950,8 +957,10 @@ pos-field {
 
 /* Add padding to the first header */
 #th-1 {
+  position: relative;
   padding-right: 135px; /* Adjust this value as needed for more space */
   text-align: left; /* Optional: Align text to the left */
+  right: 30px;
 }
 
 #th-2 {
@@ -972,19 +981,102 @@ pos-field {
 }
 
 #th-8 {
+  position: relative;
   padding-right: 80px;
   border-top: 1px solid #006c54;
   border-left: 1px solid #006c54;
+  left: 20px;
 }
 
 #th-9, #th-10, #th-11 {
+  position: relative;
   border-top: 1px solid #006c54;
+  left: 70px;
 }
 
 #th-11 {
+  position: relative;
   padding-left: 10px;
+  border-right: 1px solid #006c54;
+  left: 18px;
 }
 
 #th-10 {
+  position: relative;
   padding-left: 30px;
+  left: 30px;
+}
+
+.tr-data {
+  font-size: 18px;
+  text-align: center;
+  padding: 0 3px 0 3px;
+}
+
+.table-team-logo {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  padding-top: 1px;
+  top: 4.5rem;
+  right: 77rem;
+}
+
+.table-static-column {
+  position: relative;
+  background-color: inherit;
+}
+
+
+.player-mug-fixed-height {
+  height: 30px;
+  border-radius: 50%;
+}
+
+#batterUp {
+  position: relative;
+  top: 4.5rem;
+  right: 77rem;
+}
+
+#plate-app {
+  position: relative;
+  top: 4.5rem;
+  right: 70.5rem;
+}
+
+#currentInn {
+  position: relative;
+  top: 4.5rem;
+  right: 69.3rem;
+}
+
+#result {
+  position: relative;
+  top: 4.5rem;
+  right: 68.5rem;
+}
+
+#exitVelo {
+  position: relative;
+  top: 4.5rem;
+  right: 64.2rem;
+}
+
+#launchAngle {
+  position: relative;
+  top: 4.5rem;
+  right: 60rem;
+}
+
+#hitDist {
+  position: relative;
+  top: 4.5rem;
+  right: 56rem;
+}
+
+#pitcherUp {
+  position: relative;
+  top: 4.5rem;
+  right: 52rem;
 }
