@@ -531,30 +531,43 @@ document.addEventListener("DOMContentLoaded", () => {
                     inningBoxStyle = 'color: red;';
                     svgFieldHTML = '';
 
+                     // Get team data
+                     const battingTeam = data.liveData.linescore.offense.team.id
+                     const pitchingTeam = data.liveData.linescore.defense.team.id
+
+                    // Get team logos
+                    const hitters = `https://www.mlbstatic.com/team-logos/${battingTeam}.svg`;
+                    const pitchers = `https://www.mlbstatic.com/team-logos/${pitchingTeam}.svg`;
+
+                    // Player Id
+                    const hitterID = data.liveData.plays.currentPlay.matchup.batter.id;
+                    const pitcherID = data.liveData.plays.currentPlay.matchup.pitcher.id; 
+
+
                     // Pitch Type Database (Mini DB)
-                    const pitchTypes = [
-                        { name: '4-Seam Fastball', code: 'FF', color: 'red' },
-                        { name: 'Sinker', code: 'SI', color: 'orange' },
-                        { name: 'Splitter', code: 'FS', color: 'turquoise' },
-                        { name: 'Cutter', code: 'FC', color: 'brown' },
-                        { name: 'Curveball', code: 'CU', color: 'lightblue' },
-                        { name: 'Knuckle Curveball', code: 'KC', color: 'purple' },
-                        { name: 'Slider', code: 'SL', color: 'yellow' },
-                        { name: 'Sweeper', code: 'ST', color: 'pink' },
-                        { name: 'Changeup', code: 'CH', color: 'green' },
-                        { name: 'Forkball', code: 'FO', color: 'gold' },
-                        { name: 'Screwball', code: 'SC', color: 'limegreen' },
-                        { name: 'Gyroball', code: 'GY', color: 'blue' },
-                        { name: 'Slurve', code: 'SV', color: 'livid' },
-                        { name: 'Slow Curve', code: 'CS', color: 'lightpurple' },
-                        { name: 'Eephus', code: 'EP', color: 'magenta' },
-                        { name: 'Knuckleball', code: 'KN', color: 'royalblue' },
-                        { name: 'Unknown', code: 'UN', color: 'gray' }
-                    ];
+                    const pitchTypes = {
+                       'FF': 'assets/4-seam.svg', // 4-Seam Fastball
+                       'SI': 'assets/Sinker.svg', // Sinker
+                       'FC': 'assets/Cutter.svg', // Cutter
+                       'CH': 'assets/Changeup.svg', // Changeup
+                       'FS': 'assets/Splitter.svg', // Split
+                       'FO': 'asets/Fork.svg', // Fork Ball
+                       'SC': 'assets/Screw.svg', // Screw Ball
+                       'CU': 'assets/Curve.svg', // Curve 
+                       'KC': 'assets/Knuckle.svg', // Knuckle 
+                       'CS': 'assets/Slow.svg', // Slow Curve
+                       'SL': 'assets/Slider.svg', // Slider
+                       'ST': 'assets/Seeper.svg', // Sweeper
+                       'SV': 'assets/Slurve.svg', // Slurve Ball
+                       'KN': 'assets/KnuckleBall.svg', // Knuckle Ball
+                       'UN': 'assets/Unknown.svg', // Unknown
+                       'IN': 'assets/Intentional.svg' // Intentional
+
+                };
 
                     const baseball = data.liveData.plays.currentPlay; 
                     const batterUp = baseball.matchup.batter.fullName; 
-                    const platApp = baseball.about.atBatIndex + 1; 
+                    const plateApp = baseball.about.atBatIndex + 1; 
                     const currentInn = baseball.about.inning; 
                     const batterResult = baseball.result.event; 
                     const exitVelo = baseball.playEvents?.hitData?.launchSpeed; 
@@ -815,31 +828,74 @@ document.addEventListener("DOMContentLoaded", () => {
                         <span class="city-state">${data.gameData.venue.location.city}, ${data.gameData.venue.location.stateAbbrev}</span>
                         </div>
                         </div>
-                         <div class="analytics-table">
-                            <table class="stats-table">
-                                <thead>
-                                <tr>               
+                    <div class="analytics-table">
+                    <table class="stats-table">
+                        <thead>
+                            <tr>
                                 <th colspan="5" class="th-name-header"></th>
-                                <th colspan="7" class="title-header">Advanced Metrics</th>
-                                </tr>
-                                <tr class="component-row">
-                                        <th id="th-0" class="sort"></th>
-                                        <th id="th-1" class="sort">Batter</th>
-                                        <th id="th-2" class="sort">PA</th>
-                                        <th id="th-3" class="sort">Inn.</th>
-                                        <th id="th-4" class="sort">Result</th>
-                                        <th id="th-5" class="sort tooltip-hover" title="Exit Velocity (MPH)">Exit Velo</th>
-                                        <th id="th-6" class="sort tooltip-hover" title="Launch Angle (Degrees)">LA</th>
-                                        <th id="th-7" class="sort tooltip-hover" title="Hit Distance (Feet)">Hit Dist.</th>
-                                        <th id="th-8" class="sort tooltip-hover">Pitcher</th>
-                                        <th id="th-9" class="sort tooltip-hover">Pitch Type</th>
-                                        <th id="th-10" class="sort tooltip-hover" >Pitch Velocity</th>
-                                        <th id="th-11" class="sort tooltip-hover" >Spin Rate</th>
-                                </tr>
-                                </thead>
-                            </table>
-                            </div>
-                        </div>
+                                <th colspan="7" class="title-header"></th>
+                            </tr>
+                            <tr class="component-row">
+                                <th id="th-0" class="sort"></th>
+                                <th id="th-1" class="sort">Batter</th>
+                                <th id="th-2" class="sort">PA</th>
+                                <th id="th-3" class="sort">In.</th>
+                                <th id="th-4" class="sort">Result</th>
+                                <th id="th-5" class="sort tooltip-hover" title="Exit Velocity (MPH)">Exit Velo</th>
+                                <th id="th-6" class="sort tooltip-hover" title="Launch Angle (Degrees)">LA</th>
+                                <th id="th-7" class="sort tooltip-hover" title="Hit Distance (Feet)">Hit Dist.</th>
+                                <th id="th-8" class="sort tooltip-hover">Pitcher</th>
+                                <th id="th-9" class="sort tooltip-hover">Pitch Type</th>
+                                <th id="th-10" class="sort tooltip-hover">Pitch Velocity</th>
+                                <th id="th-11" class="sort tooltip-hover" title="Spin Rate (RPM)">Spin Rate</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr class="pa-container" id="tr-1">
+                                <!-- Team logo -->
+                                <td class="tr-data">
+                                    <img class="table-team-logo" src="${hitters}" alt="team logo">
+                                </td>
+                                <!-- Batter name and image -->
+                                <td class="tr-data table-static-column" id="batterUp">
+                                <div style="display: flex; align-items: center;">
+                                <div class="player-mug-wrapper">
+                                    <img class="player-mug-fixed-height" src="https://midfield.mlbstatic.com/v1/people/${hitterID}/spots/60" alt="player image"> 
+                                </div>
+                                <div style="margin-left: 20px; font-size: 17px; font-weight: 400;">
+                                    ${batterUp}
+                                </div>
+                                </div>
+                                </td>
+                                <!-- Plate appearance (PA) -->
+                                <td class="tr-data" id="plate-app">${plateApp}</td>
+                                <td class="tr-data" id="currentInn">${currentInn}</td>
+                                <td class="tr-data" id="result">${batterResult}</td>
+                                <td class="tr-data" id="exitVelo">${exitVelo !== undefined ? exitVelo : ''}</td>
+                                <td class="tr-data" id="launchAngle">${launchAngle !== undefined ? launchAngle : ''}</td>
+                                <td class="tr-data" id="hitDist">${hitDist !== undefined ? hitDist : ''}</td>
+                                
+                                <td class="tr-data">
+                                    <img class="table-team-logo" style="position: relative; right: 51.8rem;" src="${pitchers}" alt="team logo">
+                                </td>
+                                <!-- Batter name and image -->
+                                <td class="tr-data table-static-column" id="pitcherUp">
+                                <div style="display: flex; align-items: center;">
+                                <div class="player-mug-wrapper">
+                                    <img class="player-mug-fixed-height" src="https://midfield.mlbstatic.com/v1/people/${pitcherID}/spots/60" alt="player image"> 
+                                </div>
+                                <div style="margin-left: 20px; font-size: 17px; font-weight: 400;">
+                                    ${pitcherUp}
+                                </div>
+                                </div>
+                                </td>
+                                <td class="tr-data" id="pitchType">${pitchTypes}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>                        
                     `;
 
                     // Insert HTML and call fetch/render
