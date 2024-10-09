@@ -1042,19 +1042,19 @@ pos-field {
 #plate-app {
   position: relative;
   top: 4.5rem;
-  right: 70.5rem;
+  right: 72.7rem;
 }
 
 #currentInn {
   position: relative;
   top: 4.5rem;
-  right: 69.3rem;
+  right: 71.3rem;
 }
 
 #result {
   position: relative;
   top: 4.5rem;
-  right: 68.5rem;
+  right: 70.5rem;
 }
 
 #exitVelo {
@@ -1078,5 +1078,35 @@ pos-field {
 #pitcherUp {
   position: relative;
   top: 4.5rem;
-  right: 52rem;
+  right: 54.5rem;
+}
+
+#pitchType {
+  position: relative;
+  top: 4.5rem;
+  right: 51rem;
+  background-color: red;
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  width: 2rem; /* Adjusted to give a bit more room */
+  height: 2rem; /* Same as width */
+  border-radius: 50%;
+  display: flex; /* Center text vertically and horizontally */
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Horizontally center text */
+  line-height: 1rem; /* Keep the text vertically centered */
+}
+
+#pitchVelo {
+  position: relative;
+  top: 4.5rem;
+  right: 48rem;
+}
+
+#spinRate {
+  position: relative;
+  top: 4.5rem;
+  right: 45.5rem;
 }
