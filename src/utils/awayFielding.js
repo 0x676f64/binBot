@@ -543,28 +543,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     const hitterID = data.liveData.plays.currentPlay.matchup.batter.id;
                     const pitcherID = data.liveData.plays.currentPlay.matchup.pitcher.id; 
 
-
-                    // Pitch Type Database (Mini DB)
-                    const pitchTypes = {
-                       'FF': 'assets/4-seam.svg', // 4-Seam Fastball
-                       'SI': 'assets/Sinker.svg', // Sinker
-                       'FC': 'assets/Cutter.svg', // Cutter
-                       'CH': 'assets/Changeup.svg', // Changeup
-                       'FS': 'assets/Splitter.svg', // Split
-                       'FO': 'asets/Fork.svg', // Fork Ball
-                       'SC': 'assets/Screw.svg', // Screw Ball
-                       'CU': 'assets/Curve.svg', // Curve 
-                       'KC': 'assets/Knuckle.svg', // Knuckle 
-                       'CS': 'assets/Slow.svg', // Slow Curve
-                       'SL': 'assets/Slider.svg', // Slider
-                       'ST': 'assets/Seeper.svg', // Sweeper
-                       'SV': 'assets/Slurve.svg', // Slurve Ball
-                       'KN': 'assets/KnuckleBall.svg', // Knuckle Ball
-                       'UN': 'assets/Unknown.svg', // Unknown
-                       'IN': 'assets/Intentional.svg' // Intentional
-
-                };
-
                     const baseball = data.liveData.plays.currentPlay; 
                     const batterUp = baseball.matchup.batter.fullName; 
                     const plateApp = baseball.about.atBatIndex + 1; 
@@ -574,10 +552,68 @@ document.addEventListener("DOMContentLoaded", () => {
                     const launchAngle = baseball.playEvents?.hitData?.launchAngle;
                     const hitDist = baseball.playEvents?.hitData?.totalDistance;
                     const pitcherUp = baseball.matchup.pitcher.fullName;
-                    const pitchType = baseball.playEvents?.details?.type.code; 
-                    const pitchVelo = baseball.playEvents?.pitchData?.startSpeed; 
-                    const spinRate = baseball.playEvents?.pitchData?.breaks.spinRates; 
+                    const pitchType = baseball.playEvents[baseball.playEvents.length - 1]?.details?.type.code; 
+                    const pitchVelo = baseball.playEvents[baseball.playEvents.length - 1]?.pitchData?.startSpeed; 
+                    const spinRate = baseball.playEvents[baseball.playEvents.length - 1]?.pitchData?.breaks.spinRate; 
 
+                    // Assign color based on pitch type code
+                    function getPitchColor(pitchType) {
+                        let color;
+                        switch (pitchType) {
+                            case 'FF': // 4-Seam Fastball
+                                color = '#FF0000'; // Red
+                                break;
+                            case 'SI': // Sinker
+                                color = '#FFA500'; // Orange
+                                break;
+                            case 'FC': // Cutter
+                                color = '#8B4513'; // Brown
+                                break;
+                            case 'CH': // Changeup
+                                color = '#008000'; // Green
+                                break;
+                            case 'FS': // Splitter
+                                color = '#40E0D0'; // Turquoise
+                                break;
+                            case 'FO': // Fork Ball
+                                color = '#FFD700'; // Gold
+                                break;
+                            case 'SC': // Screw Ball
+                                color = '#98FB98'; // Pale Green
+                                break;
+                            case 'CU': // Curve
+                                color = '#ADD8E6'; // Light Blue
+                                break;
+                            case 'KC': // Knuckle
+                                color = '#800080'; // Purple
+                                break;
+                            case 'CS': // Slow Curve
+                                color = '#E6E6FA'; // Lavender
+                                break;
+                            case 'SL': // Slider
+                                color = '#FFFF00'; // Yellow
+                                break;
+                            case 'ST': // Sweeper
+                                color = '#FFC0CB'; // Pink
+                                break;
+                            case 'SV': // Slurve Ball
+                                color = '#FF00FF'; // Magenta
+                                break;
+                            case 'KN': // Knuckle Ball
+                                color = '#0000FF'; // Blue
+                                break;
+                            case 'UN': // Unknown
+                                color = '#808080'; // Gray
+                                break;
+                            case 'IN': // Intentional
+                                color = '#C0C0C0'; // Silver
+                                break;
+                            default:
+                                color = '#FFFFFF'; // Default white for unknown codes
+                        }
+                        return color;
+                    }
+                    
                     finalStateHTML = `
                         <div class="end-result">
                         <div class="final-results">
@@ -877,7 +913,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <td class="tr-data" id="hitDist">${hitDist !== undefined ? hitDist : ''}</td>
                                 
                                 <td class="tr-data">
-                                    <img class="table-team-logo" style="position: relative; right: 51.8rem;" src="${pitchers}" alt="team logo">
+                                    <img class="table-team-logo" style="position: relative; right: 54rem;" src="${pitchers}" alt="team logo">
                                 </td>
                                 <!-- Batter name and image -->
                                 <td class="tr-data table-static-column" id="pitcherUp">
@@ -890,8 +926,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                 </div>
                                 </div>
                                 </td>
-                                <td class="tr-data" id="pitchType">${pitchTypes}</td>
-
+                                <td class="tr-data" id="pitchType">${getPitchColor(pitchType)}</td>
+                                <td class="tr-data" id="pitchVelo">${pitchVelo}</td>
+                                <td class="tr-data" id="spinRate">${spinRate}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -901,6 +938,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     // Insert HTML and call fetch/render
                     document.getElementById('feedContainer').innerHTML = finalStateHTML;
                     fetchDataAndRender();
+
+
                 }
 
                 // Get team data
